@@ -3,4 +3,6 @@ block content
     script(type='text/javascript' src='public/js/myo.js')
     script(type='text/javascript' src='public/js/smartphoneSensors.js')
     h1= title
-    p Welcome to #{title}
+    script.
+        window.addEventListener('devicemotion', eventData);
+

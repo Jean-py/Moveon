@@ -1,13 +1,12 @@
 extends layout
 
 block content
-  script.
-    //alert('hello world');
-    window.addEventListener("click",screenTouched,false);
-    function screenTouched(){
-        //console.log('touching screen');
-      //Switching to 
-    }
-
   h1= title
   p.bottom #{subtitle}
+
+  script.
+    window.addEventListener("click", screenTouched, false);
+    function screenTouched() {
+      //Switching to sensors.jade
+      window.location.href = '/sensors'
+    }

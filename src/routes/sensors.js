@@ -1,12 +1,18 @@
-let express = require('express');
-let router = express.Router();
+var express = require('express');
+var router = express.Router();
 let smartphoneSensors = require('../../public/js/smartphoneSensors');
 
 /* GET users listing. */
-router.get('/sensors', function(req, res, next) {
-  res.send('Here the sensor page, streaming data from smartphone and MYO');
- // next =
+router.get('/', function(req, res, next) {
+  console.log('Accessing to sensors page');
+  res.render('sensors', { title: 'Select your device(s): '});
+  res.send('birds home page');
+  next(); // pass control to the next handler
 });
+
+
+
+module.exports = router;
 
 
 

@@ -1,13 +1,13 @@
 //Wrapper to access to data sensors of a smartphone
 
-/TODO
+//TODO
 //Normaliser le gyro + Accelero
 //Ajouter des fonctions?
 
 //add listener to orientation
-window.addEventListener('devicemotion', eventData);
 
 // Accelero
+/*
 function getxAccelero(eventData){
     return ${eventData.accelerationIncludingGravity.x};
 }
@@ -19,9 +19,10 @@ function getyAccelero(eventData){
 function getzAccelero(eventData){
     return ${eventData.accelerationIncludingGravity.z};
 }
+*/
 
 //Gyroscope
-function getAlphaGyroscope(eventData){
+/*function getAlphaGyroscope(eventData){
     return  ${eventData.rotationRate.alpha};
 }
 
@@ -31,7 +32,7 @@ function getBetaGyroscope(eventData){
 
 function getGammaGyroscope(eventData){
     return  ${eventData.rotationRate.gamma};
-}
+}*/
 
 //Orientation
 /*
