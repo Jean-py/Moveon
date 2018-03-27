@@ -1,6 +1,13 @@
 extends layout
 
 block content
+  script.
+    //alert('hello world');
+    window.addEventListener("click",screenTouched,false);
+    function screenTouched(){
+        //console.log('touching screen');
+      //Switching to 
+    }
+
   h1= title
-  p Welcome to #{title}
-  p #{subtitle}
+  p.bottom #{subtitle}

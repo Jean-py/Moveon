@@ -1,10 +1,15 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+p {
+  font-weight:bold;
+  line-height:1.3em;
+  font-family: "../fonts/Optima.ttc";
 }
 
 h1,h2,h3,h4,h5{
@@ -125,5 +130,7 @@ body {
   margin-right: auto;
   height: 15%;
   font-size: 20px;
-  color: white;
+  color: darkgrey;
+  user-select: none;
+
 }
