@@ -1,6 +1,5 @@
-#MoveOnToolbox
-
 #Toolbox-MoveOn
+Author: Rivière Jean-Philippe
 
 Toolkit that contains receiver, sender and machine learning algorithm.
 
