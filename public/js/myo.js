@@ -1,9 +1,9 @@
-import myo from 'myo-ts';
+import myo from 'devices-ts';
 
 //Wrapper to the MYO API
 myo.connect("com.stolksdorf.myAwesomeApp");
 
-console.log("IN MYO SCRIPT");
+//console.log("IN MYO SCRIPT");
 
 myo.on("fist", myo => {
     console.log("Hello Myo!");

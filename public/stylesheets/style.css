@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
+  overflow: scroll;
+
 }
 
 a {
@@ -132,5 +134,17 @@ body {
   font-size: 20px;
   color: darkgrey;
   user-select: none;
-
 }
+
+.myoImage{
+  left: 0;
+  position: fixed;
+  text-align:left;
+}
+
+
+.smartphoneImage{
+    max-width: 20%;
+    height: auto;
+}
+

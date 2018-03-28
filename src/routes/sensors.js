@@ -6,14 +6,7 @@ let smartphoneSensors = require('../../public/js/smartphoneSensors');
 router.get('/', function(req, res, next) {
   console.log('Accessing to sensors page');
   res.render('sensors', { title: 'Select your device(s): '});
-  res.send('birds home page');
-  next(); // pass control to the next handler
+  //next(); // pass control to the next handler
 });
-
-
-
-module.exports = router;
-
-
 
 module.exports = router;
