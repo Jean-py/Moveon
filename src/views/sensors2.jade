@@ -3,10 +3,29 @@ block content
     script(type='text/javascript' src='/js/myo.js')
     script(type='text/javascript' src='/js/smartphoneSensors.js')
 
+
     h3= title
 
+    img.myoImage#IdMyoImage(src="/images/devices/myo-notconnected.png" alt="MyoOff")
+
+    script.
+      Myo.connect('com.stolksdorf.myAwesomeApp');
+      Myo.on('imu', function (data) {
+        //console.log("orientation : "+ data.orientation.x, data.orientation.y, data.orientation.z);
+        //console.log("accelerometer : "+ data.accelerometer.x, data.accelerometer.y, data.accelerometer.z);
+        //console.log("gyroscope : "+ data.gyroscope.x, data.gyroscope.y, data.gyroscope.z);
+
+        //changer la photo du myo
+        //var src = document.getElementById("IdMyoImage");
+       // var img = document.createElement("img");
+        //img.src = "/images/devices/myo-connected.png";
+        //src.appendChild(img);
+      });
 
 
-    img.myoImage#IdMyoImageC(src="/images/devices/myo-connected.png" alt="MyoOff")
+
+
+
+
 
 
