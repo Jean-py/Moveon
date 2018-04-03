@@ -7,18 +7,13 @@ let myo = require('../../public/js/myo');
 router.get('/', function(req, res, next) {
   console.log('Accessing to sensors page');
   var Myo = require('myo');
-  
   Myo.connect('com.stolksdorf.myAwesomeApp', require('ws'));
-  
   Myo.on('fist', function(){
     console.log('Hello Myo!');
     //this.vibrate();
   });
   
-  
   res.render('sensors2', { title: 'sensor for testing sensors MYO: '});
-  
-  
   //next(); // pass control to the next handler
 });
 
