@@ -1,16 +1,27 @@
 extends layout
 block content
-    script(type='text/javascript' src='/js/myo.js')
+    //script(type='text/javascript' src='/js/myo.js')
     script(type='text/javascript' src='/js/smartphoneSensors.js')
+
 
     h3= title
 
-    
-    img.myoImage#IdMyoImageC(src="/images/devices/myo-connected.png" alt="MyoOff")
-    img.myoImage#IdMyoImageNC(src="/images/devices/myo-notconnected.png" alt="MyoOn")
-    img.smartphoneImage#Smartphone(src="/images/devices/smartphone.png" alt="Smartphone")
+    blockDevices
+        #IdMyoBoxImage.myoBox
+            script.
+                var smartphoneConnected = isConnected();
+            - if (smartphoneConnected)
+                -init();
+
+                img.myoImage#IdMyoImageC(src="/images/devices/myo-connected.png" alt="MyoOff")
+            - else
+                img.myoImage#IdMyoImageNC(src="/images/devices/myo-notconnected.png" alt="MyoOn")
+            #IdMyoBoxValue.myoBox
+                script.
+
+
+        #IdSmartphoneBox.smartphoneBox
+            img.smartphoneImage#IdSmartphone1(src="/images/devices/smartphone.png" alt="Smartphone")
 
 
 
-    script.
-        window.addEventListener('devicemotion', eventData);

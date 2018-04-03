@@ -5,7 +5,7 @@ let smartphoneSensors = require('../../public/js/smartphoneSensors');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   console.log('Accessing to sensors page');
-  res.render('sensors', { title: 'Select your device(s): '});
+  res.render('sensors', { title: 'Possible device(s): '});
   //next(); // pass control to the next handler
 });
 
