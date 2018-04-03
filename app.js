@@ -3,9 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const favicon = require('express-favicon');
 
 var indexRouter = require('./src/routes/index');
-var sensorsRouter = require('./src/routes/sensors2');
+var sensorsRouter = require('./src/routes/sensors');
 
 var app = express();
 
@@ -20,9 +21,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
+
+
+
 //page used in my application
 app.use('/', indexRouter);
-app.use('/sensors2', sensorsRouter);
+app.use('/sensors', sensorsRouter);
 
 
 // catch 404 and forward to error handler

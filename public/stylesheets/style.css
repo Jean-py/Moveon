@@ -1,9 +1,8 @@
 body {
   padding: 50px;
   font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
-
-    overflow-y:hidden;
-    overflow-x:hidden;
+  overflow-y:hidden;
+  overflow-x:hidden;
 
 }
 
@@ -18,10 +17,6 @@ p {
 
 h1,h2,h3,h4,h5{
   font-family: "../fonts/Optima.ttc";
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   margin:0px;
   padding:0px;
   border:0px;
@@ -66,10 +61,10 @@ body {
 }
 .pageTitle{
   font-family: "../fonts/Optima.ttc";
-  user-select: none;
+ /* user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none;
+  -ms-user-select: none;*/
   margin:0px;
   padding:0px;
   border:0px;
@@ -106,7 +101,7 @@ body {
   height: 15%;
   font-size: 20px;
   color: darkgrey;
-  user-select: none;
+  /*user-select: none;*/
 }
 
 .blockDevices{
@@ -120,6 +115,8 @@ body {
     position: absolute;
     top: 40%; /* poussé de la moitié de hauteur du référent */
     transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+    display:flex;
+    flex-direction: row;
 }
 .myoImage{
     max-width: 70%;

@@ -3,25 +3,91 @@ block content
     //script(type='text/javascript' src='/js/myo.js')
     script(type='text/javascript' src='/js/smartphoneSensors.js')
 
-
     h3= title
-
     blockDevices
-        #IdMyoBoxImage.myoBox
-            script.
-                var smartphoneConnected = isConnected();
-            - if (smartphoneConnected)
-                -init();
+        myoBox
+            #IdMyoBoxImage.myoBox
+                //- var smartphoneConnected = isConnected();
+                - if (true)
+                    //init();
+                    img.myoImage#IdMyoImageC(src="/images/devices/myo-connected.png" alt="MyoOff")
+                - else
+                    img.myoImage#IdMyoImageNC(src="/images/devices/myo-notconnected.png" alt="MyoOn")
 
-                img.myoImage#IdMyoImageC(src="/images/devices/myo-connected.png" alt="MyoOff")
-            - else
-                img.myoImage#IdMyoImageNC(src="/images/devices/myo-notconnected.png" alt="MyoOn")
-            #IdMyoBoxValue.myoBox
+                //connection to myo
                 script.
+                  var Myo = require('myo');
+                  Myo.connect('com.stolksdorf.myAwesomeApp');
+                  Myo.on('imu', function (data) {
+                    //console.log("orientation : "+ data.orientation.x, data.orientation.y, data.orientation.z);
+                    //console.log("accelerometer : "+ data.accelerometer.x, data.accelerometer.y, data.accelerometer.z);
+                    //console.log("gyroscope : "+ data.gyroscope.x, data.gyroscope.y, data.gyroscope.z);
+
+                    //changer la photo du myo
+                    //var src = document.getElementById("IdMyoImage");
+                    // var img = document.createElement("img");
+                    //img.src = "/images/devices/myo-connected.png";
+                    //src.appendChild(img);
+                  });
 
 
-        #IdSmartphoneBox.smartphoneBox
-            img.smartphoneImage#IdSmartphone1(src="/images/devices/smartphone.png" alt="Smartphone")
+                //Chart For myo
+                #chartContainer
+                    script(src='/js/chart.js')
+                    script(src='/js/waves-lfo-graph.js')
+                    //script.
+                        window.onload = function () {
+
+                            var dps = []; // dataPoints
+                            var chart = new CanvasJS.Chart("chartContainer", {
+                              title: {
+                                    text: "Accelerometer"
+                                  },
+                                  axisY: {
+                                    includeZero: false
+                                  },
+                                  data: [{
+                                    type: "line",
+                                    dataPoints: dps
+                                  }]
+                            });
+
+                            var xVal = 0;
+                            var yVal = 100;
+                            var updateInterval = 1000;
+                            var dataLength = 20; // number of dataPoints visible at any point
+
+                            var updateChart = function (count) {
+
+                              count = count || 1;
+
+                              for (var j = 0; j < count; j++) {
+                                yVal = yVal + Math.round(5 + Math.random() * (-5 - 5));
+                                dps.push({
+                                  x: xVal,
+                                  y: yVal
+                                });
+                                xVal++;
+                              }
+
+                              if (dps.length > dataLength) {
+                                dps.shift();
+                              }
+
+                              chart.render();
+                            };
+
+                            updateChart(dataLength);
+                            setInterval(function () {
+                              updateChart()
+                            }, updateInterval);
+
+                        }
+
+        smartphoneBox
+            #IdSmartphoneBox.smartphoneBox
+                img.smartphoneImage#IdSmartphone1(src="/images/devices/smartphone.png" alt="Smartphone")
+
 
 
 
