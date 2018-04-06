@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const favicon = require('express-favicon');
+require('babel-core/register');
 
 var indexRouter = require('./src/routes/index');
 var sensorsRouter = require('./src/routes/sensors');

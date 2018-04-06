@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('moveon:server');
 var config = require('../src/config/default');
 var http = require('http');
+var babel = require('babel-core/register');
 
 /**
  * Get port from environment and store in Express.

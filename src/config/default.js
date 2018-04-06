@@ -28,6 +28,9 @@ var config =  {
 
     // port used to open the http server, in production this value is typically 80
     portServer: 8000,
+  
+  //Port used by the myo
+    myoPort: 10138,
 
     // location of the public directory (accessible through http(s) requests)
   //  publicDirectory: path.join(cwd, 'public'),

@@ -123,10 +123,8 @@ body {
 }
 
 .smartphoneBox{
-
     text-align:left;
-     border: 1px solid #333;
-
+    border: 1px solid #333;
     position: absolute;
     top: 80%; /* poussé de la moitié de hauteur du référent */
     transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
@@ -135,4 +133,10 @@ body {
 .smartphoneImage{
     max-width: 25%;
     height: auto;
+}
+
+.canvasBPF{
+    height: 250px;
+    width: 400px;
+    background-color: white;
 }
