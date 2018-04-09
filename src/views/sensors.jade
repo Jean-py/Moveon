@@ -16,10 +16,30 @@ block content
                     img.myoImage#IdMyoImageNC(src="/images/devices/myo-notconnected.png" alt="MyoOn")
 
 
-                #chartContainer
-                canvas#canvasBPFAccelero.canvasBPF
-                canvas#canvasBPFGyro.canvasBPF
-                canvas#canvasBarchart
+                div.input#chartContainer
+                    p EMG
+                    canvas#canvasEMG1.canvasBPF
+                    p EMG Sliding
+                    canvas#canvasEMG2.canvasBPF
+                    //canvas#canvasEMG3.canvasBPF
+                   // canvas#canvasEMG4.canvasBPF
+
+
+                div.input
+                    p Accelero
+                    canvas#canvasBPFAccelero.canvasBPF
+                div.input
+                    p Jerkiness
+                    canvas#bpfDisplayJerkiness.canvasBPF
+                //canvas#canvasBarchart.canvasBPF
+                div.input
+                    button#buttonRecording(type='button') Start saving
+
+
+
+
+
+
 
         smartphoneBox
             #IdSmartphoneBox.smartphoneBox

@@ -1,6 +1,6 @@
-let lfo = require('waves-lfo/client');
-let Myo = require('myo');
-let SG = require('ml-savitzky-golay');
+var lfo = require('waves-lfo/client');
+var Myo = require('myo');
+var SG = require('ml-savitzky-golay');
 
 
 //Time for the bpfDisplay
@@ -11,19 +11,20 @@ const dtEMG = 0.01;
 
 //Starting myo
 Myo.connect('com.stolksdorf.myAwesomeApp');
-let myMyo;
+var myMyo;
 
 //For the sliding window of kinestetic awareness replication
-let slidingWindow = [];
+var slidingWindow = [];
 
 //variables for the savitzky-golay filter
-let arrayFilteringX = [];
-let arrayFilteringY = [];
-let arrayFilteringZ = [];
-let ansx = [];
-let ansy = [];
-let ansz = [];
-let options = {derivative: 1};
+var arrayFilteringX = [];
+var arrayFilteringY = [];
+var arrayFilteringZ = [];
+var ansx = [];
+var ansy = [];
+var ansz = [];
+var options = {derivative: 1};
+var optionsGolayLowpass = {derivative: 0};
 
 
 //Creation of graph
@@ -81,9 +82,11 @@ Myo.on('connected', function(){
   addEvents(myMyo);
 });
 
-let addEvents = function(myo){
+var addEvents = function(myo){
   
   myMyo.streamEMG(true);
+  myMyo.lock();
+  
   Myo.on('emg', function(data){
     timeEMG += dtEMG;
   
@@ -92,11 +95,12 @@ let addEvents = function(myo){
       slidingWindow.shift();
     }
     slidingWindow.push(Math.max(...data));
-    let maxSliding = Math.max(...slidingWindow);
+    maxSliding = Math.max(...slidingWindow);
     const frameEMGSliding = {
       time: timeEMG,
       data: slidingWindow[slidingWindow.length-1]/maxSliding,
-    };
+    }
+   // console.log(frameEMGSliding);
     
     const frameEMG = {
       time: timeEMG,
@@ -104,6 +108,7 @@ let addEvents = function(myo){
     };
     eventInEMGSliding.processFrame(frameEMGSliding);
     eventInEMG.processFrame(frameEMG);
+    
   });
   
   const bpfDisplayAccelero = new lfo.sink.BpfDisplay({
@@ -127,8 +132,8 @@ let addEvents = function(myo){
     width: 400,
     height: 250,
     duration: 5,
-    max: 128,
-    min: -128
+    max: 100,
+    min: -100
   });
   
   const bpfDisplayEMGSlinding = new lfo.sink.BpfDisplay({
@@ -143,14 +148,14 @@ let addEvents = function(myo){
   //Le low pass ne marche pas et je ne sais toujours pas pourquoi. Probleme de config?
   const biquad = new lfo.operator.Biquad({
     type: 'lowpass',
-    f0: 50,
+    f0: 10000,
     gain: 3,
     q: 12,
   });
   
   const biquad2 = new lfo.operator.Biquad({
     type: 'lowpass',
-    f0: 500,
+    f0: 10,
     gain: 3,
     q: 12,
   });
@@ -165,11 +170,11 @@ let addEvents = function(myo){
     time += dt;
     const frameAccelero = {
       time: time,
-      data: [data.accelerometer.x, data.accelerometer.y, data.accelerometer.z],
+      data: [data.accelerometer.x, data.accelerometer.y, data.accelerometer.z]
     };
     const frameGyro = {
       time: time,
-      data: [data.gyroscope.x, data.gyroscope.y, data.gyroscope.z],
+      data: [data.gyroscope.x, data.gyroscope.y, data.gyroscope.z]
     };
   
     eventInAccelero.processFrame(frameAccelero);
@@ -179,8 +184,8 @@ let addEvents = function(myo){
     arrayFilteringY.push(data.accelerometer.y);
     arrayFilteringZ.push(data.accelerometer.z);
     
-    //taille de la fenetre de calcule de l'algorithme = 20
-    if(arrayFilteringZ.length >= 10 ){
+    //taille de la fenetre de calcule de l'algorithme
+    if(arrayFilteringZ.length > 20 ){
       arrayFilteringX.shift();
       arrayFilteringY.shift();
       arrayFilteringZ.shift();
@@ -189,32 +194,33 @@ let addEvents = function(myo){
       ansx =  SG(arrayFilteringX, 1, options);
       ansy =  SG(arrayFilteringY, 1, options);
       ansz =  SG(arrayFilteringZ, 1, options);
-      let frameSmoothness = {
+      var frameSmoothness = {
         time: time,
         data: [ansx[ansx.length - 1],ansy[ansy.length - 1],ansz[ansz.length - 1]],
       };
       eventInSmoothness.processFrame(frameSmoothness);
     }
   });
-  /*MYO end of event handler*/
+  
+  /*MYO stop event handler*/
+  /*Connection of the graph to display */
   
   
-  /*ACCELERO*/
- /* eventInAccelero.connect(biquad);
+  //ACCELERO
+  /*eventInAccelero.connect(biquad);
   biquad.connect(bpfDisplayAccelero);*/
   eventInAccelero.connect(bpfDisplayAccelero);
   
   
-  /*JERKINESS RATE*/
+  //Smoothness
   eventInSmoothness.connect(bpfDisplayJerkiness);
   
-  /*EMG*/
-   /*eventInEMG.connect(biquad2);
-   biquad2.connect(bpfDisplayEMG);*/
-  eventInEMG.connect(bpfDisplayEMG);
+  //EMG
+  /* eventInEMG.connect(biquad2);
+   biquad2.connect(bpfDisplayEMG);
+  */eventInEMG.connect(bpfDisplayEMG)
   
-  /*EMGS SLIDING WINDOW*/
+  //EMG SLIDING WINDOW
   eventInEMGSliding.connect(bpfDisplayEMGSlinding);
-  
   
 };
