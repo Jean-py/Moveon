@@ -15,16 +15,12 @@ var app = express();
 app.set('views', path.join(__dirname, '/src/views'));
 // Set Jade as the default template engine
 app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
-
-
 
 //page used in my application
 app.use('/', indexRouter);
@@ -46,5 +42,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

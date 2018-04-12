@@ -49,8 +49,8 @@ var config =  {
     },
 
     // configuration of the `raw-socket` service
-    rawSocket: {
-        // port used for socket connection
+    socketServerToClient: {
+        // port used for socket connection with the client
         port: 8081
     }
 }

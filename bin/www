@@ -4,11 +4,11 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('moveon:server');
-var config = require('../src/config/default');
-var http = require('http');
-var babel = require('babel-core/register');
+let app = require('../app');
+let debug = require('debug')('moveon:server');
+let config = require('../src/config/default');
+let http = require('http');
+let babel = require('babel-core/register');
 
 /**
  * Get port from environment and store in Express.

@@ -1,6 +1,48 @@
 let lfo = require('waves-lfo/client');
 let Myo = require('myo');
 let SG = require('ml-savitzky-golay');
+let config = require('../../src/config/default');
+
+/*
+const socketSend = new lfo.sink.SocketSend({ port: 9004 });
+
+const eventIn = new lfo.source.EventIn({
+  frameType: 'vector',
+  frameSize: 3,
+  frameRate: 0.01,
+  description: ['alpha', 'beta', 'gamma'],
+});
+
+eventIn.connect(socketSend);
+
+eventIn.start();
+
+let timess = 0;
+
+(function createFrame() {
+  const frame = {
+    time: timess,
+    data: [1,2,3],
+  };
+  eventIn.process(1,[1,2,3],1);
+  timess += 1;
+  console.log('sending cool stuff');
+  setTimeout(createFrame, 1000);
+}());
+*/
+/*const socketReceive = new lfo.source.SocketReceive({
+  port: 5001
+  //config.socketServerToClient.port
+});*/
+
+const logger = new lfo.sink.Logger({
+  time: true,
+  data: true,
+});
+
+//socket.connect(bpfDisplayAccelero);
+
+//END TEST
 
 
 //Time for the bpfDisplay
@@ -24,6 +66,7 @@ let ansx = [];
 let ansy = [];
 let ansz = [];
 let options = {derivative: 1};
+let optionsGolayLowPass = {derivative: 0};
 
 
 //Creation of graph
@@ -61,6 +104,12 @@ const eventInEMGSliding = new lfo.source.EventIn({
   frameRate: 0.01,
   description: ['emgSliding'],
 });
+
+const movingAverage = new lfo.operator.MovingAverage({
+  order: 5,
+  fill: 0
+});
+
 
 
 // initialize and start the different graph used
@@ -130,7 +179,6 @@ let addEvents = function(myo){
     max: 128,
     min: -128
   });
-  
   const bpfDisplayEMGSlinding = new lfo.sink.BpfDisplay({
     canvas: '#canvasEMG2',
     width: 400,
@@ -202,7 +250,20 @@ let addEvents = function(myo){
   /*ACCELERO*/
  /* eventInAccelero.connect(biquad);
   biquad.connect(bpfDisplayAccelero);*/
+  //eventInAccelero.connect(bpfDisplayAccelero);
+  /*eventInAccelero.connect(movingAverage);
+  movingAverage.connect(bpfDisplayAccelero);*/
+//  const logger = new lfo.sink.Logger({ data: true });
+  
+  //eventInAccelero.connect(bpfDisplayAccelero);
+  /*eventInAccelero.connect(movingAverage);
+  movingAverage.connect(bpfDisplayAccelero);*/
   eventInAccelero.connect(bpfDisplayAccelero);
+  //socketReceive.connect(logger);
+  //socketReceive.connect(bpfDisplayAccelero);
+  
+  //socketReceive.connect(bpfDisplayAccelero);
+  
   
   
   /*JERKINESS RATE*/
@@ -217,4 +278,10 @@ let addEvents = function(myo){
   eventInEMGSliding.connect(bpfDisplayEMGSlinding);
   
   
+  
+  
 };
+
+
+
+

@@ -17339,7 +17339,7 @@ var EventIn = function (_SourceMixin) {
 exports.default = EventIn;
 
 }).call(this,require('_process'))
-},{"../../core/BaseLfo":183,"../../core/SourceMixin":184,"_process":187,"babel-runtime/core-js/number/is-finite":5,"babel-runtime/core-js/object/get-prototype-of":10,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16,"babel-runtime/helpers/inherits":19,"babel-runtime/helpers/possibleConstructorReturn":20}],181:[function(require,module,exports){
+},{"../../core/BaseLfo":183,"../../core/SourceMixin":184,"_process":188,"babel-runtime/core-js/number/is-finite":5,"babel-runtime/core-js/object/get-prototype-of":10,"babel-runtime/helpers/classCallCheck":15,"babel-runtime/helpers/createClass":16,"babel-runtime/helpers/inherits":19,"babel-runtime/helpers/possibleConstructorReturn":20}],181:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -17543,7 +17543,6 @@ function Uint16Array2json(arr) {
 
 function json2Uint16Array(json) {
   var str = (0, _stringify2.default)(json);
-  //console.log("length : " + json);
   var buffer = new ArrayBuffer(str.length * 2); // 2 bytes for each char
   var bufferView = new Uint16Array(buffer);
 
@@ -17672,7 +17671,8 @@ var decoders = exports.decoders = {
     // rest of payload
     var metaStart = dataEnd;
     var metaBuffer = new Uint16Array(arrayBuffer.slice(metaStart));
-    var metadata = Uint16Array2json(metaBuffer);
+    var metadata = metaBuffer;
+    //var metadata = Uint16Array2json(metaBuffer);
 
     return { time: time, data: data, metadata: metadata };
   }
@@ -18504,6 +18504,48 @@ var version = exports.version = '1.1.6';
 let lfo = require('waves-lfo/client');
 let Myo = require('myo');
 let SG = require('ml-savitzky-golay');
+let config = require('../../src/config/default');
+
+/*
+const socketSend = new lfo.sink.SocketSend({ port: 9004 });
+
+const eventIn = new lfo.source.EventIn({
+  frameType: 'vector',
+  frameSize: 3,
+  frameRate: 0.01,
+  description: ['alpha', 'beta', 'gamma'],
+});
+
+eventIn.connect(socketSend);
+
+eventIn.start();
+
+let timess = 0;
+
+(function createFrame() {
+  const frame = {
+    time: timess,
+    data: [1,2,3],
+  };
+  eventIn.process(1,[1,2,3],1);
+  timess += 1;
+  console.log('sending cool stuff');
+  setTimeout(createFrame, 1000);
+}());
+*/
+/*const socketReceive = new lfo.source.SocketReceive({
+  port: 5001
+  //config.socketServerToClient.port
+});*/
+
+const logger = new lfo.sink.Logger({
+  time: true,
+  data: true,
+});
+
+//socket.connect(bpfDisplayAccelero);
+
+//END TEST
 
 
 //Time for the bpfDisplay
@@ -18527,6 +18569,7 @@ let ansx = [];
 let ansy = [];
 let ansz = [];
 let options = {derivative: 1};
+let optionsGolayLowPass = {derivative: 0};
 
 
 //Creation of graph
@@ -18564,6 +18607,12 @@ const eventInEMGSliding = new lfo.source.EventIn({
   frameRate: 0.01,
   description: ['emgSliding'],
 });
+
+const movingAverage = new lfo.operator.MovingAverage({
+  order: 5,
+  fill: 0
+});
+
 
 
 // initialize and start the different graph used
@@ -18633,7 +18682,6 @@ let addEvents = function(myo){
     max: 128,
     min: -128
   });
-  
   const bpfDisplayEMGSlinding = new lfo.sink.BpfDisplay({
     canvas: '#canvasEMG2',
     width: 400,
@@ -18705,7 +18753,20 @@ let addEvents = function(myo){
   /*ACCELERO*/
  /* eventInAccelero.connect(biquad);
   biquad.connect(bpfDisplayAccelero);*/
+  //eventInAccelero.connect(bpfDisplayAccelero);
+  /*eventInAccelero.connect(movingAverage);
+  movingAverage.connect(bpfDisplayAccelero);*/
+//  const logger = new lfo.sink.Logger({ data: true });
+  
+  //eventInAccelero.connect(bpfDisplayAccelero);
+  /*eventInAccelero.connect(movingAverage);
+  movingAverage.connect(bpfDisplayAccelero);*/
   eventInAccelero.connect(bpfDisplayAccelero);
+  //socketReceive.connect(logger);
+  //socketReceive.connect(bpfDisplayAccelero);
+  
+  //socketReceive.connect(bpfDisplayAccelero);
+  
   
   
   /*JERKINESS RATE*/
@@ -18720,8 +18781,75 @@ let addEvents = function(myo){
   eventInEMGSliding.connect(bpfDisplayEMGSlinding);
   
   
+  
+  
 };
-},{"ml-savitzky-golay":132,"myo":133,"waves-lfo/client":134}],187:[function(require,module,exports){
+
+
+
+
+
+},{"../../src/config/default":187,"ml-savitzky-golay":132,"myo":133,"waves-lfo/client":134}],187:[function(require,module,exports){
+
+//import path from 'path';
+//const cwd = process.cwd();
+
+
+// Configuration of the application.
+// Other entries can be added (as long as their name doesn't conflict with
+// existing ones) to define global parameters of the application (e.g. BPM,
+// synth parameters) that can then be shared easily among all clients using
+// the `shared-config` service.
+var config =  {
+    // name of the application, used in the `.ejs` template and by default in
+    // the `platform` service to populate its view
+    appName: 'ToolBox - MoveOn: A technology probe',
+
+    // name of the environnement ('production' enable cache in express application)
+    env: 'development',
+
+    // version of application, can be used to force reload css and js files
+    // from server (cf. `html/default.ejs`)
+    version: '0.0.1',
+
+
+    // define from where the assets (static files) should be loaded, these value
+    // could also refer to a separate server for scalability reasons. This value
+    // should also be used client-side to configure the `audio-buffer-manager` service.
+    assetsDomain: '/',
+
+    // port used to open the http server, in production this value is typically 80
+    portServer: 8000,
+  
+  //Port used by the myo
+    myoPort: 10138,
+
+    // location of the public directory (accessible through http(s) requests)
+  //  publicDirectory: path.join(cwd, 'public'),
+
+
+    // configuration of the `osc` service
+    osc: {
+        // IP of the currently running node server
+        receiveAddress: '127.0.0.1',
+        // port listening for incomming messages
+        receivePort: 57121,
+        // IP of the remote application
+        sendAddress: '127.0.0.1',
+        // port where the remote application is listening for messages
+        sendPort: 57120,
+    },
+
+    // configuration of the `raw-socket` service
+    socketServerToClient: {
+        // port used for socket connection with the client
+        port: 8081
+    }
+}
+
+module.exports = config;
+
+},{}],188:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
