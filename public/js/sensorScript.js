@@ -3,47 +3,15 @@ let Myo = require('myo');
 let SG = require('ml-savitzky-golay');
 let config = require('../../src/config/default');
 
-/*
-const socketSend = new lfo.sink.SocketSend({ port: 9004 });
+//Gravity constant
+const g = 9.81;
 
-const eventIn = new lfo.source.EventIn({
-  frameType: 'vector',
-  frameSize: 3,
-  frameRate: 0.01,
-  description: ['alpha', 'beta', 'gamma'],
-});
-
-eventIn.connect(socketSend);
-
-eventIn.start();
-
-let timess = 0;
-
-(function createFrame() {
-  const frame = {
-    time: timess,
-    data: [1,2,3],
-  };
-  eventIn.process(1,[1,2,3],1);
-  timess += 1;
-  console.log('sending cool stuff');
-  setTimeout(createFrame, 1000);
-}());
-*/
-/*const socketReceive = new lfo.source.SocketReceive({
-  port: 5001
-  //config.socketServerToClient.port
-});*/
-
-const logger = new lfo.sink.Logger({
-  time: true,
-  data: true,
-});
-
-//socket.connect(bpfDisplayAccelero);
-
-//END TEST
-
+//Constant for window Length used
+const SGWindowLength = 20;
+const EMGWindowLength = 500;
+const acceleroWindowLength = 30;
+const smoothnessWindowLength = 30;
+const amplitudeWindowLength = 50;
 
 //Time for the bpfDisplay
 let time = 0;
@@ -55,20 +23,6 @@ const dtEMG = 0.01;
 Myo.connect('com.stolksdorf.myAwesomeApp');
 let myMyo;
 
-//For the sliding window of kinestetic awareness replication
-let slidingWindow = [];
-
-//variables for the savitzky-golay filter
-let arrayFilteringX = [];
-let arrayFilteringY = [];
-let arrayFilteringZ = [];
-let ansx = [];
-let ansy = [];
-let ansz = [];
-let options = {derivative: 1};
-let optionsGolayLowPass = {derivative: 0};
-
-
 //Creation of graph
 const eventInAccelero = new lfo.source.EventIn({
   frameType: 'vector',
@@ -79,7 +33,7 @@ const eventInAccelero = new lfo.source.EventIn({
 
 const eventInSmoothness = new lfo.source.EventIn({
   frameType: 'vector',
-  frameSize: 3,
+  frameSize: 1,
   frameRate: 0.01,
   description: ['smoothX', 'smoothY', 'smoothZ'],
 });
@@ -134,25 +88,7 @@ let addEvents = function(myo){
   
   myMyo.streamEMG(true);
   Myo.on('emg', function(data){
-    timeEMG += dtEMG;
-  
-    //Slinding window of EMG
-    if(slidingWindow.length > 1000){
-      slidingWindow.shift();
-    }
-    slidingWindow.push(Math.max(...data));
-    let maxSliding = Math.max(...slidingWindow);
-    const frameEMGSliding = {
-      time: timeEMG,
-      data: slidingWindow[slidingWindow.length-1]/maxSliding,
-    };
-    
-    const frameEMG = {
-      time: timeEMG,
-      data: data,
-    };
-    eventInEMGSliding.processFrame(frameEMGSliding);
-    eventInEMG.processFrame(frameEMG);
+      displayEMGWindow(EMGWindowLength,data);
   });
   
   const bpfDisplayAccelero = new lfo.sink.BpfDisplay({
@@ -160,8 +96,8 @@ let addEvents = function(myo){
     width: 400,
     height: 250,
     duration: 5,
-    max: 2,
-    min: -2
+    max: 100,
+    min: -100
   });
   const bpfDisplayJerkiness = new lfo.sink.BpfDisplay({
     canvas: '#bpfDisplayJerkiness',
@@ -208,80 +144,231 @@ let addEvents = function(myo){
     fill: 0
   });
   
-  
   Myo.on('imu', function (data) {
-    time += dt;
-    const frameAccelero = {
-      time: time,
-      data: [data.accelerometer.x, data.accelerometer.y, data.accelerometer.z],
-    };
+   
+    displayAcceleroWindowSpeed(acceleroWindowLength,data);
+    displaySmoothness(smoothnessWindowLength,data);
+    
+    //console.log("speedRate : " + speedRate);
     const frameGyro = {
       time: time,
       data: [data.gyroscope.x, data.gyroscope.y, data.gyroscope.z],
     };
-  
-    eventInAccelero.processFrame(frameAccelero);
-  
-    //Calculing smoothness
-    arrayFilteringX.push(data.accelerometer.x);
-    arrayFilteringY.push(data.accelerometer.y);
-    arrayFilteringZ.push(data.accelerometer.z);
+
     
-    //taille de la fenetre de calcule de l'algorithme = 20
-    if(arrayFilteringZ.length >= 10 ){
-      arrayFilteringX.shift();
-      arrayFilteringY.shift();
-      arrayFilteringZ.shift();
-     
-      //apllication de savitzky-golay filter
-      ansx =  SG(arrayFilteringX, 1, options);
-      ansy =  SG(arrayFilteringY, 1, options);
-      ansz =  SG(arrayFilteringZ, 1, options);
-      let frameSmoothness = {
-        time: time,
-        data: [ansx[ansx.length - 1],ansy[ansy.length - 1],ansz[ansz.length - 1]],
-      };
-      eventInSmoothness.processFrame(frameSmoothness);
-    }
   });
   /*MYO end of event handler*/
   
-  
   /*ACCELERO*/
- /* eventInAccelero.connect(biquad);
-  biquad.connect(bpfDisplayAccelero);*/
-  //eventInAccelero.connect(bpfDisplayAccelero);
-  /*eventInAccelero.connect(movingAverage);
-  movingAverage.connect(bpfDisplayAccelero);*/
-//  const logger = new lfo.sink.Logger({ data: true });
-  
-  //eventInAccelero.connect(bpfDisplayAccelero);
-  /*eventInAccelero.connect(movingAverage);
-  movingAverage.connect(bpfDisplayAccelero);*/
   eventInAccelero.connect(bpfDisplayAccelero);
-  //socketReceive.connect(logger);
-  //socketReceive.connect(bpfDisplayAccelero);
-  
-  //socketReceive.connect(bpfDisplayAccelero);
-  
-  
-  
   /*JERKINESS RATE*/
   eventInSmoothness.connect(bpfDisplayJerkiness);
-  
   /*EMG*/
-   /*eventInEMG.connect(biquad2);
-   biquad2.connect(bpfDisplayEMG);*/
   eventInEMG.connect(bpfDisplayEMG);
-  
   /*EMGS SLIDING WINDOW*/
   eventInEMGSliding.connect(bpfDisplayEMGSlinding);
-  
-  
-  
-  
 };
 
 
+
+/*Method sliding window computation, require less computation than the naive one*/
+var ansX = [];
+var ansY = [];
+var ansZ = [];
+var computedSpeedRate = 0;
+var sumLastElem = 0;
+var sumFirstElem = 0;
+function computeSpeedRateAdaptativeWindow(windowLength, newX,newY,newZ) {
+  //algo evolué TODO
+  if (ansX.length >= windowLength) {
+    var firstElementX = ansX.shift();
+    var firstElementY = ansY.shift();
+    var firstElementZ = ansZ.shift();
+    sumFirstElem = (firstElementX ) + (firstElementY ) + (firstElementZ );
+  }
+  //console.log(sumFirstElem);
+  
+    let x = Math.abs(newX/g);
+   // let x = (newX/g);
+    ansX.push(x);
+    let y = Math.abs(newY/g);
+   // let y = (newY/g);
+    ansY.push(y);
+    let z = Math.abs(newZ/g);
+    //let z = (newZ/g);
+    ansZ.push(z);
+    sumLastElem = (x)+(y)+(z);
+    computedSpeedRate = computedSpeedRate - sumFirstElem + sumLastElem;
+    //console.log(computedSpeedRate);
+  
+  return computedSpeedRate;
+}
+
+
+
+//Algorithm de calcul naif de la vitesse selon une fenetre: retourne le meme resultat que l'algorithme evolué
+var ansXNaif = [];
+var ansYNaif = [];
+var ansZNaif = [];
+var computedSpeedRateNaif = 0;
+var sumLastElemNaif = 0;
+var sumFirstElemNaif = 0;
+
+function computeSpeedRateAdaptativeWindowNaif(windowLength,x,y,z){
+  if (ansXNaif.length >= windowLength) {
+    ansXNaif.shift();
+    ansYNaif.shift();
+    ansZNaif.shift();
+  }
+  ansXNaif.push(x/g);
+  ansYNaif.push(y/g);
+  ansZNaif.push(z/g);
+  
+  let  speedRate = 0;
+  for (let i = 0; i < windowLength ; i++) {
+      speedRate += (ansXNaif[i]) + (ansYNaif[i]) + (ansZNaif[i]);
+      //speedRate += Math.abs(ansX[i]/g)+ Math.abs(ansY[i]/g) +  Math.abs(ansZ[i]/g);
+     // speedRate +=Math.sqrt(Math.pow( Math.abs(ansX[i]/g) ,2)+ Math.pow(  Math.abs(ansY[i]/g),2) + Math.pow( Math.abs(ansZ[i]/g),2));
+  }
+  return speedRate;
+}
+
+
+
+function displayAcceleroWindowSpeed(windowLength, data){
+  time += dt;
+  let speedRate = computeSpeedRateAdaptativeWindow(windowLength,data.accelerometer.x, data.accelerometer.y, data.accelerometer.z);
+  console.log(Math.abs(speedRate));
+  const frameAccelero = {
+    time: time,
+    data: [data.accelerometer.x*(speedRate), data.accelerometer.y*(speedRate), data.accelerometer.z*(speedRate)],
+  };
+  eventInAccelero.processFrame(frameAccelero);
+}
+
+
+//For the sliding window of kinestetic awareness replication
+let slidingWindow = [];
+function displayEMGWindow(windowLength, data){
+  timeEMG += dtEMG;
+  //Slinding window of EMG
+  if(slidingWindow.length > windowLength){
+    slidingWindow.shift();
+  }
+  slidingWindow.push(Math.max(...data));
+  let maxSliding = Math.max(...slidingWindow);
+  const frameEMGSliding = {
+    time: timeEMG,
+    data: slidingWindow[slidingWindow.length-1]/maxSliding,
+  };
+  
+  const frameEMG = {
+    time: timeEMG,
+    data: data,
+  };
+  eventInEMGSliding.processFrame(frameEMGSliding);
+  eventInEMG.processFrame(frameEMG);
+}
+
+
+//variables for the savitzky-golay filter
+let arrayFilteringX = [];
+let arrayFilteringY = [];
+let arrayFilteringZ = [];
+let ansx = [];
+let ansy = [];
+let ansz = [];
+let options = {derivative: 1,windowSize: SGWindowLength-1};
+let optionsGolayLowPass = {derivative: 0};
+function displaySmoothness(windowLength, data){
+  //Calculing smoothness
+  arrayFilteringX.push(data.accelerometer.x);
+  arrayFilteringY.push(data.accelerometer.y);
+  arrayFilteringZ.push(data.accelerometer.z);
+  
+  //taille de la fenetre de calcule de l'algorithme = 20
+  if(arrayFilteringZ.length >= windowLength ){
+    arrayFilteringX.shift();
+    arrayFilteringY.shift();
+    arrayFilteringZ.shift();
+    
+    //apllication de savitzky-golay filter
+    ansx =  SG(arrayFilteringX, 1, options);
+    ansy =  SG(arrayFilteringY, 1, options);
+    ansz =  SG(arrayFilteringZ, 1, options);
+    
+    
+    //We normalise data
+    let normaliseData = Math.sqrt(Math.pow(ansx[ansx.length - 1],2)+Math.pow(ansy[ansy.length - 1],2)+Math.pow(ansz[ansz.length - 1],2));
+    //compute amplitude
+    let dataWithAmplitude = computeAmplitudeWindow(amplitudeWindowLength,normaliseData);
+    let frameSmoothness = {
+      time: time,
+      data: dataWithAmplitude,
+    };
+    eventInSmoothness.processFrame(frameSmoothness);
+  }
+}
+
+var arrayAmplitude =[];
+//version naive de l'algorithme, le for peut etre remplacé comme dans la fonction: computeSpeedRateAdaptativeWindow
+function computeAmplitudeWindow(windowLength, data){
+  let amplitudeRate = 0;
+  if(arrayAmplitude.length > windowLength){
+    arrayAmplitude.shift();
+  }
+  arrayAmplitude.push(data);
+  
+  for (let i = 0; i < windowLength ; i++) {
+    amplitudeRate += arrayAmplitude[i];
+  }
+  amplitudeRate /= windowLength;
+  console.log("amplitudeRate : " + amplitudeRate );
+  return amplitudeRate;
+}
+
+
+
+
+//TEST RECEIVING FROM SERVER
+/*
+const socketSend = new lfo.sink.SocketSend({ port: 9004 });
+
+const eventIn = new lfo.source.EventIn({
+  frameType: 'vector',
+  frameSize: 3,
+  frameRate: 0.01,
+  description: ['alpha', 'beta', 'gamma'],
+});
+
+eventIn.connect(socketSend);
+
+eventIn.start();
+
+let timess = 0;
+
+(function createFrame() {
+  const frame = {
+    time: timess,
+    data: [1,2,3],
+  };
+  eventIn.process(1,[1,2,3],1);
+  timess += 1;
+  console.log('sending cool stuff');
+  setTimeout(createFrame, 1000);
+}());
+*/
+/*const socketReceive = new lfo.source.SocketReceive({
+  port: 5001
+  //config.socketServerToClient.port
+});*/
+
+
+/*const logger = new lfo.sink.Logger({
+  time: true,
+  data: true,
+});*/
+
+//socket.connect(bpfDisplayAccelero);
 
 
