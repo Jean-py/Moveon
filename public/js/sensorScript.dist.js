@@ -17623,6 +17623,7 @@ var opcodes = exports.opcodes = {
     var data = new Float32Array(frameSize);
     for (var i = 0; i < frameSize; i++) {
       data[i] = frame.data[i];
+      
     }var metadata = json2Uint16Array(frame.metadata);
 
     var length = 1 + 4 + 2 * frameSize + metadata.length;
@@ -18506,16 +18507,17 @@ let Myo = require('myo');
 let SG = require('ml-savitzky-golay');
 let config = require('../../src/config/default');
 
-
-//END TEST
-
+//Gravity constant
 const g = 9.81;
 
-const SGWindowLength = 20;
-const EMGWindowLength = 500;
-const acceleroWindowLength = 30;
-const smoothnessWindowLength = 30;
-const amplitudeWindowLength = 50;
+//Constant for window Length used
+var EMGWindowLength = 500;
+var acceleroWindowLength = 30;
+//Modification en direct
+var speedRateWindowLength = 10;
+var amplitudeWindowLength = 40;
+var SGWindowLength = 22;
+
 
 //Time for the bpfDisplay
 let time = 0;
@@ -18523,23 +18525,12 @@ const dt = 0.01;
 let timeEMG = 0;
 const dtEMG = 0.01;
 
+//Socked to send data to node
+const socketSendJerkiness = new lfo.sink.SocketSend({ port: config.socketClientToServer.port });
+
 //Starting myo
 Myo.connect('com.stolksdorf.myAwesomeApp');
 let myMyo;
-
-//For the sliding window of kinestetic awareness replication
-let slidingWindow = [];
-
-//variables for the savitzky-golay filter
-let arrayFilteringX = [];
-let arrayFilteringY = [];
-let arrayFilteringZ = [];
-let ansx = [];
-let ansy = [];
-let ansz = [];
-let options = {derivative: 1,windowSize: SGWindowLength-1};
-let optionsGolayLowPass = {derivative: 0};
-
 
 //Creation of graph
 const eventInAccelero = new lfo.source.EventIn({
@@ -18599,7 +18590,9 @@ Myo.onError = function () {
 
 Myo.on('connected', function(){
   myMyo = this;
+  //myMyo.setLockingPolicy("Manual");
   addEvents(myMyo);
+  
 });
 
 let addEvents = function(myo){
@@ -18663,28 +18656,27 @@ let addEvents = function(myo){
   });
   
   Myo.on('imu', function (data) {
-   
+    myMyo.lock();
     displayAcceleroWindowSpeed(acceleroWindowLength,data);
-    displaySmoothness(smoothnessWindowLength,data);
+    displaySmoothness(SGWindowLength,data);
     
     //console.log("speedRate : " + speedRate);
     const frameGyro = {
       time: time,
       data: [data.gyroscope.x, data.gyroscope.y, data.gyroscope.z],
     };
-
-    
   });
   /*MYO end of event handler*/
   
   /*ACCELERO*/
-  eventInAccelero.connect(bpfDisplayAccelero);
+  //eventInAccelero.connect(bpfDisplayAccelero);
   /*JERKINESS RATE*/
   eventInSmoothness.connect(bpfDisplayJerkiness);
+  eventInSmoothness.connect(socketSendJerkiness);
   /*EMG*/
-  eventInEMG.connect(bpfDisplayEMG);
+ // eventInEMG.connect(bpfDisplayEMG);
   /*EMGS SLIDING WINDOW*/
-  eventInEMGSliding.connect(bpfDisplayEMGSlinding);
+  //eventInEMGSliding.connect(bpfDisplayEMGSlinding);
 };
 
 
@@ -18697,15 +18689,12 @@ var computedSpeedRate = 0;
 var sumLastElem = 0;
 var sumFirstElem = 0;
 function computeSpeedRateAdaptativeWindow(windowLength, newX,newY,newZ) {
-  //algo evolué TODO
   if (ansX.length >= windowLength) {
     var firstElementX = ansX.shift();
     var firstElementY = ansY.shift();
     var firstElementZ = ansZ.shift();
     sumFirstElem = (firstElementX ) + (firstElementY ) + (firstElementZ );
   }
-  //console.log(sumFirstElem);
-  
     let x = Math.abs(newX/g);
    // let x = (newX/g);
     ansX.push(x);
@@ -18715,6 +18704,7 @@ function computeSpeedRateAdaptativeWindow(windowLength, newX,newY,newZ) {
     let z = Math.abs(newZ/g);
     //let z = (newZ/g);
     ansZ.push(z);
+  
     sumLastElem = (x)+(y)+(z);
     computedSpeedRate = computedSpeedRate - sumFirstElem + sumLastElem;
     //console.log(computedSpeedRate);
@@ -18723,16 +18713,12 @@ function computeSpeedRateAdaptativeWindow(windowLength, newX,newY,newZ) {
 }
 
 
-
 //Algorithm de calcul naif de la vitesse selon une fenetre: retourne le meme resultat que l'algorithme evolué
 var ansXNaif = [];
 var ansYNaif = [];
 var ansZNaif = [];
-var computedSpeedRateNaif = 0;
-var sumLastElemNaif = 0;
-var sumFirstElemNaif = 0;
-
 function computeSpeedRateAdaptativeWindowNaif(windowLength,x,y,z){
+  console.log("The function computeSpeedRateAdaptativeWindowNaif is deprecated, use computeSpeedRateAdaptativeWindow instead.");
   if (ansXNaif.length >= windowLength) {
     ansXNaif.shift();
     ansYNaif.shift();
@@ -18751,19 +18737,20 @@ function computeSpeedRateAdaptativeWindowNaif(windowLength,x,y,z){
   return speedRate;
 }
 
-
-
 function displayAcceleroWindowSpeed(windowLength, data){
   time += dt;
   let speedRate = computeSpeedRateAdaptativeWindow(windowLength,data.accelerometer.x, data.accelerometer.y, data.accelerometer.z);
-  console.log(Math.abs(speedRate));
   const frameAccelero = {
     time: time,
     data: [data.accelerometer.x*(speedRate), data.accelerometer.y*(speedRate), data.accelerometer.z*(speedRate)],
+    metadata:true,
   };
   eventInAccelero.processFrame(frameAccelero);
 }
 
+
+//For the sliding window of kinestetic awareness replication
+let slidingWindow = [];
 function displayEMGWindow(windowLength, data){
   timeEMG += dtEMG;
   //Slinding window of EMG
@@ -18785,14 +18772,24 @@ function displayEMGWindow(windowLength, data){
   eventInEMG.processFrame(frameEMG);
 }
 
-function displaySmoothness(windowLength, data){
+
+//variables for the savitzky-golay filter
+let arrayFilteringX = [];
+let arrayFilteringY = [];
+let arrayFilteringZ = [];
+let ansx = [];
+let ansy = [];
+let ansz = [];
+let options = {derivative: 1,windowSize: SGWindowLength-1};
+let optionsGolayLowPass = {derivative: 0};
+function displaySmoothness(windowLengthSG, data ){
   //Calculing smoothness
   arrayFilteringX.push(data.accelerometer.x);
   arrayFilteringY.push(data.accelerometer.y);
   arrayFilteringZ.push(data.accelerometer.z);
   
-  //taille de la fenetre de calcule de l'algorithme = 20
-  if(arrayFilteringZ.length >= windowLength ){
+  //taille de la fenetre de calcule de l'algorithme
+  if(arrayFilteringZ.length >= windowLengthSG ){
     arrayFilteringX.shift();
     arrayFilteringY.shift();
     arrayFilteringZ.shift();
@@ -18802,34 +18799,36 @@ function displaySmoothness(windowLength, data){
     ansy =  SG(arrayFilteringY, 1, options);
     ansz =  SG(arrayFilteringZ, 1, options);
     
-    
-    //We normalise data
+    //normalising data
     let normaliseData = Math.sqrt(Math.pow(ansx[ansx.length - 1],2)+Math.pow(ansy[ansy.length - 1],2)+Math.pow(ansz[ansz.length - 1],2));
-    //compute amplitude
-    var test = computeAmplitudeWindow(amplitudeWindowLength,normaliseData);
-    console.log("test : " + test);
+    let amplitudeData = computeAmplitudeWindow(amplitudeWindowLength,normaliseData);
+    let speedRate = computeSpeedRateAdaptativeWindow(speedRateWindowLength,data.accelerometer.x,data.accelerometer.y,data.accelerometer.z);
+   // console.log("speedRate : " + speedRate);
     let frameSmoothness = {
       time: time,
-      data: test,
+     // data: speedRate*normaliseData,
+      //data: amplitudeData,
+      data: normaliseData,
+      metadata:null,
     };
     eventInSmoothness.processFrame(frameSmoothness);
   }
 }
 
-var arrayAmplitude =[];
 //version naive de l'algorithme, le for peut etre remplacé comme dans la fonction: computeSpeedRateAdaptativeWindow
+//Moyenne des données du jerk normalisé
+var arrayAmplitude =[];
 function computeAmplitudeWindow(windowLength, data){
   let amplitudeRate = 0;
   if(arrayAmplitude.length > windowLength){
     arrayAmplitude.shift();
   }
   arrayAmplitude.push(data);
-  
   for (let i = 0; i < windowLength ; i++) {
     amplitudeRate += arrayAmplitude[i];
   }
   amplitudeRate /= windowLength;
-  console.log("amplitudeRate : " + amplitudeRate );
+ // console.log("amplitudeRate : " + amplitudeRate );
   return amplitudeRate;
 }
 
@@ -18878,6 +18877,15 @@ let timess = 0;
 //socket.connect(bpfDisplayAccelero);
 
 
+function setSpeedRateWindowLength (newValue) {
+  speedRateWindowLength= newValue;
+}
+function setSpeedRateWindowLength (newValue) {
+  amplitudeWindowLength= newValue;
+}
+function setSpeedRateWindowLength (newValue) {
+  SGWindowLength= newValue;
+}
 
 },{"../../src/config/default":187,"ml-savitzky-golay":132,"myo":133,"waves-lfo/client":134}],187:[function(require,module,exports){
 
@@ -18891,51 +18899,56 @@ let timess = 0;
 // synth parameters) that can then be shared easily among all clients using
 // the `shared-config` service.
 var config =  {
-    // name of the application, used in the `.ejs` template and by default in
-    // the `platform` service to populate its view
-    appName: 'ToolBox - MoveOn: A technology probe',
-
-    // name of the environnement ('production' enable cache in express application)
-    env: 'development',
-
-    // version of application, can be used to force reload css and js files
-    // from server (cf. `html/default.ejs`)
-    version: '0.0.1',
-
-
-    // define from where the assets (static files) should be loaded, these value
-    // could also refer to a separate server for scalability reasons. This value
-    // should also be used client-side to configure the `audio-buffer-manager` service.
-    assetsDomain: '/',
-
-    // port used to open the http server, in production this value is typically 80
-    portServer: 8000,
+  // name of the application, used in the `.ejs` template and by default in
+  // the `platform` service to populate its view
+  appName: 'ToolBox - MoveOn: A technology probe',
+  
+  // name of the environnement ('production' enable cache in express application)
+  env: 'development',
+  
+  // version of application, can be used to force reload css and js files
+  // from server (cf. `html/default.ejs`)
+  version: '0.0.1',
+  
+  
+  // define from where the assets (static files) should be loaded, these value
+  // could also refer to a separate server for scalability reasons. This value
+  // should also be used client-side to configure the `audio-buffer-manager` service.
+  assetsDomain: '/',
+  
+  // port used to open the http server, in production this value is typically 80
+  portServer: 8000,
   
   //Port used by the myo
-    myoPort: 10138,
-
-    // location of the public directory (accessible through http(s) requests)
+  myoPort: 10138,
+  
+  // location of the public directory (accessible through http(s) requests)
   //  publicDirectory: path.join(cwd, 'public'),
-
-
-    // configuration of the `osc` service
-    osc: {
-        // IP of the currently running node server
-        receiveAddress: '127.0.0.1',
-        // port listening for incomming messages
-        receivePort: 57121,
-        // IP of the remote application
-        sendAddress: '127.0.0.1',
-        // port where the remote application is listening for messages
-        sendPort: 57120,
-    },
-
-    // configuration of the `raw-socket` service
-    socketServerToClient: {
-        // port used for socket connection with the client
-        port: 8081
-    }
-}
+  
+  
+  // configuration of the `osc` service
+  osc: {
+    // IP of the currently running node server
+    receiveAddress: '127.0.0.1',
+    // port listening for incomming messages
+    receivePort: 57121,
+    // IP of the remote application
+    sendAddress: '127.0.0.1',
+    // port where the remote application is listening for messages
+    sendPort: 57120,
+  },
+  
+  // configuration of the `raw-socket` service
+  socketServerToClient: {
+    // port used for socket connection with the client
+    port: 9002
+  },
+  // configuration of the `raw-socket` service
+  socketClientToServer: {
+    // port used for socket connection with the client
+    port: 9001
+  },
+};
 
 module.exports = config;
 

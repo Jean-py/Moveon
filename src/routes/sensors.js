@@ -11,11 +11,46 @@ var config = require('../config/default');
 /*Adress for sending data to MAX*/
 var udpPortMax = new osc.UDPPort({
   localAddress: config.osc.sendAddress,
-  localPort: config.osc.sendPort,
+  localPort: 8082,
+ // localPort: config.osc.sendPort,
   metadata: true
 });
 
-//Socket for sending data to client
+//Socket for receiving data from client
+const socketReceive = new lfo.source.SocketReceive({
+  port: config.socketClientToServer.port,
+  //config.socketServerToClient.port
+});
+
+
+
+
+const logger = new lfo.sink.Logger({
+  time: true,
+  data: true,
+});
+
+const bridge = new lfo.sink.Bridge({
+  processFrame: (frame) => sendMessageOSCJerkiness(frame.data),
+});
+
+//socketReceive.connect(logger);
+const eventInJerkiness = new lfo.source.EventIn({
+  frameType: 'vector',
+  frameSize: 1,
+  frameRate: 0.01,
+  description: ['Jerkiness'],
+});
+
+
+eventInJerkiness.init().then(() => {
+  eventInJerkiness.start();
+  socketReceive.connect(eventInJerkiness);
+  //eventInJerkiness.connect(logger);
+  eventInJerkiness.connect(bridge);
+  //eventInJerkiness.connect(logger);
+});
+
 
 
 // Open the sockets.
@@ -25,6 +60,8 @@ udpPortMax.open();
 router.get('/', function(req, res, next) {
   /*MYO Connection*/
   Myo.connect('com.stolksdorf.myAwesomeApp', require('ws'));
+  //Myo.setLockingPolicy("Manual");
+  
   
   /*MYO starting event handler*/
 
@@ -45,46 +82,26 @@ router.get('/', function(req, res, next) {
   
   
   let addEvents = function(myMyo) {
-    const eventInAccelero = new lfo.source.EventIn({
-      frameType: 'vector',
-      frameSize: 3,
-      frameRate: 0.01,
-      description: ['acceleroX', 'acceleroY', 'acceleroZ'],
-    });
     
-    //const socketSend = new lfo.sink.SocketSend({ port: 5001 });
-    const socketReceive = new lfo.source.SocketReceive({ port: config.socketServerToClient.port });
-    //socketReceive.connect(udpPortMax);
-  
-  
-  
-    eventInAccelero.init().then(() => {
-      //eventInAccelero.start();
-      //eventInAccelero.connect(socketSend);
-    });
     
     Myo.on('imu', function (data) {
       time += dt;
-      var arr = [data.accelerometer.x, data.accelerometer.y, data.accelerometer.z];
-      var dataArray = new Float32Array(arr);
-      
+      let arr = new Float32Array([data.accelerometer.x, data.accelerometer.y, data.accelerometer.z]);
       const frameAccelero = {
         time: time,
-        data: dataArray,
+        data: arr,
         metadata :  null
       };
       //console.log("sending into process frame : " + frameAccelero.data);
-      //eventInAccelero.processFrame(frameAccelero);
+      //eventInJerkiness.processFrame(frameAccelero);
       //console.log(frameAccelero);
-      //eventInAccelero.processFrame(frameAccelero);
+      //eventInJerkiness.processFrame(frameAccelero);
       
       //console.log(frameAccelero);
-      // eventInAccelero.processFrame(time, [Math.random(), Math.random()], { test: true });
-      //eventInAccelero.process(1, [0, 1, 2]);
+      // eventInJerkiness.processFrame(time, [Math.random(), Math.random()], { test: true });
+      //eventInJerkiness.process(1, [0, 1, 2]);
 // is equivalent to
-      //eventInAccelero.processFrame({ time: 1, data: [0, 1, 2] });
-      
-      
+      //eventInJerkiness.processFrame({ time: 1, data: [0, 1, 2] });
       
     });
   };
@@ -93,30 +110,25 @@ router.get('/', function(req, res, next) {
 
 
 
+
 /*Sending fonction*/
 //TODO completer la fonction pour envoyer les données a MAX
-function sendMessageOSC(dataSensor){
-  udpPortMax.send({
-    address: "/myo",
-    args: [
-      {
-        type: "s",
-        value: "accelero"
-      },
-      {
-        type: "f",
-        value: dataSensor.x
-      },
-      {
-        type: "f",
-        value: dataSensor.y
-      },
-      {
-        type: "f",
-        value: dataSensor.z
-      }
-    ]
-  }, "127.0.0.1", 8085);
+function sendMessageOSCJerkiness(dataSensor){
+  if( isNaN(dataSensor[0]) ){
+    return 'Not a number';
+  } else {
+    udpPortMax.send({
+      address: "/jerkiness",
+      args: [
+        {
+          type: "f",
+          value: dataSensor[0]
+        },
+      ]
+    }, "127.0.0.1", 8081);
+    //"127.0.0.1", config.osc.receivePort);
+  }
+  
 }
 
 
@@ -154,10 +166,7 @@ let timeb = 0;
   }());
 
 
-const socketReceive = new lfo.source.SocketReceive({
-  port: 9004
-  //config.socketServerToClient.port
-});
+
 
 const logger = new lfo.sink.Logger({
   time: true,
@@ -167,6 +176,7 @@ const logger = new lfo.sink.Logger({
 socketReceive.connect(logger);
 //socketReceive.connect(socketSend);
 //socket.connect(bpfDisplayAccelero);*/
+
 
 
 module.exports = router;

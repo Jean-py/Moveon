@@ -7,17 +7,22 @@ let config = require('../../src/config/default');
 const g = 9.81;
 
 //Constant for window Length used
-const SGWindowLength = 20;
-const EMGWindowLength = 500;
-const acceleroWindowLength = 30;
-const smoothnessWindowLength = 30;
-const amplitudeWindowLength = 50;
+var EMGWindowLength = 500;
+var acceleroWindowLength = 30;
+//Modification en direct
+var speedRateWindowLength = 10;
+var amplitudeWindowLength = 40;
+var SGWindowLength = 22;
+
 
 //Time for the bpfDisplay
 let time = 0;
 const dt = 0.01;
 let timeEMG = 0;
 const dtEMG = 0.01;
+
+//Socked to send data to node
+const socketSendJerkiness = new lfo.sink.SocketSend({ port: config.socketClientToServer.port });
 
 //Starting myo
 Myo.connect('com.stolksdorf.myAwesomeApp');
@@ -81,7 +86,9 @@ Myo.onError = function () {
 
 Myo.on('connected', function(){
   myMyo = this;
+  //myMyo.setLockingPolicy("Manual");
   addEvents(myMyo);
+  
 });
 
 let addEvents = function(myo){
@@ -145,28 +152,27 @@ let addEvents = function(myo){
   });
   
   Myo.on('imu', function (data) {
-   
+    myMyo.lock();
     displayAcceleroWindowSpeed(acceleroWindowLength,data);
-    displaySmoothness(smoothnessWindowLength,data);
+    displaySmoothness(SGWindowLength,data);
     
     //console.log("speedRate : " + speedRate);
     const frameGyro = {
       time: time,
       data: [data.gyroscope.x, data.gyroscope.y, data.gyroscope.z],
     };
-
-    
   });
   /*MYO end of event handler*/
   
   /*ACCELERO*/
-  eventInAccelero.connect(bpfDisplayAccelero);
+  //eventInAccelero.connect(bpfDisplayAccelero);
   /*JERKINESS RATE*/
   eventInSmoothness.connect(bpfDisplayJerkiness);
+  eventInSmoothness.connect(socketSendJerkiness);
   /*EMG*/
-  eventInEMG.connect(bpfDisplayEMG);
+ // eventInEMG.connect(bpfDisplayEMG);
   /*EMGS SLIDING WINDOW*/
-  eventInEMGSliding.connect(bpfDisplayEMGSlinding);
+  //eventInEMGSliding.connect(bpfDisplayEMGSlinding);
 };
 
 
@@ -179,15 +185,12 @@ var computedSpeedRate = 0;
 var sumLastElem = 0;
 var sumFirstElem = 0;
 function computeSpeedRateAdaptativeWindow(windowLength, newX,newY,newZ) {
-  //algo evolué TODO
   if (ansX.length >= windowLength) {
     var firstElementX = ansX.shift();
     var firstElementY = ansY.shift();
     var firstElementZ = ansZ.shift();
     sumFirstElem = (firstElementX ) + (firstElementY ) + (firstElementZ );
   }
-  //console.log(sumFirstElem);
-  
     let x = Math.abs(newX/g);
    // let x = (newX/g);
     ansX.push(x);
@@ -197,6 +200,7 @@ function computeSpeedRateAdaptativeWindow(windowLength, newX,newY,newZ) {
     let z = Math.abs(newZ/g);
     //let z = (newZ/g);
     ansZ.push(z);
+  
     sumLastElem = (x)+(y)+(z);
     computedSpeedRate = computedSpeedRate - sumFirstElem + sumLastElem;
     //console.log(computedSpeedRate);
@@ -205,16 +209,12 @@ function computeSpeedRateAdaptativeWindow(windowLength, newX,newY,newZ) {
 }
 
 
-
 //Algorithm de calcul naif de la vitesse selon une fenetre: retourne le meme resultat que l'algorithme evolué
 var ansXNaif = [];
 var ansYNaif = [];
 var ansZNaif = [];
-var computedSpeedRateNaif = 0;
-var sumLastElemNaif = 0;
-var sumFirstElemNaif = 0;
-
 function computeSpeedRateAdaptativeWindowNaif(windowLength,x,y,z){
+  console.log("The function computeSpeedRateAdaptativeWindowNaif is deprecated, use computeSpeedRateAdaptativeWindow instead.");
   if (ansXNaif.length >= windowLength) {
     ansXNaif.shift();
     ansYNaif.shift();
@@ -233,15 +233,13 @@ function computeSpeedRateAdaptativeWindowNaif(windowLength,x,y,z){
   return speedRate;
 }
 
-
-
 function displayAcceleroWindowSpeed(windowLength, data){
   time += dt;
   let speedRate = computeSpeedRateAdaptativeWindow(windowLength,data.accelerometer.x, data.accelerometer.y, data.accelerometer.z);
-  console.log(Math.abs(speedRate));
   const frameAccelero = {
     time: time,
     data: [data.accelerometer.x*(speedRate), data.accelerometer.y*(speedRate), data.accelerometer.z*(speedRate)],
+    metadata:true,
   };
   eventInAccelero.processFrame(frameAccelero);
 }
@@ -280,14 +278,14 @@ let ansy = [];
 let ansz = [];
 let options = {derivative: 1,windowSize: SGWindowLength-1};
 let optionsGolayLowPass = {derivative: 0};
-function displaySmoothness(windowLength, data){
+function displaySmoothness(windowLengthSG, data ){
   //Calculing smoothness
   arrayFilteringX.push(data.accelerometer.x);
   arrayFilteringY.push(data.accelerometer.y);
   arrayFilteringZ.push(data.accelerometer.z);
   
-  //taille de la fenetre de calcule de l'algorithme = 20
-  if(arrayFilteringZ.length >= windowLength ){
+  //taille de la fenetre de calcule de l'algorithme
+  if(arrayFilteringZ.length >= windowLengthSG ){
     arrayFilteringX.shift();
     arrayFilteringY.shift();
     arrayFilteringZ.shift();
@@ -297,33 +295,36 @@ function displaySmoothness(windowLength, data){
     ansy =  SG(arrayFilteringY, 1, options);
     ansz =  SG(arrayFilteringZ, 1, options);
     
-    
-    //We normalise data
+    //normalising data
     let normaliseData = Math.sqrt(Math.pow(ansx[ansx.length - 1],2)+Math.pow(ansy[ansy.length - 1],2)+Math.pow(ansz[ansz.length - 1],2));
-    //compute amplitude
-    let dataWithAmplitude = computeAmplitudeWindow(amplitudeWindowLength,normaliseData);
+    let amplitudeData = computeAmplitudeWindow(amplitudeWindowLength,normaliseData);
+    let speedRate = computeSpeedRateAdaptativeWindow(speedRateWindowLength,data.accelerometer.x,data.accelerometer.y,data.accelerometer.z);
+   // console.log("speedRate : " + speedRate);
     let frameSmoothness = {
       time: time,
-      data: dataWithAmplitude,
+     // data: speedRate*normaliseData,
+      //data: amplitudeData,
+      data: normaliseData,
+      metadata:null,
     };
     eventInSmoothness.processFrame(frameSmoothness);
   }
 }
 
-var arrayAmplitude =[];
 //version naive de l'algorithme, le for peut etre remplacé comme dans la fonction: computeSpeedRateAdaptativeWindow
+//Moyenne des données du jerk normalisé
+var arrayAmplitude =[];
 function computeAmplitudeWindow(windowLength, data){
   let amplitudeRate = 0;
   if(arrayAmplitude.length > windowLength){
     arrayAmplitude.shift();
   }
   arrayAmplitude.push(data);
-  
   for (let i = 0; i < windowLength ; i++) {
     amplitudeRate += arrayAmplitude[i];
   }
   amplitudeRate /= windowLength;
-  console.log("amplitudeRate : " + amplitudeRate );
+ // console.log("amplitudeRate : " + amplitudeRate );
   return amplitudeRate;
 }
 
@@ -372,3 +373,12 @@ let timess = 0;
 //socket.connect(bpfDisplayAccelero);
 
 
+function setSpeedRateWindowLength (newValue) {
+  speedRateWindowLength= newValue;
+}
+function setSpeedRateWindowLength (newValue) {
+  amplitudeWindowLength= newValue;
+}
+function setSpeedRateWindowLength (newValue) {
+  SGWindowLength= newValue;
+}
