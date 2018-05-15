@@ -12,7 +12,13 @@ var sensorsRouter = require('./src/routes/sensors');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, '/src/views'));
+app.set('views', path.join(__dirname, '/src/client'));
+app.use('/dist', express.static('dist/'));
+app.use('/public', express.static('public/'));
+app.use('/src', express.static('src/'));
+//app.use('/static', express.static('public/images/devices'));
+
+
 // Set Jade as the default template engine
 app.set('view engine', 'jade');
 app.use(logger('dev'));
@@ -45,3 +51,4 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+

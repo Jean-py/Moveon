@@ -1,7 +1,12 @@
-let lfo = require('waves-lfo/client');
-let Myo = require('myo');
-let SG = require('ml-savitzky-golay');
-let config = require('../../src/config/default');
+/*import * as lfo  from 'waves-lfo/client';
+import * as Myo from 'dist/client/js/myo';
+import * as SG from 'ml-savitzky-golay';
+import * as config from '../../config/default';*/
+
+var lfo = require( 'waves-lfo/client');
+var Myo = require( './myo');
+var SG = require('ml-savitzky-golay');
+var config = require( '../../config/default');
 
 //Gravity constant
 const g = 9.81;
@@ -11,8 +16,9 @@ var EMGWindowLength = 500;
 var acceleroWindowLength = 30;
 //Modification en direct
 var speedRateWindowLength = 10;
-var amplitudeWindowLength = 40;
+var amplitudeWindowLength = 10;
 var SGWindowLength = 22;
+
 
 
 //Time for the bpfDisplay
@@ -28,6 +34,7 @@ const socketSendJerkiness = new lfo.sink.SocketSend({ port: config.socketClientT
 Myo.connect('com.stolksdorf.myAwesomeApp');
 let myMyo;
 
+
 //Creation of graph
 const eventInAccelero = new lfo.source.EventIn({
   frameType: 'vector',
@@ -35,49 +42,58 @@ const eventInAccelero = new lfo.source.EventIn({
   frameRate: 0.01,
   description: ['acceleroX', 'acceleroY', 'acceleroZ'],
 });
-
 const eventInSmoothness = new lfo.source.EventIn({
   frameType: 'vector',
   frameSize: 1,
   frameRate: 0.01,
   description: ['smoothX', 'smoothY', 'smoothZ'],
 });
-
 const eventInGyro = new lfo.source.EventIn({
   frameType: 'vector',
   frameSize: 3,
   frameRate: 0.01,
   description: ['gyroX', 'gyroY', 'gyroZ'],
 });
-
 const eventInEMG = new lfo.source.EventIn({
   frameType: 'vector',
   frameSize: 8,
   frameRate: 0.01,
   description: ['emg', 'emg', 'emg','emg', 'emg', 'emg','emg', 'emg'],
 });
-
 const eventInEMGSliding = new lfo.source.EventIn({
   frameType: 'vector',
   frameSize: 1,
   frameRate: 0.01,
   description: ['emgSliding'],
 });
-
-const movingAverage = new lfo.operator.MovingAverage({
-  order: 5,
-  fill: 0
+const eventInSmoothnessRecorded = new lfo.source.EventIn({
+  frameType: 'vector',
+  frameSize: 1,
+  frameRate: 0.01,
+  description: ['smoothX'],
 });
 
-
-
 // initialize and start the different graph used
-eventInAccelero.start();
+function initGraph(){
+//eventInAccelero.start();
 //eventInGyro.start();
-eventInSmoothness.start();
-eventInEMGSliding.start();
-eventInEMG.start();
-console.log("event in started");
+//eventInEMGSliding.start();
+//eventInEMG.start();
+  eventInSmoothnessRecorded.start();
+  eventInSmoothness.start();
+  
+  console.log("event in started");
+  /*ACCELERO*/
+  //eventInAccelero.connect(bpfDisplayAccelero);
+  /*JERKINESS RATE*/
+  //eventInSmoothness.connect(bpfDisplayJerkiness);
+  eventInSmoothness.connect(socketSendJerkiness);
+  /*EMG*/
+  //eventInEMG.connect(bpfDisplayEMG);
+  /*EMGS SLIDING WINDOW*/
+  //eventInEMGSliding.connect(bpfDisplayEMGSlinding);
+}
+
 
 /*MYO starting event handler*/
 Myo.onError = function () {
@@ -95,7 +111,7 @@ let addEvents = function(myo){
   
   myMyo.streamEMG(true);
   Myo.on('emg', function(data){
-      displayEMGWindow(EMGWindowLength,data);
+      //displayEMGWindow(EMGWindowLength,data);
   });
   
   const bpfDisplayAccelero = new lfo.sink.BpfDisplay({
@@ -103,8 +119,8 @@ let addEvents = function(myo){
     width: 400,
     height: 250,
     duration: 5,
-    max: 100,
-    min: -100
+    max: 9,
+    min: -9
   });
   const bpfDisplayJerkiness = new lfo.sink.BpfDisplay({
     canvas: '#bpfDisplayJerkiness',
@@ -151,29 +167,21 @@ let addEvents = function(myo){
     fill: 0
   });
   
+  //Init the different graph used and choose wich one to display
+  initGraph();
   Myo.on('imu', function (data) {
     myMyo.lock();
-    displayAcceleroWindowSpeed(acceleroWindowLength,data);
-    displaySmoothness(SGWindowLength,data);
-    
-    //console.log("speedRate : " + speedRate);
-    const frameGyro = {
-      time: time,
-      data: [data.gyroscope.x, data.gyroscope.y, data.gyroscope.z],
-    };
+    displayWindow(data);
   });
-  /*MYO end of event handler*/
-  
-  /*ACCELERO*/
-  //eventInAccelero.connect(bpfDisplayAccelero);
-  /*JERKINESS RATE*/
-  eventInSmoothness.connect(bpfDisplayJerkiness);
-  eventInSmoothness.connect(socketSendJerkiness);
-  /*EMG*/
- // eventInEMG.connect(bpfDisplayEMG);
-  /*EMGS SLIDING WINDOW*/
-  //eventInEMGSliding.connect(bpfDisplayEMGSlinding);
 };
+
+function displayWindow(data){
+  //displayAcceleroWindowSpeed(acceleroWindowLength,data);
+  displaySmoothness(SGWindowLength,data);
+  //displayEMGWindow(SGWindowLength,data);
+}
+
+
 
 
 
@@ -203,7 +211,6 @@ function computeSpeedRateAdaptativeWindow(windowLength, newX,newY,newZ) {
   
     sumLastElem = (x)+(y)+(z);
     computedSpeedRate = computedSpeedRate - sumFirstElem + sumLastElem;
-    //console.log(computedSpeedRate);
   
   return computedSpeedRate;
 }
@@ -276,7 +283,7 @@ let arrayFilteringZ = [];
 let ansx = [];
 let ansy = [];
 let ansz = [];
-let options = {derivative: 1,windowSize: SGWindowLength-1};
+var options = {derivative: 1,windowSize: SGWindowLength-1};
 let optionsGolayLowPass = {derivative: 0};
 function displaySmoothness(windowLengthSG, data ){
   //Calculing smoothness
@@ -300,11 +307,16 @@ function displaySmoothness(windowLengthSG, data ){
     let amplitudeData = computeAmplitudeWindow(amplitudeWindowLength,normaliseData);
     let speedRate = computeSpeedRateAdaptativeWindow(speedRateWindowLength,data.accelerometer.x,data.accelerometer.y,data.accelerometer.z);
    // console.log("speedRate : " + speedRate);
+  
+    if(recording){
+      arrayRecorded.push(normaliseData);
+      console.log("arrayRecorded : " + arrayRecorded.length);
+    }
+  
     let frameSmoothness = {
       time: time,
-     // data: speedRate*normaliseData,
-      //data: amplitudeData,
-      data: normaliseData,
+      data: amplitudeData,
+      //data: normaliseData,
       metadata:null,
     };
     eventInSmoothness.processFrame(frameSmoothness);
@@ -328,57 +340,109 @@ function computeAmplitudeWindow(windowLength, data){
   return amplitudeRate;
 }
 
-
-
-
-//TEST RECEIVING FROM SERVER
-/*
-const socketSend = new lfo.sink.SocketSend({ port: 9004 });
-
-const eventIn = new lfo.source.EventIn({
-  frameType: 'vector',
-  frameSize: 3,
-  frameRate: 0.01,
-  description: ['alpha', 'beta', 'gamma'],
-});
-
-eventIn.connect(socketSend);
-
-eventIn.start();
-
-let timess = 0;
-
-(function createFrame() {
-  const frame = {
-    time: timess,
-    data: [1,2,3],
-  };
-  eventIn.process(1,[1,2,3],1);
-  timess += 1;
-  console.log('sending cool stuff');
-  setTimeout(createFrame, 1000);
-}());
-*/
-/*const socketReceive = new lfo.source.SocketReceive({
-  port: 5001
-  //config.socketServerToClient.port
-});*/
-
-
-/*const logger = new lfo.sink.Logger({
-  time: true,
-  data: true,
-});*/
-
-//socket.connect(bpfDisplayAccelero);
-
-
-function setSpeedRateWindowLength (newValue) {
-  speedRateWindowLength= newValue;
-}
-function setSpeedRateWindowLength (newValue) {
-  amplitudeWindowLength= newValue;
-}
-function setSpeedRateWindowLength (newValue) {
+window.setSGWindowLength = function (newValue){
+  //console.log("new value SG : " + newValue);
   SGWindowLength= newValue;
-}
+  options = {derivative: 1,windowSize: SGWindowLength-1};
+  
+   arrayFilteringX = [];
+   arrayFilteringY = [];
+   arrayFilteringZ = [];
+   ansX = [];
+   ansY = [];
+   ansZ = [];
+};
+
+window.setAmplitudeWindowLength = function (newValue) {
+  amplitudeWindowLength = newValue;
+};
+
+
+var arrayRecorded = [];
+var recording = false;
+
+/*Button function*/
+window.startRecord = function () {
+  console.log("recording");
+  eventInSmoothness.stop();
+  StreamOnOff("off");
+  arrayRecorded = [];
+  recording = true;
+};
+
+window.stopRecord = function () {
+  eventInSmoothness.start();
+  recording = false;
+};
+
+var i = 0;
+var timer;
+
+window.playRecorded = function () {
+  timer = setInterval(playingRecord, 20);
+  eventInSmoothnessRecorded.connect(socketSendJerkiness);
+  eventInSmoothnessRecorded.start();
+  eventInSmoothness.stop();
+  
+  function playingRecord() {
+    if(i < arrayRecorded.length   ){
+      let frameSmoothness = {
+        time: i,
+        data: arrayRecorded[i],
+        //data: normaliseData,
+        metadata:null,
+      };
+      eventInSmoothnessRecorded.processFrame(frameSmoothness);
+    } else {
+      clearTimeout(timer);
+      eventInSmoothnessRecorded.stop();
+      eventInSmoothness.start();
+      i = 0;
+    }
+    i++;
+  }
+  
+};
+window.stopingRecorded = function () {
+  clearTimeout(timer);
+  eventInSmoothnessRecorded.stop();
+  eventInSmoothness.start();
+  StreamOnOff("on");
+  
+  i = 0;
+};
+
+
+//2000 = on, 1000 = off
+var onOff = 1000;
+window.StreamOnOff = function (value) {
+  if(value === "on"){
+    onOff = 1000;
+    eventInSmoothness.start();
+  } else if (value === "off"){
+    onOff = 2000;
+    //eventInSmoothness.stop();
+  } else {
+    if( onOff === 1000){
+      console.log("on : " + onOff);
+      eventInSmoothness.start();
+      onOff = 2000;
+    } else {
+      console.log("off  : " + onOff);
+      onOff = 1000;
+      //eventInSmoothness.stop();
+    }
+  }
+  
+  let frameSmoothnessOnOFF = {
+    time: i,
+    data: onOff,
+    //data: normaliseData,
+    metadata: null,
+  };
+  
+  eventInSmoothness.processFrame(frameSmoothnessOnOFF);
+  
+};
+
+

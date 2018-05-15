@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let smartphoneSensors = require('../../public/js/smartphoneSensors');
+let smartphoneSensors = require('../client/js/smartphoneSensors');
 let Myo = require('myo');
 let osc = require('osc');
 let lfo = require('waves-lfo/node');
@@ -26,12 +26,12 @@ const socketReceive = new lfo.source.SocketReceive({
 
 
 const logger = new lfo.sink.Logger({
-  time: true,
+  time: false,
   data: true,
 });
 
 const bridge = new lfo.sink.Bridge({
-  processFrame: (frame) => sendMessageOSCJerkiness(frame.data),
+  processFrame: (frame) => sendMessageOSC(frame.data),
 });
 
 //socketReceive.connect(logger);
@@ -82,8 +82,6 @@ router.get('/', function(req, res, next) {
   
   
   let addEvents = function(myMyo) {
-    
-    
     Myo.on('imu', function (data) {
       time += dt;
       let arr = new Float32Array([data.accelerometer.x, data.accelerometer.y, data.accelerometer.z]);
@@ -92,16 +90,7 @@ router.get('/', function(req, res, next) {
         data: arr,
         metadata :  null
       };
-      //console.log("sending into process frame : " + frameAccelero.data);
-      //eventInJerkiness.processFrame(frameAccelero);
-      //console.log(frameAccelero);
-      //eventInJerkiness.processFrame(frameAccelero);
       
-      //console.log(frameAccelero);
-      // eventInJerkiness.processFrame(time, [Math.random(), Math.random()], { test: true });
-      //eventInJerkiness.process(1, [0, 1, 2]);
-// is equivalent to
-      //eventInJerkiness.processFrame({ time: 1, data: [0, 1, 2] });
       
     });
   };
@@ -113,8 +102,27 @@ router.get('/', function(req, res, next) {
 
 /*Sending fonction*/
 //TODO completer la fonction pour envoyer les données a MAX
-function sendMessageOSCJerkiness(dataSensor){
-  if( isNaN(dataSensor[0]) ){
+function sendMessageOSC(dataSensor){
+  //console.log("dataSensor : " + dataSensor);
+  if( dataSensor[0] === 1000  || dataSensor[0] === 2000){
+    console.log("on ou off : " +  dataSensor[0]);
+    var onOff = 1;
+    if(dataSensor[0] === 2000 ){
+      onOff = 1;
+    }
+    else {
+      onOff = 0;
+    }
+    udpPortMax.send({
+      address: "/OnOff",
+      args: [
+        {
+          type: "i",
+          value: onOff
+        },
+      ]
+    }, "127.0.0.1", 8081);
+  } else if(isNaN(dataSensor[0]) ){
     return 'Not a number';
   } else {
     udpPortMax.send({
@@ -130,52 +138,6 @@ function sendMessageOSCJerkiness(dataSensor){
   }
   
 }
-
-
-
-  /*MYO end of event handler*/
-
-/*Test sending to client*/
-
-  /* End test sending to client*/
-/*const eventIn = new lfo.source.EventIn({
-  frameType: 'vector',
-  frameSize: 3,
-  frameRate: 0.01,
-  description: ['alpha', 'beta', 'gamma'],
-});
-
-//config.socketServerToClient.port
-const socketSend = new lfo.sink.SocketSend({ port: 9000 });
-
-
-let timeb = 0;
-  
-  (function createFrame() {
-    const frame = {
-      time: timeb,
-      data: [1,2,3],
-    };
-    console.log("send stuff to the client");
-    
-    
-    eventIn.process(1,[1,2,3],1);
-    timeb += 1;
-    //console.log('sending cool stuff');
-    setTimeout(createFrame, 1000);
-  }());
-
-
-
-
-const logger = new lfo.sink.Logger({
-  time: true,
-  data: true,
-});
-
-socketReceive.connect(logger);
-//socketReceive.connect(socketSend);
-//socket.connect(bpfDisplayAccelero);*/
 
 
 
