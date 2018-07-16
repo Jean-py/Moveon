@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let smartphoneSensors = require('../client/js/smartphoneSensors');
+let smartphoneSensors = require('../client/js/sensors/smartphoneSensors');
 let Myo = require('myo');
 let osc = require('osc');
 let lfo = require('waves-lfo/node');

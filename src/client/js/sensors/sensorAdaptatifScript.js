@@ -1,5 +1,5 @@
 var lfo = require('waves-lfo/client');
-var Myo = require('src/client/js/myo');
+var Myo = require('src/client/js/sensors/myo');
 var SG = require('ml-savitzky-golay');
 
 

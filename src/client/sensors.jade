@@ -3,9 +3,7 @@ block content
     script(src="/src/client/js/sensorScript.dist.js")
     //script(src="/dist/sensorScript.js")
     h3= title
-    p Salut toi
     div.input
-
         button#buttonRecordingStart(type='button' onclick="javascript:window.startRecord();") Start rec
         button#buttonRecordingStop(type='button' onclick="javascript:window.stopRecord();") Stop rec
         button#buttonRecordingPlay(type='button' onclick="javascript:window.playRecorded();") Play
@@ -19,9 +17,9 @@ block content
                 //- var smartphoneConnected = isConnected();
                 - if (true)
                     //init();
-                    img.myoImage#IdMyoImageC(src="/images/devices/myo-connected.png" alt="MyoOff")
+                    img.myoImage#IdMyoImageC(src="/media/devices/myo-connected.png" alt="MyoOff")
                 - else
-                    img.myoImage#IdMyoImageNC(src="/images/devices/myo-notconnected.png" alt="MyoOn")
+                    img.myoImage#IdMyoImageNC(src="/media/devices/myo-notconnected.png" alt="MyoOn")
 
 
                 div.input#chartContainer
@@ -66,7 +64,6 @@ block content
                           sliderAmplitude.oninput = function () {
                             outputAmplitude.innerHTML = this.value;
                             window.setAmplitudeWindowLength(this.value);
-
                           }
                         //p  SpeedRate Window:
                             span#SpeedRateText

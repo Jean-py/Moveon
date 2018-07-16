@@ -1,20 +1,11 @@
 //Wrapper to access to data sensors of a smartphone
-
-
-
-
     var _alphaGyro = 0;
     var _betaGyro = 0;
     var _gammaGyro = 0;
-
     var _xAccelero =0;
     var _yAccelero =0;
     var _zAccelero =0;
-
-
-
-
-
+    
     function init(){
         // Check to make sure the browser supprots DeviceOrientationEvents
         if (window.DeviceOrientationEvent) {
@@ -30,13 +21,10 @@
             // Get the direction of the device (in degrees).
             _alphaGyro = event.alpha;
         }
-
+  
 
     }
-
-
-
-
+    
 
     //TODO analyser cette partie du code qui me semble bancale pour le
 //      moment. Le code doit renvoyer un boolean et il

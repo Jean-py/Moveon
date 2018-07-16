@@ -1,0 +1,107 @@
+
+
+/*CSS commande pour video et range slider*/
+
+#play-pause,#mute{
+    width: 3%;
+    height: 3%;
+}
+
+#play-pause,#videoSlider,#timerVideo{
+    margin-right: 1%;
+}
+
+
+.commandeVideo{
+    margin-bottom: 2%;
+
+}
+
+#timerVideo {
+    display: inline;
+}
+
+/*
+.slider {
+    -webkit-appearance: none;
+    height: 05px;
+    border-radius: 100px;
+    background: #c6c6c6;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+
+}
+
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #c6c6c6;
+    cursor: pointer;
+}*/
+
+
+
+#videoSlider {
+    position: absolute;
+}
+
+
+.range-slider .range-slider_track {
+    -webkit-appearance: none;
+    height: 15px;
+    border-radius: 100px;
+    background: #c6c6c6;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    cursor: pointer;
+}
+
+#rangeSliderTrack{
+    width: 1000px;
+}
+
+.range-slider .range-slider_handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -2px;
+    display: inline;
+    z-index:1;
+    -webkit-appearance: none;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+
+}
+
+.range-slider .range-slider_handle-min {
+    visibility: visible;
+    position: absolute;
+
+}
+
+
+.range-slider .range-slider_handle-max {
+    visibility: hidden;
+    background: crimson;
+    position: absolute;
+}
+
+

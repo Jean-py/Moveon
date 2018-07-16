@@ -8,6 +8,7 @@ require('babel-core/register');
 
 var indexRouter = require('./src/routes/index');
 var sensorsRouter = require('./src/routes/sensors');
+var workshop2 = require('./src/routes/workshop2');
 
 var app = express();
 
@@ -16,7 +17,7 @@ app.set('views', path.join(__dirname, '/src/client'));
 app.use('/dist', express.static('dist/'));
 app.use('/public', express.static('public/'));
 app.use('/src', express.static('src/'));
-//app.use('/static', express.static('public/images/devices'));
+//app.use('/static', express.static('public/media/devices'));
 
 
 // Set Jade as the default template engine
@@ -26,11 +27,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/public/media/favicon.ico'));
 
 //page used in my application
 app.use('/', indexRouter);
 app.use('/sensors', sensorsRouter);
+app.use('/workshop2', workshop2);
+
 
 
 // catch 404 and forward to error handler
