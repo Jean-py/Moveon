@@ -151,29 +151,38 @@ body {
 }
 
 
-.card{
-    background-color: #f2f3e8;
+.resizableSegment {
+    position: relative;
+
+    /*resize: horizontal;
+    overflow: auto;*/
 }
 
-.draggable {
-    position: relative;
-    width: 400px;
-    height: 50px;
-    background-color: #ffe619;
-    border: 1px solid #000;
+
+.segment {
+    position: absolute;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #213F8D;
+    /*margin-top: 1%;
+    /*resize: horizontal;
+    overflow: auto;*/
 }
 
-.draggableImage {
-    position: relative;
-    width: 200px;
-    height: 50px;
-    background-color: #000000;
-    border: 1px solid #000;
-    background-image: url('/media/workshop2/croix.png');
-    background-repeat: no-repeat;
-}
 
 .drag { position: relative; }
 
+
+.cardBoard{
+    margin-top: 2%;
+}
+
+
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;       /* remove default arrow */
+}
 
 

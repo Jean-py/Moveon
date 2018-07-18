@@ -11,15 +11,16 @@ block content
     .commandeVideo#idCommandeVideo
             img.image#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause')
             p#timerVideo 0:00/3:14
-            .range-slider#videoSlider
-                .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
-                .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
-                .range-slider_track#rangeSliderTrack(min='0', max = 100)
             img.image#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull')
+        .range-slider#videoSlider
+            .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
+            .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
+            .range-slider_track#rangeSliderTrack()
+            .range-slider_track#segmentMinMax
 
         //input#volume-bar(type='range', min='0', max='1', step='0.1', value='1', orient="vertical" )
         //input#videoSlider2.slider(type='range', value='0', max="10000", step="any")
-
+    .cardBoard#divCardBoard(style='overflow-y:scroll; overflow-x:hidden; height:400px;')
 
 
     //button(onclick='play()') Play
@@ -31,10 +32,7 @@ block content
                 button(onclick='exportCard()') export
                  input#myRange.slider(type='range', min='0.1', max='20')
 
-    //.cardBoard#divCardBoard(style='overflow-y:scroll; overflow-x:hidden; height:400px;')
-            .draggableImage#idAddCard
-            .draggable#card1
-                p CardName
+
 
 
 

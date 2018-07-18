@@ -1,8 +1,6 @@
 var video = document.getElementById("videoEAT");
 var timerRepetition;
 var speedrate = 1;
-var addCard = document.getElementById("idAddCard");
-var divCard = document.getElementById('divCard');
 var videoSlider = document.getElementById("videoSlider");
 // Buttons
 var playButton = document.getElementById("play-pause");
@@ -23,9 +21,8 @@ var VALUE_KNOB_MIN = 0;
 var VALUE_KNOB_MAX = 100;
 var offsetLeftKnobMin = 200;
 var currentValueKnob = VALUE_KNOB_MIN;
+var videoDuration = "3:14";
 
-
-console.log(rangeSliderTrack.offsetLeft);
 knobMin.style.left = (  currentValueKnob + rangeSliderTrack.offsetLeft) + "px" ;
 
 
@@ -39,15 +36,15 @@ var pause = function () {
   // Update the button text to 'Play'
   playButton.src='/media/workshop2/videoCommand/playButton.png';
 };
-var defineSpeedRate = function() {
+var defineSpeedRate = function(speed) {
   speedrate += 5;
   video.playbackRate = speedrate;
-  video.play();
+  play();
 };
 var upSpeedRate = function() {
   speedrate += 0.5;
   video.playbackRate = speedrate;
-  video.play();
+  play();
 };
 var slowSpeedRate = function() {
   if(speedrate < 1)
@@ -55,34 +52,41 @@ var slowSpeedRate = function() {
   else
     speedrate -= 0.5;
   video.playbackRate = speedrate ;
-  video.play();
+  play();
 };
-var repetPartOfVideo = function (start,end, numberOfRepetition) {
+var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
+  console.log("start : " + start);
+  console.log("end : " + end);
+  console.log("numberOfRepetition : " + numberOfRepetition);
+  console.log("speedRate : " + speedRate);
+  video.playbackRate = speedRate;
   video.currentTime = start;
   if ((end > start ) &&  numberOfRepetition > 0 ) {
     timerRepetition = setInterval(function(){
-      video.play();
       if (numberOfRepetition > 0) {
         if (video.currentTime > end) {
           numberOfRepetition--;
           video.currentTime = start;
-          video.play();
+          play();
         }
       } else {
         clearAllTimer();
       }
     }, (end-start)*1000);
   }
-}
+};
+
 function clearAllTimer() {
   window.clearInterval(timerRepetition);
+  video.playbackRate = 1;
 }
+
 function updateTimerVideo(){
   let minutes = Math.floor(video.currentTime  / 60);
   let seconds =  Math.floor(video.currentTime - minutes * 60);
   if(seconds<10)
     seconds = "0"+seconds;
-  timerVideo.innerHTML = minutes+":"+seconds+"/"+ "3:14";
+  timerVideo.innerHTML = minutes+":"+seconds+"/"+ videoDuration;
 }
 
 
@@ -158,13 +162,16 @@ videoSlider.addEventListener("mouseup", function() {
 
 
 function updateKnobAndVideo(e){
+ // pause();
   video.currentTime = Math.round(((e.clientX-(rangeSliderTrack.offsetLeft+dividCommandeVideo.offsetLeft))*video.duration)/NUMBER_OF_TICK) ;
   //Update know position
   knobMin.style.left = (e.clientX-dividCommandeVideo.offsetLeft)+ "px" ;
+  //play();
 }
 
 function updateKnobMax(e){
-  //video.currentTime = Math.round(((e.clientX-(rangeSliderTrack.offsetLeft+dividCommandeVideo.offsetLeft))*video.duration)/NUMBER_OF_TICK) ;
+  video.currentTime = Math.round(((e.clientX-(rangeSliderTrack.offsetLeft+dividCommandeVideo.offsetLeft))*video.duration)/NUMBER_OF_TICK) ;
+  knobMax.style.left = (e.clientX-dividCommandeVideo.offsetLeft)+ "px" ;
 }
 
 

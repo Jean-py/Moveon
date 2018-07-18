@@ -5,19 +5,44 @@ var arrayCard = [];
 //dragElement(document.getElementById("card1"));
 
 /*
-
 addCard.addEventListener('click', function (e) {
   addingNewCard();
 });*/
 
 
+
+
 /**
  * Adding a card from the list of card
  */
-function addingNewCard() {
+function addingNewCard(startP,endP) {
+  let result = sliderToVideo(startP,endP);
+  var card = Card.constructor(result.startDuration, result.endDuration,startP,endP);
+  // Card.playCard(card);
+  
+  //card.id = 'card'+numberOfCard;
+  console.log(card);
   numberOfCard++;
-  let card = new Card();
   arrayCard.push(card);
+  
+/*
+  //var card =  Card.cardConstructor(result.startDuration, result.endDuration,startP,endP);
+  arrayCard.push(card);
+  
+  let result2 = sliderToVideo(10,20);
+  var card =  Card.cardConstructor(result2.startDuration,result2.endDuration,10,20);
+  let result3 = sliderToVideo(15,25);
+  var card =  Card.cardConstructor(result3.startDuration,result3.endDuration,15,25);*/
+}
+//start position on the slider and end position on the slider
+function sliderToVideo(startP,endP){
+  
+  var startDuration =  Math.round(((startP * video.duration)/NUMBER_OF_TICK)- rangeSliderTrack.offsetLeft);
+  var endDuration   = Math.round(((endP * video.duration)/NUMBER_OF_TICK)- rangeSliderTrack.offsetLeft);
+  return {
+    startDuration: startDuration,
+    endDuration: endDuration
+  };
 }
 
 
@@ -42,26 +67,13 @@ function removeCard(card) {
 
 
 
-var get = function (key) {
-  return window.localStorage ? window.localStorage[key] : null;
-}
-
-var put = function (key, value) {
-  if (window.localStorage) {
-    window.localStorage[key] = value;
-  }
-}
-
 
 /*------ Export card in a JSON file  -------*/
+//TODO
 var exportCard = function(){
   var serializedArr = JSON.stringify( [arrayCard, numberOfCard] );
   console.log("Serialisation of card complete : " + serializedArr);
-}
-
-
-
-
+};
 
 
 /*------Drag card-------*/

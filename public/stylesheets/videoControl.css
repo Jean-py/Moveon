@@ -57,7 +57,7 @@
 
 
 #videoSlider {
-    position: absolute;
+    position:relative;
 }
 
 
@@ -78,7 +78,7 @@
 }
 
 .range-slider .range-slider_handle {
-    position: absolute;
+
     width: 20px;
     height: 20px;
     top: -2px;
@@ -89,19 +89,30 @@
     background: #ffffff;
     cursor: pointer;
 
-}
-
-.range-slider .range-slider_handle-min {
-    visibility: visible;
-    position: absolute;
 
 }
-
 
 .range-slider .range-slider_handle-max {
     visibility: hidden;
-    background: crimson;
+    background: #ffffff;
+    height: 10px;
+    width: 10px;
     position: absolute;
 }
+
+#segmentMinMax {
+    background: #213F8D;
+    visibility: hidden;
+    width: 10px;
+    transition: 0.5s ease-out;
+}
+
+
+.range-slider_handle-min {
+    visibility: visible;
+    position: absolute;
+}
+
+
 
 
