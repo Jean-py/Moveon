@@ -23,7 +23,11 @@ var offsetLeftKnobMin = 200;
 var currentValueKnob = VALUE_KNOB_MIN;
 var videoDuration = "3:14";
 
+var isPlayingCard = false;
+
 knobMin.style.left = (  currentValueKnob + rangeSliderTrack.offsetLeft) + "px" ;
+
+
 
 
 var play = function () {
@@ -54,31 +58,38 @@ var slowSpeedRate = function() {
   video.playbackRate = speedrate ;
   play();
 };
+
+
 var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
-  console.log("start : " + start);
-  console.log("end : " + end);
-  console.log("numberOfRepetition : " + numberOfRepetition);
-  console.log("speedRate : " + speedRate);
+  isPlayingCard = true;
   video.playbackRate = speedRate;
   video.currentTime = start;
-  if ((end > start ) &&  numberOfRepetition > 0 ) {
-    timerRepetition = setInterval(function(){
-      if (numberOfRepetition > 0) {
+  var repet = numberOfRepetition;
+  
+  video.ontimeupdate = function() {
+    if(isPlayingCard){
+      if ((end > start ) &&  repet > 0 ) {
         if (video.currentTime > end) {
-          numberOfRepetition--;
+          repet--;
           video.currentTime = start;
           play();
         }
       } else {
-        clearAllTimer();
+        video.ontimeupdate = null;
+        console.log("else de repet part of videp");
+        feedbackOnSliderVideo(false);
+        video.playbackRate = 1;
       }
-    }, (end-start)*1000);
-  }
-};
+    }
+  };
+  };
 
 function clearAllTimer() {
   window.clearInterval(timerRepetition);
+  isPlayingCard = false;
   video.playbackRate = 1;
+  feedbackOnSliderVideo(false);
+  
 }
 
 function updateTimerVideo(){
@@ -153,7 +164,6 @@ video.addEventListener("timeupdate", function() {
 // Play the video when the slider handle is dropped
 videoSlider.addEventListener("mouseup", function() {
   play();
-  // Clear timeout
   return false;
 });
 
@@ -162,11 +172,15 @@ videoSlider.addEventListener("mouseup", function() {
 
 
 function updateKnobAndVideo(e){
- // pause();
   video.currentTime = Math.round(((e.clientX-(rangeSliderTrack.offsetLeft+dividCommandeVideo.offsetLeft))*video.duration)/NUMBER_OF_TICK) ;
   //Update know position
-  knobMin.style.left = (e.clientX-dividCommandeVideo.offsetLeft)+ "px" ;
-  //play();
+  knobMin.style.left = ((e.clientX-dividCommandeVideo.offsetLeft))+ "px" ;
+  
+  if(segmentFeedback.displayed){
+    if(video.currentTime > segmentFeedback.endDurationVideo){
+      feedbackOnSliderVideo(false);
+    }
+  }
 }
 
 function updateKnobMax(e){

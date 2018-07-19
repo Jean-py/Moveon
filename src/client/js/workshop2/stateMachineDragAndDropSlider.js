@@ -2,14 +2,25 @@ var video = document.getElementById("videoEAT");
 var speedrate = 1;
 
 
+//Object graphique de feedback
+var segmentFeedback = {
+  width: "",
+  startPostion:"",
+  endPosition : "",
+  startDurationVideo:"",
+  endDurationVideo:"",
+  displayed:false,
+  divGraphicalObject: document.getElementById("segmentMinMax")
+};
 
 // Sliders
 var knobMin = document.getElementById("range-slider_handle-min");
 var rangeSliderTrack = document.getElementById("rangeSliderTrack");
 var dividCommandeVideo = document.getElementById("idCommandeVideo");
 var knobMax = document.getElementById("range-slider_handle-max");
-var segmentMinMax = document.getElementById("segmentMinMax");
 var cardBoard = document.getElementById("divCardBoard");
+
+
 
 
 
@@ -30,6 +41,7 @@ rangeSliderTrack.addEventListener("mousedown", function(e){
       updateKnobAndVideo(e);
       pause();
       clearAllTimer();
+      feedbackOnSliderVideo(false);
       break;
     }
   }
@@ -64,7 +76,6 @@ dividCommandeVideo.addEventListener("mouseleave", function(e) {
     case StateDrag.DRAG: {
       state = StateDrag.IDLE;
       play();
-      
       break;
     }
     case StateDrag.LONGPRESS: {
@@ -146,7 +157,6 @@ dividCommandeVideo.addEventListener("mousemove", function(e){
       state = StateDrag.DRAG;
       //console.log(" draging etat down");
       updateKnobAndVideo(e);
-     // clearAllTimer();
       break;
     }
     case StateDrag.DRAG: {
@@ -280,7 +290,6 @@ function startCreateSegment(e,startSegment){
   //state = StateDrag.LONGPRESS;
   knobMin.style.background = '#213F8D';
   knobMax.style.visibility = "visible";
-  //segmentMinMax.style.right = knobMin.style.left;
   updateSegment();
 }
 
@@ -288,7 +297,7 @@ function stopCreateSegment(e,stopSegment){
   
   let timerLifeSegment=window.setTimeout(function () {
     knobMax.style.visibility = "hidden";
-    segmentMinMax.style.visibility = "hidden";
+    segmentFeedback.divGraphicalObject.style.visibility = "hidden";
     knobMin.style.background = '#ffffff';
     //createCard();
     window.clearTimeout(timerLifeSegment);
@@ -299,10 +308,56 @@ function stopCreateSegment(e,stopSegment){
 
 
 
+function feedbackOnSliderVideo(onOff){
+ //segmentFeedback.width = parseInt(width);
+ // segmentFeedback.startPostion= parseInt(startP);
+  segmentFeedback.endPosition = parseInt(segmentFeedback.startPostion) + parseInt(segmentFeedback.width);
+  var sliderToV = sliderToVideo( segmentFeedback.startPostion, segmentFeedback.endPosition);
+  segmentFeedback.startDurationVideo = sliderToV.startDuration;
+  segmentFeedback.endDurationVideo = sliderToV.endDuration;
+  segmentFeedback.displayed = onOff;
+  
+  
+  if(onOff){
+    segmentFeedback.divGraphicalObject.style.marginLeft = segmentFeedback.startPostion;
+    segmentFeedback.divGraphicalObject.style.visibility = "visible";
+    segmentFeedback.divGraphicalObject.style.width =  segmentFeedback.width;
+  } else {
+    segmentFeedback.divGraphicalObject.style.visibility = "hidden";
+    knobMax.style.visibility = "hidden";
+  }
+}
+
+
+
 
 function updateSegment(){
-  segmentMinMax.style.marginLeft = knobMax.style.left;
-  //segmentMinMax.style.marginLeft = knobMax.style.left;
-  segmentMinMax.style.visibility = "visible";
-  segmentMinMax.style.width =  (parseInt(knobMin.style.left, 10) -  parseInt(knobMax.style.left, 10)) +"px";
+  segmentFeedback.divGraphicalObject.style.marginLeft = knobMax.style.left;
+  segmentFeedback.divGraphicalObject.style.visibility = "visible";
+  segmentFeedback.divGraphicalObject.style.width =  (parseInt(knobMin.style.left, 10) -  parseInt(knobMax.style.left, 10)) +"px";
 }
+
+
+
+//start position on the slider and end position on the slider
+function sliderToVideo(startP,endP){
+  
+  var startDuration =  Math.round(((startP * video.duration)/NUMBER_OF_TICK)- rangeSliderTrack.offsetLeft);
+  var endDuration   = Math.round(((endP * video.duration)/NUMBER_OF_TICK)- rangeSliderTrack.offsetLeft);
+  return {
+    startDuration: startDuration,
+    endDuration: endDuration
+  };
+}
+
+//start position on the slider and end position on the slider
+function videoToSlider(startDurationVideo,endDurationVideo){
+  
+  var startP =  Math.round(((startDurationVideo * NUMBER_OF_TICK)/video.duration)- rangeSliderTrack.offsetLeft);
+  var endP   = Math.round(((endDurationVideo * NUMBER_OF_TICK )/video.duration)- rangeSliderTrack.offsetLeft);
+  return {
+    startPosition: startP,
+    endPosition: endP
+  };
+}
+
