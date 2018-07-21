@@ -220,12 +220,15 @@ var Card = (function() {
     selectSpeed.style.margin = 10+"px";
     selectSpeed.style.marginRight = 20 +"px";
     selectSpeed.style.marginLeft = 5 +"px";
+    selectSpeed.style.background = "white";
     
     
     
     selectNbRepet.style.margin = 10+"px";
     selectNbRepet.style.marginRight = 20 +"px";
     selectNbRepet.style.marginLeft = 5 +"px";
+    selectNbRepet.style.color = "white";
+    
     
     
     divInfoCard.style.width = 150+"px";

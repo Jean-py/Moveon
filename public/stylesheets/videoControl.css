@@ -63,7 +63,7 @@
 
 .range-slider .range-slider_track {
     -webkit-appearance: none;
-    height: 15px;
+    height: 25px;
     border-radius: 100px;
     background: #c6c6c6;
     outline: none;
@@ -79,8 +79,8 @@
 
 .range-slider .range-slider_handle {
 
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     top: -2px;
     display: inline;
     z-index:1;
@@ -94,9 +94,10 @@
 
 .range-slider .range-slider_handle-max {
     visibility: hidden;
-    background: #ffffff;
-    height: 10px;
-    width: 10px;
+    background: #8d1f3b;
+    height: 23px;
+    width: 3px;
+    top: 25px;
     position: absolute;
 }
 
@@ -111,6 +112,8 @@
 .range-slider_handle-min {
     visibility: visible;
     position: absolute;
+    height: 30px;
+    width: 30px;
 }
 
 

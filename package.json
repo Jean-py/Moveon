@@ -38,7 +38,7 @@
     "watch": "^1.0.2",
     "waves-lfo": "^1.1.6",
     "websocket": "^1.0.25",
-    "ws": "^5.1.0"
+    "ws": "^5.2.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

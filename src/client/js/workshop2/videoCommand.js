@@ -13,6 +13,8 @@ var rangeSliderTrack = document.getElementById("rangeSliderTrack");
 
 var dividCommandeVideo = document.getElementById("idCommandeVideo");
 
+var KNOB_WIDTH = 25;
+
 //var volumeBar = document.getElementById("volume-bar");
 
 var NUMBER_OF_TICK = 1000;
@@ -21,43 +23,75 @@ var VALUE_KNOB_MIN = 0;
 var VALUE_KNOB_MAX = 100;
 var offsetLeftKnobMin = 200;
 var currentValueKnob = VALUE_KNOB_MIN;
-var videoDuration = "3:14";
+var videoDuration = "1:47";
 
 var isPlayingCard = false;
 
 knobMin.style.left = (  currentValueKnob + rangeSliderTrack.offsetLeft) + "px" ;
+/*
+
+window.onload = function() {
+    video.play(); //start loading, didn't used `vid.load()` since it causes problems with the `ended` event
+    
+    if (video.readyState !== 4) { //HAVE_ENOUGH_DATA
+      video.addEventListener('canplaythrough', onCanPlay, false);
+      video.addEventListener('load', onCanPlay, false); //add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
+      setTimeout(function () {
+        video.pause(); //block play so it buffers before playing
+      }, 1); //it needs to be after a delay otherwise it doesn't work properly.
+    } else {
+      //video is ready
+    }
+  
+  
+    video.removeEventListener('canplaythrough', onCanPlay, false);
+    video.removeEventListener('load', onCanPlay, false);
+    //video is ready
+    video.play();
+  
+};
+*/
+
+window.addEventListener("load",function() {
+  setTimeout(function(){
+    // This hides the address bar:
+    window.scrollTo(0, 1);
+  }, 0);
+});
 
 
 
 
 var play = function () {
-  video.play();
-  playButton.src='/media/workshop2/videoCommand/pauseButton.png';
+  if(video.paused){
+      video.play();
+      playButton.src='/media/workshop2/videoCommand/pauseButton.png';
+  }
+ 
 };
 var pause = function () {
-  video.pause();
-  // Pause the video
-  // Update the button text to 'Play'
-  playButton.src='/media/workshop2/videoCommand/playButton.png';
+  if(!video.paused){
+    video.pause();
+    // Update the button text to 'Play'
+    playButton.src='/media/workshop2/videoCommand/playButton.png';
+    
+  }
 };
-var defineSpeedRate = function(speed) {
-  speedrate += 5;
-  video.playbackRate = speedrate;
-  play();
-};
-var upSpeedRate = function() {
-  speedrate += 0.5;
-  video.playbackRate = speedrate;
-  play();
-};
-var slowSpeedRate = function() {
-  if(speedrate < 1)
-    speedrate -= 0.1;
-  else
-    speedrate -= 0.5;
-  video.playbackRate = speedrate ;
-  play();
-};
+
+
+
+// Update the seek bar as the video plays
+video.addEventListener("timeupdate", function() {
+  // Update the slider value
+  if(!video.paused){
+    currentValueKnob = (  ((NUMBER_OF_TICK / video.duration) * video.currentTime) + rangeSliderTrack.offsetLeft);
+    knobMin.style.left = currentValueKnob-(KNOB_WIDTH/2)+ "px" ;
+  }
+  //videoSlider.value = (NUMBER_OF_TICK / video.duration) * video.currentTime;
+  updateTimerVideo();
+});
+
+
 
 
 var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
@@ -89,7 +123,6 @@ function clearAllTimer() {
   isPlayingCard = false;
   video.playbackRate = 1;
   feedbackOnSliderVideo(false);
-  
 }
 
 function updateTimerVideo(){
@@ -100,38 +133,23 @@ function updateTimerVideo(){
   timerVideo.innerHTML = minutes+":"+seconds+"/"+ videoDuration;
 }
 
-
-/*Gere la vitesse de la video
-slider.oninput = function() {
-  speedrate  = this.value/10;
-  if(speedrate <= 0.1){
-    speedrate = 0.1;
-  }
-  video.playbackRate = speedrate ;
-  video.play();
-}
-// Event listener for the volume bar
-volumeBar.addEventListener("change", function() {
-  // Update the video volume
-  video.volume = volumeBar.value;
-});*/
-
 /*---- Creation de ma propre bar de commande de lecture pour la vidéo ----- */
 // Event listener for the play/pause button
-playButton.addEventListener("click", function() {
-  if (video.paused === true) {
-     play()
-  } else {
+playButton.addEventListener("touchstart", function() {
+  if(video.paused){
+    play();
+  } else{
     pause();
   }
 });
 // Event listener for the mute button
-muteButton.addEventListener("click", function() {
+muteButton.addEventListener("touchstart", function() {
   if (video.muted === false) {
     // Mute the video
     video.muted = true;
-    this.src="/media/workshop2/videoCommand/muteSound.png";
-  
+
+    
+    
     // Update the button text
     muteButton.innerHTML = "Unmute";
   } else {
@@ -150,26 +168,32 @@ videoSlider.addEventListener("change", function() {
   updateTimerVideo();
 });
 
-// Update the seek bar as the video plays
-video.addEventListener("timeupdate", function() {
-  // Update the slider value
-  
-  currentValueKnob = (  ((NUMBER_OF_TICK / video.duration) * video.currentTime) + rangeSliderTrack.offsetLeft);
-  knobMin.style.left = currentValueKnob+ "px" ;
-  //videoSlider.value = (NUMBER_OF_TICK / video.duration) * video.currentTime;
-  updateTimerVideo();
-});
-
-
 // Play the video when the slider handle is dropped
-videoSlider.addEventListener("mouseup", function() {
+videoSlider.addEventListener("touchend", function() {
   play();
   return false;
 });
 
+function updateKnobAndVideo(event){
+  video.currentTime = Math.round(((( event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length-1].pageX )-(rangeSliderTrack.offsetLeft+dividCommandeVideo.offsetLeft))*video.duration)/NUMBER_OF_TICK) ;
+  //Update know position
+  knobMin.style.left = ((( (event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length-1].pageX))-dividCommandeVideo.offsetLeft ) )+ "px" ;
+  
+  if(segmentFeedback.displayed){
+    if(video.currentTime > segmentFeedback.endDurationVideo){
+      feedbackOnSliderVideo(false);
+    }
+  }
+}
+
+function updateKnobMax(e){
+  video.currentTime = Math.round((((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length-1].pageX)-(rangeSliderTrack.offsetLeft+dividCommandeVideo.offsetLeft))*video.duration)/NUMBER_OF_TICK) ;
+  knobMax.style.left = ((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length-1].pageX)-dividCommandeVideo.offsetLeft)+ "px" ;
+}
 
 
 
+/* For computer
 
 function updateKnobAndVideo(e){
   video.currentTime = Math.round(((e.clientX-(rangeSliderTrack.offsetLeft+dividCommandeVideo.offsetLeft))*video.duration)/NUMBER_OF_TICK) ;
@@ -187,6 +211,7 @@ function updateKnobMax(e){
   video.currentTime = Math.round(((e.clientX-(rangeSliderTrack.offsetLeft+dividCommandeVideo.offsetLeft))*video.duration)/NUMBER_OF_TICK) ;
   knobMax.style.left = (e.clientX-dividCommandeVideo.offsetLeft)+ "px" ;
 }
+*/
 
 
 

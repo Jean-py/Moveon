@@ -3,10 +3,12 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   //Propriété de style
   let width = '6%';
   let height = '6%';
+  
+  var deleted = false;
  
   var iDiv = null;
-  let startP = 0;
-  var endP = 0;
+  var startP = startPositionParam;
+  var endP = endPositionParam;
 //Valeur pour jouer la carte
   let description = '';
   let speed = 1;
@@ -61,6 +63,20 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   initListener();
   
   
+  function updateInfo(){
+    var cardObject = {
+      width:  width,
+      startP : startP,
+      endP : endP,
+      description : description,
+      speed : speed,
+      deleted:deleted,
+      repetitionNumber : repetitionNumber
+    };
+    return cardObject;
+  }
+  
+  
   function initGUI() {
     boxObject = document.getElementById(iDiv.id);
     card = document.createElement('input');
@@ -79,7 +95,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       description = card.value;
     });
     
-    for (let i = 0; i < 40; i += 1) {
+    for (let i = 0; i < 20; i += 1) {
       selectSpeed.add(new Option(i / 10 + ""));
     }
     selectSpeed.selectedIndex = 10;
@@ -147,10 +163,13 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     selectSpeed.style.margin = 10 + "px";
     selectSpeed.style.marginRight = 20 + "px";
     selectSpeed.style.marginLeft = 5 + "px";
-    
+    selectSpeed.style.color = 'white';
+  
+  
     selectNbRepet.style.margin = 10 + "px";
     selectNbRepet.style.marginRight = 20 + "px";
     selectNbRepet.style.marginLeft = 5 + "px";
+    selectNbRepet.style.color = 'white';
     
     divInfoCard.style.width = 150 + "px";
     divInfoCard.style.height = 10 + "px";
@@ -158,12 +177,43 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   }
   
   function initListener() {
+  
+    divSegment.addEventListener('long-press', function(e){
+      e.preventDefault();
+      console.log("long press : " + description );
+      //delete apparait
+      var buttonDelete =  document.createElement('button');
+      buttonDelete.id = 'idBtnDelete';
+      buttonDelete.style.position = "absolute";
+      buttonDelete.type = "button";
+      buttonDelete.innerHTML = "Delete";
+      buttonDelete.style.width = "100px";
+  
+      divInfoCard.appendChild(buttonDelete);
+      buttonDelete.addEventListener('touchend',function(e){
+        feedbackOnSliderVideo(false);
+        iDiv.remove();
+        deleted = true
+      });
+  
+  
+      //Click sur le delete
+      
+      //delete la carte
+      
+    });
+    
+    selectSpeed.addEventListener("onchange", function(){
+      console.log("change speed : " +     selectSpeed.options[selectSpeed.selectedIndex].value);
+    
+    });
+    
     divSegment.addEventListener("mousedown", function () {
-      /*console.log('iDiv.id : ' + this.id);
-      console.log("repetitionNumber : " + repetitionNumber);*/
+     // console.log('iDiv.id : ');
       
       let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
+  
       repetitionNumber = nbRepet;
       speed = speedRate;
       
@@ -171,9 +221,22 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       segmentFeedback.width = width;
       feedbackOnSliderVideo(true);
       
-      repetPartOfVideo(startDuration, endDuration, parseInt(nbRepet), parseInt(speedRate));
+      repetPartOfVideo(startDuration, endDuration, nbRepet, speedRate);
     }, false);
   }
+  
+  var cardObject = {
+    width:  width,
+    startP : startP,
+    endP : endP,
+    description : description,
+    speed : speed,
+    repetitionNumber : repetitionNumber,
+    iDiv:iDiv,
+    updateInfo : updateInfo
+  };
+  return cardObject;
+  
 }
 
 
@@ -189,3 +252,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     ];
     return components.join("");
   }
+  
+  
+  
