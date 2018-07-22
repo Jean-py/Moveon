@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(__dirname + '/public/media/favicon.ico'));
+//app.use(favicon(__dirname + '/public/media/favicon.ico'));
 
 //page used in my application
 app.use('/', indexRouter);

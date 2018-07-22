@@ -27,7 +27,7 @@ var config =  {
   assetsDomain: '/',
   
   // port used to open the http server, in production this value is typically 80
-  portServer: 8000,
+  portServer: 8081,
   
   //Port used by the myo
   myoPort: 10138,

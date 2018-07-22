@@ -178,6 +178,25 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   function initListener() {
   
+    card.addEventListener('long-press', function(e){
+      e.preventDefault();
+      console.log("long press : " + description );
+      //delete apparait
+      var buttonDelete =  document.createElement('button');
+      buttonDelete.id = 'idBtnDelete';
+      buttonDelete.style.position = "absolute";
+      buttonDelete.type = "button";
+      buttonDelete.innerHTML = "Delete";
+      buttonDelete.style.width = "100px";
+    
+      divInfoCard.appendChild(buttonDelete);
+      buttonDelete.addEventListener('touchend',function(e){
+        feedbackOnSliderVideo(false);
+        iDiv.remove();
+        deleted = true
+      });
+    });
+  
     divSegment.addEventListener('long-press', function(e){
       e.preventDefault();
       console.log("long press : " + description );
@@ -195,12 +214,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
         iDiv.remove();
         deleted = true
       });
-  
-  
-      //Click sur le delete
-      
-      //delete la carte
-      
     });
     
     selectSpeed.addEventListener("onchange", function(){
