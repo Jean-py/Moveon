@@ -1,27 +1,26 @@
 extends layout
 block content
-
-
     .myplayer#idVideo
-        video(width='840', height='480', id="videoEAT", poster='/media/workshop2/videoCommand/poster2.png', preload='auto', autobuffer = '')
-            source(src='/media/workshop2/EAT3.mp4', type='video/mp4')
-            | Votre navigateur ne supporte pas la balise vidéo.
+            video(width='1000', height='480', controls='none',id="videoEAT", poster='/media/workshop2/videoCommand/poster2.png' ,  preload='none', src='/media/workshop2/EAT3.webm', type='video/mp4')
+                //source(src='/media/workshop2/EAT3.mp4', type='video/mp4') autobuffer = 'auto'
+                | Votre navigateur ne supporte pas la balise vidéo.
 
 
-    .commandeVideo#idCommandeVideo
-            img.image#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause')
-            p#timerVideo 0:00/1:47
-            img.image#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull')
+    .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
         .range-slider#videoSlider
-            .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
-            .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
-            .range-slider_track#rangeSliderTrack()
-            .range-slider_track#segmentMinMax
+            .range-slider-wrapper#range-slider-wrapper
+                .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
+                .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
+                .range-slider_track#rangeSliderTrack
+                .range-slider_track#segmentMinMax
+            .commandeVideo#idCommandeVideo
+                img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
+                p#timerVideo 0:00/1:47
+                img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
+        .cardBoard#divCardBoard(style='overflow-y:hidden;overflow-x:hidden')
 
-        //input#volume-bar(type='range', min='0', max='1', step='0.1', value='1', orient="vertical" )
-        //input#videoSlider2.slider(type='range', value='0', max="10000", step="any")
-    .cardBoard(style='overflow-y:hidden; overflow-x:scroll; width:100%;')
-        .cardBoard#divCardBoard(style='overflow-y:scroll; overflow-x:scroll; height:400px; width:1500px;')
+
+
 
 
     //button(onclick='play()') Play
@@ -32,8 +31,9 @@ block content
                 button(onclick='slowSpeedRate()') down sr
                 button(onclick='exportCard()') export
                  input#myRange.slider(type='range', min='0.1', max='20')
-    .div
+    //.div
         input.btn#btnSaveLog(type='button', value='Save log')
+        input.btn#btnLoadLog(type='button', value='Load log')
         h5#textSaveLog
 
 
@@ -43,8 +43,13 @@ block content
 
     script.
     link(href="stylesheets/videoControl.css" rel="stylesheet")
-    script(src="/src/client/js/workshop2/card.js")
-    script(src="/src/client/js/workshop2/stateMachineDragAndDropSliderTablet.js")
-    script(src="/src/client/js/workshop2/cardManagement.js")
-    script(src="/src/client/js/workshop2/long-press.min.js")
-    script(src="/src/client/js/workshop2/videoCommand.js")
+    link(href="stylesheets/card.css" rel="stylesheet")
+    link(href="stylesheets/style.css" rel="stylesheet")
+    script(src="/src/client/js/workshop2/technologyProbe/card/card.js")
+    script(src="/src/client/js/workshop2/technologyProbe/segment/stateMachineCreateSegment.js")
+    script(src="/src/client/js/workshop2/technologyProbe/card/cardManager.js")
+    script(src="/src/client/js/workshop2/technologyProbe/utilities/long-press.min.js")
+    script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/videoCommand.js")
+    script(src="/src/client/js/workshop2/technologyProbe/video/controller/videoController.js")
+    //script(src="/src/client/js/workshop2/technologyProbe/card/controller/controllerCard.js")
+

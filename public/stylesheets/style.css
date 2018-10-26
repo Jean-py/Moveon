@@ -1,7 +1,8 @@
 body {
   padding: 50px;
   font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
-    overflow: auto;
+    overflow: hidden;
+    overflow-y: auto;
 
 
 }
@@ -146,42 +147,22 @@ body {
     background-color: blanchedalmond;
 }
 
-#divCardBoard {
-    overflow: auto;
-
-}
 
 
-.resizableSegment {
-    position: relative;
-
-    /*resize: horizontal;
-    overflow: auto;*/
-}
-
-
-.segment {
-    position: absolute;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #213F8D;
-    /*margin-top: 1%;
-    /*resize: horizontal;
-    overflow: auto;*/
-}
-
-
-.drag { position: relative; }
-
-
-.cardBoard{
+.commandeVideo
+{
     margin-top: 2%;
-    overflow: paged-y;
+}
 
+.myplayer{
+    margin-top: 2%;
+}
+.videoEAT{
+    float: left;
 }
 
 
-
+/*Don't remove these line, mandatory for the tablet UI*/
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -192,4 +173,5 @@ select {
     -webkit-user-select: none; /* disable selection/Copy of UIWebView */
     -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
 }
+
 

@@ -40,7 +40,7 @@
 //Normaliser le gyro + Accelero
 //Ajouter des fonctions?
 
-//add listener to orientation
+//add controller to orientation
 
 // Accelero
 /*

@@ -3,12 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const favicon = require('express-favicon');
+//const favicon = require('express-favicon');
 require('babel-core/register');
 
 var indexRouter = require('./src/routes/index');
 var sensorsRouter = require('./src/routes/sensors');
 var workshop2 = require('./src/routes/workshop2');
+var testVideo = require('./src/routes/testVideo');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/sensors', sensorsRouter);
 app.use('/workshop2', workshop2);
+app.use('/testVideo', testVideo);
 
 
 

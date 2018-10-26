@@ -1,4 +1,89 @@
 .infoCard{
     position : absolute;
     margin-top : 25px;
+    width: 150px;
+    height: 10px;
+
 }
+
+
+
+#divCardBoard {
+   /* overflow-y: auto;
+    overflow-x: hidden;*/
+    overflow: hidden;
+    width: 200%;
+}
+
+
+.segmentWrapper {
+    position: relative;
+    margin-top: 100px;
+    margin-right: 3px;
+    margin-bottom: 50px ;
+}
+
+
+.segment{
+    position: absolute;
+    height: 18px;
+   /*border-radius: 10px;*/
+    background-color: #213F8D;
+    z-index: 10;
+    left: 0px;
+    top:0px
+}
+
+
+.drag { position: relative; }
+
+
+.cardBoard{
+    margin-top: 2%;
+    overflow: paged-y;
+}
+
+
+.textSegment {
+    margin-bottom: 6px;
+    background: transparent;
+    border: 1px;
+    border-color: white;
+
+    border-radius: 10px;
+    border-style: solid;
+    position: relative;
+    width: 200px;
+    font-weight: bold;
+    margin-left: 7px;
+    color: #ffffff;
+    white-space: normal;
+    z-index: 1;
+    top: 0px;
+}
+
+.imgSlow{
+    content:url('../media/workshop2/card/slow.png');
+    width: 20px;
+    height: 20px;
+
+}
+
+
+.imgRepet{
+    width: 15px;
+    height: 15px;
+}
+
+.selectSpeed, .selectNbRepet {
+    margin: 10px;
+    margin-right: 20px;
+    margin-left: 5px;
+    color: white;
+    background: black;
+}
+
+
+
+
+
