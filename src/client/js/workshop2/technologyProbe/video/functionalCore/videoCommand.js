@@ -1,4 +1,5 @@
 var video = document.getElementById("videoEAT");
+var wrapperVideo = document.getElementById("idVideo");
 var speedrate = 1;
 // Buttons
 var playButton = document.getElementById("play-pause");
@@ -12,12 +13,23 @@ var body = document.getElementsByTagName("BODY")[0];
 
 var videoIsPlaying = 1;
 
+//Je ne saiss pas comment rendre cette ligne automatique pour l'isntant car la taille est en auto...
+var WIDTH_RANGE_SLIDER_TRACK = "960px";
+//Donc pour l'instant je reste comme ça
+//console.log("AAA : " + window.getComputedStyle(video).getPropertyValue('width'));
+rangeSliderTrack.style.width = WIDTH_RANGE_SLIDER_TRACK;
+
+
 //var volumeBar = document.getElementById("volume-bar");
 
 //On load of the page
 
 
+
 window.addEventListener("load",function() {
+  //The size of the controller is the same than the size of the video
+  
+  
   setTimeout(function(){
     // This hides the address bar:
     video.load();
@@ -165,7 +177,7 @@ var pause = function () {
 var playPausecallback = function(e){
   console.log("callback play-pause");
   e.preventDefault();
-  event.preventDefault();
+  //event.preventDefault();
   /*videoIsPlaying += 1;
   videoIsPlaying %= 2;
   console.log("videoIsPlaying :  " + videoIsPlaying);

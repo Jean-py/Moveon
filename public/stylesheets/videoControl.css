@@ -11,6 +11,10 @@
     margin-right: 1%;
 }
 
+#videoSlider{
+    margin-top: -20px;
+}
+
 
 .commandeVideo{
     margin-bottom: 2%;
@@ -29,7 +33,7 @@
 .range-slider .range-slider_track {
     -webkit-appearance: none;
     height: 25px;
-    border-radius: 10px;
+   /* border-radius: 10px;*/
     background: #c6c6c6;
     outline: none;
     opacity: 0.7;
@@ -39,10 +43,12 @@
 }
 
 #rangeSliderTrack{
+
     /*width: 854px;*/
-    width: 1000px;
+   /* width: 1000px;*/
     height: 20px;
 }
+
 
 .range-slider .range-slider_handle {
     width: 30px;
@@ -80,7 +86,7 @@
     background: #213F8D;
     visibility: hidden;
     width: 10px;
-    transition: 0.5s ease-out;
+    transition: 0.1s ease-out;
 }
 
 
@@ -101,4 +107,18 @@
 
 .wrapperCommandAndRange{
    /* display: inline;*/
+}
+
+
+
+.commandeVideo
+{
+    margin-top: 2%;
+}
+
+.myplayer{
+    margin-top: 2%;
+}
+.videoEAT{
+    float: left;
 }

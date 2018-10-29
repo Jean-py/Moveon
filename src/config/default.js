@@ -18,7 +18,7 @@ var config =  {
   
   // version of application, can be used to force reload css and js files
   // from server (cf. `html/default.ejs`)
-  version: '0.0.1',
+  version: '0.0.2',
   
   
   // define from where the assets (static files) should be loaded, these value

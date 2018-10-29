@@ -4,12 +4,11 @@
   "private": true,
   "scripts": {
     "compile": "babel --presets es2015,stage-0 -d public/js/bundle dist/client/js",
-    "bundle": "./bin/runner --bundle",
     "start": "node ./bin/www",
     "transpile": "./bin/www --transpile",
     "prewatch": "npm run transpile",
-    "watch": "./bin/www --watch",
-    "postinstall": "npm run bundle"
+    "watch": "./bin/www --watch"
+
   },
   "dependencies": {
     "@ircam/basic-controllers": "^1.0.4",

@@ -96,10 +96,13 @@ video.addEventListener("touchmove", function(e) {
 
 knobMin.setAttribute("data-long-press-delay",longPressDelay);
 knobMin.addEventListener('long-press', function(e) {
+  console.log('knobMin.addEventListener(longpress');
     pause();
     longpressCreateSegmentCallback(e);
 });
 rangeSliderTrack.addEventListener("long-press", function(e){
+  console.log('rangeSliderTrack.addEventListener(longpress');
+  
   pause();
   longpressCreateSegmentCallback(e);
 }, false);
@@ -107,6 +110,8 @@ rangeSliderTrack.addEventListener("long-press", function(e){
 /*Callback function*/
 var longpressCreateSegmentCallback = function (e) {
   e.preventDefault();
+  console.log('state : ' + state +'', 'background: #222; color: #bada55');
+  
   switch (state){
     case StateDrag.DOWN: {
       state = StateDrag.LONGPRESS;
@@ -114,6 +119,7 @@ var longpressCreateSegmentCallback = function (e) {
       startCreateSegment(e,video.currentTime);
       break;
     }
+    
   }
   //event.preventDefault();
 };
@@ -138,32 +144,43 @@ var ranglerSliderTrackClick = function(e){
       break;
     }
   }
-  console.log("function - ranglerSliderTrackClick appel play l141 statemachine ");
+  console.log("function - ranglerSliderTrackClick appel play l147 statemachine ");
   play();
 };
 
 var knobMinUpCallback = function(e){
-  console.log("function - knobMinUpCallback ");
+  console.log("***knobMinUpCallback *** "+ state);
   switch (state) {
+    case StateDrag.IDLE: {
+      state = StateDrag.IDLE;
+      console.log("function - knobMinUpCallback appel play ");
+      //play();
+      break;
+    }
     case StateDrag.LONGPRESS: {
       state = StateDrag.IDLE;
       updateKnobAndVideoWrapper(e);
       stopCreateSegment(e, video.currentTime);
+      console.log("function - knobMinUpCallback appel pause l164 statemachine ");
+      play();
       break;
     }
     case StateDrag.DRAG: {
       state = StateDrag.IDLE;
       updateKnobAndVideoWrapper(e);
+      console.log("function - knobMinUpCallback appel pause l165 statemachine ");
+      pause();
       break;
     }
     case StateDrag.DOWN: {
       state = StateDrag.IDLE;
       updateKnobAndVideoWrapper(e);
+      console.log("function - knobMinUpCallback appel pause l172 statemachine ");
+      pause();
       break;
     }
   }
-  console.log("function - knobMinUpCallback appel play l161 statemachine ");
-  play();
+ 
   //event.preventDefault();
 };
 
@@ -176,7 +193,7 @@ function startCreateSegment(e,startSegment){
   //state  StateDrag.LONGPRESS;
   knobMin.style.background = '#213F8D';
   knobMax.style.visibility = "visible";
-  updateSegment();
+  updateSegmentFeedback();
 }
 
 function stopCreateSegment(e,stopSegment){
@@ -188,14 +205,15 @@ function stopCreateSegment(e,stopSegment){
     window.clearTimeout(timerLifeSegment);
     //console.log("AAA : " + parseInt(knobMax.style.left,10));
     addingNewCard(parseInt(knobMax.style.left,10)+ WIDTH_MID_KNOB_MIN/2   , parseInt(knobMin.style.left,10)+ WIDTH_MID_KNOB_MIN/2 );
+    play();
   },700);
 }
 
 
 
 
-
-function updateSegment(){
+//Update the feedback of the creation of a segment after a long press
+function updateSegmentFeedback(){
   if(parseInt(knobMin.style.left, 10) >  parseInt(knobMax.style.left, 10)){
     segmentFeedback.divGraphicalObject.style.marginLeft = knobMax.style.left;
   } else {
@@ -227,7 +245,6 @@ function videoToSlider(startDurationVideo,endDurationVideo){
 }
 
 var knobMinMove = function(e){
-  
   switch (state){
     case StateDrag.DOWN: {
       state = StateDrag.DRAG;
@@ -245,7 +262,7 @@ var knobMinMove = function(e){
       state = StateDrag.LONGPRESS;
       //console.log("state longpress with mouse move");
       updateKnobAndVideoWrapper(e);
-      updateSegment();
+      updateSegmentFeedback();
       break;
     }
   }
@@ -256,7 +273,6 @@ var knobMinMove = function(e){
 
 var knobMinClick = function (e){
   console.log("function - knobMinClick" );
-  
   pause();
   //Update video position
   switch (state){
@@ -282,6 +298,8 @@ var rangeSliderTrackEndCallback = function(e){
     case StateDrag.DRAG: {
       state = StateDrag.IDLE;
       updateKnobAndVideoWrapper(e);
+      console.log("function - rangeSliderTrackEndCallback l285 state machine");
+      pause();
       break;
     }
     case StateDrag.LONGPRESS:{

@@ -160,7 +160,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     for (let i = 0; i < 20; i++) {
       selectNbRepet.options.add(new Option(i + ""));
     }
-    selectNbRepet.selectedIndex = 1;
+    selectNbRepet.selectedIndex = 0;
     
     /*
     selectNbRepet.addEventListener("onchange", function () {

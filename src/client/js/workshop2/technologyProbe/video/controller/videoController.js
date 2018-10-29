@@ -18,7 +18,7 @@ var body = document.getElementsByTagName("BODY")[0];
 
 var KNOB_WIDTH = 25;
 
-var NUMBER_OF_TICK = 10000;
+var NUMBER_OF_TICK = parseInt(WIDTH_RANGE_SLIDER_TRACK, 10);
 var VALUE_KNOB_MIN = 0;
 var WIDTH_MID_KNOB_MIN = 15;
 var currentValueKnob = VALUE_KNOB_MIN;
@@ -55,10 +55,11 @@ rangeSliderWrapper.addEventListener("touchend", function(e) {
 
 //Mouse event controller
 playButton.addEventListener("mousedown", function(e) {
-  e.preventDefault();
-  event.preventDefault();
+  
   console.log("appel playPause function playButton.addEventListener(mousedown in l56 videocontroller") ;
   playPausecallback(e);
+  e.preventDefault();
+ // event.preventDefault();
 });
 muteButton.addEventListener("mousedown", function(e) {
   muteButtonCallback();
@@ -67,17 +68,10 @@ video.addEventListener("mousedown", function(e) {
   console.log("appel playPause function video.addEventListener(mousedown in l62 videocontroller") ;
   playPausecallback(e);
 });
-rangeSliderWrapper.addEventListener("mouseup", function(e) {
-   //play();
-  //playPausecallback();
-  //console.log("AA");
-  
-});
+
 
 // Event controller for the seek bar
 videoSlider.addEventListener("change", function(e) {
-  // Update the video time
-  //video.currentTime = video.duration * (videoSlider.value / NUMBER_OF_TICK);
   updateTimerVideo();
 });
 
@@ -127,11 +121,10 @@ var  updateKnobAndVideo = function(event){
 var updateKnobAndVideoComputer = function(e){
   //take into account offset on the left of the scroll bar (body scroll and centering the wrapper)
   var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft - body.scrollLeft;//- window.scrollLeft  ;
-  //currentValueKnob = ((e.clientX - offsetLeftSlider) * video.duration) / NUMBER_OF_TICK;
   currentValueKnob = ((e.pageX - offsetLeftSlider) * video.duration) / NUMBER_OF_TICK;
-  if(currentValueKnob < video.duration ) {
+  if(currentValueKnob < video.duration && currentValueKnob >=0 ) {
     video.currentTime = ((e.pageX - offsetLeftSlider) * video.duration) / NUMBER_OF_TICK;
-    knobMin.style.left = e.pageX -  (offsetLeftSlider +  WIDTH_MID_KNOB_MIN/2 ) + "px"
+    knobMin.style.left = e.pageX -  (offsetLeftSlider +  WIDTH_MID_KNOB_MIN/2 ) + "px";
     if (segmentFeedback.displayed) {
       if (video.currentTime > segmentFeedback.endDurationVideo) {
         feedbackOnSliderVideo(false);
@@ -148,7 +141,8 @@ function feedbackOnSliderVideo(onOff){
   segmentFeedback.displayed = onOff;
   if(onOff){
     //segmentFeedback.divGraphicalObject.style.marginLeft = segmentFeedback.startPostion;
-    segmentFeedback.divGraphicalObject.style.marginLeft = parseInt(segmentFeedback.startPostion) - 5 +"px";//  segmentFeedback.startPostion;
+    //minus 2 because we need to get 2 frame before the segment
+    segmentFeedback.divGraphicalObject.style.marginLeft = parseInt(segmentFeedback.startPostion) - 7 +"px";//  segmentFeedback.startPostion;
     segmentFeedback.divGraphicalObject.style.visibility = "visible";
     segmentFeedback.divGraphicalObject.style.width =  segmentFeedback.width;
   } else {
