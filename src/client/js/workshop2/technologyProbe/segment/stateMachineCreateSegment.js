@@ -32,7 +32,7 @@ var longPressDelay = "500";
 //TODO je peux pas faire ça sinon ça declenche toujours, trouver un autre moyen, peut etre mouse leave ou qqch avec une autre fonction a créer
 /*knobMin.addEventListener("mouseleave", function(e) {
   knobMinMouseLeaveCallback(e);
-},false);*/
+},false);*//*
 knobMin.addEventListener("mouseup", function(e) {
   knobMinUpCallback(e);
 }, {passive: true});
@@ -59,7 +59,7 @@ wrapperRangerSlider.addEventListener("mousemove", function(e){
 wrapperRangerSlider.addEventListener("mouseup", function(e){
   rangeSliderTrackEndCallback(e);
 }, true);
-
+*/
 /*window.addEventListener("mouseup", function(e){
   rangeSliderTrackEndCallback(e);
 }, false);

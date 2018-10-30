@@ -27,6 +27,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   let endDuration = endDurationParam;
   let left ;
   
+  var buttonDelete = null;
+  
   //cette div est la principale, celle qui contient fragment + bardFragment
   iDiv = document.createElement('div');
   iDiv.id = 'idCard' + createUniqueId();
@@ -41,16 +43,12 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   width = iDiv.style.width = parseInt(endPositionParam, 10) - parseInt(startPositionParam, 10) + "px";
   divSegment.style.width = parseInt(endPositionParam, 10) - parseInt(startPositionParam, 10) + "px";
   
-  
   initGUI();
   initStyle();
   initListener();
   playCard();
   
-  
   //console.log(cardInfo.deleted);
-  
-  
   function updateInfo(){
     var cardObject = {
       width:  width,
@@ -68,62 +66,44 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   function initListener() {
     
     textSegment.addEventListener('long-press', function(e){
-      e.preventDefault();
-      console.log("long press : " + description );
-      //delete apparait
-      var buttonDelete =  document.createElement('button');
-      buttonDelete.id = 'idBtnDelete';
-      buttonDelete.style.position = "absolute";
-      buttonDelete.type = "button";
-      buttonDelete.innerHTML = "Delete";
-      buttonDelete.style.width = "100px";
-      
-      divInfoCard.appendChild(buttonDelete);
-      buttonDelete.addEventListener('touchend',function(e){
-        feedbackOnSliderVideo(false);
-        iDiv.remove();
-        deleted = true
-      });
-      buttonDelete.addEventListener('mousedown',function(e){
-        feedbackOnSliderVideo(false);
-        iDiv.remove();
-        deleted = true
-      });
+      createBtnDelete(e);
     });
     
     divSegment.addEventListener('long-press', function(e){
-      e.preventDefault();
-      console.log("long press : " + description );
-      //delete apparait
-      var buttonDelete =  document.createElement('button');
-      buttonDelete.id = 'idBtnDelete';
-      buttonDelete.style.position = "absolute";
-      buttonDelete.type = "button";
-      buttonDelete.innerHTML = "Delete";
-      buttonDelete.style.width = "100px";
-      
-      divInfoCard.appendChild(buttonDelete);
-      buttonDelete.addEventListener('touchend',function(e){
-        feedbackOnSliderVideo(false);
-        iDiv.remove();
-        deleted = true
-      });
+      createBtnDelete(e);
     });
+  
+    
     
     selectSpeed.addEventListener("onchange", function(){
       console.log("change speed : " +     selectSpeed.options[selectSpeed.selectedIndex].value);
       
     });
     
-    divSegment.addEventListener("mousedown", function () {
+    /*divSegment.addEventListener("touchstart", function () {
       // console.log('iDiv.id : ');
-      
+      //kill('mousedown');
+     // kill('mouseup');
       let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
       
       repetitionNumber = nbRepet;
       speed = speedRate;
       
+      segmentFeedback.startPostion = iDiv.style.left  ;
+      segmentFeedback.width = width;
+      feedbackOnSliderVideo(true);
+      repetPartOfVideo(startDuration, endDuration, nbRepet, speedRate);
+    }, false);*/
+  
+    divSegment.addEventListener("mousedown", function () {
+      // console.log('iDiv.id : ');
+      let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
+      let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
+    
+      repetitionNumber = nbRepet;
+      speed = speedRate;
+    
       segmentFeedback.startPostion = iDiv.style.left  ;
       segmentFeedback.width = width;
       feedbackOnSliderVideo(true);
@@ -160,7 +140,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     for (let i = 0; i < 20; i++) {
       selectNbRepet.options.add(new Option(i + ""));
     }
-    selectNbRepet.selectedIndex = 0;
+    selectNbRepet.selectedIndex = 1;
     
     /*
     selectNbRepet.addEventListener("onchange", function () {
@@ -222,7 +202,30 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     updateInfo : updateInfo
   };
   
+  function deleteCard() {
+    feedbackOnSliderVideo(false);
+    iDiv.remove();
+    deleted = true
+  }
   
+  function createBtnDelete(e){
+    e.preventDefault();
+    //delete apparait
+    var buttonDelete =  document.createElement('button');
+    buttonDelete.id = 'idBtnDelete';
+    buttonDelete.style.position = "absolute";
+    buttonDelete.type = "button";
+    buttonDelete.innerHTML = "Delete";
+    buttonDelete.style.width = "100px";
+    divInfoCard.appendChild(buttonDelete);
+    buttonDelete.addEventListener('mouseup',function(e){
+      deleteCard();
+    });
+  
+    buttonDelete.addEventListener('touchend',function(e){
+      deleteCard();
+    });
+  }
   
   
   

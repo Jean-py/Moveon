@@ -175,8 +175,11 @@ var pause = function () {
 };
 
 var playPausecallback = function(e){
-  console.log("callback play-pause");
-  e.preventDefault();
+  console.log("callback play-pause, e : " + e);
+  if(e != null && e != "undefined"){
+  
+    e.preventDefault();
+  }
   //event.preventDefault();
   /*videoIsPlaying += 1;
   videoIsPlaying %= 2;

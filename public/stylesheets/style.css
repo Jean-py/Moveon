@@ -1,14 +1,17 @@
 body {
-  padding: 50px;
-  font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
+     padding: 50px;
+     font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
     overflow: hidden;
     overflow-y: auto;
+    -webkit-touch-callout: none !important;
 
 
 }
 
 a {
   color: #00B7FF;
+-webkit-user-select: none !important;
+
 }
 p {
   font-weight:bold;
@@ -160,6 +163,8 @@ select {
 *:not(input):not(textarea) {
     -webkit-user-select: none; /* disable selection/Copy of UIWebView */
     -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;       /* remove default arrow */
+
 }
-
-

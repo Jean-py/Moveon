@@ -34,8 +34,9 @@ knobMin.style.left = (  currentValueKnob + rangeSliderTrack.offsetLeft) + "px" ;
 /*---- Creation de ma propre bar de commande de lecture pour la vidéo ----- */
 // Event controller for the play/pause button
 playButton.addEventListener("touchstart", function(e) {
-  e.preventDefault();
-  event.preventDefault();
+   e.preventDefault();
+   event.preventDefault();
+  kill('mousedown');
   console.log("appel l36 playPausecallback videoController" );
   playPausecallback(e);
 },{passive: true});
@@ -49,7 +50,7 @@ muteButton.addEventListener("touchend", function(e) {
 });
 rangeSliderWrapper.addEventListener("touchend", function(e) {
   //play();
-  console.log("appel l50 playPausecallback video OCntroller");
+  console.log("appel l50 playPausecallback video Controller");
   playPausecallback();
 });
 
