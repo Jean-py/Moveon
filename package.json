@@ -8,7 +8,6 @@
     "transpile": "./bin/www --transpile",
     "prewatch": "npm run transpile",
     "watch": "./bin/www --watch"
-
   },
   "dependencies": {
     "@ircam/basic-controllers": "^1.0.4",
@@ -24,6 +23,7 @@
     "express-favicon": "^2.0.0",
     "fs-extra": "^5.0.0",
     "http-errors": "~1.6.2",
+    "implement-js": "0.0.26",
     "jade": "~1.11.0",
     "jquery": "^3.3.1",
     "klaw": "^2.1.1",
@@ -32,6 +32,8 @@
     "myo": "^3.0.0",
     "npm": "^5.8.0",
     "osc": "^2.2.0",
+    "requirejs": "^2.3.6",
+    "socket.io": "^2.1.1",
     "utf-8-validate": "^4.0.1",
     "video.js": "^7.0.5",
     "watch": "^1.0.2",

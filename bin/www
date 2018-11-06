@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
+
 /**
  * Module dependencies.
  */
 
 let app = require('../app');
 let debug = require('debug')('moveon:server');
-let config = require('../src/config/default');
+let config = require('../src/config/configServer');
 let http = require('http');
 let babel = require('babel-core/register');
 
@@ -19,29 +20,31 @@ var util = require('util');
 
 var javascripts = require('./javascripts');
 var server = require('./server');
+var logger = require('../src/server/ServerLogger');
+
+
 var cwd = process.cwd();
-
-
-
 
 /**
  * Get port from environment and store in Express.
  */
 var port = config.portServer;
+
+
 //var port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
-
 /**
  * Create HTTP server.
  */
-
 var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, function () {
+  console.log('listening on *:' +port);
+});
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -290,5 +293,35 @@ switch (command) {
 }
 
 /* --------------------------------------------------------------------------
+Create the web socket enabling communication with clients
  * -------------------------------------------------------------------------- */
+
+/**
+ * Create a logger for the application
+ * @type {ServerLogger}
+ */
+
+const ServerLogger = require('../src/server/ServerLogger');
+
+// Instantiate User:
+var serverLogger = new ServerLogger();
+
+
+const io = require('socket.io')(server);
+io.on('connection',  (socket)=> {
+  console.log('New user connected : '+ socket.id);
+  socket.username = "anon";
+  
+  socket.on('change_username', (data) =>{
+    socket.username = data.username;
+    console.log("Socket changing username to : " + socket.username)
+  });
+  
+  socket.on('log_command', function (command){
+    //socket.command = data.username;
+    serverLogger.log(socket.username,command);
+  });
+  
+ 
+});
 

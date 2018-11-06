@@ -25,8 +25,7 @@ var currentValueKnob = VALUE_KNOB_MIN;
 var videoDuration = "1:47";
 
 
-knobMin.style.left = (  currentValueKnob + rangeSliderTrack.offsetLeft) + "px" ;
-
+knobMin.style.left = (currentValueKnob + rangeSliderTrack.offsetLeft) + "px";
 
 
 
@@ -34,15 +33,17 @@ knobMin.style.left = (  currentValueKnob + rangeSliderTrack.offsetLeft) + "px" ;
 /*---- Creation de ma propre bar de commande de lecture pour la vidéo ----- */
 // Event controller for the play/pause button
 playButton.addEventListener("touchstart", function(e) {
-   e.preventDefault();
-   event.preventDefault();
+  e.preventDefault();
+  event.preventDefault();
   kill('mousedown');
-  console.log("appel l36 playPausecallback videoController" );
+  //console.log("appel l36 playPausecallback videoController" );
   playPausecallback(e);
-},{passive: true});
+}, {
+  passive: true
+});
 //Click on the video trigger play and pause
 video.addEventListener("touchend", function(e) {
-  console.log("appel l42 playPausecallback videoCOntroller");
+  //console.log("appel l42 playPausecallback videoCOntroller");
   playPausecallback(e);
 });
 muteButton.addEventListener("touchend", function(e) {
@@ -50,23 +51,23 @@ muteButton.addEventListener("touchend", function(e) {
 });
 rangeSliderWrapper.addEventListener("touchend", function(e) {
   //play();
-  console.log("appel l50 playPausecallback video Controller");
+  //console.log("appel l50 playPausecallback video Controller");
   playPausecallback();
 });
 
 //Mouse event controller
 playButton.addEventListener("mousedown", function(e) {
   
-  console.log("appel playPause function playButton.addEventListener(mousedown in l56 videocontroller") ;
+  //console.log("appel playPause function playButton.addEventListener(mousedown in l56 videocontroller") ;
   playPausecallback(e);
   e.preventDefault();
- // event.preventDefault();
+  // event.preventDefault();
 });
 muteButton.addEventListener("mousedown", function(e) {
   muteButtonCallback();
 });
 video.addEventListener("mousedown", function(e) {
-  console.log("appel playPause function video.addEventListener(mousedown in l62 videocontroller") ;
+  //console.log("appel playPause function video.addEventListener(mousedown in l62 videocontroller") ;
   playPausecallback(e);
 });
 
@@ -80,10 +81,10 @@ videoSlider.addEventListener("change", function(e) {
 // Update the seek bar as the video plays
 video.addEventListener("timeupdate", function() {
   // Update the slider value
-  if(!video.paused){
+  if (!video.paused) {
     currentValueKnob = (((NUMBER_OF_TICK / video.duration) * video.currentTime) + rangeSliderTrack.offsetLeft);
     // knobMin.style.left = currentValueKnob-(KNOB_WIDTH/2)+ "px" ;
-    knobMin.style.left = currentValueKnob-(KNOB_WIDTH/2)+ "px" ;
+    knobMin.style.left = currentValueKnob - (KNOB_WIDTH / 2) + "px";
   }
   //videoSlider.value = (NUMBER_OF_TICK / video.duration) * video.currentTime;
   updateTimerVideo();
@@ -92,40 +93,40 @@ video.addEventListener("timeupdate", function() {
 
 
 //Function to update the knob
-var updateKnobAndVideoWrapper = function(e){
-  if(e.type === "mouseup" || e.type === "mousedown" || e.type === "mousemove" ||  e.type === "[object MouseEvent]" ){
+var updateKnobAndVideoWrapper = function(e) {
+  if (e.type === "mouseup" || e.type === "mousedown" || e.type === "mousemove" || e.type === "[object MouseEvent]") {
     updateKnobAndVideoComputer(e);
   } else {
     updateKnobAndVideo(e);
   }
- // video.play();
+  // video.play();
 };
 
 
 //Update knob on a tablet
-var  updateKnobAndVideo = function(event){
-//  var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft+rangeSliderTrack.offsetLeft + dividCommandeVideo.offsetLeft;
-  var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft  ;//-   ;
+var updateKnobAndVideo = function(event) {
+  //  var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft+rangeSliderTrack.offsetLeft + dividCommandeVideo.offsetLeft;
+  var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft; //-   ;
   //console.log("aa :  " +  body );
   
-  video.currentTime = Math.round(((( event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length-1].pageX )-(offsetLeftSlider))*video.duration)/NUMBER_OF_TICK) ;
+  video.currentTime = Math.round((((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length - 1].pageX) - (offsetLeftSlider)) * video.duration) / NUMBER_OF_TICK);
   //Update know position
-  knobMin.style.left = ((( (event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length-1].pageX))-offsetLeftSlider ) )+ "px" ;
-  if(segmentFeedback.displayed){
-    if(video.currentTime > segmentFeedback.endDurationVideo){
+  knobMin.style.left = ((((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length - 1].pageX)) - offsetLeftSlider)) + "px";
+  if (segmentFeedback.displayed) {
+    if (video.currentTime > segmentFeedback.endDurationVideo) {
       feedbackOnSliderVideo(false);
     }
   }
 };
 
 //Update knob on a laptop
-var updateKnobAndVideoComputer = function(e){
+var updateKnobAndVideoComputer = function(e) {
   //take into account offset on the left of the scroll bar (body scroll and centering the wrapper)
-  var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft - body.scrollLeft;//- window.scrollLeft  ;
+  var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft - body.scrollLeft; //- window.scrollLeft  ;
   currentValueKnob = ((e.pageX - offsetLeftSlider) * video.duration) / NUMBER_OF_TICK;
-  if(currentValueKnob < video.duration && currentValueKnob >=0 ) {
+  if (currentValueKnob < video.duration && currentValueKnob >= 0) {
     video.currentTime = ((e.pageX - offsetLeftSlider) * video.duration) / NUMBER_OF_TICK;
-    knobMin.style.left = e.pageX -  (offsetLeftSlider +  WIDTH_MID_KNOB_MIN/2 ) + "px";
+    knobMin.style.left = e.pageX - (offsetLeftSlider + WIDTH_MID_KNOB_MIN / 2) + "px";
     if (segmentFeedback.displayed) {
       if (video.currentTime > segmentFeedback.endDurationVideo) {
         feedbackOnSliderVideo(false);
@@ -134,29 +135,28 @@ var updateKnobAndVideoComputer = function(e){
   }
 };
 
-function feedbackOnSliderVideo(onOff){
+function feedbackOnSliderVideo(onOff) {
   segmentFeedback.endPosition = parseInt(segmentFeedback.startPostion) + parseInt(segmentFeedback.width);
-  var sliderToV = sliderToVideo( segmentFeedback.startPostion, segmentFeedback.endPosition);
+  var sliderToV = sliderToVideo(segmentFeedback.startPostion, segmentFeedback.endPosition);
   segmentFeedback.startDurationVideo = sliderToV.startDuration;
   segmentFeedback.endDurationVideo = sliderToV.endDuration;
   segmentFeedback.displayed = onOff;
-  if(onOff){
+  if (onOff) {
     //segmentFeedback.divGraphicalObject.style.marginLeft = segmentFeedback.startPostion;
     //minus 2 because we need to get 2 frame before the segment
-    segmentFeedback.divGraphicalObject.style.marginLeft = parseInt(segmentFeedback.startPostion) - 7 +"px";//  segmentFeedback.startPostion;
+    segmentFeedback.divGraphicalObject.style.marginLeft = parseInt(segmentFeedback.startPostion) - 7 + "px"; //  segmentFeedback.startPostion;
     segmentFeedback.divGraphicalObject.style.visibility = "visible";
-    segmentFeedback.divGraphicalObject.style.width =  segmentFeedback.width;
+    segmentFeedback.divGraphicalObject.style.width = segmentFeedback.width;
   } else {
     segmentFeedback.divGraphicalObject.style.visibility = "hidden";
   }
 }
 
 
-function updateTimerVideo(){
-  let minutes = Math.floor(video.currentTime  / 60);
-  let seconds =  Math.floor(video.currentTime - minutes * 60);
-  if(seconds<10)
-    seconds = "0"+seconds;
-  timerVideo.innerHTML = minutes+":"+seconds+"/"+ videoDuration;
+function updateTimerVideo() {
+  let minutes = Math.floor(video.currentTime / 60);
+  let seconds = Math.floor(video.currentTime - minutes * 60);
+  if (seconds < 10)
+    seconds = "0" + seconds;
+  timerVideo.innerHTML = minutes + ":" + seconds + "/" + videoDuration;
 }
-

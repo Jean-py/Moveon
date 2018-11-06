@@ -202,11 +202,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     updateInfo : updateInfo
   };
   
-  function deleteCard() {
-    feedbackOnSliderVideo(false);
-    iDiv.remove();
-    deleted = true
-  }
   
   function createBtnDelete(e){
     e.preventDefault();
@@ -219,32 +214,19 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     buttonDelete.style.width = "100px";
     divInfoCard.appendChild(buttonDelete);
     buttonDelete.addEventListener('mouseup',function(e){
-      deleteCard();
+      
+      //TODO
+      cardManager.execute(new DeleteCardCommand(cardObject));
+      deleteCard(cardObject);
     });
   
     buttonDelete.addEventListener('touchend',function(e){
       deleteCard();
     });
   }
-  
-  
-  
   return cardObject;
 }
 
-
-  function createUniqueId(){
-    var date = new Date();
-    var components = [
-      date.getMonth(),
-      date.getDate(),
-      date.getHours(),
-      date.getMinutes(),
-      date.getSeconds(),
-      date.getMilliseconds()
-    ];
-    return components.join("");
-  }
 
 
   

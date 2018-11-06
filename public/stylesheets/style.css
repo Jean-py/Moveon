@@ -64,6 +64,10 @@ body {
  -webkit-user-select: none;
  -ms-user-select: none;*/
 }
+
+
+
+
 .pageTitle{
   font-family: "../fonts/Optima.ttc";
  /* user-select: none;
@@ -150,7 +154,11 @@ body {
     background-color: blanchedalmond;
 }
 
+.userName{
+    font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
+    color: white;
 
+}
 
 
 /*Don't remove these line, mandatory for the tablet UI*/

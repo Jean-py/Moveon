@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
-let config = require('../config/default');
+let config = require('../config/configServer');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

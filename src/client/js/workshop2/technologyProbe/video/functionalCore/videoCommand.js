@@ -80,7 +80,7 @@ var muteButtonCallback = function(e){
 };
 
 var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
-  console.log("function  - repetPartOfVideo");
+  //console.log("function  - repetPartOfVideo");
   isPlayingCard = true;
   video.playbackRate = speedRate;
   video.currentTime = start;
@@ -92,7 +92,7 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
         if (video.currentTime > end) {
           repet--;
           video.currentTime = start;
-            console.log("function  - repetPartOfVideo [play part] l87 videoCommand");
+            //console.log("function  - repetPartOfVideo [play part] l87 videoCommand");
             play();
         }
       } else {
@@ -113,7 +113,7 @@ function clearAllTimer() {
 
 
 var play = function () {
-  console.log("appel a play");
+  //console.log("appel a play");
  /* var playPromise = document.getElementById('videoEAT').play();
 // In browsers that don’t yet support this functionality,
 // playPromise won’t be defined.
@@ -169,15 +169,14 @@ var play = function () {
 };
 
 var pause = function () {
-  console.log("appel a pause");
+  //console.log("appel a pause");
   video.pause();
   playButton.src='/media/workshop2/videoCommand/playButton.png';
 };
 
 var playPausecallback = function(e){
-  console.log("callback play-pause, e : " + e);
-  if(e != null && e != "undefined"){
-  
+  //console.log("callback play-pause, e : " + e);
+  if(e != null && e !== undefined){
     e.preventDefault();
   }
   //event.preventDefault();

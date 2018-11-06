@@ -5,7 +5,7 @@ let Myo = require('myo');
 let osc = require('osc');
 let lfo = require('waves-lfo/node');
 let SG = require('ml-savitzky-golay');
-var config = require('../config/default');
+var config = require('../config/configServer');
 
 
 /*Adress for sending data to MAX*/

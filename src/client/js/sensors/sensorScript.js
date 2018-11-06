@@ -6,7 +6,7 @@ import * as config from '../../config/default';*/
 var lfo = require( 'waves-lfo/client');
 var Myo = require( './myo');
 var SG = require('ml-savitzky-golay');
-var config = require( '../../../config/default');
+var config = require( '../../../config/configServer');
 
 //Gravity constant
 const g = 9.81;
