@@ -1,4 +1,5 @@
-
+var logger = new Logger();
+logger.connect();
 
 function kill(type){
   window.document.body.addEventListener(type, function(e){

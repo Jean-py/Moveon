@@ -28,14 +28,10 @@ function sendCommand(){
 
 function logCommand(socket_name,command){
 //log the command into a file
-  let file_path = "./src/server/log_txt/log:"+socket_name;
+  let file_path = "./src/server/log_session_client/log:"+socket_name;
   console.log(command);
-  console.log("AAAAAAAA");
   console.log(fs.existsSync(file_path)  );
   console.log(file_path);
-  
-  
-  
   if (fs.existsSync(file_path) ) {
       console.log('the file '+file_path+'  exists');
       //We supress the last line because it's the caracter ]
@@ -43,7 +39,6 @@ function logCommand(socket_name,command){
     //console.log('/public/images/flags/' + imgfile + ".png");
   } else {
     createJSONlog(file_path, command);
-   
   }
   
  
@@ -67,7 +62,8 @@ function addJSONtoLog(file_path,command) {
   var lines2nuke = 1;
   var stream = fs.createWriteStream(file_path,{'flags': 'a'});
   stream.once('open', function(fd) {
-    //We supress the last line because it's the caracter ]
+    //We supress the last line because it's the caracter ], then concatenate the command and add ] again.
+    //The  ] is used to create a proper json file that can be parsed without more actions
     rll.read(filename, lines2nuke).then((lines) => {
       var to_vanquish = lines.length;
       fs.stat(filename, (err, stats) => {

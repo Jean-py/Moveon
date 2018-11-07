@@ -27,9 +27,6 @@ var videoDuration = "1:47";
 
 knobMin.style.left = (currentValueKnob + rangeSliderTrack.offsetLeft) + "px";
 
-
-
-
 /*---- Creation de ma propre bar de commande de lecture pour la vidéo ----- */
 // Event controller for the play/pause button
 playButton.addEventListener("touchstart", function(e) {

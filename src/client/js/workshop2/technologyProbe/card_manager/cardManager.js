@@ -1,22 +1,16 @@
 var numberOfCard = 0;
 var arrayCard = [];
-var arrayCardDeleted = [];
-var current = 0;
+//var arrayCardDeleted = [];
 var commands = [];
-var logger = new Logger();
-logger.connect();
+
 
 var CardManager = function() {
-  //Here we have the command pattern, see : https://www.dofactory.com/javascript/command-design-pattern
- /* function action(command) {
-    var name = command.execute.toString().substr(9, 3);
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  }*/
+  //I implemented a command pattern, see : https://www.dofactory.com/javascript/command-design-pattern
   return {
     //execute a command
     execute: function(command) {
       command.execute(command.startP, command.endP);
-      //We log the command into the server
+      //We send the command to the server (the server log it into a file, see ./src/server/ServerLogger)
       logger.sendAndLogCommand(command);
       //and we save the command created
       commands.push(command);
@@ -28,15 +22,12 @@ var CardManager = function() {
     undo: function() {
       var command = commands.pop();
       command.undo();
-      //log.add("Undo " + action(command) + ": " + command.value);
-      //log.show();
     },
     
   }
 };
 
 /**** Functional core of the card manager (create a cart, delete a card and save card) *****/
-
 /**
  * This class manag all the cards created. This is the segment history.
  * @type {HTMLElement | null}

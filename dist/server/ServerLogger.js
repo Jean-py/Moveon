@@ -28,7 +28,7 @@ function sendCommand() {}
 
 function logCommand(socket_name, command) {
   //log the command into a file
-  var file_path = "./src/server/log_txt/log:" + socket_name;
+  var file_path = "./src/server/log_session_client/log:" + socket_name;
   console.log(command);
   console.log("AAAAAAAA");
   console.log(fs.existsSync(file_path));

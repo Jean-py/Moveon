@@ -11,30 +11,45 @@ var rangeSliderTrack = document.getElementById("rangeSliderTrack");
 var divCardBoard = document.getElementById("divCardBoard");
 var body = document.getElementsByTagName("BODY")[0];
 
-var videoIsPlaying = 1;
-
 //Je ne saiss pas comment rendre cette ligne automatique pour l'isntant car la taille est en auto...
 var WIDTH_RANGE_SLIDER_TRACK = "960px";
 //Donc pour l'instant je reste comme ça
-//console.log("AAA : " + window.getComputedStyle(video).getPropertyValue('width'));
 rangeSliderTrack.style.width = WIDTH_RANGE_SLIDER_TRACK;
 
+var commands = [];
+/**
+ * Access point to the functional core, you can just execute command from here
+ * @return {{execute: execute}}
+ * @constructor
+ */
+var VideoFunctionalCoreManager = function() {
+  //This is a command pattern, see : https://www.dofactory.com/javascript/command-design-pattern
+  return {
+    //execute a command
+    execute: function(command) {
+      command.execute();
+      //We send the command to the server (the server log it into a file, see ./src/server/ServerLogger)
+      logger.sendAndLogCommand(command);
+      //and we save the command created
+      commands.push(command);
+      console.log("executing : ");
+      console.log(command);
+    }
+    //We did not implemented undo redo for this manager, because undo play pause is kind of useless right?
+    
+  }
+};
 
-//var volumeBar = document.getElementById("volume-bar");
 
 //On load of the page
-
-
-
 window.addEventListener("load",function() {
   //The size of the controller is the same than the size of the video
-  
   
   setTimeout(function(){
     // This hides the address bar:
     video.load();
     window.scrollTo(0, 1);
-  
+    
     var ua = navigator.userAgent.toLowerCase();
     if (ua.indexOf('safari') != -1) {
       if (ua.indexOf('chrome') > -1) {
@@ -50,20 +65,25 @@ window.addEventListener("load",function() {
   }, 0);
 });
 window.addEventListener("scroll", function(event) {
-   topWindow = this.scrollY;
-   leftWindow =this.scrollX;
+  topWindow = this.scrollY;
+  leftWindow =this.scrollX;
   // console.log("window scroll : " + leftWindow);
 }, false);
 
 body.addEventListener("scroll", function(event) {
-   topBody =  this.scrollY;
-   leftBody = this.scrollX;
-   //console.log(" body : "+  body.scrollLeft  );
+  topBody =  this.scrollY;
+  leftBody = this.scrollX;
+  //console.log(" body : "+  body.scrollLeft  );
 }, false);
 
 
+/**
+ * Callback used *
+ *-------------------------------
+ * DO NOT USE THESE FUNCTIONS WITHOUT A COMMAND!
+ * The following code should be considered as private
+/*------------------------------- */
 
-/*Callback used*/
 var muteButtonCallback = function(e){
   if (video.muted === false) {
     // Mute the video
@@ -113,26 +133,6 @@ function clearAllTimer() {
 
 
 var play = function () {
-  //console.log("appel a play");
- /* var playPromise = document.getElementById('videoEAT').play();
-// In browsers that don’t yet support this functionality,
-// playPromise won’t be defined.
-  if (playPromise !== undefined) {
-    playPromise.then(function() {
-      document.querySelector('videoEAT').play();
-      playButton.src = '/media/workshop2/videoCommand/pauseButton.png';
-      // Automatic playback started!
-    }).catch(function(error) {
-      // Automatic playback failed.
-      // Show a UI element to let the user manually start playback.
-      console.log("error : " + error);
-    });
-  }*/
-  
- /* if (video.paused || video.ended ) {
-    video.play();
-    playButton.src = '/media/workshop2/videoCommand/pauseButton.png';
-  }*/
   setTimeout(function () {
     var playPromise = video.play();
     if (playPromise !== undefined) {
@@ -147,25 +147,6 @@ var play = function () {
     
     }
   },250);
- /* var playPromise = video.play();
-
-// In browsers that don’t yet support this functionality,
-// playPromise won’t be defined.
-  if (playPromise !== undefined) {
-    playPromise.then(function() {
-      // Automatic playback started!
-      video.play();
-      playButton.src = '/media/workshop2/videoCommand/pauseButton.png';
-    }).catch(function(error) {
-      console.log(e);
-      video.load();
-      //video.pause();
-      // Automatic playback failed.
-      // Show a UI element to let the user manually start playback.
-    });
-  }*/
-  
- // video.play();
 };
 
 var pause = function () {
@@ -179,32 +160,9 @@ var playPausecallback = function(e){
   if(e != null && e !== undefined){
     e.preventDefault();
   }
-  //event.preventDefault();
-  /*videoIsPlaying += 1;
-  videoIsPlaying %= 2;
-  console.log("videoIsPlaying :  " + videoIsPlaying);
-  
-  if (!videoIsPlaying) {
-    console.log("play");
-    
-    play();
-    //setTimeout(play(),250);
-  } else {
-    console.log("pause");
-    
-    pause();
-    //setTimeout(pause(),250);
-  }
-  */
-  
   if (video.paused || video.ended ) {
       play();
-      //setTimeout(play(),250);
     } else {
-  
       pause();
-      //setTimeout(pause(),250);
     }
-  
-  
 };
