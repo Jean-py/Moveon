@@ -30,7 +30,7 @@ var Logger = function() {
 
 
 function connectToServer() {
-   socket = io.connect('http://localhost:'+port);
+   socket = io.connect("http://localhost:"+port);
 };
 
 
@@ -38,7 +38,7 @@ function connectToServer() {
 function send_username(username) {
   if(socket != null){
     console.log("username val : " + username);
-    socket.emit('change_username', {username : username})
+    socket.emit("change_username", {username : username})
   }
 };
 
@@ -49,7 +49,8 @@ function log_command(commandParam){
     //
     objCopy.execute = objCopy.execute.name;
     objCopy.undo = objCopy.undo.name;
-    socket.emit('log_command', objCopy);
+    socket.emit("log_command", objCopy);
+   
     return true;
     
   }

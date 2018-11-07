@@ -32,6 +32,7 @@
     "myo": "^3.0.0",
     "npm": "^5.8.0",
     "osc": "^2.2.0",
+    "read-last-lines": "^1.6.0",
     "requirejs": "^2.3.6",
     "socket.io": "^2.1.1",
     "utf-8-validate": "^4.0.1",
