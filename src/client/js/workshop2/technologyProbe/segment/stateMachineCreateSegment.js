@@ -7,9 +7,6 @@ var knobMax = document.getElementById("range-slider_handle-max");
 var wrapperRangerSlider = document.getElementById("range-slider-wrapper");
 
 
-//Card manager to create and delete card
-var cardManager = new CardManager();
-
 //Option for the longpress and the speed of the video
 var speedrate = 1;
 var longPressDelay = "500";
@@ -172,6 +169,8 @@ var ranglerSliderTrackClick = function(e) {
     case StateDrag.IDLE:
     {
       state = StateDrag.DOWN;
+      console.log("ici");
+      clearAllTimer();
       updateKnobAndVideoWrapper(e);
       feedbackOnSliderVideo(false);
       break;
@@ -246,8 +245,8 @@ function stopCreateSegment(e, stopSegment) {
     var startP = parseInt(knobMax.style.left, 10) + WIDTH_MID_KNOB_MIN / 2;
     var endP = parseInt(knobMin.style.left, 10) + WIDTH_MID_KNOB_MIN / 2;
     
-    cardManager.execute(new CreateNewCardCommand(startP, endP));
-    // createNewCard(parseInt(knobMax.style.left,10)+ WIDTH_MID_KNOB_MIN/2   , parseInt(knobMin.style.left,10)+ WIDTH_MID_KNOB_MIN/2 );
+   // cardManager.execute(new CreateNewCardCommand(startP, endP));
+    createNewCard(startP,endP );
     play();
   }, 700);
 }
@@ -312,8 +311,6 @@ var knobMinMove = function(e) {
       break;
     }
   }
-  video.playbackRate = 1;
-  //event.preventDefault();
 };
 
 
@@ -334,7 +331,7 @@ var knobMinClick = function(e) {
 
 
 var rangeSliderTrackEndCallback = function(e) {
-  //console.log("touchend");
+  //console.log("");
   //console.log("mouse up , etat : " + state);
   // console.log("rangeSliderTrackEndCallback : " + state);
   switch (state) {

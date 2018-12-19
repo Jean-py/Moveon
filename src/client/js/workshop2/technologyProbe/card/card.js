@@ -1,6 +1,8 @@
-//TODO faire une classe carte
+var cardFunctionalCore = new CardFunctionalCore();
 
 function Card (startDurationParam,endDurationParam,startPositionParam,endPositionParam, cardInfo) {
+  var description = '';
+  
   //Propriété de style
   let width = '6%';
   let height = '6%';
@@ -9,7 +11,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   var startP = startPositionParam;
   var endP = endPositionParam;
 //Valeur pour jouer la carte
-  let description = '';
   let speed = 1;
   let repetitionNumber = 1;
 //div used
@@ -46,7 +47,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   initGUI();
   initStyle();
   initListener();
-  playCard();
+  playCard(iDiv, startDurationParam);
   
   //console.log(cardInfo.deleted);
   function updateInfo(){
@@ -64,50 +65,48 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   
   function initListener() {
-    
     textSegment.addEventListener('long-press', function(e){
       createBtnDelete(e);
     });
-    
     divSegment.addEventListener('long-press', function(e){
       createBtnDelete(e);
     });
-  
+   
     
-    
-    selectSpeed.addEventListener("onchange", function(){
-      console.log("change speed : " +     selectSpeed.options[selectSpeed.selectedIndex].value);
-      
+    /*selectSpeed.addEventListener("focus", function(){
+      cardFunctionalCore.execute(new LogCardSpeedCommand(cardObject));
+    });*/
+    selectSpeed.addEventListener("blur", function(){
+      let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
+      cardFunctionalCore.execute(new CardSpeedCommand(cardObject,speedRate));
     });
     
-    /*divSegment.addEventListener("touchstart", function () {
-      // console.log('iDiv.id : ');
-      //kill('mousedown');
-     // kill('mouseup');
+    /*selectNbRepet.addEventListener("focus", function(){
+      cardFunctionalCore.execute(new LogCardNbRepetCommand(cardObject));
+    });*/
+    selectNbRepet.addEventListener("blur", function(){
       let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
-      let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
-      
-      repetitionNumber = nbRepet;
-      speed = speedRate;
-      
-      segmentFeedback.startPostion = iDiv.style.left  ;
-      segmentFeedback.width = width;
-      feedbackOnSliderVideo(true);
-      repetPartOfVideo(startDuration, endDuration, nbRepet, speedRate);
-    }, false);*/
-  
+      console.log("nbrepet in card :" +  nbRepet);
+      cardFunctionalCore.execute(new CardNbRepetCommand(cardObject, nbRepet));
+    });
+    
+    
+    
     divSegment.addEventListener("mousedown", function () {
       // console.log('iDiv.id : ');
       let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
-    
-      repetitionNumber = nbRepet;
-      speed = speedRate;
-    
+  
+      //modifyCardSpeed(cardObject);
+      //modifyCardNbRepet(cardObject);
+      
       segmentFeedback.startPostion = iDiv.style.left  ;
       segmentFeedback.width = width;
       feedbackOnSliderVideo(true);
-      repetPartOfVideo(startDuration, endDuration, nbRepet, speedRate);
+  
+      //console.log("play back rate : " , startDuration, endDuration, nbRepet, speedRate);
+      videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, nbRepet, speedRate));
+      //repetPartOfVideo(startDuration, endDuration, nbRepet, speedRate);
     }, false);
   }
   
@@ -128,11 +127,14 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     divInfoCard = document.createElement('div');
     divInfoCard.className = "infoCard";
     
-    textSegment.addEventListener("keyup", function () {
-      description = textSegment.value;
+    /*textSegment.addEventListener("focus", function () {
+      cardFunctionalCore.execute(new ModifyCardDescriptionCommand(cardObject,textSegment.value));
+    });*/
+    textSegment.addEventListener("blur", function () {
+      cardFunctionalCore.execute(new ModifyCardDescriptionCommand(cardObject,textSegment.value));
     });
-   
-    //Peupler les listes déroulantes
+    
+      //Peupler les listes déroulantes
     for (let i = 0; i < 20; i += 1) {
       selectSpeed.add(new Option(i / 10 + ""));
     }
@@ -154,10 +156,10 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     divInfoCard.appendChild(selectSpeed);
     divInfoCard.appendChild(imgRepet);
     divInfoCard.appendChild(selectNbRepet);
+    divInfoCard.appendChild(textSegment);
     iDiv.appendChild(divSegment);
-    iDiv.appendChild(textSegment);
     iDiv.appendChild(divInfoCard);
-  
+    
     //If the card have been deleted, the color is red, otherwise blue.
     if (cardInfo) {
       if(cardInfo.deleted){
@@ -177,20 +179,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     imgRepet.src = "/media/workshop2/card/repet.png";
   }
   
-  
-  
-  
-  function playCard(){
-    video.currentTime = startDurationParam;
-    segmentFeedback.width = iDiv.style.width;
-    segmentFeedback.startPostion = iDiv.style.left;
-    feedbackOnSliderVideo(true);
-  }
-  
-  
-  
-  
-  
   var cardObject = {
     width:  width,
     startP : startP,
@@ -199,6 +187,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     speed : speed,
     repetitionNumber : repetitionNumber,
     iDiv:iDiv,
+    id:iDiv.id,
     updateInfo : updateInfo
   };
   
@@ -214,20 +203,22 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     buttonDelete.style.width = "100px";
     divInfoCard.appendChild(buttonDelete);
     buttonDelete.addEventListener('mouseup',function(e){
-      
       //TODO
       cardManager.execute(new DeleteCardCommand(cardObject));
-      deleteCard(cardObject);
+      //deleteCard(cardObject);
     });
-  
+    
     buttonDelete.addEventListener('touchend',function(e){
-      deleteCard();
+      cardManager.execute(new DeleteCardCommand(cardObject));
+      //deleteCard();
     });
   }
+  
+  
+  
+  
   return cardObject;
 }
 
 
 
-  
-  

@@ -1,8 +1,9 @@
 .infoCard{
     position : absolute;
     margin-top : 25px;
-    width: 150px;
+    width: 400px;
     height: 10px;
+    left: -30px;
 
 }
 
@@ -11,8 +12,8 @@
 #divCardBoard {
    /* overflow-y: auto;
     overflow-x: hidden;*/
-    overflow: hidden;
-    width: 200%;
+   /* overflow: hidden;*/
+    height: 800px;
 }
 
 
@@ -21,11 +22,14 @@
     margin-top: 100px;
     margin-right: 3px;
     margin-bottom: 50px ;
+    /*display: block;*/
+    display: flex;
+
 }
 
 
 .segment{
-    position: absolute;
+    /*position: absolute;*/
     height: 18px;
    /*border-radius: 10px;*/
     background-color: #213F8D;
@@ -40,7 +44,6 @@
 
 .cardBoard{
     margin-top: 2%;
-    overflow: paged-y;
 }
 
 
@@ -52,7 +55,7 @@
 
   /*  border-radius: 10px;*/
     border-style: solid;
-    position: relative;
+   /* position: absolute;*/
     width: 200px;
     font-weight: bold;
     margin-left: 7px;

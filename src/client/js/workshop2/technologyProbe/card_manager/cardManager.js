@@ -9,17 +9,28 @@ var CardManager = function() {
   return {
     //execute a command
     execute: function(command) {
-      command.execute(command.startP, command.endP);
+      //if this is a delete command then card is an argument of the command
+      /*switch (command.execute.name){
+        case "deleteCard" : {
+          command.execute(command.card);
+          break;
+        }
+        case "createNewCard" :
+          command.execute(command.startP, command.endP);
+          break;
+        default:
+          command.execute();
+          break;
+      }*/
+     command.execute();
       //We send the command to the server (the server log it into a file, see ./src/server/ServerLogger)
       logger.sendAndLogCommand(command);
       //and we save the command created
       commands.push(command);
-      console.log("executing : ");
-      console.log(command);
     },
-    //TODO will not work in the current state
     //Undo a command
     undo: function() {
+      //TODO
       var command = commands.pop();
       command.undo();
     },
@@ -57,28 +68,60 @@ loadLogBtn.addEventListener("mouseup",function (e) {
 
 
 
-function loadJSON(callback) {
-  var request = new XMLHttpRequest();
-  request.open("GET", "/public/logW2Json/ipad1.json", false);
-  request.send(null);
-  //console.log("request : "+ request.responseText);
-  var my_JSON_object = JSON.parse(request.responseText);
-  
-  console.log(my_JSON_object);
-  
-  for( let k = 0 ; k <  my_JSON_object.length ; k ++){
-    addingNewCardsFromJSon(my_JSON_object[k]);
-  }
-}/*
+/*
 
 
 
 //dragElement(document.getElementById("card1"));
 
-/*
+
 addCard.addEventListener('click', function (e) {
   createNewCard();
 });*/
+
+
+function cleanSegmentHistory(){
+  console.log("TESTING");
+  clearAllTimer();
+  arrayCard.forEach(function(e){
+      deleteCardUI(e);
+  });
+}
+
+function loadJSON() {
+  var files = document.getElementById('logFileLoad').files;
+  if (!files.length) {
+    alert('Please select a file!');
+    return;
+  }
+  
+  var file = files[0];
+  var start =  0;
+  var stop = file.size - 1;
+  
+  var reader = new FileReader();
+  var test = 0;
+  
+  // If we use onloadend, we need to check the readyState.
+  reader.onloadend = function(evt) {
+    if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+      var test = evt.target.result;
+      console.log('Read bytes: ', start + 1, ' - ', stop + 1,
+          ' of ', file.size, ' byte file' );
+      console.log(test);
+      var my_JSON_object = JSON.parse(test);
+  
+      console.log(my_JSON_object);
+  
+      for (let k = 0; k < my_JSON_object.length; k++) {
+        addingNewCardsFromJSon(my_JSON_object[k]);
+      }
+  
+    }
+  };
+  var blob = file.slice(start, stop + 1);
+  reader.readAsBinaryString(blob);
+}
 
 //Add a card from a json file
 function addingNewCardsFromJSon(cardInfo) {
@@ -95,10 +138,10 @@ function addingNewCardsFromJSon(cardInfo) {
   numberOfCard++;
   if (!cardInfo.deleted) {
     var card = Card(result.startDuration, result.endDuration, cardInfo.startP, cardInfo.endP, cardInfo);
+    cardManager.execute(new CreateNewCardCommand(card));
     arrayCard.push(card);
-    document.getElementById('divCardBoard').insertBefore(card.iDiv, document.getElementById('divCardBoard').firstChild);
+    //document.getElementById('divCardBoard').insertBefore(card.iDiv, document.getElementById('divCardBoard').firstChild);
   }
-  
 }
 
 /**
@@ -107,7 +150,6 @@ function addingNewCardsFromJSon(cardInfo) {
  */
 function createNewCard(startP, endP) {
   //console.log("TEST / : " + startP + " " + endP);
-  
   if (startP > endP) {
     let transit = startP;
     startP = endP;
@@ -115,30 +157,17 @@ function createNewCard(startP, endP) {
   }
   let result = sliderToVideo(startP, endP);
   numberOfCard++;
-  //console.log("wrapperCommandAndRange : " + window.getComputedStyle(wrapperCommandAndRange).);
   var card = new Card(result.startDuration, result.endDuration, startP, endP);
-  addingNewCard(card);
-  
-  /****** Test purposes - For testing actions on cards *****/
-  /*var card = new Card(result.startDuration, result.endDuration,startP,endP);
-  addingNewCard(card);
-  let result2 = sliderToVideo(10,20);
-  var card =  new Card(result2.startDuration,result2.endDuration,10,20);
-  addingNewCard(card);
-  let result3 = sliderToVideo(15,25);
-  var card =  new Card(result3.startDuration,result3.endDuration,15,25);
-  addingNewCard(card);*/
-  /****** Test purposes - For testing actions on cards *****/
-  
+  cardManager.execute(new CreateNewCardCommand(card));
   return card;
 }
 
-function addingNewCard(card) {
-  arrayCard.push(card);
-  document.getElementById('divCardBoard').insertBefore(card.iDiv, document.getElementById('divCardBoard').firstChild);
+function addingNewCard() {
+  arrayCard.push(this.card);
+  document.getElementById('divCardBoard').insertBefore(this.card.iDiv, document.getElementById('divCardBoard').firstChild);
 }
 
-function deleteCard(card) {
+function deleteCard() {
   //Supprime la carte de la liste de carte
   /*for (let i = 0; i < arrayCard.length   ; i++) {
     if(arrayCard[i]  === card){
@@ -157,8 +186,9 @@ function deleteCard(card) {
   arrayCard.forEach(function(element) {
     console.log(element);
   });*/
-  deleteCardUI(card);
-  return card;
+  clearAllTimer();
+  deleteCardUI(this.card);
+  return this.card;
 }
 
 function deleteCardUI(card) {

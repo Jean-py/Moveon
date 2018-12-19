@@ -1,3 +1,9 @@
+
+//Card manager to create and delete card
+var cardManager = new CardManager();
+
+
+// log helper
 var logger = new Logger();
 logger.connect();
 

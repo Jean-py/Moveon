@@ -1,4 +1,7 @@
+.myplayer{
+    overflow-y: hidden;
 
+}
 
 /*CSS commande pour video et range slider*/
 
@@ -63,7 +66,7 @@
 .range-slider-wrapper{
     position:relative;
     top:10px;
-    padding:5px;
+    padding-top:5px;
     width: auto;
 }
 
@@ -76,9 +79,10 @@
 .range-slider .range-slider_handle-max {
     visibility: hidden;
     background: #8d1f3b;
-    height: 23px;
+    height: 33px;
     width: 3px;
-    top: 25px;
+    border-radius: 0%;
+
     position: absolute;
 }
 
@@ -87,6 +91,8 @@
     visibility: hidden;
     width: 10px;
     transition: 0.1s ease-out;
+    margin-top: -20px;
+    height: 20px;
 }
 
 
@@ -107,17 +113,20 @@
 
 .wrapperCommandAndRange{
    /* display: inline;*/
+    height: auto;
+    width: auto;
 }
 
 
 
 .commandeVideo
 {
-    margin-top: 2%;
+   margin-top: 2%;
 }
 
 .myplayer{
     margin-top: 2%;
+
 }
 .videoEAT{
     float: left;

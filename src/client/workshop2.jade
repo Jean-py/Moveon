@@ -1,14 +1,49 @@
 extends layout
 block content
-    .userName#username
+
+
+
+    #oNote4.note
+        .succes
+            a.cFerme(href='#fermer', title='Fermer la fenêtre') X
+            #noteMessage  Hello!
+    .containerMenu#containerMenu
+        .bar1#bar1id
+        .bar2#bar2id
+        .bar3#bar3id
+    .sidebar#sidebarMenu(style='visibility: hidden; ')
+
+
+                a#btnLoadFile(href='#load_file')
+                            i.fa.fa-fw.fa-wrench
+                            |  Load file
+
+
+
+                a(href='#load_file')
+                            i.fa.fa-fw.fa-wrench
+                            |  Save file
+                a#btnCleanAll(href='#clean')
+                    i.fa.fa-fw.fa-wrench
+                    |  Clean all
+
+                p Participant:
+                textarea#idSession
+                input#logFileLoad(type="file",style='visibility: hidden; ')
+               // button.buttonLoad
+
+
+
+
+
+
+    //.menuOption#menuOptionId(style='visibility: hidden; ') Session username :
+    //.userName#username
         p My username is :
-
-
     .myplayer#idVideo
-            video(width='auto', height='auto',id="videoEAT" ,  preload='none', src='/media/workshop2/EAT3.webm', type='video/mp4')
+            video(id="videoEAT" ,  preload='none', src='/media/workshop2/EAT3.webm', type='video/mp4')
                 //source(src='/media/workshop2/EAT3.mp4', type='video/mp4') autobuffer = 'auto'
                 | Votre navigateur ne supporte pas la balise vidéo.
-
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
         .range-slider#videoSlider
             .range-slider-wrapper#range-slider-wrapper
@@ -20,7 +55,7 @@ block content
                 img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
                 p#timerVideo 0:00/1:47
                 img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
-        .cardBoard#divCardBoard(style='overflow-y:hidden;overflow-x:hidden')
+        .cardBoard#divCardBoard
 
 
 
@@ -48,17 +83,24 @@ block content
     script.
     link(href="stylesheets/videoControl.css" rel="stylesheet")
     link(href="stylesheets/card.css" rel="stylesheet")
+    link(href="stylesheets/menu.css" rel="stylesheet")
     //To create socket, usefull for the log of command
     script(src="/src/client/js/workshop2/technologyProbe/utilities/socket.io.js")
+    //script(src="/socket.io/socket.io.js")
+    //script(src="./src/client/js/workshop2/technologyProbe/utilities/socket.io.js")
+
+
     //This script is usefull to log what happend during a session. Every command used are logged
     //and saved on the server side
     script(src="/src/client/js/workshop2/technologyProbe/application_logger/logger.js")
+
+    //The manager of every card, get a trace of which card have been created and when. This is my segment history
+    script(src="/src/client/js/workshop2/technologyProbe/card_manager/cardManager.js")
 
     //This script is and utility script with usefull function such as createuniqueId or timestap
     script(src="/src/client/js/workshop2/technologyProbe/utilities/utilities.js")
 
     //The manager of every card, get a trace of which card have been created and when. This is my segment history
-    script(src="/src/client/js/workshop2/technologyProbe/card_manager/cardManager.js")
     script(src="/src/client/js/workshop2/technologyProbe/card_manager/command/CommandCardManager.js")
     script(src="/src/client/js/workshop2/technologyProbe/card_manager/command/AbstractManageCardCommand.js")
 
@@ -68,10 +110,18 @@ block content
     script(src="/src/client/js/workshop2/technologyProbe/utilities/long-press.min.js")
     // Functional core of action made on video (play, pause, etc). This class handle  commands
     script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/videoFunctionalCore.js")
+    script(src="/src/client/js/workshop2/technologyProbe/video/command/AbstractVideoControllerCommand.js")
+    script(src="/src/client/js/workshop2/technologyProbe/video/command/CommandVideoController.js")
     //The controller of the video, send command to the functionalCOre
     script(src="/src/client/js/workshop2/technologyProbe/video/controller/videoController.js")
-    //The class Card. Gui and controller.
+    //The class Card (Gui and controller).
+    script(src="/src/client/js/workshop2/technologyProbe/card/CardFunctionalCore.js")
     script(src="/src/client/js/workshop2/technologyProbe/card/card.js")
+    script(src="/src/client/js/workshop2/technologyProbe/card/command/AbstractCardCommand.js")
+    script(src="/src/client/js/workshop2/technologyProbe/card/command/CommandCard.js")
+
+    //The class that handle the menu option
+    script(src="/src/client/js/workshop2/technologyProbe/menu/menu.js")
 
 
     //script(src="/src/client/js/workshop2/technologyProbe/card/controller/controllerCard.js")

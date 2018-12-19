@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var connect = require('connect');
+
+
 //const favicon = require('express-favicon');
 require('babel-core/register');
 
@@ -23,8 +26,11 @@ app.use('/src', express.static('src/'));
 // Set Jade as the default template engine
 app.set('view engine', 'jade');
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(favicon(__dirname + '/public/media/favicon.ico'));

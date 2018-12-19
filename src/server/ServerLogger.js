@@ -3,10 +3,12 @@
 var fs = require('fs');
 var rll = require('read-last-lines');
 
+var user_name = null;
 
 
 export class ServerLogger{
   constructor() {
+  
     return {
       //Send a command to the client
       send: function(command) {
@@ -19,16 +21,23 @@ export class ServerLogger{
     }
   };
   
-  
 }
+
 
 function sendCommand(){
 
 }
 
+
+function setUsernameLog(user_name){
+  this.username = user_name;
+}
+
+
 function logCommand(socket_name,command){
 //log the command into a file
   let file_path = "./src/server/log_session_client/log:"+socket_name;
+  console.log(command.e);
   console.log(command);
   console.log(fs.existsSync(file_path)  );
   console.log(file_path);
@@ -40,9 +49,21 @@ function logCommand(socket_name,command){
   } else {
     createJSONlog(file_path, command);
   }
-  
- 
 }
+
+
+/*
+
+JSON.stringify(evt, function(k, v) {
+  if (v instanceof Node) {
+    return 'Node';
+  }
+  if (v instanceof Window) {
+    return 'Window';
+  }
+  return v;
+}, ' ');
+*/
 
 function createJSONlog(file_path, command) {
   var stream = fs.createWriteStream(file_path,{'flags': 'w'});

@@ -1,0 +1,110 @@
+.containerMenu {
+    position : absolute;
+    cursor: pointer;
+    overflow: auto;
+    width: 40px;
+    height: 40px;
+    display: block;
+    left: 2%;
+    top:3%;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #989898;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* Style the sidebar - fixed full height */
+.sidebar {
+    position: absolute;
+    height: 300px;
+    width: 160px;
+    z-index: 1;
+    background-color: #000000;
+    overflow-x: hidden;
+    transition: 0.4s;
+    top: 8%;
+    left: 2%;
+    float:right;
+    text-align: -webkit-center;
+
+}
+
+/* Style sidebar links */
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    text-align: left
+}
+
+/* Style sidebar links */
+.sidebar p {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    text-align: left;
+    line-height: 0em;
+}
+
+
+/* Style sidebar links */
+.sidebar textarea {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    background: black;
+    width: 100px;
+    outline: none;
+    resize: none;
+    height: 25px;
+}
+
+
+
+
+
+
+.appearMenuSidebar  {
+    transform: translate(-300px,0);
+}
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+/* Style the main content */
+.main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+}
+
+/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+@media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+}
