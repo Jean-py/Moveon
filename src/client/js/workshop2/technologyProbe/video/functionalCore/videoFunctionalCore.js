@@ -1,4 +1,13 @@
+/**
+ * Deprecated if using the youtube api instead of loaded video
+ * @type {HTMLElement | null}
+ */
+
+
 var video = document.getElementById("videoEAT");
+
+
+
 var wrapperVideo = document.getElementById("idVideo");
 var speedrate = 1;
 // Buttons
@@ -17,6 +26,8 @@ var WIDTH_RANGE_SLIDER_TRACK = "960px";
 rangeSliderTrack.style.width = WIDTH_RANGE_SLIDER_TRACK;
 
 var isPlayingCard = false;
+
+
 
 var commands = [];
 /**
@@ -60,7 +71,6 @@ var VideoFunctionalCoreManager = function() {
 //On load of the page
 window.addEventListener("load",function() {
   //The size of the controller is the same than the size of the video
-  
   setTimeout(function(){
     // This hides the address bar:
     video.load();
@@ -223,7 +233,7 @@ var updateKnobAndVideoComputer = function(e) {
 };
 
 function feedbackOnSliderVideo(onOff) {
-  segmentFeedback.endPosition = parseInt(segmentFeedback.startPostion) + parseInt(segmentFeedback.width);
+  segmentFeedback.endPosition = parseInt(segmentFeedback.startPostion) + parseInt(segmentFeedback.width) ;
   var sliderToV = sliderToVideo(segmentFeedback.startPostion, segmentFeedback.endPosition);
   segmentFeedback.startDurationVideo = sliderToV.startDuration;
   segmentFeedback.endDurationVideo = sliderToV.endDuration;
@@ -231,9 +241,9 @@ function feedbackOnSliderVideo(onOff) {
   if (onOff) {
     //segmentFeedback.divGraphicalObject.style.marginLeft = segmentFeedback.startPostion;
     //minus 2 because we need to get 2 frame before the segment
-    segmentFeedback.divGraphicalObject.style.marginLeft = parseInt(segmentFeedback.startPostion) - 7 + "px"; //  segmentFeedback.startPostion;
+    segmentFeedback.divGraphicalObject.style.marginLeft = parseInt(segmentFeedback.startPostion) - 100 + "px"; //  segmentFeedback.startPostion;
     segmentFeedback.divGraphicalObject.style.visibility = "visible";
-    segmentFeedback.divGraphicalObject.style.width = segmentFeedback.width;
+    segmentFeedback.divGraphicalObject.style.width = segmentFeedback.width ;
   } else {
     segmentFeedback.divGraphicalObject.style.visibility = "hidden";
   }

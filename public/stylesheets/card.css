@@ -1,20 +1,15 @@
+@import url("resetCss.css");
+
+
 .infoCard{
     position : absolute;
     margin-top : 25px;
     width: 400px;
     height: 10px;
     left: -30px;
-
 }
 
 
-
-#divCardBoard {
-   /* overflow-y: auto;
-    overflow-x: hidden;*/
-   /* overflow: hidden;*/
-    height: 800px;
-}
 
 
 .segmentWrapper {
@@ -86,7 +81,11 @@
     background: black;
 }
 
-
-
+#divCardBoard {
+    /* overflow-y: auto;
+     overflow-x: hidden;*/
+    /* overflow: hidden;*/
+    height: 800px;
+}
 
 

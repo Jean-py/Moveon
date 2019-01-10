@@ -124,16 +124,7 @@ var Card = function () {
   //lance le segment lors d'un click sur la carte, a l'endroit, nb de repet et vitesse
   function initListenerCard(iDiv, startD, endD) {
 
-    card.addEventListener("mousedown", function (e) {
-      console.log("repetitionNumber : " + repetitionNumber);
-
-      var nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
-      var speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
-
-      repetitionNumber = nbRepet;
-      speed = speedRate;
-      repetPartOfVideo(startD, endD, nbRepet, speedRate);
-    }, false);
+    card.addEventListener("mousedown", , false);
 
     iDiv.addEventListener("mousedown", function () {
 

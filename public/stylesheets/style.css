@@ -1,6 +1,4 @@
-
-html{
-}
+@import url("resetCss.css");
 
 body {
     font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;

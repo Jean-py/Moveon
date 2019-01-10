@@ -24,7 +24,7 @@ var WIDTH_MID_KNOB_MIN = 15;
 var currentValueKnob = VALUE_KNOB_MIN;
 var videoDuration = "1:47";
 
-var videoFunctionalCoreManager = new VideoFunctionalCoreManager();
+var videoFunctionalCoreManager = new VideoFunctionalCoreManagerYT();
 
 knobMin.style.left = (currentValueKnob + rangeSliderTrack.offsetLeft) + "px";
 
@@ -41,6 +41,8 @@ playButton.addEventListener("touchstart", function(e) {
 }, {
   passive: true
 });
+
+
 //Click on the video trigger play and pause
 video.addEventListener("touchend", function(e) {
   //console.log("appel l42 playPausecallback videoCOntroller");
@@ -48,6 +50,7 @@ video.addEventListener("touchend", function(e) {
   e.preventDefault();
   playPausecallback(e);
 });
+
 muteButton.addEventListener("touchend", function(e) {
   e.preventDefault();
   videoFunctionalCoreManager.execute(new MuteButtonCommand());
@@ -61,11 +64,10 @@ rangeSliderWrapper.addEventListener("touchend", function(e) {
 
 //Mouse event controller
 playButton.addEventListener("mousedown", function(e) {
-  
+  console.log("click playButton");
   //console.log("appel playPause function playButton.addEventListener(mousedown in l56 videocontroller") ;
   //videoFunctionalCoreManager.execute(new PlayPauseCommand());
   playPausecallback(e);
-  
   // event.preventDefault();
 });
 muteButton.addEventListener("mousedown", function(e) {

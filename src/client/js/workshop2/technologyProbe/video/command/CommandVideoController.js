@@ -21,7 +21,7 @@ var CommandMuteButton = function (execute,undo) {
 
 //TODO Should I add the div of the card clicked?
 var CommandRepetPartOfVideo = function (execute,undo, start,end, numberOfRepetition,speedRate) {
-  this.execute = execute
+  this.execute = execute;
   this.undo = null;
   this.start = start;
   this.end = end;

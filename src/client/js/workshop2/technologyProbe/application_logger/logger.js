@@ -19,7 +19,6 @@ var Logger = function() {
       log_command(command);
     },
     getSocket_name_session: function () {
-      console.log("test : " + socket_name_session);
       return getSocket_name_session();
     },
   }

@@ -1,6 +1,16 @@
 extends layout
 block content
 
+    // The Modal
+    #myModal.modal
+        // Modal content
+        .modal-content
+            span.close ×
+            textarea.URLchooser#yt_chooser(placeholder="Youtube URL")
+            a#acceptYtVideo
+
+
+
 
 
     #oNote4.note
@@ -12,26 +22,25 @@ block content
         .bar2#bar2id
         .bar3#bar3id
     .sidebar#sidebarMenu(style='visibility: hidden; ')
-
-
                 a#btnLoadFile(href='#load_file')
-                            i.fa.fa-fw.fa-wrench
-                            |  Load file
-
-
-
+                    i.fa.fa-fw.fa-wrench
+                    |  Load file
                 a(href='#load_file')
-                            i.fa.fa-fw.fa-wrench
-                            |  Save file
+                    i.fa.fa-fw.fa-wrench
+                    |  Save file
                 a#btnCleanAll(href='#clean')
                     i.fa.fa-fw.fa-wrench
                     |  Clean all
+                a#loadYtVideo(href='#load')
+                    i.fa.fa-fw.fa-wrench
+                    |  Load video
 
-                p Participant:
+                a
+                    i.fa.fa-fw.fa-wrench
+                    |  Participant:
                 textarea#idSession
-                input#logFileLoad(type="file",style='visibility: hidden; ')
+                input#logFileLoad(type="file", style='visibility: hidden; ')
                // button.buttonLoad
-
 
 
 
@@ -41,21 +50,23 @@ block content
     //.userName#username
         p My username is :
     .myplayer#idVideo
-            video(id="videoEAT" ,  preload='none', src='/media/workshop2/EAT3.webm', type='video/mp4')
+            video(id="videoEAT" ,  preload='none', src='/media/workshop2/EAT3.wrebm', type='video/mp4'  )
                 //source(src='/media/workshop2/EAT3.mp4', type='video/mp4') autobuffer = 'auto'
-                | Votre navigateur ne supporte pas la balise vidéo.
+                | Votre navigateur ne supporte pas la balise vidéo. //style='visibility: hidden; '
+    .myplayer
+        .divyoutube#yt_player
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
-        .range-slider#videoSlider
-            .range-slider-wrapper#range-slider-wrapper
-                .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
-                .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
-                .range-slider_track#rangeSliderTrack
-                .range-slider_track#segmentMinMax
-            .commandeVideo#idCommandeVideo
-                img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
-                p#timerVideo 0:00/1:47
-                img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
-        .cardBoard#divCardBoard
+            .range-slider#videoSlider
+                .range-slider-wrapper#range-slider-wrapper
+                    .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
+                    .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
+                    .range-slider_track#rangeSliderTrack
+                    .range-slider_track#segmentMinMax
+                .commandeVideo#idCommandeVideo
+                    img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
+                    p#timerVideo 0:00/1:47
+                    img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
+            .cardBoard#divCardBoard
 
 
 
@@ -71,8 +82,8 @@ block content
                  input#myRange.slider(type='range', min='0.1', max='20')
     //.div
         input.btn#btnSaveLog(type='button', value='Save log')
-        input.btn#btnLoadLog(type='button', value='Load log')
-        h5#textSaveLog
+        //input.btn#btnLoadLog(type='button', value='Load log')
+        //h5#textSaveLog
 
 
 
@@ -109,7 +120,10 @@ block content
     //the long press lib used to handle long-press event, see : https://github.com/john-doherty/long-press
     script(src="/src/client/js/workshop2/technologyProbe/utilities/long-press.min.js")
     // Functional core of action made on video (play, pause, etc). This class handle  commands
-    script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/videoFunctionalCore.js")
+
+    //script to import a youtube video
+    script(src="/src/client/js/workshop2/technologyProbe/yt_import/youtube_wrapper.js")
+    //script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/videoFunctionalCore.js")
     script(src="/src/client/js/workshop2/technologyProbe/video/command/AbstractVideoControllerCommand.js")
     script(src="/src/client/js/workshop2/technologyProbe/video/command/CommandVideoController.js")
     //The controller of the video, send command to the functionalCOre
@@ -122,6 +136,9 @@ block content
 
     //The class that handle the menu option
     script(src="/src/client/js/workshop2/technologyProbe/menu/menu.js")
+
+
+
 
 
     //script(src="/src/client/js/workshop2/technologyProbe/card/controller/controllerCard.js")

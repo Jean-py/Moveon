@@ -11,6 +11,8 @@ var wrapperRangerSlider = document.getElementById("range-slider-wrapper");
 var speedrate = 1;
 var longPressDelay = "500";
 
+var WIDTH_KNOB = 30;
+
 //State for the creation of segment by Drag and drop
 let StateDrag = {
   IDLE: 0,
@@ -223,8 +225,17 @@ var knobMinUpCallback = function(e) {
 
 //Create Segment
 function startCreateSegment(e, startSegment) {
+  console.log("BBB " + knobMin.style.left);
   
-  knobMax.style.left = knobMin.style.left;
+  if(parseInt(knobMin.style.left,10) < 0){
+    knobMax.style.left = WIDTH_KNOB/2 + "px";
+  } else {
+    knobMax.style.left = knobMin.style.left;
+  }
+  //else if(parseInt(knobMin.style.left,10) > WIDTH_RANGE_SLIDER_TRACK - WIDTH_KNOB +1) {
+  //
+  //     }
+ 
   knobMax.style.position = "absolute";
   //state  StateDrag.LONGPRESS;
   knobMin.style.background = '#213F8D';
@@ -243,9 +254,12 @@ function stopCreateSegment(e, stopSegment) {
     
     
     var startP = parseInt(knobMax.style.left, 10) + WIDTH_MID_KNOB_MIN / 2;
-    var endP = parseInt(knobMin.style.left, 10) + WIDTH_MID_KNOB_MIN / 2;
+    var endP = parseInt(knobMin.style.left, 10) + WIDTH_KNOB;
     
    // cardManager.execute(new CreateNewCardCommand(startP, endP));
+    if(startP < 0){
+      startP = 0;
+    }
     createNewCard(startP,endP );
     play();
   }, 700);
@@ -256,28 +270,30 @@ function stopCreateSegment(e, stopSegment) {
 
 //Update the feedback of the creation of a segment after a long press
 function updateSegmentFeedback() {
+  
+  
+  
   if (parseInt(knobMin.style.left, 10) > parseInt(knobMax.style.left, 10)) {
-    segmentFeedback.divGraphicalObject.style.marginLeft = knobMax.style.left;
+    segmentFeedback.divGraphicalObject.style.marginLeft = knobMax.style.left   ;
   } else {
-    segmentFeedback.divGraphicalObject.style.marginLeft = knobMin.style.left;
+    segmentFeedback.divGraphicalObject.style.marginLeft = knobMin.style.left    ;
   }
   segmentFeedback.divGraphicalObject.style.visibility = "visible";
-  segmentFeedback.divGraphicalObject.style.width = Math.abs((parseInt(knobMin.style.left, 10) - parseInt(knobMax.style.left, 10))) + "px";
+  segmentFeedback.divGraphicalObject.style.width = Math.abs((parseInt(knobMin.style.left, 10) - parseInt(knobMax.style.left, 10)   )) + WIDTH_KNOB + "px";
+  
+  
+  if(parseInt(segmentFeedback.divGraphicalObject.style.marginLeft, 10) < 0 ){
+    //the case if the knob is in the extremun of the loader.
+    segmentFeedback.divGraphicalObject.style.marginLeft = " 0 px" ;
+  }
+  
 }
 
-//start position on the slider and end position on the slider
-function sliderToVideo(startP, endP) {
-  var startDuration = Math.round(((startP * video.duration) / NUMBER_OF_TICK));
-  var endDuration = Math.round(((endP * video.duration) / NUMBER_OF_TICK));
-  return {
-    startDuration: startDuration,
-    endDuration: endDuration
-  };
-}
+
+/*
 
 //start position on the slider and end position on the slider
 function videoToSlider(startDurationVideo, endDurationVideo) {
-  
   var startP = Math.round(((startDurationVideo * NUMBER_OF_TICK) / video.duration) - rangeSliderTrack.offsetLeft);
   var endP = Math.round(((endDurationVideo * NUMBER_OF_TICK) / video.duration) - rangeSliderTrack.offsetLeft);
   return {
@@ -285,6 +301,7 @@ function videoToSlider(startDurationVideo, endDurationVideo) {
     endPosition: endP
   };
 }
+*/
 
 var knobMinMove = function(e) {
   switch (state) {
@@ -385,26 +402,3 @@ var knobMinMouseLeaveCallback = function(e) {
   //event.preventDefault();
 };
 
-
-
-/*
-function feedbackOnSliderVideo(onOff){
-  //segmentFeedback.width = iDiv.style.width;
-  //segmentFeedback.startPostion = iDiv.style.left;
-  //segmentFeedback.width = parseInt(width);
-  //segmentFeedback.startPostion= parseInt(startP);
-  segmentFeedback.endPosition = parseInt(segmentFeedback.startPostion) + parseInt(segmentFeedback.width);
-  var sliderToV = sliderToVideo( segmentFeedback.startPostion, segmentFeedback.endPosition);
-  segmentFeedback.startDurationVideo = sliderToV.startDuration;
-  segmentFeedback.endDurationVideo = sliderToV.endDuration;
-  segmentFeedback.displayed = onOff;
-  if(onOff){
-    //segmentFeedback.divGraphicalObject.style.marginLeft = segmentFeedback.startPostion;
-    segmentFeedback.divGraphicalObject.style.marginLeft = parseInt(segmentFeedback.startPostion) - 5 +"px";//  segmentFeedback.startPostion;
-    segmentFeedback.divGraphicalObject.style.visibility = "visible";
-    segmentFeedback.divGraphicalObject.style.width =  segmentFeedback.width;
-  } else {
-    segmentFeedback.divGraphicalObject.style.visibility = "hidden";
-  }
-};
-*/

@@ -93,13 +93,12 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     
     
     divSegment.addEventListener("mousedown", function () {
-      // console.log('iDiv.id : ');
+      console.log('Click on a card !! ');
       let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
   
       //modifyCardSpeed(cardObject);
       //modifyCardNbRepet(cardObject);
-      
       segmentFeedback.startPostion = iDiv.style.left  ;
       segmentFeedback.width = width;
       feedbackOnSliderVideo(true);
