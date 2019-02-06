@@ -43,18 +43,19 @@ block content
                // button.buttonLoad
 
 
-
-
-
     //.menuOption#menuOptionId(style='visibility: hidden; ') Session username :
     //.userName#username
         p My username is :
     .myplayer#idVideo
-            video(id="videoEAT" ,  preload='none', src='/media/workshop2/EAT3.wrebm', type='video/mp4'  )
+            video(id="videoEAT" ,  preload='none', src='/media/workshop2/EAT3.mp4', type='video/mp4'  )
                 //source(src='/media/workshop2/EAT3.mp4', type='video/mp4') autobuffer = 'auto'
                 | Votre navigateur ne supporte pas la balise vidéo. //style='visibility: hidden; '
-    .myplayer
+            //button
+                |  Mirroring
+
+    //.myplayer
         .divyoutube#yt_player
+
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
             .range-slider#videoSlider
                 .range-slider-wrapper#range-slider-wrapper
@@ -67,6 +68,9 @@ block content
                     p#timerVideo 0:00/1:47
                     img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
             .cardBoard#divCardBoard
+                //img.imageVideoControl#playSegmentHistory(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px; margin-top : 75px')
+
+
 
 
 
@@ -97,6 +101,9 @@ block content
     link(href="stylesheets/menu.css" rel="stylesheet")
     //To create socket, usefull for the log of command
     script(src="/src/client/js/workshop2/technologyProbe/utilities/socket.io.js")
+    script(src="/src/client/js/workshop2/technologyProbe/utilities/jscolor.js")
+
+
     //script(src="/socket.io/socket.io.js")
     //script(src="./src/client/js/workshop2/technologyProbe/utilities/socket.io.js")
 
@@ -122,10 +129,14 @@ block content
     // Functional core of action made on video (play, pause, etc). This class handle  commands
 
     //script to import a youtube video
-    script(src="/src/client/js/workshop2/technologyProbe/yt_import/youtube_wrapper.js")
-    //script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/videoFunctionalCore.js")
+    script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/yt_import/youtube_wrapper.js")
+    script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/mp4/videoFunctionalCore.js")
     script(src="/src/client/js/workshop2/technologyProbe/video/command/AbstractVideoControllerCommand.js")
     script(src="/src/client/js/workshop2/technologyProbe/video/command/CommandVideoController.js")
+    //interface to control both MP4 and youtube video the same way
+    script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/interfaceVideo.js")
+
+
     //The controller of the video, send command to the functionalCOre
     script(src="/src/client/js/workshop2/technologyProbe/video/controller/videoController.js")
     //The class Card (Gui and controller).

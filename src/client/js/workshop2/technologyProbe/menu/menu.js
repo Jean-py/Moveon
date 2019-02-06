@@ -14,7 +14,6 @@ var btnLoadYtVideo = document.getElementById('loadYtVideo');
 
 var menuExtended = 0;
 
-
 //menuOption.innerHTML = "Username : " + logger.getSocket_name_session();
 
 idSession.value = logger.getSocket_name_session();

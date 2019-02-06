@@ -24,7 +24,6 @@ var WIDTH_MID_KNOB_MIN = 15;
 var currentValueKnob = VALUE_KNOB_MIN;
 var videoDuration = "1:47";
 
-var videoFunctionalCoreManager = new VideoFunctionalCoreManagerYT();
 
 knobMin.style.left = (currentValueKnob + rangeSliderTrack.offsetLeft) + "px";
 
@@ -48,7 +47,7 @@ video.addEventListener("touchend", function(e) {
   //console.log("appel l42 playPausecallback videoCOntroller");
   //videoFunctionalCoreManager.execute(new PlayPauseCommand());
   e.preventDefault();
-  playPausecallback(e);
+  Player.playPausecallback(e);
 });
 
 muteButton.addEventListener("touchend", function(e) {
@@ -58,16 +57,15 @@ muteButton.addEventListener("touchend", function(e) {
 });
 rangeSliderWrapper.addEventListener("touchend", function(e) {
   e.preventDefault();
-  playPausecallback(e);
+  Player.playPausecallback(e);
   
 });
 
 //Mouse event controller
 playButton.addEventListener("mousedown", function(e) {
-  console.log("click playButton");
   //console.log("appel playPause function playButton.addEventListener(mousedown in l56 videocontroller") ;
   //videoFunctionalCoreManager.execute(new PlayPauseCommand());
-  playPausecallback(e);
+  Player.playPausecallback();
   // event.preventDefault();
 });
 muteButton.addEventListener("mousedown", function(e) {
@@ -77,14 +75,14 @@ muteButton.addEventListener("mousedown", function(e) {
 video.addEventListener("mousedown", function(e) {
   //console.log("appel playPause function video.addEventListener(mousedown in l62 videocontroller") ;
   //videoFunctionalCoreManager.execute(new PlayPauseCommand());
-  playPausecallback(e);
+  Player.playPausecallback;
   
 });
 
 
 // Event controller for the seek bar
 videoSlider.addEventListener("change", function(e) {
-  updateTimerVideo();
+  Player.updateTimerVideo();
 });
 
 
@@ -97,7 +95,7 @@ video.addEventListener("timeupdate", function() {
     knobMin.style.left = currentValueKnob - (KNOB_WIDTH / 2) + "px";
   }
   //videoSlider.value = (NUMBER_OF_TICK / video.duration) * video.currentTime;
-  updateTimerVideo();
+  Player.updateTimerVideo();
 }, false);
 
 

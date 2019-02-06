@@ -133,7 +133,7 @@ function addingNewCardsFromJSon(cardInfo) {
   if (cardInfo.startP < 0) {
     cardInfo.startP = 0;
   }
-  let result = sliderToVideo(cardInfo.startP, cardInfo.endP);
+  let result = Player.sliderToVideo(cardInfo.startP, cardInfo.endP);
   console.log(result);
   numberOfCard++;
   if (!cardInfo.deleted) {
@@ -155,8 +155,14 @@ function createNewCard(startP, endP) {
     startP = endP;
     endP = transit;
   }
-  let result = sliderToVideo(startP, endP);
+  let result = Player.sliderToVideo(startP, endP);
   numberOfCard++;
+  
+  
+  
+  console.log("HELLLOO 1")
+  console.log(result);
+  
   var card = new Card(result.startDuration, result.endDuration, startP, endP);
   cardManager.execute(new CreateNewCardCommand(card));
   return card;
@@ -222,3 +228,6 @@ function download(content, fileName, contentType) {
   a.download = fileName;
   a.click();
 }
+
+
+

@@ -260,7 +260,9 @@ function stopCreateSegment(e, stopSegment) {
     if(startP < 0){
       startP = 0;
     }
-    createNewCard(startP,endP );
+
+    Player.createNewCard(startP,endP );
+    
     play();
   }, 700);
 }
@@ -275,11 +277,14 @@ function updateSegmentFeedback() {
   
   if (parseInt(knobMin.style.left, 10) > parseInt(knobMax.style.left, 10)) {
     segmentFeedback.divGraphicalObject.style.marginLeft = knobMax.style.left   ;
+    segmentFeedback.divGraphicalObject.style.width = Math.abs((parseInt(knobMin.style.left, 10) - parseInt(knobMax.style.left, 10)   )) + WIDTH_KNOB + "px";
+  
   } else {
     segmentFeedback.divGraphicalObject.style.marginLeft = knobMin.style.left    ;
+    segmentFeedback.divGraphicalObject.style.width = Math.abs((parseInt(knobMin.style.left, 10) - parseInt(knobMax.style.left, 10)   ))  + "px";
+  
   }
   segmentFeedback.divGraphicalObject.style.visibility = "visible";
-  segmentFeedback.divGraphicalObject.style.width = Math.abs((parseInt(knobMin.style.left, 10) - parseInt(knobMax.style.left, 10)   )) + WIDTH_KNOB + "px";
   
   
   if(parseInt(segmentFeedback.divGraphicalObject.style.marginLeft, 10) < 0 ){
@@ -372,7 +377,6 @@ var rangeSliderTrackEndCallback = function(e) {
       stopCreateSegment(e, video.currentTime);
       break;
     }
-    
   }
   //event.preventDefault();
 };

@@ -40,9 +40,6 @@ var VideoFunctionalCoreManager = function() {
   return {
     //execute a command
     execute: function(command) {
-      //console.log("executing : ");
-      //console.log(command);
-      
       switch (command.execute.name){
         case "repetPartOfVideo" : {
           command.execute(command.start,command.end,command.numberOfRepetition,command.speedRate);
@@ -63,7 +60,6 @@ var VideoFunctionalCoreManager = function() {
       commands.push(command);
     }
     //We did not implemented undo redo for this manager, because undo play pause is kind of useless right?
-    
   }
 };
 
@@ -181,6 +177,11 @@ var pause = function () {
   playButton.src='/media/workshop2/videoCommand/playButton.png';
 };
 
+var seekTo = function(startDurationParam){
+  console.log(startDurationParam);
+  video.currentTime = startDurationParam;
+};
+
 var playPausecallback = function(e){
   //console.log("callback play-pause, e : " + e);
   /*if(e != null && e !== undefined){
@@ -232,6 +233,27 @@ var updateKnobAndVideoComputer = function(e) {
   }
 };
 
+
+
+function feedbackOnSliderVideo(onOff) {
+  segmentFeedback.endPosition = parseInt(segmentFeedback.startPostion) + parseInt(segmentFeedback.width);
+  var sliderToV = sliderToVideo(segmentFeedback.startPostion, segmentFeedback.endPosition);
+  segmentFeedback.startDurationVideo = sliderToV.startDuration;
+  segmentFeedback.endDurationVideo = sliderToV.endDuration;
+  segmentFeedback.displayed = onOff;
+  if (onOff) {
+    //segmentFeedback.divGraphicalObject.style.marginLeft = segmentFeedback.startPostion;
+    //minus 2 because we need to get 2 frame before the segment
+    segmentFeedback.divGraphicalObject.style.marginLeft = parseInt(segmentFeedback.startPostion)  + "px"; //  segmentFeedback.startPostion;
+    segmentFeedback.divGraphicalObject.style.visibility = "visible";
+    segmentFeedback.divGraphicalObject.style.width = segmentFeedback.width;
+  } else {
+    segmentFeedback.divGraphicalObject.style.visibility = "hidden";
+  }
+}
+
+/*
+
 function feedbackOnSliderVideo(onOff) {
   segmentFeedback.endPosition = parseInt(segmentFeedback.startPostion) + parseInt(segmentFeedback.width) ;
   var sliderToV = sliderToVideo(segmentFeedback.startPostion, segmentFeedback.endPosition);
@@ -248,6 +270,7 @@ function feedbackOnSliderVideo(onOff) {
     segmentFeedback.divGraphicalObject.style.visibility = "hidden";
   }
 }
+*/
 
 
 function updateTimerVideo() {
@@ -257,3 +280,18 @@ function updateTimerVideo() {
     seconds = "0" + seconds;
   timerVideo.innerHTML = minutes + ":" + seconds + "/" + videoDuration;
 }
+
+//start position on the slider and end position on the slider
+function sliderToVideo(startP, endP) {
+  if(startP < 0 ){
+    startP = 0;
+  }
+  var startDuration = Math.round(((startP * video.duration) / NUMBER_OF_TICK));
+  var endDuration = Math.round(((endP * video.duration) / NUMBER_OF_TICK));
+  
+  return {
+    startDuration: startDuration,
+    endDuration: endDuration
+  };
+}
+
