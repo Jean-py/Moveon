@@ -157,10 +157,6 @@ function createNewCard(startP, endP) {
   }
   let result = Player.sliderToVideo(startP, endP);
   numberOfCard++;
-  
-  
-  
-  console.log("HELLLOO 1")
   console.log(result);
   
   var card = new Card(result.startDuration, result.endDuration, startP, endP);
@@ -201,32 +197,6 @@ function deleteCardUI(card) {
   feedbackOnSliderVideo(false);
   card.iDiv.remove();
   card.deleted = true
-}
-
-
-/*------ Export card in a JSON file  -------*/
-//TODO
-function exportCard() {
-  var arrayItemUpdated = [];
-  arrayCard.forEach(function(arrayItem) {
-    //arrayItem.updateInfo();
-    var item = arrayItem.updateInfo();
-    arrayItemUpdated.push(item);
-    // console.log(item);
-  });
-  var serializedArr = JSON.stringify([arrayItemUpdated, numberOfCard]);
-  console.log("*****  Serialisation of card complete : " + serializedArr);
-  download(serializedArr, 'jsonW2log-' + createUniqueId() + '.txt', 'text/plain');
-};
-
-function download(content, fileName, contentType) {
-  var a = document.createElement("a");
-  var file = new Blob([content], {
-    type: contentType
-  });
-  a.href = URL.createObjectURL(file);
-  a.download = fileName;
-  a.click();
 }
 
 

@@ -10,6 +10,8 @@ var btnLoadFile = document.getElementById("btnLoadFile");
 var inputFile = document.getElementById('logFileLoad');
 var btnCleanAll = document.getElementById('btnCleanAll');
 var btnLoadYtVideo = document.getElementById('loadYtVideo');
+var btnSaveSegments = document.getElementById('btnSaveSegments');
+
 
 
 var menuExtended = 0;
@@ -47,6 +49,7 @@ btnLoadYtVideo.addEventListener("mousedown", callbackLoadYtVideo);
 
 btnCleanAll.addEventListener("mousedown", callbackCleanSegmentHistory);
 
+btnSaveSegments.addEventListener("mousedown", callbackSaveFile)
 
 idSession.addEventListener("blur",setSessionName, {passive: true});
 function setSessionName(){
@@ -57,6 +60,17 @@ function setSessionName(){
 
 function callbackCleanSegmentHistory(){
   cardManager.execute(new CleanSegmentHistoryCommand());
+}
+
+function callbackSaveFile(){
+  console.log("saving log");
+  arrayCard.forEach(function (arrayItem) {
+    // arrayItem.updateInfo();
+    //arrayItem.
+  });
+  exportCard();
+  var notification_feedback = "File saved : " + idSession.value;
+  notificationFeedback(notification_feedback);
 }
 
 function callbackLoadYtVideo(){
@@ -71,7 +85,6 @@ function handleMenu(){
     sidebarMenu.style.visibility = 'hidden';     // Show
   } else {
     sidebarMenu.style.visibility = 'visible';      // Hide
-  
     menuExtended = 1;
   }
 }
@@ -95,16 +108,45 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 btnLoadYtVideo.onclick = function() {
   modal.style.display = "block";
-}
+};
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+};
+
+
+/*------ Export card in a JSON file  -------*/
+//TODO
+function exportCard() {
+  var arrayItemUpdated = [];
+  arrayCard.forEach(function(arrayItem) {
+    //arrayItem.updateInfo();
+    var item = arrayItem.updateInfo();
+    arrayItemUpdated.push(item);
+    // console.log(item);
+  });
+  var serializedArr = JSON.stringify([arrayItemUpdated, numberOfCard]);
+  console.log("*****  Serialisation of card complete : " + serializedArr);
+  download(serializedArr, 'jsonW2log-' + createUniqueId() + '.txt', 'text/plain');
+};
+
+function download(content, fileName, contentType) {
+  var a = document.createElement("a");
+  var file = new Blob([content], {
+    type: contentType
+  });
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  a.click();
 }
+
+
+

@@ -75,9 +75,11 @@ muteButton.addEventListener("mousedown", function(e) {
 video.addEventListener("mousedown", function(e) {
   //console.log("appel playPause function video.addEventListener(mousedown in l62 videocontroller") ;
   //videoFunctionalCoreManager.execute(new PlayPauseCommand());
-  Player.playPausecallback;
+  Player.playPausecallback();
   
 });
+
+
 
 
 // Event controller for the seek bar

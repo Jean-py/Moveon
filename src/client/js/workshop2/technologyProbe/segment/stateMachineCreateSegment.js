@@ -108,6 +108,8 @@ if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|I
     passive: true
   });
   
+  
+  
 }
 
 
