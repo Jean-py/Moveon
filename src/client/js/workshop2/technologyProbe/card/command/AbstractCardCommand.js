@@ -12,8 +12,8 @@ var PlayCardCommand = function (card) {
 
 
 
-var CardNbRepetCommand = function (card,nbRepet) {
-  return new CommandModifCardNbRepet(modifyCardNbRepet, null, card , nbRepet);
+var CardNbRepetCommand = function (card,repetitionNumber) {
+  return new CommandModifCardNbRepet(modifyCardNbRepet, null, card , repetitionNumber);
 };
 
 var CardSpeedCommand = function (card,speed) {

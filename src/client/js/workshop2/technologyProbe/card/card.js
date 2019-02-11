@@ -11,8 +11,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   var startP = startPositionParam;
   var endP = endPositionParam;
 //Valeur pour jouer la carte
-  let speed = 1;
-  let repetitionNumber = 1;
+  var speed = 1;
+  var repetitionNumber = 1;
 //div used
   let divInfoCard = null;
   //let selectSpeed=null;
@@ -21,7 +21,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   let imgSlow = null;
   
-  let textSegment = null;
+  var textSegment = null;
   let imgRepet = null;
   let divSegment = null;
   let startDuration = startDurationParam;
@@ -29,6 +29,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   let left ;
   
   var buttonDelete = null;
+  var cardObject;
   
   //cette div est la principale, celle qui contient fragment + bardFragment
   iDiv = document.createElement('div');
@@ -36,7 +37,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   iDiv.className = 'segmentWrapper';
   iDiv.style.left = startPositionParam + "px";
   
-  jscolor.installByClassName("jscolor");
   
   //Color picker
   var arrowDown = document.createElement('input');
@@ -79,15 +79,16 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   }
   //console.log(cardInfo.deleted);
   function updateInfo(){
-    var cardObject = {
-      width:  width,
-      startP : startP,
-      endP : endP,
-      description : description,
-      speed : speed,
-      deleted:deleted,
-      repetitionNumber : repetitionNumber
-    };
+//    console.log(description,speed,repetitionNumber);
+    cardObject.width = width;
+    cardObject.startP = startP;
+    cardObject.endP = endP;
+    cardObject.description = description;
+    cardObject.speed = speed;
+    cardObject.deleted = deleted;
+    cardObject.repetitionNumber = repetitionNumber;
+    cardObject.iDiv = iDiv;
+    cardObject.id = iDiv.id;
     return cardObject;
   }
   
@@ -96,41 +97,31 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     textSegment.addEventListener('long-press', function(e){
       createBtnDelete(e);
     });
-    //widget color picker
-    arrowDown.addEventListener("change", watchColorPicker, false);
-  
-  
     divSegment.addEventListener('long-press', function(e){
       createBtnDelete(e);
     });
-  
-    /*selectSpeed.addEventListener("focus", function(){
-      cardFunctionalCore.execute(new LogCardSpeedCommand(cardObject));
-    });*/
-    selectSpeed.addEventListener("blur", function(){
+    selectSpeed.addEventListener("blur", function(e){
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
+      speed = speedRate;
       cardFunctionalCore.execute(new CardSpeedCommand(cardObject,speedRate));
     });
-  
-  
-  
-    /*selectNbRepet.addEventListener("focus", function(){
-      cardFunctionalCore.execute(new LogCardNbRepetCommand(cardObject));
-    });*/
-    selectNbRepet.addEventListener("blur", function(){
-      let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
-      console.log("nbrepet in card :" +  nbRepet);
-      cardFunctionalCore.execute(new CardNbRepetCommand(cardObject, nbRepet));
+    selectNbRepet.addEventListener("blur", function(e){
+      repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
+      console.log("nbrepet in card :" +  repetitionNumber);
+      cardFunctionalCore.execute(new CardNbRepetCommand(cardObject, repetitionNumber));
     });
-    divSegment.addEventListener("mousedown", function () {
-      let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
+    divSegment.addEventListener("mousedown", function (e) {
+      repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
+      speed = speedRate;
       segmentFeedback.startPostion = iDiv.style.left  ;
       segmentFeedback.width = width;
+      description = textSegment.value;
       feedbackOnSliderVideo(true);
-      videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, nbRepet, speedRate));
+      videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, repetitionNumber, speedRate));
     }, false);
-  
+    //TODO widget color picker
+    arrowDown.addEventListener("change", watchColorPicker, false);
   }
   function initGUI() {
     textSegment = document.createElement('input');
@@ -154,8 +145,10 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       cardFunctionalCore.execute(new ModifyCardDescriptionCommand(cardObject,textSegment.value));
     });*/
     textSegment.addEventListener("blur", function () {
+      description = textSegment.value;
       cardFunctionalCore.execute(new ModifyCardDescriptionCommand(cardObject,textSegment.value));
     });
+    
     for (let i = 0; i < 20; i += 1) {
       selectSpeed.add(new Option(i / 10 + ""));
     }
@@ -166,19 +159,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
     selectNbRepet.selectedIndex = 1;
   
-    /*
-    selectNbRepet.addEventListener("onchange", function () {
-      
-      repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
-      console.log("selected : " + repetitionNumber);
-    });*/
-    
-  
-  
     //Div contenant les info du dessus (taille de div invariable)
-  
-    
-   
     divInfoCard.appendChild(imgSlow);
     divInfoCard.appendChild(selectSpeed);
     divInfoCard.appendChild(imgRepet);
@@ -211,17 +192,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     imgRepet.src = "/media/workshop2/card/repet.png";
   }
   
-  var cardObject = {
-    width:  width,
-    startP : startP,
-    endP : endP,
-    description : description,
-    speed : speed,
-    repetitionNumber : repetitionNumber,
-    iDiv:iDiv,
-    id:iDiv.id,
-    updateInfo : updateInfo
-  };
   
   
   function createBtnDelete(e){
@@ -246,8 +216,19 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     });
   }
   
+  cardObject = {
+    width:  width,
+    startP : startP,
+    endP : endP,
+    description : this.description,
+    speed :  this.speed,
+    repetitionNumber :  this.repetitionNumber,
+    iDiv:iDiv,
+    id:iDiv.id,
+    updateInfo : updateInfo
+  };
   
- 
+  
   return cardObject;
 }
 

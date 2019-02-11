@@ -34,9 +34,39 @@ var CardManager = function() {
       var command = commands.pop();
       command.undo();
     },
+    exportCard: function(){
+      /*------ Create a set of card from a JSON file -------*/
+        var arrayItemUpdated = [];
+      var listSegment = document.getElementsByClassName('segment');
+      //playCard(arrayItem.iDiv, arrayItem.startP);
+      console.log(listSegment);
+  
+      for (let item of listSegment) {
+        console.log(item.id);
+        triggerMouseEvent(item,'mousedown');
+      }
+     
+     // var item = arrayItem.updateInfo();
+     // triggerMouseEvent( a, "mousedown");
+        arrayCard.forEach(function(arrayItem) {
+          console.log(arrayItem);
+          var item = arrayItem.updateInfo();
+          arrayItemUpdated.push(item);
+          console.log(item);
+        });
+        var serializedArr = JSON.stringify(arrayItemUpdated);
+        console.log("*****  Serialisation of card complete : " + serializedArr);
+        download(serializedArr, 'jsonW2log-' + createUniqueId() + '.json', 'text/plain');
+    }
     
   }
 };
+
+function triggerMouseEvent (node, eventType) {
+  var clickEvent = document.createEvent ('MouseEvents');
+  clickEvent.initEvent (eventType, true, true);
+  node.dispatchEvent (clickEvent);
+}
 
 /**** Functional core of the card manager (create a cart, delete a card and save card) *****/
 /**
@@ -101,7 +131,6 @@ function loadJSON() {
   
   var reader = new FileReader();
   var test = 0;
-  
   // If we use onloadend, we need to check the readyState.
   reader.onloadend = function(evt) {
     if (evt.target.readyState == FileReader.DONE) { // DONE == 2
@@ -116,7 +145,6 @@ function loadJSON() {
       for (let k = 0; k < my_JSON_object.length; k++) {
         addingNewCardsFromJSon(my_JSON_object[k]);
       }
-  
     }
   };
   var blob = file.slice(start, stop + 1);
@@ -137,9 +165,9 @@ function addingNewCardsFromJSon(cardInfo) {
   console.log(result);
   numberOfCard++;
   if (!cardInfo.deleted) {
+    console.log(result.startDuration, result.endDuration, cardInfo.startP, cardInfo.endP, cardInfo);
     var card = Card(result.startDuration, result.endDuration, cardInfo.startP, cardInfo.endP, cardInfo);
     cardManager.execute(new CreateNewCardCommand(card));
-    arrayCard.push(card);
     //document.getElementById('divCardBoard').insertBefore(card.iDiv, document.getElementById('divCardBoard').firstChild);
   }
 }
@@ -199,5 +227,15 @@ function deleteCardUI(card) {
   card.deleted = true
 }
 
+function download(content, fileName, contentType) {
+  var a = document.createElement("a");
+  var file = new Blob([content], {
+    type: contentType
+  });
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  a.click();
+  a.remove();
+}
 
 

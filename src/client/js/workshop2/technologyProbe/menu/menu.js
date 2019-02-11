@@ -49,7 +49,7 @@ btnLoadYtVideo.addEventListener("mousedown", callbackLoadYtVideo);
 
 btnCleanAll.addEventListener("mousedown", callbackCleanSegmentHistory);
 
-btnSaveSegments.addEventListener("mousedown", callbackSaveFile)
+btnSaveSegments.addEventListener("mousedown", callbackSaveFile);
 
 idSession.addEventListener("blur",setSessionName, {passive: true});
 function setSessionName(){
@@ -64,11 +64,11 @@ function callbackCleanSegmentHistory(){
 
 function callbackSaveFile(){
   console.log("saving log");
-  arrayCard.forEach(function (arrayItem) {
+  /*arrayCard.forEach(function (arrayItem) {
     // arrayItem.updateInfo();
     //arrayItem.
-  });
-  exportCard();
+  });*/
+  cardManager.exportCard();
   var notification_feedback = "File saved : " + idSession.value;
   notificationFeedback(notification_feedback);
 }
@@ -95,10 +95,6 @@ function notificationFeedback(notification_message){
   setTimeout(function() {window.location = "#oNote";}, 2500);
 }
 
-
-
-
-
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -121,32 +117,5 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
-
-
-/*------ Export card in a JSON file  -------*/
-//TODO
-function exportCard() {
-  var arrayItemUpdated = [];
-  arrayCard.forEach(function(arrayItem) {
-    //arrayItem.updateInfo();
-    var item = arrayItem.updateInfo();
-    arrayItemUpdated.push(item);
-    // console.log(item);
-  });
-  var serializedArr = JSON.stringify([arrayItemUpdated, numberOfCard]);
-  console.log("*****  Serialisation of card complete : " + serializedArr);
-  download(serializedArr, 'jsonW2log-' + createUniqueId() + '.txt', 'text/plain');
-};
-
-function download(content, fileName, contentType) {
-  var a = document.createElement("a");
-  var file = new Blob([content], {
-    type: contentType
-  });
-  a.href = URL.createObjectURL(file);
-  a.download = fileName;
-  a.click();
-}
-
 
 

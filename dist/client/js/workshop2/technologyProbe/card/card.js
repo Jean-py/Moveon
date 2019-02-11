@@ -30,6 +30,7 @@ function Card(startDurationParam, endDurationParam, startPositionParam, endPosit
   var endDuration = endDurationParam;
   var left = void 0;
 
+
   var buttonDelete = null;
 
   //cette div est la principale, celle qui contient fragment + bardFragment
@@ -85,14 +86,14 @@ function Card(startDurationParam, endDurationParam, startPositionParam, endPosit
       cardFunctionalCore.execute(new LogCardNbRepetCommand(cardObject));
     });*/
     selectNbRepet.addEventListener("blur", function () {
-      var nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
-      console.log("nbrepet in card :" + nbRepet);
-      cardFunctionalCore.execute(new CardNbRepetCommand(cardObject, nbRepet));
+      repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
+      console.log("nbrepet in card :" + repetitionNumber);
+      cardFunctionalCore.execute(new CardNbRepetCommand(cardObject, repetitionNumber));
     });
 
     divSegment.addEventListener("mousedown", function () {
       console.log('Click on a card !! ');
-      var nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
+      repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       var speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
 
       //modifyCardSpeed(cardObject);
