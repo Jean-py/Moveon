@@ -19,7 +19,6 @@
     "browserify": "^16.1.1",
     "bufferutil": "^3.0.4",
     "connect": "^3.6.6",
-    "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "^4.15.2",
     "express-favicon": "^2.0.0",
