@@ -36,12 +36,12 @@ function modifyCardDescription(){
 }
 function modifyCardSpeed(){
   //let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
-  this.card.speed = speed;
+  this.card.speed = this.speed;
 }
 
 function modifyCardNbRepet(){
   //let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
-  this.card.repetitionNumber = repetitionNumber;
+  this.card.repetitionNumber = this.repetitionNumber;
 }
 
 

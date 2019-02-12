@@ -3,12 +3,13 @@
 
 .myplayer{
     overflow-y: hidden;
+
     /*transform: rotateY(180deg);*/
     /*-webkit-transform:rotateY(180deg); !* Safari and Chrome *!*/
     /*-moz-transform:rotateY(180deg); !* Firefox *!*/
 
 }
-n
+
 /*CSS commande pour video et range slider*/
 
 #play-pause,#mute{
@@ -39,6 +40,7 @@ n
 }
 
 
+
 .range-slider .range-slider_track {
     -webkit-appearance: none;
     height: 25px;
@@ -49,6 +51,10 @@ n
     -webkit-transition: .2s;
     transition: opacity .2s;
     cursor: pointer;
+}
+
+.range-slider{
+    background: rgb(0, 0, 0);
 }
 
 #rangeSliderTrack{
@@ -123,6 +129,12 @@ n
     width: auto;
 }
 
+.wrapperSticky{
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 999;
+    top: 0;
+}
 
 
 .commandeVideo

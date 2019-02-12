@@ -59,7 +59,18 @@ function setSessionName(){
 }
 
 function callbackCleanSegmentHistory(){
-  cardManager.execute(new CleanSegmentHistoryCommand());
+  if ( confirm( " /!\ Voulez-vous vraiment supprimer tous les segments?" ) ) {
+    // Code à éxécuter si le l'utilisateur clique sur "OK"
+    var notification_feedback = "Clean all success";
+    notificationFeedback(notification_feedback);
+    cardManager.execute(new CleanSegmentHistoryCommand());
+    // Code à éxécuter si l'utilisateur clique sur "Annuler"
+  } else {
+    var notification_feedback = "Not confirmed!";
+    notificationFeedback(notification_feedback);
+  }
+  
+  
 }
 
 function callbackSaveFile(){
