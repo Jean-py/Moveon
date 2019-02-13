@@ -27678,4 +27678,940 @@
   "timestamp": "12 Feb 16:29:44",
   "id": "112162944737"
 }
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 16:32:11",
+  "id": "112163211873"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 16:32:12",
+  "id": "112163212743",
+  "mouseEvent": {
+    "pageX": 1181,
+    "pageY": 456
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 16:32:14",
+  "id": "112163214329",
+  "mouseEvent": {
+    "pageX": 1243,
+    "pageY": 474
+  }
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "90px",
+    "startP": 395.5,
+    "endP": 485,
+    "iDiv": {},
+    "id": "idCard11216321531"
+  },
+  "timestamp": "12 Feb 16:32:15",
+  "id": "11216321533"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 16:32:15",
+  "id": "112163215523",
+  "mouseEvent": {
+    "pageX": 1263,
+    "pageY": 466
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 16:32:16",
+  "id": "11216321685",
+  "mouseEvent": {
+    "pageX": 1351,
+    "pageY": 460
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 16:32:16",
+  "id": "112163216725",
+  "mouseEvent": {
+    "pageX": 1539,
+    "pageY": 469
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 16:32:17",
+  "id": "112163217592",
+  "mouseEvent": {
+    "pageX": 1624,
+    "pageY": 461
+  }
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 16:32:18",
+  "id": "112163218685"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:43:31",
+  "id": "112174331604"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:43:33",
+  "id": "112174333813"
+}
+,,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:43:36",
+  "id": "112174336850"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "125px",
+    "startP": 481.5,
+    "endP": 606,
+    "iDiv": {},
+    "id": "idCard112174337560"
+  },
+  "timestamp": "12 Feb 17:43:37",
+  "id": "112174337570"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:43:41",
+  "id": "112174341238"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:43:43",
+  "id": "112174343255"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 691.5,
+    "endP": 829,
+    "iDiv": {},
+    "id": "idCard112174343956"
+  },
+  "timestamp": "12 Feb 17:43:43",
+  "id": "112174343959"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:43:47",
+  "id": "112174347335"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:43:48",
+  "id": "112174348988"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:43:56",
+  "id": "112174356752"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:44:00",
+  "id": "11217440334"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:44:00",
+  "id": "11217440751"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:44:04",
+  "id": "11217444651"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "412px",
+    "startP": 356,
+    "endP": 768.5,
+    "iDiv": {},
+    "id": "idCard11217445352"
+  },
+  "timestamp": "12 Feb 17:44:05",
+  "id": "11217445356"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:44:06",
+  "id": "11217446340"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:44:08",
+  "id": "11217448109"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "93px",
+    "startP": 169,
+    "endP": 262.5,
+    "iDiv": {},
+    "id": "idCard11217448811"
+  },
+  "timestamp": "12 Feb 17:44:08",
+  "id": "11217448815"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:44:11",
+  "id": "112174411912"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:44:12",
+  "id": "112174412592"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:44:14",
+  "id": "112174414994"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "345px",
+    "startP": 561,
+    "endP": 906.5,
+    "iDiv": {},
+    "id": "idCard112174415696"
+  },
+  "timestamp": "12 Feb 17:44:15",
+  "id": "112174415699"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:45:51",
+  "id": "112174551504"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:45:52",
+  "id": "112174552820"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:45:56",
+  "id": "112174556951"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "412px",
+    "startP": 283.5,
+    "endP": 695,
+    "iDiv": {},
+    "id": "idCard112174557656"
+  },
+  "timestamp": "12 Feb 17:45:57",
+  "id": "112174557659"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:45:58",
+  "id": "112174558609"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:03",
+  "id": "11217463986"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "542px",
+    "startP": 213,
+    "endP": 755.5,
+    "iDiv": {},
+    "id": "idCard11217464687"
+  },
+  "timestamp": "12 Feb 17:46:04",
+  "id": "11217464694"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 32,
+  "end": 78,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "12 Feb 17:46:06",
+  "id": "11217466258"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 24,
+  "end": 85,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "12 Feb 17:46:07",
+  "id": "11217467372"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:14",
+  "id": "112174614818"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:15",
+  "id": "112174615565"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:22",
+  "id": "112174622198",
+  "mouseEvent": {
+    "pageX": 790,
+    "pageY": 479
+  }
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:23",
+  "id": "112174623814"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:26",
+  "id": "112174626746",
+  "mouseEvent": {
+    "pageX": 1207,
+    "pageY": 470
+  }
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:41",
+  "id": "11217464133"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:42",
+  "id": "112174642108",
+  "mouseEvent": {
+    "pageX": 304,
+    "pageY": 468
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:42",
+  "id": "112174642212",
+  "mouseEvent": {
+    "pageX": 304,
+    "pageY": 468
+  }
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:45",
+  "id": "11217464535"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:50",
+  "id": "112174650659"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:51",
+  "id": "112174651805",
+  "mouseEvent": {
+    "pageX": 300,
+    "pageY": 457
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:53",
+  "id": "112174653347",
+  "mouseEvent": {
+    "pageX": 410,
+    "pageY": 457
+  }
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 292.5,
+    "endP": 430,
+    "iDiv": {},
+    "id": "idCard11217465453"
+  },
+  "timestamp": "12 Feb 17:46:54",
+  "id": "11217465458"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:55",
+  "id": "112174655118"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:55",
+  "id": "112174655855",
+  "mouseEvent": {
+    "pageX": 531,
+    "pageY": 462
+  }
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:46:57",
+  "id": "112174657239"
+}
+,{
+  "execute": "loadJSON",
+  "undo": null,
+  "log": {
+    "0": {
+      "name": "longSeg.json",
+      "lastModified": 1549974902395,
+      "lastModifiedDate": "2019-02-12T12:35:02.395Z",
+      "webkitRelativePath": "",
+      "size": 2171,
+      "type": "application/json"
+    },
+    "length": 1
+  },
+  "timestamp": "12 Feb 17:47:49",
+  "id": "112174749535"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "108px",
+    "startP": 0,
+    "endP": 108,
+    "iDiv": {},
+    "id": "idCard112174749549"
+  },
+  "timestamp": "12 Feb 17:47:49",
+  "id": "112174749551"   ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 119,
+    "endP": 257,
+    "iDiv": {},
+    "id": "idCard112174749551"
+  },
+  "timestamp": "12 Feb 17:47:49",
+  "id": "112174749553"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "259px",
+    "startP": 0,
+    "endP": 259,
+    "iDiv": {},
+    "id": "idCard112174749554"
+  },
+  "timestamp": "12 Feb 17:47:49",
+  "id": "112174749556"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "40px",
+    "startP": 273,
+    "endP": 313,
+    "iDiv": {},
+    "id": "idCard112174749562"
+  },
+  "timestamp": "12 Feb 17:47:49",                                                                                                                                                                                                                                                                       ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "79px",
+    "startP": 206,
+    "endP": 285,
+    "iDiv": {},
+    "id": "idCard112174749557"
+  },
+  "timestamp": "12 Feb 17:47:49",
+  "id": "112174749559"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "27px",
+    "startP": 314,
+    "endP": 341,
+    "iDiv": {},
+    "id": "idCard112174749570"
+  },
+  "timestamp": "12 Feb 17:47:49",
+  "id": "112174749571"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "31px",
+    "startP": 384,
+    "endP": 415,
+    "iDiv": {},
+    "id": "idCard112174749577"
+  },
+  "timestamp": "12 Feb 17:4,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "33px",
+    "startP": 335,
+    "endP": 368,
+    "iDiv": {},
+    "id": "idCard112174749572"
+  },
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "28px",
+    "startP": 296,
+    "endP": 324,
+    "iDiv": {},
+    "id": "idCard112174749565"
+  },
+  "timestamp": "12 Feb 17:47:49",
+  "id": "112174749566"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:48:08",
+  "id": "11217488214",
+  "mouseEvent": {
+    "pageX": 542,
+    "pageY": 662
+  }
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:48:22",
+  "id": "112174822370"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 17:48:22",
+  "id": "112174822912"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:48:24",
+  "id": "112174824190",
+  "mouseEvent": {
+    "pageX": 347,
+    "pageY": 456
+  }
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:48:25",
+  "id": "11217482519"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 0,
+  "end": 398,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "12 Feb 17:48:33",
+  "id": "112174833283"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 17:48:35",
+  "id": "112174835240",
+  "mouseEvent": {
+    "pageX": 506,
+    "pageY": 1290
+  }
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 17:48:39",
+  "id": "112174839126"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:02:53",
+  "id": "11218253959"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 18:02:55",
+  "id": "11218255344",
+  "mouseEvent": {
+    "pageX": 546,
+    "pageY": 461
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 18:02:57",
+  "id": "1121825740",
+  "mouseEvent": {
+    "pageX": 864,
+    "pageY": 468
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 18:02:59",
+  "id": "11218259246",
+  "mouseEvent": {
+    "pageX": 1011,
+    "pageY": 467
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 18:02:59",
+  "id": "11218259936",
+  "mouseEvent": {
+    "pageX": 742,
+    "pageY": 470
+  }
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "99px",
+    "startP": 551,
+    "endP": 650.5,
+    "iDiv": {},
+    "id": "idCard11218259948"
+  },
+  "timestamp": "12 Feb 18:02:59",
+  "id": "11218259950"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 18:03:00",
+  "id": "1121830476",
+  "mouseEvent": {
+    "pageX": 743,
+    "pageY": 470
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 18:03:02",
+  "id": "1121832174",
+  "mouseEvent": {
+    "pageX": 630,
+    "pageY": 462
+  }
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "85px",
+    "startP": 439,
+    "endP": 524.5,
+    "iDiv": {},
+    "id": "idCard1121832875"
+  },
+  "timestamp": "12 Feb 18:03:02",
+  "id": "1121832877"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 18:03:17",
+  "id": "11218317438"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:03:17",
+  "id": "11218317875"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "12 Feb 18:03:18",
+  "id": "11218318744",
+  "mouseEvent": {
+    "pageX": 844,
+    "pageY": 462
+  }
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 674,
+  "end": 805,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "12 Feb 18:03:19",
+  "id": "11218319465"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:11:48",
+  "id": "112181148763"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 18:11:50",
+  "id": "112181150216"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:11:52",
+  "id": "112181152448"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 18:11:53",
+  "id": "112181153233"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:11:55",
+  "id": "112181155512"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "127px",
+    "startP": 630.5,
+    "endP": 757,
+    "iDiv": {},
+    "id": "idCard112181156216"
+  },
+  "timestamp": "12 Feb 18:11:56",
+  "id": "112181156220"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 18:11:57",
+  "id": "112181157509"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:00",
+  "id": "1121812047"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "364px",
+    "startP": 463,
+    "endP": 827.5,
+    "iDiv": {},
+    "id": "idCard11218120750"
+  },
+  "timestamp": "12 Feb 18:12:00",
+  "id": "11218120753"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 71,
+  "end": 85,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "12 Feb 18:12:02",
+  "id": "11218122172"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 52,
+  "end": 93,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "12 Feb 18:12:03",
+  "id": "11218123419"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:05",
+  "id": "11218125599"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:07",
+  "id": "11218127961"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "359px",
+    "startP": 318.5,
+    "endP": 677,
+    "iDiv": {},
+    "id": "idCard11218128662"
+  },
+  "timestamp": "12 Feb 18:12:08",
+  "id": "11218128664"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:19",
+  "id": "112181219924"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:20",
+  "id": "112181220521"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:22",
+  "id": "112181222441"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "328px",
+    "startP": 516,
+    "endP": 844.5,
+    "iDiv": {},
+    "id": "idCard112181223142"
+  },
+  "timestamp": "12 Feb 18:12:23",
+  "id": "112181223147"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:29",
+  "id": "112181229695"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:38",
+  "id": "112181238591"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:39",
+  "id": "112181239578"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:40",
+  "id": "112181240807"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "12 Feb 18:12:41",
+  "id": "112181241928"
+}
 ]

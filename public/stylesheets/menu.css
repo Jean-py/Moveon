@@ -10,7 +10,7 @@
     display: block;
     left: 2%;
     top:3%;
-    z-index: 10;
+    z-index: 99999;
 }
 
 .bar1, .bar2, .bar3 {
@@ -48,6 +48,7 @@
     left: 2%;
     float:right;
     text-align: -webkit-center;
+    z-index: 9999;
 
 }
 
