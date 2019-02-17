@@ -274,11 +274,20 @@ function feedbackOnSliderVideo(onOff) {
 
 
 function updateTimerVideo() {
+  
   let minutes = Math.floor(video.currentTime / 60);
   let seconds = Math.floor(video.currentTime - minutes * 60);
+  
+  
+  let minutesV = Math.floor(video.duration / 60);
+  let secondsV = Math.floor(video.duration - minutes * 60);
+  if(isNaN(minutesV) || isNaN(secondsV)){
+    minutesV = 0;
+    secondsV = 0;
+  }
   if (seconds < 10)
     seconds = "0" + seconds;
-  timerVideo.innerHTML = minutes + ":" + seconds + "/" + videoDuration;
+  timerVideo.innerHTML = minutes + ":" + seconds + "/" + minutesV+":" +  secondsV ;
 }
 
 //start position on the slider and end position on the slider
