@@ -102,4 +102,42 @@
   "timestamp": "17 Feb 11:58:49",
   "id": "117115849299"
 }
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "17 Feb 12:45:24",
+  "id": "117124524271"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "17 Feb 12:45:25",
+  "id": "117124525378",
+  "mouseEvent": {
+    "pageX": 469,
+    "pageY": 463
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "17 Feb 12:45:26",
+  "id": "117124526207",
+  "mouseEvent": {
+    "pageX": 393,
+    "pageY": 455
+  }
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "17 Feb 12:45:26",
+  "id": "117124526828"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "17 Feb 12:45:27",
+  "id": "117124527927"
+}
 ]
