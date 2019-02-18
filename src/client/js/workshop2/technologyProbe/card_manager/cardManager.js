@@ -242,8 +242,6 @@ function download(content, fileName, contentType) {
 
 function loadJSONSegmentHistory1() {
   
-  var test = 0;
-  // If we use onloadend, we need to check the readyState.
       console.log(generateJSONfromvar());
       
       let generatedJson = generateJSONfromvar();
@@ -258,11 +256,9 @@ function loadJSONSegmentHistory1() {
 }
 
 function loadJSONSegmentHistory2() {
+  let generatedJson2 = generateJSONfromvar2();
   
-  var test = 0;
-  // If we use onloadend, we need to check the readyState.
-  
-  var my_JSON_object = JSON.parse(SHvideoW2);
+  var my_JSON_object = JSON.parse(generatedJson2);
   console.log(my_JSON_object);
   for (let k = 0; k < my_JSON_object.length; k++) {
     addingNewCardsFromJSon(my_JSON_object[k]);

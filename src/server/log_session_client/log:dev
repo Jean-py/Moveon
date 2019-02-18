@@ -4833,4 +4833,3504 @@
   "timestamp": "18 Feb 17:54:53",
   "id": "118175453624"
 }
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 17:59:17",
+  "id": "118175917550"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:36:18",
+  "id": "11818361867",
+  "mouseEvent": {
+    "pageX": 379,
+    "pageY": 535
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:36:18",
+  "id": "118183618169",
+  "mouseEvent": {
+    "pageX": 379,
+    "pageY": 535
+  }
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:37:42",
+  "id": "118183742745"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:37:43",
+  "id": "118183743824"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:37:45",
+  "id": "118183745169"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:37:46",
+  "id": "118183746472"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:37:48",
+  "id": "118183748264"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:37:49",
+  "id": "118183749468"
+{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 14.5,
+    "endP": 237,
+    "iDiv": {},
+    "id": "idCard118183752660"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752662"
+}
+],,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "124px",
+    "startP": 238.5,
+    "endP": 362,
+    "iDiv": {},
+    "id": "idCard118183752663"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752665"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "121px",
+    "startP": 352.5,
+    "endP": 473,
+    "iDiv": {},
+    "id": "idCard118183752666"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752667                                                                                                                                                                                                                                                ,,,,,,,,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "283px",
+    "startP": 337.5,
+    "endP": 620,
+    "iDiv": {},
+    "id": "idCard118183752674"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752676"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "594px",
+    "startP": 22.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118183752679"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752681"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 583.5,
+    "endP": 806,
+    "iDiv": {},
+    "id": "idCard118183752690"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752692"
+}
+],,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "167px",
+    "startP": 633.5,
+    "endP": 800,
+    "iDiv": {},
+    "id": "idCard118183752688"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752689"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "607px",
+    "startP": 9.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118183752682"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752684"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "203px",
+    "startP": 777.5,
+    "endP": 980,
+    "iDiv": {},
+    "id": "idCard118183752694"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752696"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "45px",
+    "startP": 895.5,
+    "endP": 940,
+    "iDiv": {},
+    "id": "idCard118183752707"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752709"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "43px",
+    "startP": 882.5,
+    "endP": 925,
+    "iDiv": {},
+    "id": "idCard118183752704"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752706"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 782.5,
+    "endP": 920,
+    "iDiv": {},
+    "id": "idCard118183752696"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752698"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "22px",
+    "startP": 917.5,
+    "endP": 939,
+    "iDiv": {},
+    "id": "idCard118183752709"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752711"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "97px",
+    "startP": 586.5,
+    "endP": 683,
+    "iDiv": {},
+    "id": "idCard118183752684"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752687"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "81px",
+    "startP": 828.5,
+    "endP": 909,
+    "iDiv": {},
+    "id": "idCard118183752701"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752703"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "54px",
+    "startP": 794.5,
+    "endP": 848,
+    "iDiv": {},
+    "id": "idCard118183752698"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752700"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "63px",
+    "startP": 913.5,
+    "endP": 976,
+    "iDiv": {},
+    "id": "idCard118183752712"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id":,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "iDiv": {},
+    "id": "idCard118183752714"
+  },
+  "timestamp": "18 Feb 18:37:52",
+  "id": "118183752716"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:37:55",
+  "id": "118183755894"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:37:59",
+  "id": "118183759654"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:38:03",
+  "id": "1181838346"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:38:03",
+  "id": "11818383785"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:38:04",
+  "id": "11818384647"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 1,
+  "end": 47,
+  "numberOfRepetition": "2",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:38:06",
+  "id": "1181838638"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 45,
+  "end": 48,
+  "numberOfRepetition": "6",
+  "speedRate": "0.4",
+  "timestamp": "18 Feb 18:38:08",
+  "id": "11818388988"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 45,
+  "end": 46,
+  "numberOfRepetition": "3",
+  "speedRate": "0.4",
+  "timestamp": "18 Feb 18:38:12",
+  "id": "118183812135"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 44,
+  "end": 46,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:38:14",
+  "id": "118183814387"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 29,
+  "end": 33,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:38:18",
+  "id": "11818381850"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 0,
+  "end": 30,
+  "numberOfRepetition": "1",
+  "speedRate": "0.3",
+  "timestamp": "18 Feb 18:38:19",
+  "id": "118183819622"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 23,
+  "end": 30,
+  "numberOfRepetition": "3",
+  "speedRate": "0.7",
+  "timestamp": "18 Feb 18:38:22",
+  "id": "118183822778"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 17,
+  "end": 23,
+  "numberOfRepetition": "2",
+  "speedRate": "0.8",
+  "timestamp": "18 Feb 18:38:25",
+  "id": "118183825119"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 12,
+  "end": 18,
+  "numberOfRepetition": "3",
+  "speedRate": "0.5",
+  "timestamp": "18 Feb 18:38:30",
+  "id": "118183830819"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 1,
+  "end": 48,
+  "numberOfRepetition": "2",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:38:33",
+  "id": "118183833725"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:39:58",
+  "id": "118183958507"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:39:59",
+  "id": "118183959307"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:40:04",
+  "id": "11818404878"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 1,
+  "end": 47,
+  "numberOfRepetition": "2",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:40:07",
+  "id": "11818407626"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 45,
+  "end": 48,
+  "numberOfRepetition": "6",
+  "speedRate": "0.4",
+  "timestamp": "18 Feb 18:40:09",
+  "id": "11818409762"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 45,
+  "end": 46,
+  "numberOfRepetition": "3",
+  "speedRate": "0.4",
+  "timestamp": "18 Feb 18:40:11",
+  "id": "118184011408"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 44,
+  "end": 46,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:40:15",
+  "id": "118184015304"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 41,
+  "end": 45,
+  "numberOfRepetition": "4",
+  "speedRate": "0.5",
+  "timestamp": "18 Feb 18:40:18",
+  "id": "118184018772"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 39,
+  "end": 42,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:40:21",
+  "id": "118184021539"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 38,
+  "end": 45,
+  "numberOfRepetition": "6",
+  "speedRate": "0.3",
+  "timestamp": "18 Feb 18:40:23",
+  "id": "118184023895"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 38,
+  "end": 48,
+  "numberOfRepetition": "2",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:40:27",
+  "id": "118184027343"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:40:28",
+  "id": "118184028757"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:45:28",
+  "id": "118184528806",
+  "mouseEvent": {
+    "pageX": 503,
+    "pageY": 533
+  }
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:45:29",
+  "id": "118184529917"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:45:30",
+  "id": "118184530252"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:45:31",
+  "id": "118184531402",
+  "mouseEvent": {
+    "pageX": 549,
+    "pageY": 592
+  }
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:45:33",
+  "id": "118184533130"
+},,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "310px",
+    "startP": 22.5,
+    "endP": 332,
+    "iDiv": {},
+    "id": "idCard118184558354"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558357"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "277px",
+    "startP": 32,
+    "endP": 309.5,
+    "iDiv": {},
+    "id": "idCard118184558359"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558361"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "3px",
+    "startP": 19,
+    "endP": 22.5,
+    "iDiv": {},
+    "id": "idCard118184558362"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558365"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "204px",
+    "startP": 22.5,
+    "endP": 226,
+    "iDiv": {},
+    "id": "idCard118184558370"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558372"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 14.5,
+    "endP": 237,
+    "iDiv": {},
+    "id": "idCard118184558374"
+  },
+  "timestamp": "18 Feb 18:45:58",{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "956px",
+    "startP": 18.5,
+    "endP": 974,
+    "iDiv": {},
+    "id": "idCard118184558367"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558369"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "607px",
+    "startP": 9.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118184558399"
+  },
+  "timestamp": "18 Feb 18:45:58",
+ {
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "97px",
+    "startP": 586.5,
+    "endP": 683,
+    "iDiv": {},
+    "id": "idCard118184558402"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "154px",
+    "startP": 465.5,
+    "endP": 619,
+    "iDiv": {},
+    "id": "idCard118184558386"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558388"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "283px",
+    "startP": 337.5,
+    "endP": 620,
+    "iDiv": {},
+    "id": "idCard118184558391"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558393"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "203px",
+    "startP": 777.5,
+    "endP": 980,
+    "iDiv": {},
+    "id": "idCard118184558414"
+  },
+  "timestamp": "18 Feb 18:4                               ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "594px",
+    "startP": 22.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118184558395"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558397"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 782.5,
+    "endP": 920,
+    "iDiv": {},
+    "id": "idCard118184558418"
+  },
+  "timestamp": "1,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "167px",
+    "startP": 633.5,
+    "endP": 800,
+    "iDiv": {},
+    "id": "idCard118184558406"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558408"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 583.5,
+    "endP": 806,
+    "iDiv": {},
+    "id": "idCard118184558409"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558411"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "43px",
+    "startP": 882.5,
+    "endP": 925,
+    "iDiv": {},
+    "id": "idCard118184558430"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id",{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "22px",
+    "startP": 917.5,
+    "endP": 939,
+    "iDiv": {},
+    "id": "idCard118184558436"
+  },
+  "timestamp": "18 Feb 18:45:58",,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "54px",
+    "startP": 794.5,
+    "endP": 848,
+    "iDiv": {},
+    "id": "idCard118184558421"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "iDiv": {},
+    "id": "idCard118184558443"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558445"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "63px",
+    "startP": 913.5,
+    "endP": 976,
+    "iDiv": {},
+    "id": "idCard118184558440"
+  },
+  "timestamp": "18 Feb 18:45:58",
+  "id": "118184558442"
+},,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "277px",
+    "startP": 32,
+    "endP": 309.5,
+    "iDiv": {},
+    "id": "idCard11818466464"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466467"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "310px",
+    "startP": 22.5,
+    "endP": 332,
+    "iDiv": {},
+    "id": "idCard11818466459"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466462"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "3px",
+    "startP": 19,
+    "endP": 22.5,
+    "iDiv": {},
+    "id": "idCard11818466469"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466472"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "204px",
+    "startP": 22.5,
+    "endP": 226,
+    "iDiv": {},
+    "id": "idCard11818466479"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466481"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 14.5,
+    "endP": 237,
+    "iDiv": {},
+    "id": "idCard11818466482"
+  },
+  "timestamp": "18 Feb 18:46:06{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "121px",
+    "startP": 352.5,
+    "endP": 473,
+    "iDiv": {},
+    "id": "idCard11818466491"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466492"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "956px",
+    "startP": 18.5,
+    "endP": 974,
+    "iDiv": {},
+    "id": "idCard11818466474"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466477"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "607px",
+    "startP": 9.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard11818466506"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "97px",
+    "startP": 586.5,
+    "endP": 683,
+    "iDiv": {},
+    "id": "idCard11818466509"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466510"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "154px",
+    "startP": 465.5,
+    "endP": 619,
+    "iDiv": {},
+    "id": "idCard11818466493"
+  },
+  "timestamp": "18 Feb 18:4{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 583.5,
+    "endP": 806,
+    "iDiv": {},
+    "id": "idCard11818466515"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466517"
+}{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "283px",
+    "startP": 337.5,
+    "endP": 620,
+    "iDiv": {},
+    "id": "idCard11818466498"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466499"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "203px",
+    "startP": 777.5,
+    "endP": 980,
+    "iDiv": {},
+    "id": "idCard11818466519"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id,,              {
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 782.5,
+    "endP": 920,
+    "iDiv": {},
+    "id": "idCard11818466524"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466526"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "167px",
+    "startP": 633.5,
+    "endP": 800,
+    "iDiv": {},
+    "id": "idCard11818466512"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466514"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "54px",
+    "startP": 794.5,
+    "endP": 848,
+    "iDiv": {},
+    "id": "idCard11818466530"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466532"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "43px",
+    "startP": 882.5,
+    "endP": 925,
+    "iDiv": {},
+    "id": "idCard11818466542"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466545"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "45px",
+    "startP": 895.5,
+    "endP": 940,
+    "iDiv": {},
+    "id": "idCard11818466547"
+  },
+  "timestamp": "18 Feb 18:46:06",
+ ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "22px",
+    "startP": 917.5,
+    "endP": 939,
+    "iDiv": {},
+    "id": "idCard11818466554"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466556"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "81px",
+    "startP": 828.5,
+    "endP": 909,
+    "iDiv": {},
+    "id": "idCard11818466534"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466538"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "iDiv": {},
+    "id": "idCard11818466562"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "i,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "63px",
+    "startP": 913.5,
+    "endP": 976,
+    "iDiv": {},
+    "id": "idCard11818466558"
+  },
+  "timestamp": "18 Feb 18:46:06",
+  "id": "11818466559"
+},,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "277px",
+    "startP": 32,
+    "endP": 309.5,
+    "iDiv": {},
+    "id": "idCard118184653825"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653827"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "310px",
+    "startP": 22.5,
+    "endP": 332,
+    "iDiv": {},
+    "id": "idCard118184653821"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653823"{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "3px",
+    "startP": 19,
+    "endP": 22.5,
+    "iDiv": {},
+    "id": "idCard118184653829"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653830"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "956px",
+    "startP": 18.5,
+    "endP": 974,
+    "iDiv": {},
+    "id": "idCard118184653832"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653834"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 14.5,
+    "endP": 237,
+    "iDiv": {},
+    "id": "idCard118184653839"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653841"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "124px",
+    "startP": 238.5,
+    "endP": 362,
+    "iDiv": {},
+    "id": "idCard118184653842"
+  },
+  "timestamp": "18 Feb 18:46:53",{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "204px",
+    "startP": 22.5,
+    "endP": 226,
+    "iDiv": {},
+    "id": "idCard118184653835"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653837"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "154px",
+    "startP": 465.5,
+    "endP": 619,
+    "iDiv": {},
+    "id": "idCard118184653849"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653850"
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "594px",
+    "startP": 22.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118184653855"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653857"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "607px",
+    "startP": 9.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118184653858"
+  },
+  "timestamp": "18 Feb 18:46:53",
+                                                                                                                                                                                                                                                                        ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "283px",
+    "startP": 337.5,
+    "endP": 620,
+    "iDiv": {},
+    "id": "idCard118184653851"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653853"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 583.5,
+    "endP": 806,
+    "iDiv": {},
+    "id": "idCard118184653867"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653870"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "203px",
+    "startP": 777.5,
+    "endP": 980,
+    "iDiv": {},
+    "id": "idCard118184653871"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "                  {
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 782.5,
+    "endP": 920,
+    "iDiv": {},
+    "id": "idCard118184653874"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653876"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "54px",
+    "startP": 794.5,
+    "endP": 848,
+    "iDiv": {},
+    "id": "idCard118184653878"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653879"
+} ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "81px",
+    "startP": 828.5,
+    "endP": 909,
+    "iDiv": {},
+    "id": "idCard118184653881"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653883"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "43px",
+    "startP": 882.5,
+    "endP": 925,
+    "iDiv": {},
+    "id": "idCard118184653884"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653885"
+  ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "45px",
+    "startP": 895.5,
+    "endP": 940,
+    "iDiv": {},
+    "id": "idCard118184653887"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653889"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "22px",
+    "startP": 917.5,
+    "endP": 939,
+    "iDiv": {},
+    "id": "idCard118184653891"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653892"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "63px",
+    "startP": 913.5,
+    "endP": 976,
+    "iDiv": {},
+    "id": "idCard118184653894"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653895"
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "iDiv": {},
+    "id": "idCard118184653897"
+  },
+  "timestamp": "18 Feb 18:46:53",
+  "id": "118184653899"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:46:57",
+  "id": "118184657290"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:46:59",
+  "id": "118184659216",
+  "mouseEvent": {
+    "pageX": 230,
+    "pageY": 591
+  }
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:47:04",
+  "id": "11818474811"
+}
+                                                                                                                                                                                                                                             ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "310px",
+    "startP": 22.5,
+    "endP": 332,
+    "iDiv": {},
+    "id": "idCard118184713171"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713173"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "3px",
+    "startP": 19,
+    "endP": 22.5,
+    "iDiv": {},
+    "id": "idCard118184713180"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713181    ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "956px",
+    "startP": 18.5,
+    "endP": 974,
+    "iDiv": {},
+    "id": "idCard118184713183"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713185"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "204px",
+    "startP": 22.5,
+    "endP": 226,
+    "iDiv": {},
+    "id": "idCard118184713187"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713189",{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "154px",
+    "startP": 465.5,
+    "endP": 619,
+    "iDiv": {},
+    "id": "idCard118184713203"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 14.5,
+    "endP": 237,
+    "iDiv": {},
+    "id": "idCard118184713192"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713193    ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "97px",
+    "startP": 586.5,
+    "endP": 683,
+    "iDiv": {},
+    "id": "idCard118184713217"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713219"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "607px",
+    "startP": 9.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118184713213"
+  },
+  "timestamp": "18 Feb 18:47:13",
+, {
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 583.5,
+    "endP": 806,
+    "iDiv": {},
+    "id": "idCard118184713224"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713226"
+}
+],,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "283px",
+    "startP": 337.5,
+    "endP": 620,
+    "iDiv": {},
+    "id": "idCard118184713206"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713208"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "594px",
+    "startP": 22.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118184713210"
+  },
+  "timestamp": "18 Feb 18:47:13",
+                        ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "81px",
+    "startP": 828.5,
+    "endP": 909,
+    "iDiv": {},
+    "id": "idCard118184713240"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "203px",
+    "startP": 777.5,
+    "endP": 980,
+    "iDiv": {},
+    "id": "idCard118184713227"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713229    ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "45px",
+    "startP": 895.5,
+    "endP": 940,
+    "iDiv": {},
+    "id": "idCard118184713248"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713250"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "22px",
+    "startP": 917.5,
+    "endP": 939,
+    "iDiv": {},
+    "id": "idCard118184713252"
+  },
+  "timestamp": "18 Feb 18:47:13",
+ ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "43px",
+    "startP": 882.5,
+    "endP": 925,
+    "iDiv": {},
+    "id": "idCard118184713244"
+  },
+  "timestamp": "18 Feb 18:47:13",
+ ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "63px",
+    "startP": 913.5,
+    "endP": 976,
+    "iDiv": {},
+    "id": "idCard118184713255"
+  },
+  "timestamp": "18 Feb 18:47:13",
+  "id": "118184713257"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:47:15",
+  "id": "118184715676"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:47:17",
+  "id": "118184717291",
+  "mouseEvent": {
+    "pageX": 369,
+    "pageY": 585
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:47:17",
+  "id": "118184717730",
+  "mouseEvent": {
+    "pageX": 294,
+    "pageY": 599
+  }
+}
+,{
+  "execute": "modifyCardDescription",
+  "undo": null,
+  "text": "lecture normale avec vérification impulsion départ côté cour",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "description": "lecture normale avec vérification impulsion départ côté cour",
+    "iDiv": {},
+    "id": "idCard118184653897"
+  },
+  "timestamp": "18 Feb 18:47:22",
+  "id": "118184722961"
+}
+,{
+  "execute": "modifyCardDescription",
+  "undo": null,
+  "text": "lecture normale avec vérification impulsion départ côté cour",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "description": "lecture normale avec vérification impulsion départ côté cour",
+    "iDiv": {},
+    "id": "idCard118184713258"
+  },
+  "timestamp": "18 Feb 18:47:25",
+  "id": "118184725887"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:47:27",
+  "id": "11818472762",
+  "mouseEvent": {
+    "pageX": 701,
+    "pageY": 586
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:47:27",
+  "id": "118184727772",
+  "mouseEvent": {
+    "pageX": 859,
+    "pageY": 595
+  }
+}
+,{
+  "execute": "modifyCardDescription",
+  "undo": null,
+  "text": "lecture normale avec vérification impulsion départ côté cour",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "description": "lecture normale avec vérification impulsion départ côté cour",
+    "iDiv": {},
+    "id": "idCard118184653897"
+  },
+  "timestamp": "18 Feb 18:47:31",
+  "id": "118184731675"
+}
+,{
+  "execute": "modifyCardDescription",
+  "undo": null,
+  "text": "lecture normale avec vérification impulsion départ côté cour",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "description": "lecture normale avec vérification impulsion départ côté cour",
+    "iDiv": {},
+    "id": "idCard118184653897"
+  },
+  "timestamp": "18 Feb 18:47:56",
+  "id": "118184756391"
+}
+,{
+  "execute": "modifyCardDescription",
+  "undo": null,
+  "text": "lecture normale avec vérification impulsion départ côté cour",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "description": "lecture normale avec vérification impulsion départ côté cour",
+    "iDiv": {},
+    "id": "idCard118184653897"
+  },
+  "timestamp": "18 Feb 18:48:05",
+  "id": "1181848599"
+}                                                                                                                                                                                                                                              ,,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "277px",
+    "startP": 32,
+    "endP": 309.5,
+    "iDiv": {},
+    "id": "idCard118184826354"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826356"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "310px",
+    "startP": 22.5,
+    "endP": 332,
+    "iDiv": {},
+    "id": "idCard118184826350"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826352"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "3px",
+    "startP": 19,
+    "endP": 22.5,
+    "iDiv": {},
+    "id": "idCard118184826358"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826359"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 14.5,
+    "endP": 237,
+    "iDiv": {},
+    "id": "idCard118184826368"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826370"
+  ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "124px",
+    "startP": 238.5,
+    "endP": 362,
+    "iDiv": {},
+    "id": "idCard118184826372"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826373"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "121px",
+    "startP": 352.5,
+    "endP": 473,
+    "iDiv": {},
+    "id": "idCard118184826375"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826377"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "283px",
+    "startP": 337.5,
+    "endP": 620,
+    "iDiv": {},
+    "id": "idCard118184826382"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826384"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "594px",
+    "startP": 22.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118184826386"
+  },
+  "timestamp": "18 Feb 18:48:26",
+ ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "97px",
+    "startP": 586.5,
+    "endP": 683,
+    "iDiv": {},
+    "id": "idCard118184826394"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826396"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "154px",
+    "startP": 465.5,
+    "endP": 619,
+    "iDiv": {},
+    "id": "idCard118184826379"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "167px",
+    "startP": 633.5,
+    "endP": 800,
+    "iDiv": {},
+    "id": "idCard118184826397"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826399    ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "81px",
+    "startP": 828.5,
+    "endP": 909,
+    "iDiv": {},
+    "id": "idCard118184826413"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826415"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "43px",
+    "startP": 882.5,
+    "endP": 925,
+    "iDiv": {},
+    "id": "idCard118184826417"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id":,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "54px",
+    "startP": 794.5,
+    "endP": 848,
+    "iDiv": {},
+    "id": "idCard118184826411"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826412"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "22px",
+    "startP": 917.5,
+    "endP": 939,
+    "iDiv": {},
+    "id": "idCard118184826427"
+  },
+  "timestamp": "18 Feb 18:{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "63px",
+    "startP": 913.5,
+    "endP": 976,
+    "iDiv": {},
+    "id": "idCard118184826430"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826431"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "956px",
+    "startP": 18.5,
+    "endP": 974,
+    "iDiv": {},
+    "id": "idCard118184826362"
+  },
+  "timestamp": "18 Feb 18:48:26",
+  "id": "118184826364"
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "310px",
+    "startP": 22.5,
+    "endP": 332,
+    "iDiv": {},
+    "id": "idCard118184829125"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829128"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "277px",
+    "startP": 32,
+    "endP": 309.5,
+    "iDiv": {},
+    "id": "idCard118184829130"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829132"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "956px",
+    "startP": 18.5,
+    "endP": 974,
+    "iDiv": {},
+    "id": "idCard118184829138"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829139"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "204px",
+    "startP": 22.5,
+    "endP": 226,
+    "iDiv": {},
+    "id": "idCard118184829140"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829142,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "124px",
+    "startP": 238.5,
+    "endP": 362,
+    "iDiv": {},
+    "id": "idCard118184829147"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829148"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "283px",
+    "startP": 337.5,
+    "endP": 620,
+    "iDiv": {},
+    "id": "idCard118184829157"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829159"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "594px",
+    "startP": 22.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118184829161"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "607px",
+    "startP": 9.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118184829163"
+  },
+  "timestamp": "18 Feb 18:48:29",
+ ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "121px",
+    "startP": 352.5,
+    "endP": 473,
+    "iDiv": {},
+    "id": "idCard118184829150"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829151"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 583.5,
+    "endP": 806,
+    "iDiv": {},
+    "id": "idCard118184829174"
+  },
+  "timestamp": "18 Feb 18:48:29",
+                     ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 782.5,
+    "endP": 920,
+    "iDiv": {},
+    "id": "idCard118184829180"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829182"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "97px",
+    "startP": 586.5,
+    "endP": 683,
+    "iDiv": {},
+    "id": "idCard118184829167"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829168"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "43px",
+    "startP": 882.5,
+    "endP": 925,
+    "iDiv": {},
+    "id": "idCard118184829190"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829193"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "45px",
+    "startP": 895.5,
+    "endP": 940,
+    "iDiv": {},
+    "id": "idCard118184829194"
+  },
+  "timestamp": "18 Feb 18:48:29",
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "81px",
+    "startP": 828.5,
+    "endP": 909,
+    "iDiv": {},
+    "id": "idCard118184829187"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id":,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "iDiv": {},
+    "id": "idCard118184829203"
+  },
+  "timestamp": "18 Feb 18:48:29",
+  "id": "118184829205"
+},,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "3px",
+    "startP": 19,
+    "endP": 22.5,
+    "iDiv": {},
+    "id": "idCard11818494274"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494276"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "310px",
+    "startP": 22.5,
+    "endP": 332,
+    "iDiv": {},
+    "id": "idCard11818494266"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494267"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "277px",
+    "startP": 32,
+    "endP": 309.5,
+    "iDiv": {},
+    "id": "idCard11818494270"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494272"   ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "956px",
+    "startP": 18.5,
+    "endP": 974,
+    "iDiv": {},
+    "id": "idCard11818494278"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494280"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "204px",
+    "startP": 22.5,
+    "endP": 226,
+    "iDiv": {},
+    "id": "idCard11818494282"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494284"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "124px",
+    "startP": 238.5,
+    "endP": 362,
+    "iDiv": {},
+    "id": "idCard11818494289"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494291"
+} ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "121px",
+    "startP": 352.5,
+    "endP": 473,
+    "iDiv": {},
+    "id": "idCard11818494293"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494294"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "154px",
+    "startP": 465.5,
+    "endP": 619,
+    "iDiv": {},
+    "id": "idCard11818494296"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "i                  ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 14.5,
+    "endP": 237,
+    "iDiv": {},
+    "id": "idCard11818494285"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494287"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "283px",
+    "startP": 337.5,
+    "endP": 620,
+    "iDiv": {},
+    "id": "idCard11818494299"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494300"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "607px",
+    "startP": 9.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard11818494305"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494308,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "167px",
+    "startP": 633.5,
+    "endP": 800,
+    "iDiv": {},
+    "id": "idCard11818494314"
+  },
+  "timestamp": "18 Feb 18:49:04",
+,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "203px",
+    "startP": 777.5,
+    "endP": 980,
+    "iDiv": {},
+    "id": "idCard11818494321"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494322"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "594px",
+    "startP": 22.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard11818494303"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494304"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "54px",
+    "startP": 794.5,
+    "endP": 848,
+    "iDiv": {},
+    "id": "idCard11818494328"
+  },
+  "timestamp": "18 Feb 18:49:04",{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "81px",
+    "startP": 828.5,
+    "endP": 909,
+    "iDiv": {},
+    "id": "idCard11818494332"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494333"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 583.5,
+    "endP": 806,
+    "iDiv": {},
+    "id": "idCard11818494317"
+  },
+  "timestamp": "18 Feb ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "63px",
+    "startP": 913.5,
+    "endP": 976,
+    "iDiv": {},
+    "id": "idCard11818494345"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494347"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 782.5,
+    "endP": 920,
+    "iDiv": {},
+    "id": "idCard11818494324"
+  },
+  "timestamp": "18 Feb 18:49:04",
+ ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "43px",
+    "startP": 882.5,
+    "endP": 925,
+    "iDiv": {},
+    "id": "idCard11818494335"
+  },
+  "timestamp": "18 Feb 18:,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "45px",
+    "startP": 895.5,
+    "endP": 940,
+    "iDiv": {},
+    "id": "idCard11818494338"
+  },
+  "timestamp": "18 Feb 18:49,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "iDiv": {},
+    "id": "idCard11818494349"
+  },
+  "timestamp": "18 Feb 18:49:04",
+  "id": "11818494351"
+}                                                                                                                                                                                                                                           ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "136px",
+    "startP": 22.5,
+    "endP": 158,
+    "iDiv": {},
+    "id": "idCard118184973"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "118184976"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "163px",
+    "startP": 22.5,
+    "endP": 185,
+    "iDiv": {},
+    "id": "idCard118184977"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849710"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "36px",
+    "startP": 149.5,
+    "endP": 185,
+    "iDiv": {},
+    "id": "idCard1181849716"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849718"   ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "19px",
+    "startP": 202,
+    "endP": 221.5,
+    "iDiv": {},
+    "id": "idCard1181849720"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849722"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "29px",
+    "startP": 199.5,
+    "endP": 228,
+    "iDiv": {},
+    "id": "idCard1181849724"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849726"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "142px",
+    "startP": 264.5,
+    "endP": 406,
+    "iDiv": {},
+    "id": "idCard1181849731"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849733"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "182px",
+    "startP": 265.5,
+    "endP": 447,
+    "iDiv": {},
+    "id": "idCard1181849735"
+  },
+  "timestamp": "18 Feb 18:49:0{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "244px",
+    "startP": 553.5,
+    "endP": 797,
+    "iDiv": {},
+    "id": "idCard1181849741"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849742"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "220px",
+    "startP": 189.5,
+    "endP": 409,
+    "iDiv": {},
+    "id": "idCard1181849728"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849730"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "330px",
+    "startP": 7.5,
+    "endP": 337,
+    "iDiv": {},
+    "id": "idCard1181849753"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849753"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "28px",
+    "startP": 314.5,
+    "endP": 342,
+    "iDiv": {},
+    "id": "idCard1181849755"
+  },
+  "timestamp": "18 Feb 18:49:07",
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "140px",
+    "startP": 305.5,
+    "endP": 445,
+    "iDiv": {},
+    "id": "idCard1181849759"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849761"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "778px",
+    "startP": 22.5,
+    "endP": 800,
+    "iDiv": {},
+    "id": "idCard1181849744"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849746"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "137px",
+    "startP": 380.5,
+    "endP": 517,
+    "iDiv": {},
+    "id": "idCard1181849762"
+  },
+  "timestamp": "18 Feb 18:4,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "16px",
+    "startP": 321.5,
+    "endP": 337,
+    "iDiv": {},
+    "id": "idCard1181849748"
+  },
+  "timestamp": "18 Feb 18:49:07",
+  "id": "1181849750"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:49:15",
+  "id": "118184915403"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:49:18",
+  "id": "118184918348"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:49:35",
+  "id": "11818493544"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:49:35",
+  "id": "118184935273"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "957px",
+    "startP": 22.5,
+    "endP": 979,
+    "iDiv": {},
+    "id": "idCard118184937162"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937165"
+},,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "136px",
+    "startP": 22.5,
+    "endP": 158,
+    "iDiv": {},
+    "id": "idCard118184937168"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937170"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "163px",
+    "startP": 22.5,
+    "endP": 185,
+    "iDiv": {},
+    "id": "idCard118184937172"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "11818493717{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "36px",
+    "startP": 149.5,
+    "endP": 185,
+    "iDiv": {},
+    "id": "idCard118184937182"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937183"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "19px",
+    "startP": 202,
+    "endP": 221.5,
+    "iDiv": {},
+    "id": "idCard118184937185"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937188"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "220px",
+    "startP": 189.5,
+    "endP": 409,
+    "iDiv": {},
+    "id": "idCard118184937193"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937195"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "142px",
+    "startP": 264.5,
+    "endP": 406,
+    "iDiv": {},
+    "id": "idCard118184937196"
+  },
+  "timestamp": "18 Feb 18:49:37",{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "29px",
+    "startP": 199.5,
+    "endP": 228,
+    "iDiv": {},
+    "id": "idCard118184937189"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937192"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "212px",
+    "startP": 392.5,
+    "endP": 604,
+    "iDiv": {},
+    "id": "idCard118184937204"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937206"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "16px",
+    "startP": 321.5,
+    "endP": 337,
+    "iDiv": {},
+    "id": "idCard118184937214"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937216"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "330px",
+    "startP": 7.5,
+    "endP": 337,
+    "iDiv": {},
+    "id": "idCard118184937218"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "244px",
+    "startP": 553.5,
+    "endP": 797,
+    "iDiv": {},
+    "id": "idCard118184937208"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937210"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "140px",
+    "startP": 305.5,
+    "endP": 445,
+    "iDiv": {},
+    "id": "idCard118184937227"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937228"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "137px",
+    "startP": 380.5,
+    "endP": 517,
+    "iDiv": {},
+    "id": "idCard118184937231"
+  },
+  "timestamp": "18 Feb 18:4                              ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "782px",
+    "startP": 22.5,
+    "endP": 804,
+    "iDiv": {},
+    "id": "idCard118184937234"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937236"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "778px",
+    "startP": 22.5,
+    "endP": 800,
+    "iDiv": {},
+    "id": "idCard118184937211"
+  },
+  "timestamp": "18 Feb 18:49:37",
+  "id": "118184937213"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:49:39",
+  "id": "118184939223"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:49:39",
+  "id": "118184939806"
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:49:40",
+  "id": "118184940670",
+  "mouseEvent": {
+    "pageX": 1116,
+    "pageY": 583
+  }
+}
+,{
+  "execute": "updateKnobAndVideoComputer",
+  "undo": null,
+  "timestamp": "18 Feb 18:49:46",
+  "id": "118184946155",
+  "mouseEvent": {
+    "pageX": 1037,
+    "pageY": 594
+  }
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:49:48",
+  "id": "118184948553"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 1,
+  "end": 48,
+  "numberOfRepetition": "3",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:49:51",
+  "id": "118184951752"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 1,
+  "end": 8,
+  "numberOfRepetition": "6",
+  "speedRate": "0.4",
+  "timestamp": "18 Feb 18:49:53",
+  "id": "118184953957"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 1,
+  "end": 9,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:49:54",
+  "id": "118184954820"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 6,
+  "end": 15,
+  "numberOfRepetition": "3",
+  "speedRate": "0.7",
+  "timestamp": "18 Feb 18:49:55",
+  "id": "118184955668"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 7,
+  "end": 9,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:49:58",
+  "id": "1181849583"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 10,
+  "end": 11,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:49:59",
+  "id": "118184959272"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 10,
+  "end": 11,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:50:00",
+  "id": "11818500424"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 9,
+  "end": 20,
+  "numberOfRepetition": "4",
+  "speedRate": "0.5",
+  "timestamp": "18 Feb 18:50:02",
+  "id": "1181850269"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 13,
+  "end": 20,
+  "numberOfRepetition": "4",
+  "speedRate": "0.3",
+  "timestamp": "18 Feb 18:50:08",
+  "id": "11818508953"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 13,
+  "end": 22,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:50:20",
+  "id": "118185020807"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 19,
+  "end": 30,
+  "numberOfRepetition": "5",
+  "speedRate": "0.5",
+  "timestamp": "18 Feb 18:50:33",
+  "id": "118185033990"
+}
+,{
+  "execute": "modifyCardDescription",
+  "undo": null,
+  "text": "3/4 jbe gauche repousser passer gche derriere sol coude sol rapproche gche s'assoir et passer dos",
+  "card": {
+    "width": "212px",
+    "startP": 392.5,
+    "endP": 604,
+    "description": "3/4 jbe gauche repousser passer gche derriere sol coude sol rapproche gche s'assoir et passer dos",
+    "iDiv": {},
+    "id": "idCard118184937204"
+  },
+  "timestamp": "18 Feb 18:50:36",
+  "id": "118185036542"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 27,
+  "end": 39,
+  "numberOfRepetition": "4",
+  "speedRate": "0.5",
+  "timestamp": "18 Feb 18:50:39",
+  "id": "118185039386"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 1,
+  "end": 39,
+  "numberOfRepetition": "5",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:50:53",
+  "id": "118185053297"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 16,
+  "end": 17,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:50:58",
+  "id": "118185058462"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 0,
+  "end": 17,
+  "numberOfRepetition": "3",
+  "speedRate": "0.7",
+  "timestamp": "18 Feb 18:51:02",
+  "id": "11818512227"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 15,
+  "end": 17,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:51:05",
+  "id": "11818515853"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 15,
+  "end": 17,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:51:07",
+  "id": "11818517937"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 15,
+  "end": 22,
+  "numberOfRepetition": "5",
+  "speedRate": "0.2",
+  "timestamp": "18 Feb 18:51:08",
+  "id": "11818518842"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 19,
+  "end": 25,
+  "numberOfRepetition": "5",
+  "speedRate": "0.1",
+  "timestamp": "18 Feb 18:51:10",
+  "id": "1181851102"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 1,
+  "end": 39,
+  "numberOfRepetition": "3",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:51:15",
+  "id": "118185115460"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 19,
+  "end": 25,
+  "numberOfRepetition": "5",
+  "speedRate": "0.1",
+  "timestamp": "18 Feb 18:51:18",
+  "id": "118185118423"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:51:21",
+  "id": "118185121105"
+}                                                                                                                                                                                                                                               ,,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "181px",
+    "startP": 132.5,
+    "endP": 313,
+    "iDiv": {},
+    "id": "idCard118185124883"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124885"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "136px",
+    "startP": 22.5,
+    "endP": 158,
+    "iDiv": {},
+    "id": "idCard118185124874"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124876"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "163px",
+    "startP": 22.5,
+    "endP": 185,
+    "iDiv": {},
+    "id": "idCard118185124878"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124881"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "19px",
+    "startP": 202,
+    "endP": 221.5,
+    "iDiv": {},
+    "id": "idCard118185124892"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124894"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "29px",
+    "startP": 199.5,
+    "endP": 228,
+    "iDiv": {},
+    "id": "idCard118185124895"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124897,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "220px",
+    "startP": 189.5,
+    "endP": 409,
+    "iDiv": {},
+    "id": "idCard118185124899"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124902"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "142px",
+    "startP": 264.5,
+    "endP": 406,
+    "iDiv": {},
+    "id": "idCard118185124904"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124906",{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "244px",
+    "startP": 553.5,
+    "endP": 797,
+    "iDiv": {},
+    "id": "idCard118185124916"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "182px",
+    "startP": 265.5,
+    "endP": 447,
+    "iDiv": {},
+    "id": "idCard118185124908"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124911"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "330px",
+    "startP": 7.5,
+    "endP": 337,
+    "iDiv": {},
+    "id": "idCard118185124929"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124933"{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "28px",
+    "startP": 314.5,
+    "endP": 342,
+    "iDiv": {},
+    "id": "idCard118185124935"
+  },
+  "timestamp": "18 Feb 18:51:24",
+ {
+  ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "778px",
+    "startP": 22.5,
+    "endP": 800,
+    "iDiv": {},
+    "id": "idCard118185124920"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124923"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "782px",
+    "startP": 22.5,
+    "endP": 804,
+    "iDiv": {},
+    "id": "idCard118185124944"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  ",{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "36px",
+    "startP": 149.5,
+    "endP": 185,
+    "iDiv": {},
+    "id": "idCard118185124887"
+  },
+  "timestamp": "18 Feb 18:51:24",
+  "id": "118185124889"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:51:28",
+  "id": "118185128388"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 1,
+  "end": 39,
+  "numberOfRepetition": "3",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:51:29",
+  "id": "118185129658"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 19,
+  "end": 25,
+  "numberOfRepetition": "5",
+  "speedRate": "0.1",
+  "timestamp": "18 Feb 18:51:30",
+  "id": "118185130553"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 15,
+  "end": 22,
+  "numberOfRepetition": "5",
+  "speedRate": "0.2",
+  "timestamp": "18 Feb 18:51:33",
+  "id": "118185133852"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 15,
+  "end": 17,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:51:36",
+  "id": "118185136598"
+}
+,{
+  "execute": "pause",
+  "undo": null,
+  "timestamp": "18 Feb 18:51:41",
+  "id": "118185141569"
+}
+,{
+  "execute": "play",
+  "undo": null,
+  "timestamp": "18 Feb 18:51:44",
+  "id": "118185144951"
+}                                                                                                                                                                                                                                              ,,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "3px",
+    "startP": 19,
+    "endP": 22.5,
+    "iDiv": {},
+    "id": "idCard118185145881"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145882"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "277px",
+    "startP": 32,
+    "endP": 309.5,
+    "iDiv": {},
+    "id": "idCard118185145876"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145879"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "310px",
+    "startP": 22.5,
+    "endP": 332,
+    "iDiv": {},
+    "id": "idCard118185145872"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145874"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "204px",
+    "startP": 22.5,
+    "endP": 226,
+    "iDiv": {},
+    "id": "idCard118185145888"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145889"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 14.5,
+    "endP": 237,
+    "iDiv": {},
+    "id": "idCard118185145891"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145893,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "124px",
+    "startP": 238.5,
+    "endP": 362,
+    "iDiv": {},
+    "id": "idCard118185145894"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145896"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "121px",
+    "startP": 352.5,
+    "endP": 473,
+    "iDiv": {},
+    "id": "idCard118185145898"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145900",{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "594px",
+    "startP": 22.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118185145908"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "                      ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "154px",
+    "startP": 465.5,
+    "endP": 619,
+    "iDiv": {},
+    "id": "idCard118185145901"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145903"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "167px",
+    "startP": 633.5,
+    "endP": 800,
+    "iDiv": {},
+    "id": "idCard118185145919"
+  },
+  "timestamp": "18 Feb 18:51:45",
+                                                                                                                                                                                                                                                                        ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "607px",
+    "startP": 9.5,
+    "endP": 616,
+    "iDiv": {},
+    "id": "idCard118185145910"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145913"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "97px",
+    "startP": 586.5,
+    "endP": 683,
+    "iDiv": {},
+    "id": "idCard118185145915"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145917"
+}
+],{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "138px",
+    "startP": 782.5,
+    "endP": 920,
+    "iDiv": {},
+    "id": "idCard118185145930"
+  },
+  "timestamp": "18 Feb 18:51:45"                       ,,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "223px",
+    "startP": 583.5,
+    "endP": 806,
+    "iDiv": {},
+    "id": "idCard118185145922"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145924"
+}
+]{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "81px",
+    "startP": 828.5,
+    "endP": 909,
+    "iDiv": {},
+    "id": "idCard118185145937"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145939"
+}
+,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "45px",
+    "startP": 895.5,
+    "endP": 940,
+    "iDiv": {},
+    "id": "idCard118185145944"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145946"
+},{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "22px",
+    "startP": 917.5,
+    "endP": 939,
+    "iDiv": {},
+    "id": "idCard118185145949"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145951,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "945px",
+    "startP": 22.5,
+    "endP": 967,
+    "iDiv": {},
+    "id": "idCard118185145958"
+  },
+ ,{
+  "execute": "addingNewCard",
+  "undo": "deleteCard",
+  "card": {
+    "width": "956px",
+    "startP": 18.5,
+    "endP": 974,
+    "iDiv": {},
+    "id": "idCard118185145884"
+  },
+  "timestamp": "18 Feb 18:51:45",
+  "id": "118185145886"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 39,
+  "end": 42,
+  "numberOfRepetition": "6",
+  "speedRate": "0.4",
+  "timestamp": "18 Feb 18:51:47",
+  "id": "118185147821"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 39,
+  "end": 40,
+  "numberOfRepetition": "3",
+  "speedRate": "0.4",
+  "timestamp": "18 Feb 18:51:48",
+  "id": "118185148993"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 38,
+  "end": 40,
+  "numberOfRepetition": "1",
+  "speedRate": "1",
+  "timestamp": "18 Feb 18:51:49",
+  "id": "118185149707"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 38,
+  "end": 40,
+  "numberOfRepetition": "3",
+  "speedRate": "0.4",
+  "timestamp": "18 Feb 18:51:50",
+  "id": "118185150547"
+}
+,{
+  "execute": "repetPartOfVideo",
+  "undo": null,
+  "start": 27,
+  "end": 34,
+  "numberOfRepetition": "3",
+  "speedRate": "0.4",
+  "timestamp": "18 Feb 18:51:52",
+  "id": "118185152562"
+}
 ]

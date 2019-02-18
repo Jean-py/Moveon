@@ -148,7 +148,7 @@ function loadSH1(){
 }
 
 function loadSH2(){
-  loadJSONSegmentHistory2;
+  loadJSONSegmentHistory2();
 
 }
 
