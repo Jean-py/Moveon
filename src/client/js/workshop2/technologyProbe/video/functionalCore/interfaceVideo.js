@@ -46,6 +46,9 @@ var Player = function() {
       repetPartOfVideo(start,end, numberOfRepetition,speedRate) ;
     },
   
+    setSource  : function(source) {
+      setSource(source) ;
+    }
   
   }
 };

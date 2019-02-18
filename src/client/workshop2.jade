@@ -22,19 +22,30 @@ block content
         .bar2#bar2id
         .bar3#bar3id
     .sidebar#sidebarMenu(style='visibility: hidden; ')
-                a#btnLoadFile(href='#load_file')
+                a#btnLoadFile(href='#load_file' , style='visibility: hidden; ')
                     i.fa.fa-fw.fa-wrench
                     |  Load file
                 a#btnSaveSegments(href='#SaveSegments')
                     i.fa.fa-fw.fa-wrench
                     |  Save file
-                a#btnCleanAll(href='#clean')
+                a#btnCleanAll(href='#clean', style='visibility: hidden; ')
                     i.fa.fa-fw.fa-wrench
                     |  Clean all
-                a#loadYtVideo(href='#load')
+                a#loadYtVideo(href='#load', style='visibility: hidden; ')
                     i.fa.fa-fw.fa-wrench
                     |  Load video
-
+                a#loadvideo1
+                    i.fa.fa-fw.fa-wrench
+                    |  Load video1
+                a#loadSHvideo1(href='#loadv1')
+                    i.fa.fa-fw.fa-wrench
+                    |  Load SH1
+                a#loadvideo2
+                    i.fa.fa-fw.fa-wrench
+                    |  Load video2
+                a#loadSHvideo2(href='#loadv2')
+                    i.fa.fa-fw.fa-wrench
+                    |  Load SH2
                 a
                     i.fa.fa-fw.fa-wrench
                     |  Participant:
@@ -99,6 +110,11 @@ block content
     //script(src="/src/client/js/workshop2/technologyProbe/utilities/require.js")
 
     script.
+    //test for json reader from client to serveur
+    script(type="text/javascript" src="/src/client/js/workshop2/technologyProbe/menu/SHvideoW1.js")
+    script(type="text/javascript" src="/src/client/js/workshop2/technologyProbe/menu/SHvideoW2.js")
+
+
     link(href="stylesheets/videoControl.css" rel="stylesheet")
     link(href="stylesheets/card.css" rel="stylesheet")
     link(href="stylesheets/menu.css" rel="stylesheet")
@@ -155,5 +171,8 @@ block content
 
 
 
-    //script(src="/src/client/js/workshop2/technologyProbe/card/controller/controllerCard.js")
+
+
+
+//script(src="/src/client/js/workshop2/technologyProbe/card/controller/controllerCard.js")
 

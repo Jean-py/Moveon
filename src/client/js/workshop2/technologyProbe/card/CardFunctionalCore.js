@@ -32,7 +32,7 @@ function playCard(iDiv,startDurationParam){
 function modifyCardDescription(){
   //window.getElementById(id_card).
   //description = text;
-  this.card.description = text;
+  this.card.description = this.text;
 }
 function modifyCardSpeed(){
   //let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;

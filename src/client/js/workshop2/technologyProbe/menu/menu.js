@@ -13,6 +13,12 @@ var btnLoadYtVideo = document.getElementById('loadYtVideo');
 var btnSaveSegments = document.getElementById('btnSaveSegments');
 
 
+var btnloadSH1 = document.getElementById('loadSHvideo1');
+var btnloadSH2 = document.getElementById('loadSHvideo2');
+var btnloadVideo1 = document.getElementById('loadvideo1');
+var btnloadVideo2 = document.getElementById('loadvideo2');
+
+
 
 var menuExtended = 0;
 
@@ -34,8 +40,6 @@ function updateImageDisplay() {
   var curFiles = inputFile.files;
   console.log(curFiles);
   cardManager.execute(new LoadLogCommand(curFiles));
-  
-  
   var notification_feedback = "File imported !";
   notificationFeedback(notification_feedback)
 }
@@ -51,6 +55,12 @@ btnCleanAll.addEventListener("mousedown", callbackCleanSegmentHistory);
 
 btnSaveSegments.addEventListener("mousedown", callbackSaveFile);
 
+btnloadSH1.addEventListener("mousedown", loadSH1 );
+btnloadSH2.addEventListener("mousedown", loadSH2);
+btnloadVideo1.addEventListener("mousedown", loadVideo1);
+btnloadVideo2.addEventListener("mousedown", loadVideo2);
+
+
 idSession.addEventListener("blur",setSessionName, {passive: true});
 function setSessionName(){
    logger.changeUsernameSocket( idSession.value );
@@ -59,7 +69,7 @@ function setSessionName(){
 }
 
 function callbackCleanSegmentHistory(){
-  if ( confirm( " /!\ Voulez-vous vraiment supprimer tous les segments?" ) ) {
+  if ( confirm( " /!\\ Voulez-vous vraiment supprimer tous les segments?" ) ) {
     // Code à éxécuter si le l'utilisateur clique sur "OK"
     var notification_feedback = "Clean all success";
     notificationFeedback(notification_feedback);
@@ -128,5 +138,27 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
+
+
+
+function loadSH1(){
+  
+  
+  loadJSONSegmentHistory1() ;
+}
+
+function loadSH2(){
+  loadJSONSegmentHistory2;
+
+}
+
+
+function loadVideo1(){
+  Player.setSource("./public/media/workshop2/videoW1.mp4");
+}
+
+function loadVideo2(){
+  Player.setSource("./public/media/workshop2/videoW1-2.mp4");}
+
 
 

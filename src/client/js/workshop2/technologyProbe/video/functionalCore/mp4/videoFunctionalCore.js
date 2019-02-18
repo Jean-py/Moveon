@@ -79,9 +79,9 @@ window.addEventListener("load",function() {
       } else {
         //alert("2") // Safari
         console.log("test safari");
-        video.src = "../../../public/media/workshop2/EAT3.mp4";
         console.log("test safari : " + video.src);
         video.load();
+        
       }
     }
   }, 0);
@@ -197,6 +197,9 @@ var playPausecallback = function(e){
   }
 };
 
+var setSource = function(source){
+  video.src = source;
+};
 
 //Update knob on a tablet
 var updateKnobAndVideo = function(event) {

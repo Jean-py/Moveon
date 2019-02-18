@@ -239,3 +239,34 @@ function download(content, fileName, contentType) {
 }
 
 
+
+function loadJSONSegmentHistory1() {
+  
+  var test = 0;
+  // If we use onloadend, we need to check the readyState.
+      console.log(generateJSONfromvar());
+      
+      let generatedJson = generateJSONfromvar();
+      var my_JSON_object = JSON.parse(generatedJson);
+      console.log(my_JSON_object);
+      for (let k = 0; k < my_JSON_object.length; k++) {
+        
+        addingNewCardsFromJSon(my_JSON_object[k]);
+      
+    }
+  
+}
+
+function loadJSONSegmentHistory2() {
+  
+  var test = 0;
+  // If we use onloadend, we need to check the readyState.
+  
+  var my_JSON_object = JSON.parse(SHvideoW2);
+  console.log(my_JSON_object);
+  for (let k = 0; k < my_JSON_object.length; k++) {
+    addingNewCardsFromJSon(my_JSON_object[k]);
+    
+  }
+  
+}
