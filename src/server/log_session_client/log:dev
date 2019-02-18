@@ -1,143 +1,23 @@
 [{
   "execute": "play",
   "undo": null,
-  "timestamp": "17 Feb 11:58:30",
-  "id": "117115830588"
+  "timestamp": "18 Feb 11:04:14",
+  "id": "11811414501"
 }
 ,{
   "execute": "updateKnobAndVideoComputer",
   "undo": null,
-  "timestamp": "17 Feb 11:58:31",
-  "id": "117115831327",
+  "timestamp": "18 Feb 11:04:15",
+  "id": "11811415690",
   "mouseEvent": {
-    "pageX": 548,
-    "pageY": 462
-  }
-}
-,{
-  "execute": "updateKnobAndVideoComputer",
-  "undo": null,
-  "timestamp": "17 Feb 11:58:32",
-  "id": "11711583232",
-  "mouseEvent": {
-    "pageX": 524,
-    "pageY": 466
-  }
-}
-,{
-  "execute": "updateKnobAndVideoComputer",
-  "undo": null,
-  "timestamp": "17 Feb 11:58:34",
-  "id": "117115834459",
-  "mouseEvent": {
-    "pageX": 397,
-    "pageY": 452
-  }
-}
-,{
-  "execute": "updateKnobAndVideoComputer",
-  "undo": null,
-  "timestamp": "17 Feb 11:58:35",
-  "id": "117115835548",
-  "mouseEvent": {
-    "pageX": 468,
-    "pageY": 467
-  }
-}
-,{
-  "execute": "updateKnobAndVideoComputer",
-  "undo": null,
-  "timestamp": "17 Feb 11:58:40",
-  "id": "117115840704",
-  "mouseEvent": {
-    "pageX": 346,
-    "pageY": 468
-  }
-}
-,{
-  "execute": "updateKnobAndVideoComputer",
-  "undo": null,
-  "timestamp": "17 Feb 11:58:41",
-  "id": "117115841855",
-  "mouseEvent": {
-    "pageX": 328,
-    "pageY": 468
-  }
-}
-,{
-  "execute": "updateKnobAndVideoComputer",
-  "undo": null,
-  "timestamp": "17 Feb 11:58:44",
-  "id": "117115844608",
-  "mouseEvent": {
-    "pageX": 776,
-    "pageY": 451
-  }
-}
-,{
-  "execute": "updateKnobAndVideoComputer",
-  "undo": null,
-  "timestamp": "17 Feb 11:58:46",
-  "id": "117115846191",
-  "mouseEvent": {
-    "pageX": 880,
-    "pageY": 459
+    "pageX": 608,
+    "pageY": 569
   }
 }
 ,{
   "execute": "pause",
   "undo": null,
-  "timestamp": "17 Feb 11:58:46",
-  "id": "117115846715"
-}
-,{
-  "execute": "play",
-  "undo": null,
-  "timestamp": "17 Feb 11:58:47",
-  "id": "117115847576"
-}
-,{
-  "execute": "pause",
-  "undo": null,
-  "timestamp": "17 Feb 11:58:49",
-  "id": "117115849299"
-}
-,{
-  "execute": "play",
-  "undo": null,
-  "timestamp": "17 Feb 12:45:24",
-  "id": "117124524271"
-}
-,{
-  "execute": "updateKnobAndVideoComputer",
-  "undo": null,
-  "timestamp": "17 Feb 12:45:25",
-  "id": "117124525378",
-  "mouseEvent": {
-    "pageX": 469,
-    "pageY": 463
-  }
-}
-,{
-  "execute": "updateKnobAndVideoComputer",
-  "undo": null,
-  "timestamp": "17 Feb 12:45:26",
-  "id": "117124526207",
-  "mouseEvent": {
-    "pageX": 393,
-    "pageY": 455
-  }
-}
-,{
-  "execute": "play",
-  "undo": null,
-  "timestamp": "17 Feb 12:45:26",
-  "id": "117124526828"
-}
-,{
-  "execute": "pause",
-  "undo": null,
-  "timestamp": "17 Feb 12:45:27",
-  "id": "117124527927"
+  "timestamp": "18 Feb 11:04:18",
+  "id": "1181141828"
 }
 ]
