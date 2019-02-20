@@ -15,6 +15,7 @@ var btnSaveSegments = document.getElementById('btnSaveSegments');
 
 var btnloadSH1 = document.getElementById('loadSHvideo1');
 var btnloadSH2 = document.getElementById('loadSHvideo2');
+var btnloadSHTuto = document.getElementById('loadSHvideoTutorial');
 var btnloadVideo1 = document.getElementById('loadvideo1');
 var btnloadVideo2 = document.getElementById('loadvideo2');
 
@@ -57,6 +58,7 @@ btnSaveSegments.addEventListener("mousedown", callbackSaveFile);
 
 btnloadSH1.addEventListener("mousedown", loadSH1 );
 btnloadSH2.addEventListener("mousedown", loadSH2);
+btnloadSHTuto.addEventListener("mousedown", loadSHTuto);
 btnloadVideo1.addEventListener("mousedown", loadVideo1);
 btnloadVideo2.addEventListener("mousedown", loadVideo2);
 
@@ -151,12 +153,14 @@ function loadSH2(){
   loadJSONSegmentHistory2();
 
 }
+function loadSHTuto(){
+  loadJSONSegmentHistoryTutorial();
+}
 
 
 function loadVideo1(){
   Player.setSource("./public/media/workshop2/videoW1.mp4");
 }
-
 function loadVideo2(){
   Player.setSource("./public/media/workshop2/videoW1-2.mp4");}
 

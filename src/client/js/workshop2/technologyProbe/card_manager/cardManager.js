@@ -41,9 +41,10 @@ var CardManager = function() {
       //playCard(arrayItem.iDiv, arrayItem.startP);
       console.log(listSegment);
   
-      for (let item of listSegment) {
-        console.log(item.id);
-        triggerMouseEvent(item,'mousedown');
+  
+      for (var i = 0; i < listSegment.length; i++) {
+        console.log(listSegment[i].id); //second console output
+        triggerMouseEvent(listSegment[i],'mousedown');
       }
      
      // var item = arrayItem.updateInfo();
@@ -57,6 +58,8 @@ var CardManager = function() {
         var serializedArr = JSON.stringify(arrayItemUpdated);
         console.log("*****  Serialisation of card complete : " + serializedArr);
         download(serializedArr, 'jsonW2log-' + createUniqueId() + '.json', 'text/plain');
+        
+        logger.saveSH(serializedArr);
     }
     
   }
@@ -229,13 +232,21 @@ function deleteCardUI(card) {
 
 function download(content, fileName, contentType) {
   var a = document.createElement("a");
+  
+  
+ //a.style.display = "block";
   var file = new Blob([content], {
     type: contentType
   });
+  
   a.href = URL.createObjectURL(file);
   a.download = fileName;
   a.click();
   a.remove();
+  
+  
+  
+  
 }
 
 
@@ -257,6 +268,18 @@ function loadJSONSegmentHistory1() {
 
 function loadJSONSegmentHistory2() {
   let generatedJson2 = generateJSONfromvar2();
+  
+  var my_JSON_object = JSON.parse(generatedJson2);
+  console.log(my_JSON_object);
+  for (let k = 0; k < my_JSON_object.length; k++) {
+    addingNewCardsFromJSon(my_JSON_object[k]);
+    
+  }
+  
+}
+
+function loadJSONSegmentHistoryTutorial() {
+  let generatedJson2 = generateJSONfromvarTuto();
   
   var my_JSON_object = JSON.parse(generatedJson2);
   console.log(my_JSON_object);

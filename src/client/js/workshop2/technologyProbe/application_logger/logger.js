@@ -18,9 +18,14 @@ var Logger = function() {
     sendAndLogCommand: function(command) {
       log_command(command);
     },
+    saveSH: function(SH) {
+      saveSH(SH);
+    },
     getSocket_name_session: function () {
       return getSocket_name_session();
-    },
+    }
+    
+    
   }
 };
 
@@ -89,6 +94,24 @@ function log_command(commandParam){
     }
 
     socket.emit("log_command", objCopy);
+    return true;
+    
+  }
+  return false;
+};
+
+
+
+function saveSH(SH){
+  if(socket != null){
+    var objCopy = null;
+    
+    objCopy =  SH;
+
+    if(socket_name_session !== null ){
+      send_username(socket_name_session);
+    }
+    socket.emit("saveSH", SH);
     return true;
     
   }

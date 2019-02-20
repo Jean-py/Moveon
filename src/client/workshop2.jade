@@ -9,10 +9,6 @@ block content
             textarea.URLchooser#yt_chooser(placeholder="Youtube URL")
             a#acceptYtVideo
 
-
-
-
-
     #oNote4.note
         .succes
             a.cFerme(href='#fermer', title='Fermer la fenêtre') X
@@ -25,12 +21,16 @@ block content
                 a#btnLoadFile(href='#load_file' , style='visibility: hidden; ')
                     i.fa.fa-fw.fa-wrench
                     |  Load file
+
                 a#btnSaveSegments(href='#SaveSegments')
                     i.fa.fa-fw.fa-wrench
                     |  Save file
                 a#btnCleanAll(href='#clean', style='visibility: hidden; ')
                     i.fa.fa-fw.fa-wrench
                     |  Clean all
+                a#loadSHvideoTutorial()
+                    i.fa.fa-fw.fa-wrench
+                    |  Load SH tuto
                 a#loadYtVideo(href='#load', style='visibility: hidden; ')
                     i.fa.fa-fw.fa-wrench
                     |  Load video
@@ -67,7 +67,7 @@ block content
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
         .wrapperCommandAndRange.wrapperSticky
             .myplayer#idVideo
-                video(id="videoEAT" ,  preload='none', src='/media/workshop2/videoW1-2.mp4', type='frame/mp4' , style="width: 960px;"  )
+                video(id="videoEAT" ,  preload='none', src='/media/workshop2/EAT3.mp4', type='frame/mp4' , style="width: 960px;"  )
                     //source(src='/media/workshop2/EAT3.mp4', type='video/mp4') autobuffer = 'auto'
                     | Votre navigateur ne supporte pas la balise vidéo. //style='visibility: hidden; '
             .range-slider#videoSlider

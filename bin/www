@@ -326,6 +326,11 @@ io.on("connection",  (socket)=> {
     serverLogger.log(socket.username,command);
   });
   
+  socket.on("saveSH", function (SH){
+    //socket.command = data.username;
+    serverLogger.saveSH(socket.username,SH);
+  });
+  
  
 });
 
