@@ -43,7 +43,7 @@ function saveSH(socket_name, SH) {
   console.log("--------------------------------");
   
   //log the command into a file
-  var file_path = "./src/server/logSH/" + socket_name + "-W2SH";
+  var file_path = "./src/server/log-SH/" + socket_name + "-W2SH";
   console.log(SH);
   console.log(fs.existsSync(file_path));
   console.log(file_path);
@@ -52,11 +52,8 @@ function saveSH(socket_name, SH) {
     
     var stream = fs.createWriteStream(file_path, { 'flags': 'w' });
     stream.once('open', function (fd) {
-      
       stream.write(SH);
-      
       stream.end();
-      
     });
   
 }

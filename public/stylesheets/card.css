@@ -4,7 +4,7 @@
 .infoCard{
     position : absolute;
     margin-top : 25px;
-    width: 400px;
+    width: 700px;
     height: 10px;
     left: -30px;
     border-style: solid;
@@ -36,7 +36,9 @@
 }
 
 
-.drag { position: relative; }
+.drag {
+    position: relative;
+}
 
 
 .cardBoard{
@@ -53,13 +55,14 @@
   /*  border-radius: 10px;*/
     border-style: solid;
    /* position: absolute;*/
-    width: 200px;
+    width: 500px;
     font-weight: bold;
     margin-left: 7px;
     color: #ffffff;
     white-space: normal;
     z-index: 1;
     top: 0px;
+    overflow-y: scroll;
 }
 
 .imgSlow{

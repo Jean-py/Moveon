@@ -130,8 +130,8 @@
 }
 
 .wrapperSticky{
-    position: -webkit-sticky;
-    position: sticky;
+    /*position: -webkit-sticky;
+    position: sticky;*/
     z-index: 999;
     top: 0;
 }

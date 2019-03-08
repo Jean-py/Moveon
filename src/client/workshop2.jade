@@ -18,7 +18,7 @@ block content
         .bar2#bar2id
         .bar3#bar3id
     .sidebar#sidebarMenu(style='visibility: hidden; ')
-                a#btnLoadFile(href='#load_file' , style='visibility: hidden; ')
+                a#btnLoadFile(href='#load_file' , style=' ')
                     i.fa.fa-fw.fa-wrench
                     |  Load file
 
@@ -28,42 +28,40 @@ block content
                 a#btnCleanAll(href='#clean', style='visibility: hidden; ')
                     i.fa.fa-fw.fa-wrench
                     |  Clean all
-                a#loadSHvideoTutorial()
+                a#loadSHvideoTutorial(href='#loadSHvideoTutorial')
                     i.fa.fa-fw.fa-wrench
                     |  Load SH tuto
-                a#loadYtVideo(href='#load', style='visibility: hidden; ')
+                a#loadYtVideo( href='#loadYtVideo', style='visibility: hidden; ')
                     i.fa.fa-fw.fa-wrench
                     |  Load video
-                a#loadvideo1
+                a#loadvideo1( href='#loadvideo1')
                     i.fa.fa-fw.fa-wrench
                     |  Load video1
-                a#loadSHvideo1(href='#loadv1')
+                a#loadSHvideo1(href='#loadSHvideo1')
                     i.fa.fa-fw.fa-wrench
                     |  Load SH1
-                a#loadvideo2
+                a#loadvideo2(href='#loadvideo2')
                     i.fa.fa-fw.fa-wrench
                     |  Load video2
-                a#loadSHvideo2(href='#loadv2')
+                a#loadSHvideo2(href='#loadSHvideo2')
                     i.fa.fa-fw.fa-wrench
                     |  Load SH2
+                a#AnalyzeData(href='#AnalyzeData')
+                    i.fa.fa-fw.fa-wrench
+                    |  Analyze1
                 a
                     i.fa.fa-fw.fa-wrench
                     |  Participant:
                 textarea#idSession
                 input#logFileLoad(type="file", style='visibility: hidden; ')
                // button.buttonLoad
-
-
     //.menuOption#menuOptionId(style='visibility: hidden; ') Session username :
     //.userName#username
         p My username is :
-
             //button
                 |  Mirroring
-
     //.myplayer
         .divyoutube#yt_player
-
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
         .wrapperCommandAndRange.wrapperSticky
             .myplayer#idVideo
@@ -110,10 +108,12 @@ block content
     //script(src="/src/client/js/workshop2/technologyProbe/utilities/require.js")
 
     script.
+    //Function to analyse data
+    script(src = "/src/client/js/dataAnalysis/dataAnalysisUtilities.js")
+
+
     //test for json reader from client to serveur
     script(type="text/javascript" src="/src/client/js/workshop2/technologyProbe/menu/SHvideoW1.js")
-    script(type="text/javascript" src="/src/client/js/workshop2/technologyProbe/menu/SHvideoW2.js")
-
 
     link(href="stylesheets/videoControl.css" rel="stylesheet")
     link(href="stylesheets/card.css" rel="stylesheet")
@@ -166,6 +166,10 @@ block content
 
     //The class that handle the menu option
     script(src="/src/client/js/workshop2/technologyProbe/menu/menu.js")
+
+    //Toolbar for instruments
+    script(src="/src/client/js/workshop2/technologyProbe/instruments/reverso.js")
+
 
 
 
