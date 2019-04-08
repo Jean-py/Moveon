@@ -164,8 +164,9 @@ function addingNewCardsFromJSon(cardInfo) {
   if (cardInfo.startP < 0) {
     cardInfo.startP = 0;
   }
+  console.log(cardInfo.startP, cardInfo.endP);
   let result = Player.sliderToVideo(cardInfo.startP, cardInfo.endP);
-  console.log(result);
+  //console.log(result);
   numberOfCard++;
   if (!cardInfo.deleted) {
     console.log(result.startDuration, result.endDuration, cardInfo.startP, cardInfo.endP, cardInfo);

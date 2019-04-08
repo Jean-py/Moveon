@@ -8,6 +8,7 @@ var video = document.getElementById("videoEAT");
 
 
 
+
 var wrapperVideo = document.getElementById("idVideo");
 var speedrate = 1;
 // Buttons
@@ -178,7 +179,6 @@ var pause = function () {
 };
 
 var seekTo = function(startDurationParam){
-  console.log(startDurationParam);
   video.currentTime = startDurationParam;
 };
 
@@ -196,6 +196,8 @@ var playPausecallback = function(e){
   
   }
 };
+
+
 
 var setSource = function(source){
   video.src = source;
@@ -216,6 +218,8 @@ var updateKnobAndVideo = function(event) {
     }
   }
 };
+
+
 
 //Update knob on a laptop
 var updateKnobAndVideoComputer = function(e) {

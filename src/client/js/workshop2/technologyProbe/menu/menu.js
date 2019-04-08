@@ -12,14 +12,14 @@ var btnCleanAll = document.getElementById('btnCleanAll');
 var btnLoadYtVideo = document.getElementById('loadYtVideo');
 var btnSaveSegments = document.getElementById('btnSaveSegments');
 
-var dataAnalyst = DataAnalyst;
+//var dataAnalyst = DataAnalyst;
 
 var btnloadSH1 = document.getElementById('loadSHvideo1');
 var btnloadSH2 = document.getElementById('loadSHvideo2');
 var btnloadSHTuto = document.getElementById('loadSHvideoTutorial');
 var btnloadVideo1 = document.getElementById('loadvideo1');
 var btnloadVideo2 = document.getElementById('loadvideo2');
-var AnalyzeData = document.getElementById('AnalyzeData');
+var btnAnalyzeData = document.getElementById('analyzeData');
 
 
 
@@ -37,6 +37,7 @@ btnLoadFile.addEventListener("mousedown", function (e) {
   }, {
   passive: true
 });
+
 
 
 function updateImageDisplay() {
@@ -63,7 +64,7 @@ btnloadSH2.addEventListener("mousedown", loadSH2);
 btnloadSHTuto.addEventListener("mousedown", loadSHTuto);
 btnloadVideo1.addEventListener("mousedown", loadVideo1);
 btnloadVideo2.addEventListener("mousedown", loadVideo2);
-AnalyzeData.addEventListener("mousedown", analyzeData);
+btnAnalyzeData.addEventListener("mousedown", analyzeData);
 
 
 
@@ -148,8 +149,6 @@ window.onclick = function(event) {
 
 
 function loadSH1(){
-  
-  
   loadJSONSegmentHistory1() ;
 }
 
@@ -169,9 +168,11 @@ function loadVideo2(){
   Player.setSource("./public/media/workshop2/videoW1-2.mp4");}
 
 function analyzeData(){
-  dataAnalyst;visualiseAllSegmentsInOne();
-  
+  dataAnalyst.analyseData1();
 }
+
+
+
 
 
 

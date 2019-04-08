@@ -13,6 +13,7 @@ var videoFunctionalCoreManager = VideoFunctionalCoreManager();
 
 
 var Player = function() {
+  
   //I implemented a command pattern, see : https://www.dofactory.com/javascript/command-design-pattern
   return {
     //execute a command
@@ -48,7 +49,8 @@ var Player = function() {
   
     setSource  : function(source) {
       setSource(source) ;
-    }
+    },
+  
   
   }
 };
