@@ -173,7 +173,6 @@ var ranglerSliderTrackClick = function(e) {
     case StateDrag.IDLE:
     {
       state = StateDrag.DOWN;
-      console.log("ici");
       clearAllTimer();
       updateKnobAndVideoWrapper(e);
       feedbackOnSliderVideo(false);

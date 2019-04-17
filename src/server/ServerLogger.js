@@ -38,12 +38,9 @@ function setUsernameLog(user_name){
 
 
 function saveSH(socket_name, SH) {
-  console.log("--------------------------------");
-  console.log("a la con");
-  console.log("--------------------------------");
   
   //log the command into a file
-  var file_path = "./src/server/log-SH/" + socket_name + "-W2SH";
+  var file_path = "./src/server/log-SH/" + socket_name + Math.round((Math.random()))+  "-SH";
   console.log(SH);
   console.log(fs.existsSync(file_path));
   console.log(file_path);

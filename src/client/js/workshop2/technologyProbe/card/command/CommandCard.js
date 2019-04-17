@@ -22,7 +22,6 @@ var CommandModifCardNbRepet = function (execute,undo,card,repetitionNumber) {
   this.undo = null;
   this.card = card;
   this.nbRepet = repetitionNumber;
-  console.log("BBB");
   console.log(repetitionNumber);
   this.timestamp = timestamp();
   this.id = createUniqueId();

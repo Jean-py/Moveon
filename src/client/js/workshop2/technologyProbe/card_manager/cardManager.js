@@ -35,8 +35,9 @@ var CardManager = function() {
       command.undo();
     },
     exportCard: function(){
+      console.log("function export card");
       /*------ Create a set of card from a JSON file -------*/
-        var arrayItemUpdated = [];
+      var arrayItemUpdated = [];
       var listSegment = document.getElementsByClassName('segment');
       //playCard(arrayItem.iDiv, arrayItem.startP);
       console.log(listSegment);

@@ -39,11 +39,11 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   
   //Color picker
-  var arrowDown = document.createElement('input');
-  arrowDown.type = 'jscolor';
+  //var arrowDown = document.createElement('input');
+ /* arrowDown.type = 'jscolor';
   arrowDown.className = 'jscolor';
   arrowDown.value = '#8DFFFF';
-  jscolor.installByClassName("jscolor");
+  //jscolor.installByClassName("jscolor");*/
   
   
   
@@ -109,6 +109,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       console.log("nbrepet in card :" +  repetitionNumber);
       cardFunctionalCore.execute(new CardNbRepetCommand(cardObject, repetitionNumber));
+      //cardFunctionalCore.execute(new CardNbRepetCommand(cardObject, 100));
     });
     divSegment.addEventListener("mousedown", function (e) {
       repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
@@ -118,10 +119,11 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       segmentFeedback.width = width;
       description = textSegment.value;
       feedbackOnSliderVideo(true);
-      videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, repetitionNumber, speedRate));
+      //videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, repetitionNumber, speedRate));
+      videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, 100, speedRate));
     }, false);
     //TODO widget color picker
-    arrowDown.addEventListener("change", watchColorPicker, false);
+    //arrowDown.addEventListener("change", watchColorPicker, false);
   }
   function initGUI() {
     textSegment = document.createElement('input');
@@ -162,8 +164,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     //Div contenant les info du dessus (taille de div invariable)
     divInfoCard.appendChild(imgSlow);
     divInfoCard.appendChild(selectSpeed);
-    divInfoCard.appendChild(imgRepet);
-    divInfoCard.appendChild(selectNbRepet);
+    //divInfoCard.appendChild(imgRepet);
+    //divInfoCard.appendChild(selectNbRepet);
     divInfoCard.appendChild(textSegment);
     //divInfoCard.appendChild(arrowDown);
     iDiv.appendChild(divSegment);

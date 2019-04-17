@@ -6,6 +6,8 @@ var enum_videoplatform = {
   YOUTUBE: 2
 };
 
+
+
 var mediaplatform = enum_videoplatform.MP4;
 //var videoFunctionalCoreManager =  new Player();
 
@@ -50,6 +52,9 @@ var Player = function() {
     setSource  : function(source) {
       setSource(source) ;
     },
+    mirror : function () {
+      mirror();
+    }
   
   
   }

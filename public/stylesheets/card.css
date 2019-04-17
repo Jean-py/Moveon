@@ -30,7 +30,7 @@
     height: 18px;
    /*border-radius: 10px;*/
     background-color: #213F8D;
-    z-index: 10;
+    z-index: 1;
     left: 0px;
     top:0px
 }
@@ -52,7 +52,7 @@
     border: 1px;
     border-color: white;
 
-  /*  border-radius: 10px;*/
+    border-radius: 10px;
     border-style: solid;
    /* position: absolute;*/
     width: 500px;
@@ -62,7 +62,7 @@
     white-space: normal;
     z-index: 1;
     top: 0px;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }
 
 .imgSlow{

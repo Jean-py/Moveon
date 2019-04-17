@@ -28,7 +28,7 @@ rangeSliderTrack.style.width = WIDTH_RANGE_SLIDER_TRACK;
 
 var isPlayingCard = false;
 
-
+var mirrored = false;
 
 var commands = [];
 /**
@@ -197,7 +197,15 @@ var playPausecallback = function(e){
   }
 };
 
-
+var mirror = function () {
+  if(mirrored){
+    video.style.transform =  "rotateY("+ 0 +"deg)";
+    mirrored = false;
+  } else {
+    video.style.transform =  "rotateY("+ 180 +"deg)";
+    mirrored = true;
+  }
+};
 
 var setSource = function(source){
   video.src = source;

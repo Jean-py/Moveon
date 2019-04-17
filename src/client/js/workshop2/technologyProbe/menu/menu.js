@@ -11,6 +11,8 @@ var inputFile = document.getElementById('logFileLoad');
 var btnCleanAll = document.getElementById('btnCleanAll');
 var btnLoadYtVideo = document.getElementById('loadYtVideo');
 var btnSaveSegments = document.getElementById('btnSaveSegments');
+var btnInvertVideo = document.getElementById('btnInvertVideo');
+var btnLoadAVideo = document.getElementById('btnLoadAVideo');
 
 //var dataAnalyst = DataAnalyst;
 
@@ -53,19 +55,31 @@ menu.addEventListener("mousedown", handleMenu, {
   passive: true
 });
 
-btnLoadYtVideo.addEventListener("mousedown", callbackLoadYtVideo);
+if(btnLoadYtVideo !== null)
+  btnLoadYtVideo.addEventListener("mousedown", callbackLoadYtVideo);
 
 btnCleanAll.addEventListener("mousedown", callbackCleanSegmentHistory);
 
 btnSaveSegments.addEventListener("mousedown", callbackSaveFile);
 
-btnloadSH1.addEventListener("mousedown", loadSH1 );
-btnloadSH2.addEventListener("mousedown", loadSH2);
-btnloadSHTuto.addEventListener("mousedown", loadSHTuto);
-btnloadVideo1.addEventListener("mousedown", loadVideo1);
-btnloadVideo2.addEventListener("mousedown", loadVideo2);
-btnAnalyzeData.addEventListener("mousedown", analyzeData);
+if(btnloadSH1 !== null)
+  btnloadSH1.addEventListener("mousedown", loadSH1 );
 
+if(btnloadSH2 !== null)
+  btnloadSH2.addEventListener("mousedown", loadSH2);
+if(btnloadSHTuto !== null)
+  btnloadSHTuto.addEventListener("mousedown", loadSHTuto);
+if(btnloadVideo1 !== null)
+  btnloadVideo1.addEventListener("mousedown", loadVideo1);
+if(btnloadVideo2 !== null)
+  btnloadVideo2.addEventListener("mousedown", loadVideo2);
+if(btnAnalyzeData !== null)
+  btnAnalyzeData.addEventListener("mousedown", analyzeData);
+
+if(btnInvertVideo !== null)
+  btnInvertVideo.addEventListener("mousedown", invertVideo) ;
+if(btnLoadAVideo !== null)
+  btnLoadAVideo.addEventListener("mousedown", loadVideo) ;
 
 
 idSession.addEventListener("blur",setSessionName, {passive: true});
@@ -86,8 +100,6 @@ function callbackCleanSegmentHistory(){
     var notification_feedback = "Not confirmed!";
     notificationFeedback(notification_feedback);
   }
-  
-  
 }
 
 function callbackSaveFile(){
@@ -125,19 +137,27 @@ function notificationFeedback(notification_message){
 
 // Get the modal
 var modal = document.getElementById('myModal');
+var modalVideo = document.getElementById('videoPickerOverview');
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-btnLoadYtVideo.onclick = function() {
-  modal.style.display = "block";
-};
+if(btnLoadYtVideo !== null){
+  btnLoadYtVideo.onclick = function() {
+    modal.style.display = "block";
+  };
+}
+
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.addEventListener( "mousedown" , function() {
   modal.style.display = "none";
-};
+});
+
+span.addEventListener( "mousedown" , function() {
+  modalVideo.style.display = "none";
+});
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -145,6 +165,34 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 };
+
+
+/**
+ * Span
+ */
+// When the user clicks the button, open the modal
+if(btnLoadAVideo !== null){
+  btnLoadAVideo.onclick = function() {
+    modalVideo.style.display = "block";
+    modalVideo.style.visibility = "";
+    VideoPicker.chargeVideo();
+  };
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modalVideo.style.display = "none";
+  modalVideo.style.visibility = "hidden";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modalVideo) {
+    modalVideo.style.display = "none";
+    modalVideo.style.visibility = "hidden";
+  
+  }
+};
+
 
 
 
@@ -169,6 +217,13 @@ function loadVideo2(){
 
 function analyzeData(){
   dataAnalyst.analyseData1();
+}
+
+function invertVideo(){
+  Player.mirror();
+}
+function loadVideo() {
+
 }
 
 
