@@ -79,3 +79,5 @@ build/Release
 node_modules
 
 package-lock.json
+
+src/server/log_session_client/*
