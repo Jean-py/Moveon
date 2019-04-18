@@ -1,9 +1,7 @@
 extends layout
-
-
 block content
     // The Modal
-    //#myModal.modal
+    //#modalYT.modal
         // Modal content
         .modal-content
             span.close ×
@@ -11,14 +9,16 @@ block content
             a#acceptYtVideo
     //The Modal
     #videoPickerOverview.modal
-            // Modal content
-            .modal-content#videoPickerOverviewModal
-                span.close.cFerme(href='#fermer') X
+        .modal-content#videoPickerOverviewModal
+            span.close.cFerme x
 
+    #SHPickerOverview.modal
+        .modal-content#SHPickerOverviewModal
+            span.close.cFerme x
 
     #oNote4.note
         .succes
-            a.cFerme.close(href='#fermer', title='Fermer la fenêtre') X
+            a.cFerme.close(href='#fermer', title='Fermer la fenêtre') x
             #noteMessage  Hello!
     .containerMenu#containerMenu
         .bar1#bar1id
@@ -28,6 +28,9 @@ block content
                 a#btnLoadFile(href='#load_file' , style=' ')
                     i.fa.fa-fw.fa-wrench
                     |  Load Decomposition
+                a#btnLoadSHFromServer(href='#load_file' , style=' ')
+                    i.fa.fa-fw.fa-wrench
+                    |  Load from server
                 a#btnSaveSegments(href='#SaveSegments')
                     i.fa.fa-fw.fa-wrench
                     |  Save Decomposition

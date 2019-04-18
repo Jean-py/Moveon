@@ -104,9 +104,6 @@ function log_command(commandParam){
 
 function saveSH(SH){
   if(socket != null){
-    var objCopy = null;
-    
-    objCopy =  SH;
 
     if(socket_name_session !== null ){
       send_username(socket_name_session);

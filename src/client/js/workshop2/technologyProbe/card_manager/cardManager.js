@@ -4,24 +4,12 @@ var arrayCard = [];
 var commands = [];
 
 
+
 var CardManager = function() {
   //I implemented a command pattern, see : https://www.dofactory.com/javascript/command-design-pattern
   return {
     //execute a command
     execute: function(command) {
-      //if this is a delete command then card is an argument of the command
-      /*switch (command.execute.name){
-        case "deleteCard" : {
-          command.execute(command.card);
-          break;
-        }
-        case "createNewCard" :
-          command.execute(command.startP, command.endP);
-          break;
-        default:
-          command.execute();
-          break;
-      }*/
      command.execute();
       //We send the command to the server (the server log it into a file, see ./src/server/ServerLogger)
       logger.sendAndLogCommand(command);
@@ -41,15 +29,11 @@ var CardManager = function() {
       var listSegment = document.getElementsByClassName('segment');
       //playCard(arrayItem.iDiv, arrayItem.startP);
       console.log(listSegment);
-  
-  
+      
       for (var i = 0; i < listSegment.length; i++) {
         console.log(listSegment[i].id); //second console output
         triggerMouseEvent(listSegment[i],'mousedown');
       }
-     
-     // var item = arrayItem.updateInfo();
-     // triggerMouseEvent( a, "mousedown");
         arrayCard.forEach(function(arrayItem) {
           console.log(arrayItem);
           var item = arrayItem.updateInfo();
@@ -61,10 +45,27 @@ var CardManager = function() {
         download(serializedArr, 'jsonW2log-' + createUniqueId() + '.json', 'text/plain');
         
         logger.saveSH(serializedArr);
-    }
+    }, loadSegmentHistoryFromServer: function(){
+      
+    
+      //We charge all the video only one time
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'src/server/log-SH/SH_all_path.txt', true);
+      xhr.onreadystatechange = function () {
+        console.log(this.responseText);
+      };
+      xhr.send();
+    
+    
+    },
+    
     
   }
 };
+
+
+/*Private function, do not call outside the CardManager*/
+
 
 function triggerMouseEvent (node, eventType) {
   var clickEvent = document.createEvent ('MouseEvents');
@@ -79,39 +80,6 @@ function triggerMouseEvent (node, eventType) {
  */
 var wrapperCommandAndRange = document.getElementById("wrapperCommandAndRangeid");
 
-//TODO Save and load button, do no delete
-/*saveLogBtn.addEventListener("touchend",function (e) {
-  console.log("saving log");
-  arrayCard.forEach(function (arrayItem) {
-   // arrayItem.updateInfo();
-    //arrayItem.
-  });
-  exportCardsJSon();
-  textSaveLog.innerText = "Log saved!" ;
-});
-
-loadLogBtn.onclick = function () {
-  loadJSON(null);
-};
-
-loadLogBtn.addEventListener("mouseup",function (e) {
-  //console.log("AAAAAA");
-  //var mydata = JSON.parse(data);
-  //console.log( loadLogBtn.value);
-});
-
-
-
-/*
-
-
-
-//dragElement(document.getElementById("card1"));
-
-
-addCard.addEventListener('click', function (e) {
-  createNewCard();
-});*/
 
 
 function cleanSegmentHistory(){
@@ -261,33 +229,79 @@ function loadJSONSegmentHistory1() {
       var my_JSON_object = JSON.parse(generatedJson);
       console.log(my_JSON_object);
       for (let k = 0; k < my_JSON_object.length; k++) {
-        
         addingNewCardsFromJSon(my_JSON_object[k]);
-      
     }
   
 }
 
 function loadJSONSegmentHistory2() {
   let generatedJson2 = generateJSONfromvar2();
-  
   var my_JSON_object = JSON.parse(generatedJson2);
   console.log(my_JSON_object);
   for (let k = 0; k < my_JSON_object.length; k++) {
     addingNewCardsFromJSon(my_JSON_object[k]);
-    
   }
-  
 }
 
 function loadJSONSegmentHistoryTutorial() {
   let generatedJson2 = generateJSONfromvarTuto();
-  
   var my_JSON_object = JSON.parse(generatedJson2);
   console.log(my_JSON_object);
   for (let k = 0; k < my_JSON_object.length; k++) {
     addingNewCardsFromJSon(my_JSON_object[k]);
+  }
+}
+
+
+var  loadSHHistoryfromSrv = function() {
+  
+  //We charge all the video only one time
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'src/client/js/workshop2/technologyProbe/card_manager/SHLoaderOverview_view.html', true);
+  xhr.onreadystatechange = function () {
+    if (this.readyState !== 4) return;
+    if (this.status !== 200) return; // or whatever error handling you want
+    document.getElementById('SHPickerOverviewModal').innerHTML = this.responseText;
+    xhr.send();
+    console.log('HAHAHAHA')
+  
+    /*
+    //Code permettant de charger un SH, il suffit de recuperer tous les SH du server,
+    // puis de les entrer dans une div correspondante, àa doit faire un overview je pense
+    let generatedJson = generateJSONfromvar();
+    var my_JSON_object = JSON.parse(generatedJson);
+    console.log(my_JSON_object);
+    for (let k = 0; k < my_JSON_object.length; k++) {
+      addingNewCardsFromJSon(my_JSON_object[k]);
+    }*/
+    
+    /*var elms = document.getElementById('videoPickerOverviewModal').getElementsByTagName("div");
+    var video = document.getElementById('videoEAT');
+    var span = document.getElementsByClassName("close")[0];
+    
+    span.addEventListener( "mousedown" , function() {
+      modalVideo.style.display = "none";
+    });
+    for (var i = 0; i < elms.length; i++) {
+      elms[i].addEventListener("mousedown", function (){
+        //console.log(this.getElementsByTagName("source")[0].src);
+        video.src = this.getElementsByTagName("source")[0].src;
+        var notification_feedback = "Video successfully loaded!";
+        notificationFeedback(notification_feedback);
+        //modalVideo.style.display = "none";
+        //modalVideo.style.visibility = "hidden";
+      });
+    }
+  };*/
+  
     
   }
-  
 }
+/*
+
+var span = document.getElementsByClassName("close")[1];
+var modalSH = document.getElementById('SHPickerOverview');
+
+span.addEventListener( "mousedown" , function() {
+  modalSH.style.display = "none";
+});*/

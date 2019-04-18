@@ -13,6 +13,7 @@ var btnLoadYtVideo = document.getElementById('loadYtVideo');
 var btnSaveSegments = document.getElementById('btnSaveSegments');
 var btnInvertVideo = document.getElementById('btnInvertVideo');
 var btnLoadAVideo = document.getElementById('btnLoadAVideo');
+var btnLoadSHFromServer = document.getElementById('btnLoadSHFromServer');
 
 //var dataAnalyst = DataAnalyst;
 
@@ -64,6 +65,8 @@ btnSaveSegments.addEventListener("mousedown", callbackSaveFile);
 
 if(btnloadSH1 !== null)
   btnloadSH1.addEventListener("mousedown", loadSH1 );
+if(btnLoadSHFromServer !== null)
+  btnLoadSHFromServer.addEventListener("mousedown", LoadSHFromServer );
 
 if(btnloadSH2 !== null)
   btnloadSH2.addEventListener("mousedown", loadSH2);
@@ -136,11 +139,13 @@ function notificationFeedback(notification_message){
 }
 
 // Get the modal
-var modal = document.getElementById('myModal');
+var modal = document.getElementById('modalYT');
 var modalVideo = document.getElementById('videoPickerOverview');
+var modalLoadSH = document.getElementById('SHPickerOverview');
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var spanSH = document.getElementsByClassName("close")[1];
 
 // When the user clicks the button, open the modal
 if(btnLoadYtVideo !== null){
@@ -154,34 +159,26 @@ if(btnLoadYtVideo !== null){
 span.addEventListener( "mousedown" , function() {
   modal.style.display = "none";
 });
-
 span.addEventListener( "mousedown" , function() {
   modalVideo.style.display = "none";
 });
+spanSH.addEventListener( "mousedown" , function() {
+  modalLoadSH.style.display = "none";
+  
+});
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
+
 
 
 /**
  * Span
  */
-// When the user clicks the button, open the modal
-if(btnLoadAVideo !== null){
-  btnLoadAVideo.onclick = function() {
-    modalVideo.style.display = "block";
-    modalVideo.style.visibility = "";
-    VideoPicker.chargeVideo();
-  };
-}
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modalVideo.style.display = "none";
   modalVideo.style.visibility = "hidden";
+  modalLoadSH.style.display = "none";
+  modalLoadSH.style.visibility = "hidden";
 };
 
 // When the user clicks anywhere outside of the modal, close it
@@ -189,7 +186,10 @@ window.onclick = function(event) {
   if (event.target == modalVideo) {
     modalVideo.style.display = "none";
     modalVideo.style.visibility = "hidden";
-  
+  }
+  if (event.target == modalLoadSH) {
+    modalLoadSH.style.display = "none";
+    modalLoadSH.style.visibility = "hidden";
   }
 };
 
@@ -198,6 +198,12 @@ window.onclick = function(event) {
 
 function loadSH1(){
   loadJSONSegmentHistory1() ;
+}
+
+function LoadSHFromServer(){
+      modalLoadSH.style.display = "block";
+      modalLoadSH.style.visibility = "";
+      cardManager.loadSegmentHistoryFromServer();
 }
 
 function loadSH2(){
@@ -223,7 +229,10 @@ function invertVideo(){
   Player.mirror();
 }
 function loadVideo() {
-
+// When the user clicks the button load a Video in  the menu, open the modal
+      modalVideo.style.display = "block";
+      modalVideo.style.visibility = "";
+      VideoPicker.chargeVideo();
 }
 
 

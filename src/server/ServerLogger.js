@@ -39,19 +39,40 @@ function setUsernameLog(user_name){
 
 function saveSH(socket_name, SH) {
   
+
+  
+  
+  
+  
   //log the command into a file
-  var file_path = "./src/server/log-SH/" + socket_name + Math.round((Math.random()))+  "-SH";
+  
+  var randomN = Math.floor(Math.random() * 100) + 1;
+  
+  var file_path = "./src/server/log-SH/" + socket_name +'-' + randomN +  "-SH";
   console.log(SH);
   console.log(fs.existsSync(file_path));
   console.log(file_path);
+  console.log('the file ' + file_path + '  exists');
   
-    console.log('the file ' + file_path + '  exists');
     
     var stream = fs.createWriteStream(file_path, { 'flags': 'w' });
     stream.once('open', function (fd) {
       stream.write(SH);
       stream.end();
     });
+  
+      /*
+    Update a file that keep track of the path of all the segment history.
+    This file is used in the client side to
+    */
+      var pathOfFiles = "./src/server/log-SH/SH_all_path.txt";
+  
+  
+  fs.appendFile(pathOfFiles, file_path+"\n", function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+  
   
 }
 

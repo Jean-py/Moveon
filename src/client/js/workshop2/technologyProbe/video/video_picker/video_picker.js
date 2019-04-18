@@ -13,21 +13,6 @@ var VideoPicker = function() {
     },
     
     
-    openVideoPicker: function() {
-  
-      openVideoPicker();
-    },
-    closeVideoPicker : function() {
-  
-      closeVideoPicker();
-    },
-    
-    changeVideo : function() {
-  
-      chargeVideo();
-    },
-   
-    
   }
 };
 
@@ -55,7 +40,6 @@ var chargeVideo = function (){
       span.addEventListener( "mousedown" , function() {
         modalVideo.style.display = "none";
       });
-      
       for (var i = 0; i < elms.length; i++) {
           elms[i].addEventListener("mousedown", function (){
             //console.log(this.getElementsByTagName("source")[0].src);
@@ -66,30 +50,12 @@ var chargeVideo = function (){
             //modalVideo.style.visibility = "hidden";
         });
       }
-      
-      
-      
     };
     xhr.send();
     alreadyCharged = true;
-  
-    
   }
  
 };
 
 
-
-
-var openVideoPicker = function (){
-
-  
-};
-
-
-
-var closeVideoPicker = function (){
-
-
-};
 
