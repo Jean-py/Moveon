@@ -1,4 +1,1 @@
-./src/server/log-SH/dev-Fri Apr 19 2019 14:29:42 GMT+0200 (CEST)
-public/logW2Json/ipad9.json
-./src/server/log-SH/dev-Mon Apr 22 2019 10:30:24 GMT+0200 (CEST)
-./src/server/log-SH/dev-Mon Apr 22 2019 13:26:11 GMT+0200 (CEST)
+./src/server/log-SH/dev-Mon Apr 22 2019 14:56:50 GMT+0200 (CEST)
