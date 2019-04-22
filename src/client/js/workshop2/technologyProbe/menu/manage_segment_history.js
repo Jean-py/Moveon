@@ -28,9 +28,18 @@ var SHvideoTuto =[{"width":"33px","startP":150,"endP":183,"description":"Movemen
 
 
 
-function generateJSONfromvarTuto()
-{
-  return JSON.stringify(P5);
+function generateJSON(SH_path){
+  var xhr_SH = new XMLHttpRequest();
+  xhr_SH.open('GET', SH_path, true);
+  
+  xhr_SH.onreadystatechange = function () {
+    if (this.readyState!==4) return;
+    if (this.status!==200) return; // or whatever error handling you want
+    console.log(this.responseText);
+    console.log(JSON.stringify(this.responseText));
+    return JSON.stringify(this.responseText);
+  };
+  xhr_SH.send();
 }
 
 

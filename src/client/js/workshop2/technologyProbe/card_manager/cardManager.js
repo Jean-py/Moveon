@@ -46,16 +46,65 @@ var CardManager = function() {
         
         logger.saveSH(serializedArr);
     }, loadSegmentHistoryFromServer: function(){
-      
+    
+    
     
       //We charge all the video only one time
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'src/server/log-SH/SH_all_path.txt', true);
-      xhr.onreadystatechange = function () {
-        console.log(this.responseText);
-      };
-      xhr.send();
+      var xhr_view = new XMLHttpRequest();
+      xhr_view.open('GET', 'src/client/js/workshop2/technologyProbe/card_manager/SHLoaderOverview_view.html', true);
+      var view_SH_html = document.getElementById('SHPickerOverviewModal');
     
+      xhr_view.onreadystatechange = function () {
+        if (this.readyState!==4) return;
+        if (this.status!==200) return; // or whatever error handling you want
+        view_SH_html.innerHTML= this.responseText;
+      };
+      xhr_view.send();
+    
+      //We charge all the video only one time
+      
+      
+      var xhr_allPath = new XMLHttpRequest();
+      xhr_allPath.open('GET', 'src/server/log-SH/SH_all_path.txt', true);
+    
+      xhr_allPath.onreadystatechange = function () {
+        if (this.readyState!==4) return;
+        if (this.status!==200) return; // or whatever error handling you want
+        
+        
+        var lines = this.responseText.split('\n');
+        for(var j = 0; j < lines.length-1; j++){
+          var xhr_SH = new XMLHttpRequest();
+          xhr_SH.open('GET', lines[j], true);
+          xhr_SH.onreadystatechange = function () {
+            console.log(this.responseText);
+            //Ici il faut lire les fichier json et créer un appercu de chaque
+            
+          };
+          xhr_SH.send();
+          
+         
+          
+          var div = document.createElement('div');
+          div.className = 'gridSH';
+          var split = lines[j].split('/');
+          //get only the name
+          var nameSH = split[split.length-1];
+          console.log(nameSH);
+          div.innerHTML = nameSH;
+          document.getElementById('SH_list').appendChild(div);
+          div.setAttribute("nameSH",lines[j] );
+          div.addEventListener("mousedown",function () {
+            console.log(this.getAttribute("nameSH"));
+            loadJSONSegmentHistory(this.getAttribute("nameSH"));
+          });
+  
+        }
+  
+      };
+      xhr_allPath.send();
+    
+      
     
     },
     
@@ -243,65 +292,34 @@ function loadJSONSegmentHistory2() {
   }
 }
 
-function loadJSONSegmentHistoryTutorial() {
-  let generatedJson2 = generateJSONfromvarTuto();
-  var my_JSON_object = JSON.parse(generatedJson2);
-  console.log(my_JSON_object);
-  for (let k = 0; k < my_JSON_object.length; k++) {
-    addingNewCardsFromJSon(my_JSON_object[k]);
-  }
-}
-
-
-var  loadSHHistoryfromSrv = function() {
+function loadJSONSegmentHistory(SH_path) {
   
-  //We charge all the video only one time
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'src/client/js/workshop2/technologyProbe/card_manager/SHLoaderOverview_view.html', true);
-  xhr.onreadystatechange = function () {
-    if (this.readyState !== 4) return;
-    if (this.status !== 200) return; // or whatever error handling you want
-    document.getElementById('SHPickerOverviewModal').innerHTML = this.responseText;
-    xhr.send();
-    console.log('HAHAHAHA')
   
-    /*
-    //Code permettant de charger un SH, il suffit de recuperer tous les SH du server,
-    // puis de les entrer dans une div correspondante, àa doit faire un overview je pense
-    let generatedJson = generateJSONfromvar();
-    var my_JSON_object = JSON.parse(generatedJson);
+  var xhr_SH = new XMLHttpRequest();
+  xhr_SH.open('GET', SH_path, true);
+  
+  xhr_SH.onreadystatechange = function () {
+    if (this.readyState!==4) return;
+    if (this.status!==200) return; // or whatever error handling you want
+    console.log(this.responseText);
+    let generatedJson2 = this.responseText;
+    
+    var my_JSON_object = JSON.parse(generatedJson2);
     console.log(my_JSON_object);
     for (let k = 0; k < my_JSON_object.length; k++) {
       addingNewCardsFromJSon(my_JSON_object[k]);
-    }*/
-    
-    /*var elms = document.getElementById('videoPickerOverviewModal').getElementsByTagName("div");
-    var video = document.getElementById('videoEAT');
-    var span = document.getElementsByClassName("close")[0];
-    
-    span.addEventListener( "mousedown" , function() {
-      modalVideo.style.display = "none";
-    });
-    for (var i = 0; i < elms.length; i++) {
-      elms[i].addEventListener("mousedown", function (){
-        //console.log(this.getElementsByTagName("source")[0].src);
-        video.src = this.getElementsByTagName("source")[0].src;
-        var notification_feedback = "Video successfully loaded!";
-        notificationFeedback(notification_feedback);
-        //modalVideo.style.display = "none";
-        //modalVideo.style.visibility = "hidden";
-      });
     }
-  };*/
+   
+  };
+  xhr_SH.send();
   
-    
-  }
+  
+  var elms = document.getElementById('SHPickerOverview');
+  var span = document.getElementsByClassName("close")[1];
+  
+  span.addEventListener( "mousedown" , function() {
+    elms.style.display = "none";
+  });
+  
 }
-/*
 
-var span = document.getElementsByClassName("close")[1];
-var modalSH = document.getElementById('SHPickerOverview');
-
-span.addEventListener( "mousedown" , function() {
-  modalSH.style.display = "none";
-});*/

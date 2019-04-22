@@ -179,7 +179,8 @@ var pause = function () {
 };
 
 var seekTo = function(startDurationParam){
-  video.currentTime = startDurationParam;
+  if(startDurationParam < video.currentTime )
+    video.currentTime = startDurationParam;
 };
 
 var playPausecallback = function(e){

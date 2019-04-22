@@ -39,16 +39,27 @@ function setUsernameLog(user_name){
 
 function saveSH(socket_name, SH) {
   
-
+  
+  
+  function addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
   
   
   
+  var d = new Date();
+  var h = addZero(d.getHours());
+  var m = addZero(d.getMinutes());
+  var s = addZero(d.getSeconds());
+  var month =  addZero(d.getMonth());
+  var day =  addZero(d.getDay());
   
-  //log the command into a file
+  var date =  day+"/"+month+"_"+ h + ":" + m + ":" + s;
   
-  var randomN = Math.floor(Math.random() * 100) + 1;
-  
-  var file_path = "./src/server/log-SH/" + socket_name +'-' + randomN +  "-SH";
+  var file_path = "./src/server/log-SH/" + socket_name +'-' +d;
   console.log(SH);
   console.log(fs.existsSync(file_path));
   console.log(file_path);
