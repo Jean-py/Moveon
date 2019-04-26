@@ -1,5 +1,7 @@
 extends layout
 block content
+    //disable the google analytic for video.js
+    script window.HELP_IMPROVE_VIDEOJS = false;
     // The Modal
     //#modalYT.modal
         // Modal content
@@ -43,7 +45,6 @@ block content
                 a#btnInvertVideo(href='#Invert', style='visibility:; ')
                     i.fa.fa-fw.fa-wrench
                     |  Invert Video
-
                 //a#loadSHvideoTutorial(href='#loadSHvideoTutorial')
                     i.fa.fa-fw.fa-wrench
                     |  Load SH tuto
@@ -129,6 +130,13 @@ block content
                     img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
                     p#timerVideo 0:00/x:xx
                     img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
+            //video#videoEAT.video-js(controls='nonce', preload='nonce', width='960',  data-setup='{}' )
+                source(src='/media/workshop2/frame.mp4', type='video/mp4')
+                p.vjs-no-js
+                    | To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    a(href='https://videojs.com/html5-video-support/', target='_blank') supports HTML5 video
+
+
         .wrapperCommandAndRange#wrapperCommandAndRangeCardBoard(style='')
                     .cardBoard#divCardBoard
                 //img.imageVideoControl#playSegmentHistory(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px; margin-top : 75px')

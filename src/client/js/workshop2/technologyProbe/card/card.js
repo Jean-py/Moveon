@@ -21,7 +21,11 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   let imgSlow = null;
   
+  
+  
   var textSegment = null;
+  var textStartSegment = null;
+  var textEndSegment = null;
   let imgRepet = null;
   let divSegment = null;
   let startDuration = startDurationParam;
@@ -160,6 +164,16 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     }
   
     selectNbRepet.selectedIndex = 1;
+  /*
+  Creation des étapes pour facilement changer la taille des segments
+  
+    textStartSegment = document.createElement('input');
+    textStartSegment.className = '';
+    textEndSegment = document.createElement('input');
+    textEndSegment.className = '';
+    divInfoCard.appendChild(textStartSegment);
+    divInfoCard.appendChild(textEndSegment);
+  */
   
     //Div contenant les info du dessus (taille de div invariable)
     divInfoCard.appendChild(imgSlow);
@@ -170,6 +184,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     //divInfoCard.appendChild(arrowDown);
     iDiv.appendChild(divSegment);
     iDiv.appendChild(divInfoCard);
+  
+    
   
   
     //If the card have been deleted, the color is red, otherwise blue.
@@ -183,7 +199,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       selectNbRepet.selectedIndex = cardInfo.repetitionNumber;
       selectSpeed.selectedIndex = cardInfo.speed*10;
     }
-    
   }
   
   

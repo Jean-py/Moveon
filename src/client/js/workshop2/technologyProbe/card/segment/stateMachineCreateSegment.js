@@ -226,8 +226,6 @@ var knobMinUpCallback = function(e) {
 
 //Create Segment
 function startCreateSegment(e, startSegment) {
-  console.log("BBB " + knobMin.style.left);
-  
   if(parseInt(knobMin.style.left,10) < 0){
     knobMax.style.left = WIDTH_KNOB/2 + "px";
   } else {
