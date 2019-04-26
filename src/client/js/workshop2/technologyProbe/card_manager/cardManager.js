@@ -18,7 +18,6 @@ var CardManager = function() {
     },
     //Undo a command
     undo: function() {
-      //TODO
       var command = commands.pop();
       command.undo();
     },
@@ -46,9 +45,6 @@ var CardManager = function() {
         
         logger.saveSH(serializedArr);
     }, loadSegmentHistoryFromServer: function(){
-    
-    
-    
       //We charge all the video only one time
       var xhr_view = new XMLHttpRequest();
       xhr_view.open('GET', 'src/client/js/workshop2/technologyProbe/card_manager/SHLoaderOverview_view.html', true);
@@ -82,9 +78,6 @@ var CardManager = function() {
             
           };
           xhr_SH.send();
-          
-         
-          
           var div = document.createElement('div');
           div.className = 'gridSH';
           var split = lines[j].split('/');
@@ -98,17 +91,10 @@ var CardManager = function() {
             console.log(this.getAttribute("nameSH"));
             loadJSONSegmentHistory(this.getAttribute("nameSH"));
           });
-  
         }
-  
       };
       xhr_allPath.send();
-    
-      
-    
     },
-    
-    
   }
 };
 

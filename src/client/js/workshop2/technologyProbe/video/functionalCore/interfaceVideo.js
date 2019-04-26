@@ -14,7 +14,7 @@ var Player = function() {
   //I implemented a command pattern, see : https://www.dofactory.com/javascript/command-design-pattern
   return {
     //execute a command
-    playPausecallback: function(command) {
+    playPausecallback: function() {
       playPausecallback();
     },
   

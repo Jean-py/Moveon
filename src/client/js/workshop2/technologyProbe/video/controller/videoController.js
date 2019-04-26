@@ -8,6 +8,8 @@ var muteButton = document.getElementById("mute");
 var timerVideo = document.getElementById("timerVideo");
 // Sliders
 var knobMin = document.getElementById("range-slider_handle-min");
+//var knobMin = document.getElementsByClassName("vjs-button");
+
 var rangeSliderTrack = document.getElementById("rangeSliderTrack");
 var wrapperCommandAndRangeid = document.getElementById("wrapperCommandAndRangeid");
 
@@ -41,7 +43,18 @@ playButton.addEventListener("touchstart", function(e) {
   passive: true
 });
 
-
+//Click  space to playpause the video
+window.addEventListener("keydown", function (e) {
+  if(e.keyCode == 32 && e.target == document.body) {
+    console.log("space pressed");
+    Player.playPausecallback();
+    event.preventDefault();
+  }
+  
+  
+  // Annuler l'action par défaut pour éviter qu'elle ne soit traitée deux fois.
+  event.preventDefault();
+}, true);
 //Click on the video trigger play and pause
 video.addEventListener("touchend", function(e) {
   //console.log("appel l42 playPausecallback videoCOntroller");
@@ -53,12 +66,11 @@ video.addEventListener("touchend", function(e) {
 muteButton.addEventListener("touchend", function(e) {
   e.preventDefault();
   videoFunctionalCoreManager.execute(new MuteButtonCommand());
-  
 });
+
 rangeSliderWrapper.addEventListener("touchend", function(e) {
   e.preventDefault();
   Player.playPausecallback(e);
-  
 });
 
 //Mouse event controller
