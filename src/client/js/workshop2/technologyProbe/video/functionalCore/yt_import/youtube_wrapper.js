@@ -1,10 +1,9 @@
-var video = document.getElementById("videoEAT");
+var video = document.getElementById("videojvscontrol");
 
 var videotime = 0;
 var timeupdater = null;
 var onChangeTimer = null;
 
-var wrapperVideo = document.getElementById("idVideo");
 var speedrate = 1;
 // Buttons
 var playButton = document.getElementById("play-pause");

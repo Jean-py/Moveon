@@ -1,4 +1,4 @@
-var video = document.getElementById("videoEAT");
+var videovjs = document.getElementById("videovjscontrol");
 var timerRepetition;
 var speedrate = 1;
 var videoSlider = document.getElementById("videoSlider");
@@ -46,7 +46,6 @@ playButton.addEventListener("touchstart", function(e) {
 //Click  space to playpause the video
 window.addEventListener("keydown", function (e) {
   if(e.keyCode == 32 && e.target == document.body) {
-    console.log("space pressed");
     Player.playPausecallback();
     event.preventDefault();
   }
@@ -55,13 +54,8 @@ window.addEventListener("keydown", function (e) {
   // Annuler l'action par défaut pour éviter qu'elle ne soit traitée deux fois.
   event.preventDefault();
 }, true);
-//Click on the video trigger play and pause
-video.addEventListener("touchend", function(e) {
-  //console.log("appel l42 playPausecallback videoCOntroller");
-  //videoFunctionalCoreManager.execute(new PlayPauseCommand());
-  e.preventDefault();
-  Player.playPausecallback(e);
-});
+
+
 
 muteButton.addEventListener("touchend", function(e) {
   e.preventDefault();
@@ -84,13 +78,34 @@ muteButton.addEventListener("mousedown", function(e) {
   videoFunctionalCoreManager.execute(new MuteButtonCommand());
   
 });
-video.addEventListener("mousedown", function(e) {
-  //console.log("appel playPause function video.addEventListener(mousedown in l62 videocontroller") ;
-  //videoFunctionalCoreManager.execute(new PlayPauseCommand());
-  Player.playPausecallback();
-  
-});
 
+if(videovjs !== null){
+  
+  videovjs.addEventListener("mousedown", function(e) {
+    //console.log("appel playPause function video.addEventListener(mousedown in l62 videocontroller") ;
+    //videoFunctionalCoreManager.execute(new PlayPauseCommand());
+    Player.playPausecallback();
+  });
+//Click on the video trigger play and pause
+  videovjs.addEventListener("touchend", function(e) {
+    e.preventDefault();
+    Player.playPausecallback(e);
+  });
+
+// Update the seek bar as the video plays
+  videovjs.addEventListener("timeupdate", function() {
+    // Update the slider value
+    if (!videovjs.paused) {
+      currentValueKnob = (((NUMBER_OF_TICK / videovjs.duration) * videovjs.currentTime) + rangeSliderTrack.offsetLeft);
+      // knobMin.style.left = currentValueKnob-(KNOB_WIDTH/2)+ "px" ;
+      knobMin.style.left = currentValueKnob - (KNOB_WIDTH / 2) + "px";
+    }
+    //videoSlider.value = (NUMBER_OF_TICK / video.duration) * video.currentTime;
+    Player.updateTimerVideo();
+  }, false);
+  
+  
+}
 
 
 
@@ -98,19 +113,6 @@ video.addEventListener("mousedown", function(e) {
 videoSlider.addEventListener("change", function(e) {
   Player.updateTimerVideo();
 });
-
-
-// Update the seek bar as the video plays
-video.addEventListener("timeupdate", function() {
-  // Update the slider value
-  if (!video.paused) {
-    currentValueKnob = (((NUMBER_OF_TICK / video.duration) * video.currentTime) + rangeSliderTrack.offsetLeft);
-    // knobMin.style.left = currentValueKnob-(KNOB_WIDTH/2)+ "px" ;
-    knobMin.style.left = currentValueKnob - (KNOB_WIDTH / 2) + "px";
-  }
-  //videoSlider.value = (NUMBER_OF_TICK / video.duration) * video.currentTime;
-  Player.updateTimerVideo();
-}, false);
 
 
 
@@ -129,3 +131,13 @@ var updateKnobAndVideoWrapper = function(e) {
   // video.play();
 };
 
+
+var video = videojs('videovjscontrol', {
+  children: {
+    controlBar: {
+      children: {
+        progressControl: true
+      }
+    }
+  }
+});

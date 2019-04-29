@@ -1,15 +1,5 @@
-/**
- * Deprecated if using the youtube api instead of loaded video
- * @type {HTMLElement | null}
- */
+var videovjs = document.getElementById("videovjscontrol");
 
-
-var video = document.getElementById("videoEAT");
-
-
-
-
-var wrapperVideo = document.getElementById("idVideo");
 var speedrate = 1;
 // Buttons
 var playButton = document.getElementById("play-pause");
@@ -21,7 +11,7 @@ var rangeSliderTrack = document.getElementById("rangeSliderTrack");
 var divCardBoard = document.getElementById("divCardBoard");
 var body = document.getElementsByTagName("BODY")[0];
 
-//Je ne saiss pas comment rendre cette ligne automatique pour l'isntant car la taille est en auto...
+//Je ne saiss pas comment rendre cette ligne automatique pour l'isntant, pourtant la taille est en auto...
 var WIDTH_RANGE_SLIDER_TRACK = "960px";
 //Donc pour l'instant je reste comme ça
 rangeSliderTrack.style.width = WIDTH_RANGE_SLIDER_TRACK;
@@ -49,12 +39,10 @@ var VideoFunctionalCoreManager = function() {
         case "updateKnobAndVideoComputer" :
           command.execute(command.e);
           break;
-        
         default:
           command.execute();
           break;
       }
-  
       //We send the command to the server (the server log it into a file, see ./src/server/ServerLogger)
       logger.sendAndLogCommand(command);
       //and we save the command created
@@ -70,18 +58,18 @@ window.addEventListener("load",function() {
   //The size of the controller is the same than the size of the video
   setTimeout(function(){
     // This hides the address bar:
-    video.load();
+    //console.log(videovjs);
+    videovjs.load();
     window.scrollTo(0, 1);
     
     var ua = navigator.userAgent.toLowerCase();
     if (ua.indexOf('safari') != -1) {
       if (ua.indexOf('chrome') > -1) {
-        //video.src = "./public/media/EAT3.webm";
       } else {
         //alert("2") // Safari
         console.log("test safari");
-        console.log("test safari : " + video.src);
-        video.load();
+        console.log("test safari : " + videovjs.src);
+        videovjs.load();
         
       }
     }
@@ -108,15 +96,14 @@ body.addEventListener("scroll", function(event) {
 /*------------------------------- */
 
 var muteButtonCallback = function(e){
-  if (video.muted === false) {
+  if (videovjs.muted === false) {
     // Mute the video
-    video.muted = true;
+    videovjs.muted = true;
     // Update the button text
     muteButton.innerHTML = "Unmute";
   } else {
     // Unmute the video
-    video.muted = false;
-    //this.src="/media/workshop2/videoCommand/volumeFull.png";
+    videovjs.muted = false;
     // Update the button text
     muteButton.innerHTML = "Mute";
   }
@@ -125,23 +112,23 @@ var muteButtonCallback = function(e){
 var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
   // console.log("function  - repetPartOfVideo" , start,end, numberOfRepetition,speedRate);
   isPlayingCard = true;
-  video.playbackRate = speedRate;
-  video.currentTime = start;
+  videovjs.playbackRate = speedRate;
+  videovjs.currentTime = start;
   var repet = numberOfRepetition;
   
   //console.log("function  - repetPartOfVideo [play part] l87 videoCommand");
   play();
-  video.ontimeupdate = function() {
+  videovjs.ontimeupdate = function() {
     if(isPlayingCard){
       if ((end > start ) &&  repet > 0 ) {
-        if (video.currentTime > end) {
+        if (videovjs.currentTime > end) {
           repet--;
-          video.currentTime = start;
+          videovjs.currentTime = start;
         }
       } else {
-        video.ontimeupdate = null;
+        videovjs.ontimeupdate = null;
         feedbackOnSliderVideo(false);
-        video.playbackRate = 1;
+        videovjs.playbackRate = 1;
       }
     }
   };
@@ -150,21 +137,20 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
 function clearAllTimer() {
   window.clearInterval(timerRepetition);
   isPlayingCard = false;
-  video.playbackRate = 1;
+  videovjs.playbackRate = 1;
   feedbackOnSliderVideo(false);
 }
 
 
 var play = function () {
   setTimeout(function () {
-    var playPromise = video.play();
+    var playPromise = videovjs.play();
     if (playPromise !== undefined) {
       playPromise.then(function (value) {
         video.play();
         playButton.src = '/media/workshop2/videoCommand/pauseButton.png';
       }).catch(function (e) {
-        console.log(e);
-        video.load();
+        videovjs.load();
         //video.pause();
       })
     
@@ -174,13 +160,13 @@ var play = function () {
 
 var pause = function () {
   //console.log("appel a pause");
-  video.pause();
+  videovjs.pause();
   playButton.src='/media/workshop2/videoCommand/playButton.png';
 };
 
 var seekTo = function(startDurationParam){
-  if(startDurationParam < video.currentTime )
-    video.currentTime = startDurationParam;
+  if(startDurationParam < videovjs.currentTime )
+    videovjs.currentTime = startDurationParam;
 };
 
 var playPausecallback = function(e){
@@ -188,7 +174,7 @@ var playPausecallback = function(e){
   /*if(e != null && e !== undefined){
     e.preventDefault();
   }*/
-  if (video.paused || video.ended ) {
+  if (videovjs.paused || videovjs.ended ) {
     videoFunctionalCoreManager.execute(new PlayCommand());
     //play();
     } else {
@@ -200,16 +186,16 @@ var playPausecallback = function(e){
 
 var mirror = function () {
   if(mirrored){
-    video.style.transform =  "rotateY("+ 0 +"deg)";
+    videovjs.style.transform =  "rotateY("+ 0 +"deg)";
     mirrored = false;
   } else {
-    video.style.transform =  "rotateY("+ 180 +"deg)";
+    videovjs.style.transform =  "rotateY("+ 180 +"deg)";
     mirrored = true;
   }
 };
 
 var setSource = function(source){
-  video.src = source;
+  videovjs.src = source;
 };
 
 //Update knob on a tablet
@@ -218,11 +204,11 @@ var updateKnobAndVideo = function(event) {
   var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft; //-   ;
   //console.log("aa :  " +  body );
   
-  video.currentTime = Math.round((((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length - 1].pageX) - (offsetLeftSlider)) * video.duration) / NUMBER_OF_TICK);
+  videovjs.currentTime = Math.round((((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length - 1].pageX) - (offsetLeftSlider)) * videovjs.duration) / NUMBER_OF_TICK);
   //Update know position
   knobMin.style.left = ((((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length - 1].pageX)) - offsetLeftSlider)) + "px";
   if (segmentFeedback.displayed) {
-    if (video.currentTime > segmentFeedback.endDurationVideo) {
+    if (videovjs.currentTime > segmentFeedback.endDurationVideo) {
       feedbackOnSliderVideo(false);
     }
   }
@@ -237,12 +223,12 @@ var updateKnobAndVideoComputer = function(e) {
  // var pos = (e.pageX  - this.offsetLeft) / this.offsetWidth;
   //    video.currentTime = pos * video.duration;
   var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft - body.scrollLeft; //- window.scrollLeft  ;
-  currentValueKnob = ((e.pageX - offsetLeftSlider) * video.duration) / NUMBER_OF_TICK;
-  if (currentValueKnob < video.duration && currentValueKnob >= 0) {
-    video.currentTime = ((e.pageX - offsetLeftSlider) * video.duration) / NUMBER_OF_TICK;
+  currentValueKnob = ((e.pageX - offsetLeftSlider) * videovjs.duration) / NUMBER_OF_TICK;
+  if (currentValueKnob < videovjs.duration && currentValueKnob >= 0) {
+    videovjs.currentTime = ((e.pageX - offsetLeftSlider) * videovjs.duration) / NUMBER_OF_TICK;
     knobMin.style.left = e.pageX - (offsetLeftSlider + WIDTH_MID_KNOB_MIN / 2) + "px";
     if (segmentFeedback.displayed) {
-      if (video.currentTime > segmentFeedback.endDurationVideo) {
+      if (videovjs.currentTime > segmentFeedback.endDurationVideo) {
         feedbackOnSliderVideo(false);
       }
     }
@@ -291,12 +277,12 @@ function feedbackOnSliderVideo(onOff) {
 
 function updateTimerVideo() {
   
-  let minutes = Math.floor(video.currentTime / 60);
-  let seconds = Math.floor(video.currentTime - minutes * 60);
+  let minutes = Math.floor(videovjs.currentTime / 60);
+  let seconds = Math.floor(videovjs.currentTime - minutes * 60);
   
   
-  let minutesV = Math.floor(video.duration / 60);
-  let secondsV = Math.floor(video.duration - minutes * 60);
+  let minutesV = Math.floor(videovjs.duration / 60);
+  let secondsV = Math.floor(videovjs.duration - minutes * 60);
   if(isNaN(minutesV) || isNaN(secondsV)){
     minutesV = 0;
     secondsV = 0;
@@ -311,8 +297,8 @@ function sliderToVideo(startP, endP) {
   if(startP < 0 ){
     startP = 0;
   }
-  var startDuration = Math.round(((startP * video.duration) / NUMBER_OF_TICK));
-  var endDuration = Math.round(((endP * video.duration) / NUMBER_OF_TICK));
+  var startDuration = Math.round(((startP * videovjs.duration) / NUMBER_OF_TICK));
+  var endDuration = Math.round(((endP * videovjs.duration) / NUMBER_OF_TICK));
   
   return {
     startDuration: startDuration,

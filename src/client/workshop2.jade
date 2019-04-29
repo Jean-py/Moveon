@@ -27,86 +27,86 @@ block content
         .bar2#bar2id
         .bar3#bar3id
     .sidebar#sidebarMenu(style='visibility: hidden; ')
-                a#btnLoadFile(href='#load_file' , style=' ')
-                    i.fa.fa-fw.fa-wrench
-                    |  Load Decomposition
-                a#btnLoadSHFromServer(href='#load_file' , style=' ')
-                    i.fa.fa-fw.fa-wrench
-                    |  Load from server
-                a#btnSaveSegments(href='#SaveSegments')
-                    i.fa.fa-fw.fa-wrench
-                    |  Save Decomposition
-                a#btnCleanAll(href='#clean', style='visibility: ; ')
-                    i.fa.fa-fw.fa-wrench
-                    |  Clean Decomposition
-                a#btnLoadAVideo(href='#loadVideo', style='visibility:; ')
-                    i.fa.fa-fw.fa-wrench
-                    |  Load a Video
-                a#btnInvertVideo(href='#Invert', style='visibility:; ')
-                    i.fa.fa-fw.fa-wrench
-                    |  Invert Video
-                //a#loadSHvideoTutorial(href='#loadSHvideoTutorial')
-                    i.fa.fa-fw.fa-wrench
-                    |  Load SH tuto
-                //a#loadYtVideo( href='#loadYtVideo', style='visibility: hidden; ')
-                    i.fa.fa-fw.fa-wrench
-                    |  Load video
-                //a#loadvideo1( href='#loadvideo1')
-                    i.fa.fa-fw.fa-wrench
-                    |  Load video1
-                //a#loadSHvideo1(href='#loadSHvideo1')
-                    i.fa.fa-fw.fa-wrench
-                    |  Load SH1
-                //a#loadvideo2(href='#loadvideo2')
-                    i.fa.fa-fw.fa-wrench
-                    |  Load video2
-                //a#loadSHvideo2(href='#loadSHvideo2')
-                    i.fa.fa-fw.fa-wrench
-                    |  Load SH2
-                //a#analyzeData(href='#AnalyzeData')
-                    i.fa.fa-fw.fa-wrench
-                    |  Analyze1
-                a
-                    i.fa.fa-fw.fa-wrench
-                    |  Participant:
-                textarea#idSession
-                input#logFileLoad(type="file", style='visibility: hidden; ')
+        a#btnLoadFile(href='#load_file' , style=' ')
+            i.fa.fa-fw.fa-wrench
+            |  Load Decomposition
+        a#btnLoadSHFromServer(href='#load_file' , style=' ')
+            i.fa.fa-fw.fa-wrench
+            |  Load from server
+        a#btnSaveSegments(href='#SaveSegments')
+            i.fa.fa-fw.fa-wrench
+            |  Save Decomposition
+        a#btnCleanAll(href='#clean', style='visibility: ; ')
+            i.fa.fa-fw.fa-wrench
+            |  Clean Decomposition
+        a#btnLoadAVideo(href='#loadVideo', style='visibility:; ')
+            i.fa.fa-fw.fa-wrench
+            |  Load a Video
+        a#btnInvertVideo(href='#Invert', style='visibility:; ')
+            i.fa.fa-fw.fa-wrench
+            |  Invert Video
+        //a#loadSHvideoTutorial(href='#loadSHvideoTutorial')
+            i.fa.fa-fw.fa-wrench
+            |  Load SH tuto
+        //a#loadYtVideo( href='#loadYtVideo', style='visibility: hidden; ')
+            i.fa.fa-fw.fa-wrench
+            |  Load video
+        //a#loadvideo1( href='#loadvideo1')
+            i.fa.fa-fw.fa-wrench
+            |  Load video1
+        //a#loadSHvideo1(href='#loadSHvideo1')
+            i.fa.fa-fw.fa-wrench
+            |  Load SH1
+        //a#loadvideo2(href='#loadvideo2')
+            i.fa.fa-fw.fa-wrench
+            |  Load video2
+        //a#loadSHvideo2(href='#loadSHvideo2')
+            i.fa.fa-fw.fa-wrench
+            |  Load SH2
+        //a#analyzeData(href='#AnalyzeData')
+            i.fa.fa-fw.fa-wrench
+            |  Analyze1
+        a
+            i.fa.fa-fw.fa-wrench
+            |  Participant:
+        textarea#idSession
+        input#logFileLoad(type="file", style='visibility: hidden; ')
 
 
 
-        //#AnalysisMenuDraggable
-            #AnalysisMenuHeader Data Analysis
-            .control-group
-                label.control-label(for='position-analysis') Position
-                .controls
-                    label.radio(for='position-analysis-0')
-                        input#position-analysis-0(type='radio' name='position-analysis' value='Relative' checked='checked')
-                        |       Relative
-                    label.radio(for='position-analysis-1')
-                        input#position-analysis-1(type='radio' name='position-analysis' value='Absolute')
-                        |       Absolute
-            .control-group
-                label.control-label(for='position-analysis') Transparency
-            .slidecontainer
-                input#transparencyRange.slider(type='range' min='0' max='1' value='0.1', step='0.01')
-            .control-group
-                label.control-label(for='') Speed
-                .controls
-                    label.checkbox(for='speedcheckboxes-0-0')
-                        input#speedcheckboxes-0-0(type='checkbox' name='multiplecheckboxes-0' value='Height')
-                        |       Height
-                    label.checkbox(for='speedcheckboxes-0-1')
-                        input#speedcheckboxes-0-1(type='checkbox' name='multiplecheckboxes-0' value='Color')
-                        |       Color
-            .control-group
-                label.control-label(for='') Repetition
-                .controls
-                    label.checkbox(for='Repetitioncheckboxes-0-0')
-                        input#Repetitioncheckboxes-0-0(type='checkbox' name='multiplecheckboxes-0' value='Height')
-                        |       Height
-                    label.checkbox(for='Repetitioncheckboxes-0-1')
-                        input#Repetitioncheckboxes-0-1(type='checkbox' name='multiplecheckboxes-0' value='Color')
-                        |       Color
+    //#AnalysisMenuDraggable
+        #AnalysisMenuHeader Data Analysis
+        .control-group
+            label.control-label(for='position-analysis') Position
+            .controls
+                label.radio(for='position-analysis-0')
+                    input#position-analysis-0(type='radio' name='position-analysis' value='Relative' checked='checked')
+                    |       Relative
+                label.radio(for='position-analysis-1')
+                    input#position-analysis-1(type='radio' name='position-analysis' value='Absolute')
+                    |       Absolute
+        .control-group
+            label.control-label(for='position-analysis') Transparency
+        .slidecontainer
+            input#transparencyRange.slider(type='range' min='0' max='1' value='0.1', step='0.01')
+        .control-group
+            label.control-label(for='') Speed
+            .controls
+                label.checkbox(for='speedcheckboxes-0-0')
+                    input#speedcheckboxes-0-0(type='checkbox' name='multiplecheckboxes-0' value='Height')
+                    |       Height
+                label.checkbox(for='speedcheckboxes-0-1')
+                    input#speedcheckboxes-0-1(type='checkbox' name='multiplecheckboxes-0' value='Color')
+                    |       Color
+        .control-group
+            label.control-label(for='') Repetition
+            .controls
+                label.checkbox(for='Repetitioncheckboxes-0-0')
+                    input#Repetitioncheckboxes-0-0(type='checkbox' name='multiplecheckboxes-0' value='Height')
+                    |       Height
+                label.checkbox(for='Repetitioncheckboxes-0-1')
+                    input#Repetitioncheckboxes-0-1(type='checkbox' name='multiplecheckboxes-0' value='Color')
+                    |       Color
 
 
     //.right.menu_instrument
@@ -116,8 +116,8 @@ block content
         .divyoutube#yt_player
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
         .wrapperCommandAndRange.wrapperSticky
-            .myplayer#idVideo
-                video(id="videoEAT" ,  preload='none', src='/media/workshop2/frame.mp4', type='frame/mp4' , style="width: 960px;"  )
+            .myplayer
+                video(preload='none', src='/media/workshop2/frame.mp4', type='frame/mp4' , style="width: 960px;"  )
                     //source(src='/media/workshop2/frame.mp4', type='video/mp4') autobuffer = 'auto'
                     | Votre navigateur ne supporte pas la balise vidéo.
             .range-slider#videoSlider
@@ -130,16 +130,15 @@ block content
                     img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
                     p#timerVideo 0:00/x:xx
                     img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
-            video#videojvscontrol.video-js(controls='nonce', preload='nonce', style="width: 960px;",  data-setup='{}' )
-                source(src='/media/workshop2/frame.mp4', type='video/mp4')
+            video#videovjscontrol.video-js(controls='nonce', preload='nonce', style="width: 960px;",  data-setup='{}', src='/media/workshop2/frame.mp4', type='video/mp4' )
                 p.vjs-no-js
                     | To view this video please enable JavaScript, and consider upgrading to a web browser that
                     a(href='https://videojs.com/html5-video-support/', target='_blank') supports HTML5 video
 
 
         .wrapperCommandAndRange#wrapperCommandAndRangeCardBoard(style='')
-                    .cardBoard#divCardBoard
-                //img.imageVideoControl#playSegmentHistory(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px; margin-top : 75px')
+            .cardBoard#divCardBoard
+        //img.imageVideoControl#playSegmentHistory(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px; margin-top : 75px')
 
 
 
@@ -175,7 +174,10 @@ block content
     //test for json reader from client to serveur
     script(type="text/javascript" src="/src/client/js/workshop2/technologyProbe/menu/manage_segment_history.js")
 
-    //To create socket, used to log command
+    //video.js API
+    script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"
+
+//To create socket, used to log command
     script(src="/src/client/js/workshop2/technologyProbe/utilities/socket.io.js")
     //JQuery
     script(src="/src/client/js/workshop2/technologyProbe/utilities/jquery.js")
@@ -236,11 +238,11 @@ block content
     script(src="/src/client/js/workshop2/technologyProbe/menu/menu.js")
 
     //Toolbar for instruments
-   // script(src="/src/client/js/workshop2/technologyProbe/instruments/reverso.js")
-    //Testing
-    //script(src="/src/client/test/test.js")
-    //Function to analyse data
-    script(src = "/src/client/js/dataAnalysis/dataAnalysisUtilities.js")
+// script(src="/src/client/js/workshop2/technologyProbe/instruments/reverso.js")
+ //Testing
+ //script(src="/src/client/test/test.js")
+ //Function to analyse data
+ script(src = "/src/client/js/dataAnalysis/dataAnalysisUtilities.js")
 
 
 
