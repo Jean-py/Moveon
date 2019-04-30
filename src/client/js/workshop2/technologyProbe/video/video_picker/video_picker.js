@@ -34,7 +34,7 @@ var chargeVideo = function (){
   
   
       var elms = document.getElementById('videoPickerOverviewModal').getElementsByTagName("video");
-      var video = document.getElementById('videoEAT');
+      var video = document.getElementById('videovjscontrol');
       var span = document.getElementsByClassName("close")[0];
   
       span.addEventListener( "mousedown" , function() {

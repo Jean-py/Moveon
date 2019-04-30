@@ -131,7 +131,7 @@ var updateKnobAndVideoWrapper = function(e) {
   // video.play();
 };
 
-
+/*
 var video = videojs('videovjscontrol', {
   children: {
     controlBar: {
@@ -140,4 +140,34 @@ var video = videojs('videovjscontrol', {
       }
     }
   }
-});
+});*/
+
+  /*.addEventListener("",function () {
+  console.log("hello");
+});*/
+/*
+
+var player = videojs('videovjscontrol', {
+  controlBar: {
+    children: {
+      progressControl: true,
+      playToggle: true,
+      currentTimeDisplay: true,
+      timeDivider: true,
+      durationDisplay: true,
+      //where I want to add custom component - logo brand
+      //logoBrand : true,
+      //where i want to add theater(not full screen, but larger) mode
+      //theaterModeButton : true,
+      volumeMenuButton: {
+        vertical: true,
+        inline: false,
+        volumeBar: {
+          vertical: true
+        },
+        volumeLevel: false
+      },
+      fullscreenToggle: true
+    }
+  }
+});*/

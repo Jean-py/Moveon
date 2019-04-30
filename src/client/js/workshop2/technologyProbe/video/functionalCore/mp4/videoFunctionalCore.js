@@ -59,7 +59,7 @@ window.addEventListener("load",function() {
   setTimeout(function(){
     // This hides the address bar:
     //console.log(videovjs);
-    videovjs.load();
+    //videovjs.load();
     window.scrollTo(0, 1);
     
     var ua = navigator.userAgent.toLowerCase();
@@ -67,7 +67,6 @@ window.addEventListener("load",function() {
       if (ua.indexOf('chrome') > -1) {
       } else {
         //alert("2") // Safari
-        console.log("test safari");
         console.log("test safari : " + videovjs.src);
         videovjs.load();
         
