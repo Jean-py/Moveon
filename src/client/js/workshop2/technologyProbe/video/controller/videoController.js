@@ -131,20 +131,25 @@ var updateKnobAndVideoWrapper = function(e) {
   // video.play();
 };
 
-/*
-var video = videojs('videovjscontrol', {
-  children: {
-    controlBar: {
-      children: {
-        progressControl: true
-      }
-    }
-  }
-});*/
 
+var player = videojs('videovjscontrol');
+var Component = videojs.getComponent('Component');
+var myComponent = new Component(player);
+var button = new Component(player);
+
+var myButton = myComponent.addChild(button, {
+  text: 'Press Me',
+  buttonChildExample: {
+    buttonChildOption: true
+  }
+});
+
+//var video = videojs('videovjscontrol');
   /*.addEventListener("",function () {
   console.log("hello");
 });*/
+
+
 /*
 
 var player = videojs('videovjscontrol', {

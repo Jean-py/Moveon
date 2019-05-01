@@ -1,0 +1,29 @@
+"use strict";
+
+videojs.addLanguage('da', {
+  "Play": "Afspil",
+  "Pause": "Pause",
+  "Current Time": "Aktuel tid",
+  "Duration": "Varighed",
+  "Remaining Time": "Resterende tid",
+  "Stream Type": "Stream-type",
+  "LIVE": "LIVE",
+  "Loaded": "Indlæst",
+  "Progress": "Status",
+  "Fullscreen": "Fuldskærm",
+  "Non-Fullscreen": "Luk fuldskærm",
+  "Mute": "Uden lyd",
+  "Unmute": "Med lyd",
+  "Playback Rate": "Afspilningsrate",
+  "Subtitles": "Undertekster",
+  "subtitles off": "Uden undertekster",
+  "Captions": "Undertekster for hørehæmmede",
+  "captions off": "Uden undertekster for hørehæmmede",
+  "Chapters": "Kapitler",
+  "You aborted the media playback": "Du afbrød videoafspilningen.",
+  "A network error caused the media download to fail part-way.": "En netværksfejl fik download af videoen til at fejle.",
+  "The media could not be loaded, either because the server or network failed or because the format is not supported.": "Videoen kunne ikke indlæses, enten fordi serveren eller netværket fejlede, eller fordi formatet ikke er understøttet.",
+  "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "Videoafspilningen blev afbrudt på grund af ødelagte data eller fordi videoen benyttede faciliteter som din browser ikke understøtter.",
+  "No compatible source was found for this media.": "Fandt ikke en kompatibel kilde for denne media."
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRhLmpzIl0sIm5hbWVzIjpbInZpZGVvanMiLCJhZGRMYW5ndWFnZSJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsUUFBUUMsV0FBUixDQUFvQixJQUFwQixFQUEwQjtBQUN4QixVQUFRLFFBRGdCO0FBRXhCLFdBQVMsT0FGZTtBQUd4QixrQkFBZ0IsWUFIUTtBQUl4QixjQUFZLFVBSlk7QUFLeEIsb0JBQWtCLGdCQUxNO0FBTXhCLGlCQUFlLGFBTlM7QUFPeEIsVUFBUSxNQVBnQjtBQVF4QixZQUFVLFNBUmM7QUFTeEIsY0FBWSxRQVRZO0FBVXhCLGdCQUFjLFdBVlU7QUFXeEIsb0JBQWtCLGVBWE07QUFZeEIsVUFBUSxVQVpnQjtBQWF4QixZQUFVLFNBYmM7QUFjeEIsbUJBQWlCLGlCQWRPO0FBZXhCLGVBQWEsY0FmVztBQWdCeEIsbUJBQWlCLG1CQWhCTztBQWlCeEIsY0FBWSw4QkFqQlk7QUFrQnhCLGtCQUFnQixtQ0FsQlE7QUFtQnhCLGNBQVksVUFuQlk7QUFvQnhCLG9DQUFrQyw4QkFwQlY7QUFxQnhCLGlFQUErRCx1REFyQnZDO0FBc0J4Qix3SEFBc0gsdUhBdEI5RjtBQXVCeEIsaUlBQStILHVJQXZCdkc7QUF3QnhCLG9EQUFrRDtBQXhCMUIsQ0FBMUIiLCJmaWxlIjoiZGEuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2aWRlb2pzLmFkZExhbmd1YWdlKCdkYScsIHtcbiAgXCJQbGF5XCI6IFwiQWZzcGlsXCIsXG4gIFwiUGF1c2VcIjogXCJQYXVzZVwiLFxuICBcIkN1cnJlbnQgVGltZVwiOiBcIkFrdHVlbCB0aWRcIixcbiAgXCJEdXJhdGlvblwiOiBcIlZhcmlnaGVkXCIsXG4gIFwiUmVtYWluaW5nIFRpbWVcIjogXCJSZXN0ZXJlbmRlIHRpZFwiLFxuICBcIlN0cmVhbSBUeXBlXCI6IFwiU3RyZWFtLXR5cGVcIixcbiAgXCJMSVZFXCI6IFwiTElWRVwiLFxuICBcIkxvYWRlZFwiOiBcIkluZGzDpnN0XCIsXG4gIFwiUHJvZ3Jlc3NcIjogXCJTdGF0dXNcIixcbiAgXCJGdWxsc2NyZWVuXCI6IFwiRnVsZHNrw6ZybVwiLFxuICBcIk5vbi1GdWxsc2NyZWVuXCI6IFwiTHVrIGZ1bGRza8Omcm1cIixcbiAgXCJNdXRlXCI6IFwiVWRlbiBseWRcIixcbiAgXCJVbm11dGVcIjogXCJNZWQgbHlkXCIsXG4gIFwiUGxheWJhY2sgUmF0ZVwiOiBcIkFmc3BpbG5pbmdzcmF0ZVwiLFxuICBcIlN1YnRpdGxlc1wiOiBcIlVuZGVydGVrc3RlclwiLFxuICBcInN1YnRpdGxlcyBvZmZcIjogXCJVZGVuIHVuZGVydGVrc3RlclwiLFxuICBcIkNhcHRpb25zXCI6IFwiVW5kZXJ0ZWtzdGVyIGZvciBow7hyZWjDpm1tZWRlXCIsXG4gIFwiY2FwdGlvbnMgb2ZmXCI6IFwiVWRlbiB1bmRlcnRla3N0ZXIgZm9yIGjDuHJlaMOmbW1lZGVcIixcbiAgXCJDaGFwdGVyc1wiOiBcIkthcGl0bGVyXCIsXG4gIFwiWW91IGFib3J0ZWQgdGhlIG1lZGlhIHBsYXliYWNrXCI6IFwiRHUgYWZicsO4ZCB2aWRlb2Fmc3BpbG5pbmdlbi5cIixcbiAgXCJBIG5ldHdvcmsgZXJyb3IgY2F1c2VkIHRoZSBtZWRpYSBkb3dubG9hZCB0byBmYWlsIHBhcnQtd2F5LlwiOiBcIkVuIG5ldHbDpnJrc2ZlamwgZmlrIGRvd25sb2FkIGFmIHZpZGVvZW4gdGlsIGF0IGZlamxlLlwiLFxuICBcIlRoZSBtZWRpYSBjb3VsZCBub3QgYmUgbG9hZGVkLCBlaXRoZXIgYmVjYXVzZSB0aGUgc2VydmVyIG9yIG5ldHdvcmsgZmFpbGVkIG9yIGJlY2F1c2UgdGhlIGZvcm1hdCBpcyBub3Qgc3VwcG9ydGVkLlwiOiBcIlZpZGVvZW4ga3VubmUgaWtrZSBpbmRsw6ZzZXMsIGVudGVuIGZvcmRpIHNlcnZlcmVuIGVsbGVyIG5ldHbDpnJrZXQgZmVqbGVkZSwgZWxsZXIgZm9yZGkgZm9ybWF0ZXQgaWtrZSBlciB1bmRlcnN0w7h0dGV0LlwiLFxuICBcIlRoZSBtZWRpYSBwbGF5YmFjayB3YXMgYWJvcnRlZCBkdWUgdG8gYSBjb3JydXB0aW9uIHByb2JsZW0gb3IgYmVjYXVzZSB0aGUgbWVkaWEgdXNlZCBmZWF0dXJlcyB5b3VyIGJyb3dzZXIgZGlkIG5vdCBzdXBwb3J0LlwiOiBcIlZpZGVvYWZzcGlsbmluZ2VuIGJsZXYgYWZicnVkdCBww6UgZ3J1bmQgYWYgw7hkZWxhZ3RlIGRhdGEgZWxsZXIgZm9yZGkgdmlkZW9lbiBiZW55dHRlZGUgZmFjaWxpdGV0ZXIgc29tIGRpbiBicm93c2VyIGlra2UgdW5kZXJzdMO4dHRlci5cIixcbiAgXCJObyBjb21wYXRpYmxlIHNvdXJjZSB3YXMgZm91bmQgZm9yIHRoaXMgbWVkaWEuXCI6IFwiRmFuZHQgaWtrZSBlbiBrb21wYXRpYmVsIGtpbGRlIGZvciBkZW5uZSBtZWRpYS5cIlxufSk7Il19
