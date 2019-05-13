@@ -1,11 +1,12 @@
 //Graphical object
 var video = document.getElementById("videoEAT");
+var video_js = document.getElementById("videoEAT");
+
 var wrapperCommandAndRange = document.getElementById("wrapperCommandAndRangeid");
 var knobMin = document.getElementById("range-slider_handle-min");
 var rangeSliderTrack = document.getElementById("rangeSliderTrack");
 var knobMax = document.getElementById("range-slider_handle-max");
 var wrapperRangerSlider = document.getElementById("range-slider-wrapper");
-
 
 //Option for the longpress and the speed of the video
 var speedrate = 1;
@@ -35,81 +36,134 @@ var segmentFeedback = {
 
 if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
   
-  //Mouse
-  knobMin.addEventListener("mouseup", function(e) {
-    knobMinUpCallback(e);
-  }, {
-    passive: true
-  });
-  knobMin.addEventListener("mousedown", function(e) {
-    knobMinClick(e);
-  }, {
-    passive: true
-  });
-  knobMin.addEventListener("mousemove", function(e) {
-    knobMinMove(e);
-  }, {
-    passive: true
-  });
-  rangeSliderTrack.addEventListener("mousedown", function(e) {
-    ranglerSliderTrackClick(e);
-  }, {
-    passive: true
-  });
-  rangeSliderTrack.addEventListener("mouseUp", function(e) {
-    rangeSliderTrackEndCallback(e);
-  }, {
-    passive: true
-  });
-  rangeSliderTrack.addEventListener("mousemove", function(e) {
-    knobMinMove(e);
-  }, {
-    passive: true
-  });
+  if(knobMin != null){
+    //Mouse
+    knobMin.addEventListener("mouseup", function(e) {
+      knobMinUpCallback(e);
+    }, {
+      passive: true
+    });
+    knobMin.addEventListener("mousedown", function(e) {
+      knobMinClick(e);
+    }, {
+      passive: true
+    });
+    knobMin.addEventListener("mousemove", function(e) {
+      knobMinMove(e);
+    }, {
+      passive: true
+    });
   
-  wrapperRangerSlider.addEventListener("mousemove", function(e) {
-    knobMinMove(e);
-  }, true);
+    /*-----MOUSE LONG PRESS-------*/
+    knobMin.setAttribute("data-long-press-delay", longPressDelay);
+    knobMin.addEventListener('long-press', function(e) {
+      // console.log('knobMin.addEventListener(longpress');
+      pause();
+      longpressCreateSegmentCallback(e);
+    });
+    
+  }
+  if(rangeSliderTrack != null){
   
-  wrapperRangerSlider.addEventListener("mouseup", function(e) {
-    rangeSliderTrackEndCallback(e);
-  }, true);
+    rangeSliderTrack.addEventListener("mousedown", function(e) {
+      ranglerSliderTrackClick(e);
+    }, {
+      passive: true
+    });
+    rangeSliderTrack.addEventListener("mouseUp", function(e) {
+      rangeSliderTrackEndCallback(e);
+    }, {
+      passive: true
+    });
+    rangeSliderTrack.addEventListener("mousemove", function(e) {
+      knobMinMove(e);
+    }, {
+      passive: true
+    });
+  
+    rangeSliderTrack.addEventListener("long-press", function(e) {
+      // console.log('rangeSliderTrack.addEventListener(longpress');
+      pause();
+      longpressCreateSegmentCallback(e);
+    }, false);
+  }
+  if(wrapperRangerSlider != null){
+  
+    wrapperRangerSlider.addEventListener("mousemove", function(e) {
+      knobMinMove(e);
+    }, true);
+  
+    wrapperRangerSlider.addEventListener("mouseup", function(e) {
+      rangeSliderTrackEndCallback(e);
+    }, true);
+  }
+  
+  
   
 } else {
-  //Touch
-  knobMin.addEventListener("touchstart", function(e) {
-    knobMinClick(e);
-  }, {
-    passive: true
-  });
-  knobMin.addEventListener("touchmove", function(e) {
-    knobMinMove(e);
-  }, {
-    passive: true
-  });
-  knobMin.addEventListener("touchend", function(e) {
-    knobMinUpCallback(e);
-  }, {
-    passive: true
-  });
-  rangeSliderTrack.addEventListener("touchstart", function(e) {
-    ranglerSliderTrackClick(e);
-  }, {
-    passive: true
-  });
-  rangeSliderTrack.addEventListener("touchend", function(e) {
-    rangeSliderTrackEndCallback(e);
-  }, {
-    passive: true
-  });
-  video.addEventListener("touchmove", function(e) {
-    videoTouchMoveCallback(e);
-  }, {
-    passive: true
-  });
+  if(knobMin != null) {
   
+    //Touch
+    knobMin.addEventListener("touchstart", function (e) {
+      knobMinClick(e);
+    }, {
+      passive: true
+    });
+    knobMin.addEventListener("touchmove", function (e) {
+      knobMinMove(e);
+    }, {
+      passive: true
+    });
+    knobMin.addEventListener("touchend", function (e) {
+      knobMinUpCallback(e);
+    }, {
+      passive: true
+    });
   
+    /*-----MOUSE LONG PRESS-------*/
+    knobMin.setAttribute("data-long-press-delay", longPressDelay);
+    knobMin.addEventListener('long-press', function(e) {
+      // console.log('knobMin.addEventListener(longpress');
+      pause();
+      longpressCreateSegmentCallback(e);
+    });
+  }
+    if(rangeSliderTrack != null){
+    
+    
+    rangeSliderTrack.addEventListener("touchstart", function(e) {
+      ranglerSliderTrackClick(e);
+    }, {
+      passive: true
+    });
+    rangeSliderTrack.addEventListener("touchend", function(e) {
+      rangeSliderTrackEndCallback(e);
+    }, {
+      passive: true
+    });
   
+      rangeSliderTrack.addEventListener("long-press", function(e) {
+        // console.log('rangeSliderTrack.addEventListener(longpress');
+        pause();
+        longpressCreateSegmentCallback(e);
+      }, false);
+  }
+  if(video !=null){
+  
+    video.addEventListener("touchmove", function(e) {
+      videoTouchMoveCallback(e);
+    }, {
+      passive: true
+    });
+  }
+  if(video_js != null){
+  
+    video_js.addEventListener("touchmove", function(e) {
+      videoTouchMoveCallback(e);
+    }, {
+      passive: true
+    });
+  }
 }
 
 
@@ -123,29 +177,14 @@ window.addEventListener("mousemove", function(e){
 
 
 
-/*-----MOUSE LONG PRESS-------*/
-
-knobMin.setAttribute("data-long-press-delay", longPressDelay);
-knobMin.addEventListener('long-press', function(e) {
-  // console.log('knobMin.addEventListener(longpress');
-  pause();
-  longpressCreateSegmentCallback(e);
-});
-rangeSliderTrack.addEventListener("long-press", function(e) {
-  // console.log('rangeSliderTrack.addEventListener(longpress');
-  
-  pause();
-  longpressCreateSegmentCallback(e);
-}, false);
 
 /*Callback function*/
 var longpressCreateSegmentCallback = function(e) {
   e.preventDefault();
-  //console.log('state : ' + state +'', 'background: #222; color: #bada55');
-  
   switch (state) {
     case StateDrag.DOWN:
     {
+      
       state = StateDrag.LONGPRESS;
       //pause();
       startCreateSegment(e, video.currentTime);

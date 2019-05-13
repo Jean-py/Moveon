@@ -1,4 +1,4 @@
-var videovjs = document.getElementById("videovjscontrol");
+var video_vjs = document.getElementById("videovjs");
 
 var speedrate = 1;
 // Buttons
@@ -67,8 +67,8 @@ window.addEventListener("load",function() {
       if (ua.indexOf('chrome') > -1) {
       } else {
         //alert("2") // Safari
-        console.log("test safari : " + videovjs.src);
-        videovjs.load();
+        console.log("test safari : " + video_vjs.src);
+        video_vjs.load();
         
       }
     }
@@ -95,14 +95,14 @@ body.addEventListener("scroll", function(event) {
 /*------------------------------- */
 
 var muteButtonCallback = function(e){
-  if (videovjs.muted === false) {
+  if (video_vjs.muted === false) {
     // Mute the video
-    videovjs.muted = true;
+    video_vjs.muted = true;
     // Update the button text
     muteButton.innerHTML = "Unmute";
   } else {
     // Unmute the video
-    videovjs.muted = false;
+    video_vjs.muted = false;
     // Update the button text
     muteButton.innerHTML = "Mute";
   }
@@ -111,23 +111,23 @@ var muteButtonCallback = function(e){
 var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
   // console.log("function  - repetPartOfVideo" , start,end, numberOfRepetition,speedRate);
   isPlayingCard = true;
-  videovjs.playbackRate = speedRate;
-  videovjs.currentTime = start;
+  video_vjs.playbackRate = speedRate;
+  video_vjs.currentTime = start;
   var repet = numberOfRepetition;
   
   //console.log("function  - repetPartOfVideo [play part] l87 videoCommand");
   play();
-  videovjs.ontimeupdate = function() {
+  video_vjs.ontimeupdate = function() {
     if(isPlayingCard){
       if ((end > start ) &&  repet > 0 ) {
-        if (videovjs.currentTime > end) {
+        if (video_vjs.currentTime > end) {
           repet--;
-          videovjs.currentTime = start;
+          video_vjs.currentTime = start;
         }
       } else {
-        videovjs.ontimeupdate = null;
+        video_vjs.ontimeupdate = null;
         feedbackOnSliderVideo(false);
-        videovjs.playbackRate = 1;
+        video_vjs.playbackRate = 1;
       }
     }
   };
@@ -136,20 +136,20 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
 function clearAllTimer() {
   window.clearInterval(timerRepetition);
   isPlayingCard = false;
-  videovjs.playbackRate = 1;
+  video_vjs.playbackRate = 1;
   feedbackOnSliderVideo(false);
 }
 
 
 var play = function () {
   setTimeout(function () {
-    var playPromise = videovjs.play();
+    var playPromise = video_vjs.play();
     if (playPromise !== undefined) {
       playPromise.then(function (value) {
         video.play();
         playButton.src = '/media/workshop2/videoCommand/pauseButton.png';
       }).catch(function (e) {
-        videovjs.load();
+        video_vjs.load();
         //video.pause();
       })
     
@@ -159,13 +159,13 @@ var play = function () {
 
 var pause = function () {
   //console.log("appel a pause");
-  videovjs.pause();
+  video_vjs.pause();
   playButton.src='/media/workshop2/videoCommand/playButton.png';
 };
 
 var seekTo = function(startDurationParam){
-  if(startDurationParam < videovjs.currentTime )
-    videovjs.currentTime = startDurationParam;
+  if(startDurationParam < video_vjs.currentTime )
+    video_vjs.currentTime = startDurationParam;
 };
 
 var playPausecallback = function(e){
@@ -173,7 +173,7 @@ var playPausecallback = function(e){
   /*if(e != null && e !== undefined){
     e.preventDefault();
   }*/
-  if (videovjs.paused || videovjs.ended ) {
+  if (video_vjs.paused || video_vjs.ended ) {
     videoFunctionalCoreManager.execute(new PlayCommand());
     //play();
     } else {
@@ -185,29 +185,27 @@ var playPausecallback = function(e){
 
 var mirror = function () {
   if(mirrored){
-    videovjs.style.transform =  "rotateY("+ 0 +"deg)";
+    video_vjs.style.transform =  "rotateY("+ 0 +"deg)";
     mirrored = false;
   } else {
-    videovjs.style.transform =  "rotateY("+ 180 +"deg)";
+    video_vjs.style.transform =  "rotateY("+ 180 +"deg)";
     mirrored = true;
   }
 };
 
 var setSource = function(source){
-  videovjs.src = source;
+  video_vjs.src = source;
 };
 
 //Update knob on a tablet
 var updateKnobAndVideo = function(event) {
   //  var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft+rangeSliderTrack.offsetLeft + dividCommandeVideo.offsetLeft;
   var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft; //-   ;
-  //console.log("aa :  " +  body );
-  
-  videovjs.currentTime = Math.round((((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length - 1].pageX) - (offsetLeftSlider)) * videovjs.duration) / NUMBER_OF_TICK);
+  video_vjs.currentTime = Math.round((((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length - 1].pageX) - (offsetLeftSlider)) * video_vjs.duration) / NUMBER_OF_TICK);
   //Update know position
   knobMin.style.left = ((((event.targetTouches[0] ? event.targetTouches[0].pageX : event.changedTouches[event.changedTouches.length - 1].pageX)) - offsetLeftSlider)) + "px";
   if (segmentFeedback.displayed) {
-    if (videovjs.currentTime > segmentFeedback.endDurationVideo) {
+    if (video_vjs.currentTime > segmentFeedback.endDurationVideo) {
       feedbackOnSliderVideo(false);
     }
   }
@@ -218,16 +216,15 @@ var updateKnobAndVideo = function(event) {
 //Update knob on a laptop
 var updateKnobAndVideoComputer = function(e) {
   //take into account offset on the left of the scroll bar (body scroll and centering the wrapper)
-  
  // var pos = (e.pageX  - this.offsetLeft) / this.offsetWidth;
   //    video.currentTime = pos * video.duration;
   var offsetLeftSlider = wrapperCommandAndRangeid.offsetLeft - body.scrollLeft; //- window.scrollLeft  ;
-  currentValueKnob = ((e.pageX - offsetLeftSlider) * videovjs.duration) / NUMBER_OF_TICK;
-  if (currentValueKnob < videovjs.duration && currentValueKnob >= 0) {
-    videovjs.currentTime = ((e.pageX - offsetLeftSlider) * videovjs.duration) / NUMBER_OF_TICK;
+  currentValueKnob = ((e.pageX - offsetLeftSlider) * video_vjs.duration) / NUMBER_OF_TICK;
+  if (currentValueKnob < video_vjs.duration && currentValueKnob >= 0) {
+    video_vjs.currentTime = ((e.pageX - offsetLeftSlider) * video_vjs.duration) / NUMBER_OF_TICK;
     knobMin.style.left = e.pageX - (offsetLeftSlider + WIDTH_MID_KNOB_MIN / 2) + "px";
     if (segmentFeedback.displayed) {
-      if (videovjs.currentTime > segmentFeedback.endDurationVideo) {
+      if (video_vjs.currentTime > segmentFeedback.endDurationVideo) {
         feedbackOnSliderVideo(false);
       }
     }
@@ -276,19 +273,19 @@ function feedbackOnSliderVideo(onOff) {
 
 function updateTimerVideo() {
   
-  let minutes = Math.floor(videovjs.currentTime / 60);
-  let seconds = Math.floor(videovjs.currentTime - minutes * 60);
+  let minutes = Math.floor(video_vjs.currentTime / 60);
+  let seconds = Math.floor(video_vjs.currentTime - minutes * 60);
   
   
-  let minutesV = Math.floor(videovjs.duration / 60);
-  let secondsV = Math.floor(videovjs.duration - minutes * 60);
+  let minutesV = Math.floor(video_vjs.duration / 60);
+  let secondsV = Math.floor(video_vjs.duration - minutes * 60);
   if(isNaN(minutesV) || isNaN(secondsV)){
     minutesV = 0;
     secondsV = 0;
   }
   if (seconds < 10)
     seconds = "0" + seconds;
-  timerVideo.innerHTML = minutes + ":" + seconds + "/" + minutesV+":" +  secondsV ;
+  //timerVideo.innerHTML = minutes + ":" + seconds + "/" + minutesV+":" +  secondsV ;
 }
 
 //start position on the slider and end position on the slider
@@ -296,8 +293,8 @@ function sliderToVideo(startP, endP) {
   if(startP < 0 ){
     startP = 0;
   }
-  var startDuration = Math.round(((startP * videovjs.duration) / NUMBER_OF_TICK));
-  var endDuration = Math.round(((endP * videovjs.duration) / NUMBER_OF_TICK));
+  var startDuration = Math.round(((startP * video_vjs.duration) / NUMBER_OF_TICK));
+  var endDuration = Math.round(((endP * video_vjs.duration) / NUMBER_OF_TICK));
   
   return {
     startDuration: startDuration,

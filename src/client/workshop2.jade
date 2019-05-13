@@ -2,6 +2,11 @@ extends layout
 block content
     //disable the google analytic for video.js
     script window.HELP_IMPROVE_VIDEOJS = false;
+    //video.js API
+    link(href="/src/client/js/workshop2/technologyProbe/utilities/video-js-7.5.4/video-js.css" rel="stylesheet")
+    script(src="/src/client/js/workshop2/technologyProbe/utilities/video-js-7.5.4/video.js")
+
+
     // The Modal
     //#modalYT.modal
         // Modal content
@@ -17,7 +22,6 @@ block content
     #SHPickerOverview.modal
         .modal-content#SHPickerOverviewModal
             span.close.cFerme x
-
     #oNote4.note
         .succes
             a.cFerme.close(href='#fermer', title='Fermer la fenêtre') x
@@ -27,24 +31,27 @@ block content
         .bar2#bar2id
         .bar3#bar3id
     .sidebar#sidebarMenu(style='visibility: hidden; ')
-        a#btnLoadFile(href='#load_file' , style=' ')
+        //a#btnLoadFile(href='#load_file' , style=' ')
             i.fa.fa-fw.fa-wrench
             |  Load Decomposition
         a#btnLoadSHFromServer(href='#load_file' , style=' ')
             i.fa.fa-fw.fa-wrench
-            |  Load from server
+            |  Load Decomposition
         a#btnSaveSegments(href='#SaveSegments')
             i.fa.fa-fw.fa-wrench
             |  Save Decomposition
         a#btnCleanAll(href='#clean', style='visibility: ; ')
             i.fa.fa-fw.fa-wrench
             |  Clean Decomposition
+        hr
         a#btnLoadAVideo(href='#loadVideo', style='visibility:; ')
             i.fa.fa-fw.fa-wrench
             |  Load a Video
+        hr
         a#btnInvertVideo(href='#Invert', style='visibility:; ')
             i.fa.fa-fw.fa-wrench
             |  Invert Video
+        hr
         //a#loadSHvideoTutorial(href='#loadSHvideoTutorial')
             i.fa.fa-fw.fa-wrench
             |  Load SH tuto
@@ -114,41 +121,34 @@ block content
 
     //.myplayer
         .divyoutube#yt_player
+
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
         .wrapperCommandAndRange.wrapperSticky
             .myplayer
-                video#videoEAT(preload='none', src='/media/workshop2/frame.mp4', type='frame/mp4' , style="width: 960px;"  )
-                    //source(src='/media/workshop2/frame.mp4', type='video/mp4') autobuffer = 'auto'
-                    | Votre navigateur ne supporte pas la balise vidéo.
-            .range-slider#videoSlider
+                video.video-js#videojjjs(data-setup='{}', autoplay='', controls='true' , style="width: 960px;")
+                    source(src='/media/workshop2/frame.mp4', type='video/mp4')
+                video( autoplay='', controls='true' , style="width: 960px;")
+                    source(src='/media/workshop2/frame.mp4', type='video/mp4')
+                    //link(href="src/client/js/workshop2/technologyProbe/utilities/video-js-7.5.4/alt/video-js-cdn.css" rel="stylesheet")
+                    //.video-js
+                    p.vjs-no-js
+                        | To view this video please enable JavaScript, and consider upgrading to a web browser that
+                        a(href='https://videojs.com/html5-video-support/', target='_blank') supports HTML5 video
+            //.range-slider#videoSlider
                 .range-slider-wrapper#range-slider-wrapper
                     .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
                     .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
-                    .range-slider_track#rangeSliderTrack
+                    .range-slider_track#rangeSliderTrack(type="range")
                     .range-slider_track#segmentMinMax
-                .commandeVideo#idCommandeVideo
+                //.commandeVideo#idCommandeVideo
                     img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
                     p#timerVideo 0:00/x:xx
                     img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
-            video.video-js#videovjscontrol(controls='' preload='none' , style="width: 960px; height : auto",   src='/media/workshop2/frame.mp4', type='video/mp4' )
-                link(href="src/client/js/workshop2/technologyProbe/utilities/video-js-7.5.4/video-js.css" rel="stylesheet")
-                //link(href="src/client/js/workshop2/technologyProbe/utilities/video-js-7.5.4/alt/video-js-cdn.css" rel="stylesheet")
-                //.video-js
-                p.vjs-no-js
-                    | To view this video please enable JavaScript, and consider upgrading to a web browser that
-                    a(href='https://videojs.com/html5-video-support/', target='_blank') supports HTML5 video
-
 
 
         .wrapperCommandAndRange#wrapperCommandAndRangeCardBoard(style='')
             .cardBoard#divCardBoard
         //img.imageVideoControl#playSegmentHistory(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px; margin-top : 75px')
-
-
-
-
-
-
 
     //button(onclick='play()') Play
                 button(onclick='pause()') Pause
@@ -175,11 +175,9 @@ block content
     link(href="stylesheets/menu.css" rel="stylesheet")
     link(href="stylesheets/menu_instrument.css" rel="stylesheet")
 
+
     //test for json reader from client to serveur
     script(type="text/javascript" src="/src/client/js/workshop2/technologyProbe/menu/manage_segment_history.js")
-
-    //video.js API
-    script(src="src/client/js/workshop2/technologyProbe/utilities/video-js-7.5.4/video.js")
 
     //To create socket, used to log command
     script(src="/src/client/js/workshop2/technologyProbe/utilities/socket.io.js")
@@ -220,15 +218,12 @@ block content
 
     //script to import a youtube video
     //script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/yt_import/youtube_wrapper.js")
-    script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/mp4/videoFunctionalCore.js")
+    //script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/mp4/videoFunctionalCore.js")
     script(src="/src/client/js/workshop2/technologyProbe/video/command/AbstractVideoControllerCommand.js")
     script(src="/src/client/js/workshop2/technologyProbe/video/command/CommandVideoController.js")
-
-
-
     //The controller of the video, send command to the functionalCOre
-    script(src="/src/client/js/workshop2/technologyProbe/video/controller/videoController.js")
-        //The video picker
+    //script(src="/src/client/js/workshop2/technologyProbe/video/controller/videoController.js")
+    //The video picker
     script(src="/src/client/js/workshop2/technologyProbe/video/video_picker/video_picker.js")
     //The class Card (Gui and controller).
     script(src="/src/client/js/workshop2/technologyProbe/card/CardFunctionalCore.js")
@@ -236,8 +231,8 @@ block content
     script(src="/src/client/js/workshop2/technologyProbe/card/command/AbstractCardCommand.js")
     script(src="/src/client/js/workshop2/technologyProbe/card/command/CommandCard.js")
 
-        //interface to control both MP4 and youtube video the same way
-    script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/interfaceVideo.js")
+    //interface to control both MP4 and youtube video the same way
+    //script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/interfaceVideo.js")
     //The class that handle the menu option
     script(src="/src/client/js/workshop2/technologyProbe/menu/menu.js")
 

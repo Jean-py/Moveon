@@ -7,8 +7,8 @@
     width: 700px;
     height: 10px;
     left: -30px;
-    border-style: solid;
-    border-width: 5px;
+/*    border-style: solid;
+    border-width: 5px;*/
 }
 
 
@@ -86,12 +86,18 @@
     background: black;
 }
 
-#divCardBoard {
+.cardBoard {
     /* overflow-y: auto;
      overflow-x: hidden;*/
-    /* overflow: hidden;*/
-    height: 3000px;
+     /*overflow: hidden;*/
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+
+    height: 80vh;;
 }
+
+
 
 
 .demo {

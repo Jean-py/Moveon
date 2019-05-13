@@ -31,17 +31,17 @@ knobMin.style.left = (currentValueKnob + rangeSliderTrack.offsetLeft) + "px";
 
 /*---- Creation de ma propre bar de commande de lecture pour la vidéo ----- */
 // Event controller for the play/pause button
-playButton.addEventListener("touchstart", function(e) {
-  /*e.preventDefault();
+/*playButton.addEventListener("touchstart", function(e) {
+  /!*e.preventDefault();
   event.preventDefault();
   //kill('mousedown');
   //console.log("appel l36 playPausecallback videoController" );
  // videoFunctionalCoreManager.execute(new PlayPauseCommand());
   playPausecallback(e);
-  //playPausecallback(e);*/
+  //playPausecallback(e);*!/
 }, {
   passive: true
-});
+});*/
 
 //Click  space to playpause the video
 window.addEventListener("keydown", function (e) {
@@ -49,18 +49,16 @@ window.addEventListener("keydown", function (e) {
     Player.playPausecallback();
     event.preventDefault();
   }
-  
-  
   // Annuler l'action par défaut pour éviter qu'elle ne soit traitée deux fois.
   event.preventDefault();
 }, true);
 
 
 
-muteButton.addEventListener("touchend", function(e) {
+/*muteButton.addEventListener("touchend", function(e) {
   e.preventDefault();
   videoFunctionalCoreManager.execute(new MuteButtonCommand());
-});
+});*/
 
 rangeSliderWrapper.addEventListener("touchend", function(e) {
   e.preventDefault();
@@ -68,16 +66,16 @@ rangeSliderWrapper.addEventListener("touchend", function(e) {
 });
 
 //Mouse event controller
-playButton.addEventListener("mousedown", function(e) {
+/*playButton.addEventListener("mousedown", function(e) {
   //console.log("appel playPause function playButton.addEventListener(mousedown in l56 videocontroller") ;
   //videoFunctionalCoreManager.execute(new PlayPauseCommand());
   Player.playPausecallback();
   // event.preventDefault();
-});
-muteButton.addEventListener("mousedown", function(e) {
+});*/
+/*muteButton.addEventListener("mousedown", function(e) {
   videoFunctionalCoreManager.execute(new MuteButtonCommand());
   
-});
+});*/
 
 if(videovjs !== null){
   
@@ -132,8 +130,103 @@ var updateKnobAndVideoWrapper = function(e) {
 };
 
 
+
+var mytest = videojs('videojjjs',{
+  controls: true,
+  autoplay: false,
+  preload: 'auto'
+});
+
+mytest.userActive(false);
+
+var eventT = new EventTarget();
+console.log(eventT);
+var handleBar = function() {
+  console.log('bar was triggered');
+};
+
+eventT.addEventListener('bar', handleBar);
+
+// This causes any `event listeners` for the `bar` event to get called
+// see EventTarget#trigger for more information
+//eventT.trigger('bar');
+// logs 'bar was triggered'
+/*
+
+var vjs_progress_control = document.getElementsByClassName("vjs-progress-control")[0];
+
+vjs_progress_control.addEventListener("mousedown", function(e) {
+  console.log("holla");
+});
+
+vjs_progress_control.addEventListener("long-press", function(e) {
+  console.log("Hallo");
+});
+*/
+
+//seekbar.handleMouseDown();
+/*
+var seekBarVideojs = document.getElementsByClassName("vjs-remaining-time-display")[0];
+
+
+
+
+//test sur videojs
+console.log(vjs_progress_control);
+
+vjs_progress_control.addEventListener("mousedown", function(e) {
+  console.log("holla");
+}, {
+  passive: true
+});*/
+/*
+
+seekBarVideojs.addEventListener(['mousedown', 'touchstart'], function (e) {
+  console.log("helloooo");
+} );*/
+/*
+
+
+
+
+
+var vjs_progress_control = document.getElementsByClassName("vjs-progress-control")[0];
+//test sur videojs
+console.log(vjs_progress_control);
+
+vjs_progress_control.addEventListener("mousedown", function(e) {
+  console.log("holla");
+}, {
+  passive: true
+});
+
+
+var seekBarVideojs = document.getElementsByClassName("vjs-slider-horizontal")[1];
+
+seekBarVideojs.addEventListener("mousedown", function(e){
+  console.log("jajaja");
+});
+
+var p = document.getElementsByClassName("vjs-control")[6];
+p.addEventListener("mousedown", function(e){
+  pause();
+  longpressCreateSegmentCallback(e);
+  console.log("jojo");
+
+});
+*/
+
+/*
+
+seekBarVideojs.addEventListener("long-press", function(e){
+  pause();
+  longpressCreateSegmentCallback(e);
+});
+*/
+
+/*
 var player = videojs('videovjscontrol');
-var Component = videojs.getComponent('Component');
+
 var myComponent = new Component(player);
 var button = new Component(player);
 
@@ -142,7 +235,9 @@ var myButton = myComponent.addChild(button, {
   buttonChildExample: {
     buttonChildOption: true
   }
-});
+});*/
+
+
 
 //var video = videojs('videovjscontrol');
   /*.addEventListener("",function () {

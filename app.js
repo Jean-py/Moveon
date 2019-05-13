@@ -12,7 +12,7 @@ require('babel-core/register');
 var indexRouter = require('./src/routes/index');
 //var sensorsRouter = require('./src/routes/sensors');
 var workshop2 = require('./src/routes/workshop2');
-var testFile = require('./src/routes/testFile');
+//var testFile = require('./src/routes/testFile');
 
 
 var app = express();

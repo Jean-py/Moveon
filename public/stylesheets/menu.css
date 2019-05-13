@@ -16,7 +16,7 @@
 .bar1, .bar2, .bar3 {
     width: 35px;
     height: 5px;
-    background-color: #989898;
+    background-color: #031634;
     margin: 6px 0;
     transition: 0.4s;
 }
@@ -35,21 +35,27 @@
     transform: rotate(45deg) translate(-8px, -8px);
 }
 
+video{
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+}
+
 /* Style the sidebar - fixed full height */
 .sidebar {
     position: absolute;
     height: 500px;
     width: 160px;
     z-index: 1;
-    background-color: #000000;
+    background-color: #031634;
     overflow-x: hidden;
     transition: 0.4s;
     top: 8%;
     left: 2%;
     float:right;
     text-align: -webkit-center;
-    z-index: 9999;
-
+    z-index: 10;
+    border-radius: 16px;
 }
 
 #AnalysisMenuDraggable {
@@ -65,7 +71,7 @@
     padding: 10px;
     cursor: move;
     z-index: 10;
-    background-color: #2196F3;
+    background-color: #031634;
     color: #fff;
 }
 
@@ -76,7 +82,7 @@
     padding: 15px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-    color: #818181;
+    color: white;
     display: block;
     text-align: left
 }
@@ -86,7 +92,7 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-    color: #818181;
+    color: white;
     display: block;
     text-align: left;
     line-height: 0em;
@@ -98,7 +104,7 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-    color: #818181;
+    color: white;
     display: block;
     background: black;
     width: 100px;
@@ -109,6 +115,18 @@
 
 
 
+hr {
+    display: block;
+    margin-before: 0.5em;
+    margin-after: 0.5em;
+    margin-start: auto;
+    margin-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+    background-color: gray;
+
+}
 
 
 
