@@ -131,6 +131,7 @@ var updateKnobAndVideoWrapper = function(e) {
 
 
 
+
 var mytest = videojs('videojjjs',{
   controls: true,
   autoplay: false,
@@ -146,6 +147,7 @@ var handleBar = function() {
 };
 
 eventT.addEventListener('bar', handleBar);
+
 
 // This causes any `event listeners` for the `bar` event to get called
 // see EventTarget#trigger for more information

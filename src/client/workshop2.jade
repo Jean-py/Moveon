@@ -6,19 +6,9 @@ block content
     link(href="/src/client/js/workshop2/technologyProbe/utilities/video-js-7.5.4/video-js.css" rel="stylesheet")
     script(src="/src/client/js/workshop2/technologyProbe/utilities/video-js-7.5.4/video.js")
 
-
-    // The Modal
-    //#modalYT.modal
-        // Modal content
-        .modal-content
-            span.close ×
-            textarea.URLchooser#yt_chooser(placeholder="Youtube URL")
-            a#acceptYtVideo
-    //The Modal
     #videoPickerOverview.modal
         .modal-content#videoPickerOverviewModal
             span.close.cFerme x
-
     #SHPickerOverview.modal
         .modal-content#SHPickerOverviewModal
             span.close.cFerme x
@@ -31,9 +21,6 @@ block content
         .bar2#bar2id
         .bar3#bar3id
     .sidebar#sidebarMenu(style='visibility: hidden; ')
-        //a#btnLoadFile(href='#load_file' , style=' ')
-            i.fa.fa-fw.fa-wrench
-            |  Load Decomposition
         a#btnLoadSHFromServer(href='#load_file' , style=' ')
             i.fa.fa-fw.fa-wrench
             |  Load Decomposition
@@ -52,75 +39,11 @@ block content
             i.fa.fa-fw.fa-wrench
             |  Invert Video
         hr
-        //a#loadSHvideoTutorial(href='#loadSHvideoTutorial')
-            i.fa.fa-fw.fa-wrench
-            |  Load SH tuto
-        //a#loadYtVideo( href='#loadYtVideo', style='visibility: hidden; ')
-            i.fa.fa-fw.fa-wrench
-            |  Load video
-        //a#loadvideo1( href='#loadvideo1')
-            i.fa.fa-fw.fa-wrench
-            |  Load video1
-        //a#loadSHvideo1(href='#loadSHvideo1')
-            i.fa.fa-fw.fa-wrench
-            |  Load SH1
-        //a#loadvideo2(href='#loadvideo2')
-            i.fa.fa-fw.fa-wrench
-            |  Load video2
-        //a#loadSHvideo2(href='#loadSHvideo2')
-            i.fa.fa-fw.fa-wrench
-            |  Load SH2
-        //a#analyzeData(href='#AnalyzeData')
-            i.fa.fa-fw.fa-wrench
-            |  Analyze1
         a
             i.fa.fa-fw.fa-wrench
             |  Participant:
         textarea#idSession
         input#logFileLoad(type="file", style='visibility: hidden; ')
-
-
-
-    //#AnalysisMenuDraggable
-        #AnalysisMenuHeader Data Analysis
-        .control-group
-            label.control-label(for='position-analysis') Position
-            .controls
-                label.radio(for='position-analysis-0')
-                    input#position-analysis-0(type='radio' name='position-analysis' value='Relative' checked='checked')
-                    |       Relative
-                label.radio(for='position-analysis-1')
-                    input#position-analysis-1(type='radio' name='position-analysis' value='Absolute')
-                    |       Absolute
-        .control-group
-            label.control-label(for='position-analysis') Transparency
-        .slidecontainer
-            input#transparencyRange.slider(type='range' min='0' max='1' value='0.1', step='0.01')
-        .control-group
-            label.control-label(for='') Speed
-            .controls
-                label.checkbox(for='speedcheckboxes-0-0')
-                    input#speedcheckboxes-0-0(type='checkbox' name='multiplecheckboxes-0' value='Height')
-                    |       Height
-                label.checkbox(for='speedcheckboxes-0-1')
-                    input#speedcheckboxes-0-1(type='checkbox' name='multiplecheckboxes-0' value='Color')
-                    |       Color
-        .control-group
-            label.control-label(for='') Repetition
-            .controls
-                label.checkbox(for='Repetitioncheckboxes-0-0')
-                    input#Repetitioncheckboxes-0-0(type='checkbox' name='multiplecheckboxes-0' value='Height')
-                    |       Height
-                label.checkbox(for='Repetitioncheckboxes-0-1')
-                    input#Repetitioncheckboxes-0-1(type='checkbox' name='multiplecheckboxes-0' value='Color')
-                    |       Color
-
-
-    //.right.menu_instrument
-        #menu_instrument
-
-    //.myplayer
-        .divyoutube#yt_player
 
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
         .wrapperCommandAndRange.wrapperSticky
@@ -148,28 +71,9 @@ block content
 
         .wrapperCommandAndRange#wrapperCommandAndRangeCardBoard(style='')
             .cardBoard#divCardBoard
-        //img.imageVideoControl#playSegmentHistory(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px; margin-top : 75px')
-
-    //button(onclick='play()') Play
-                button(onclick='pause()') Pause
-                button(onclick='repetPartOfVideo(10,11,3)') repet
-                button(onclick='defineSpeedRate()') acceleration
-                button(onclick='upSpeedRate()') up sr
-                button(onclick='slowSpeedRate()') down sr
-                button(onclick='exportCard()') export
-                 input#myRange.slider(type='range', min='0.1', max='20')
-    //.div
-        input.btn#btnSaveLog(type='button', value='Save log')
-        //input.btn#btnLoadLog(type='button', value='Load log')
-        //h5#textSaveLog
-
-
-
-    //script(src="/src/client/js/workshop2/technologyProbe/utilities/require.js")
+         //script(src="/src/client/js/workshop2/technologyProbe/utilities/require.js")
 
     script.
-
-
     link(href="stylesheets/videoControl.css" rel="stylesheet")
     link(href="stylesheets/card.css" rel="stylesheet")
     link(href="stylesheets/menu.css" rel="stylesheet")

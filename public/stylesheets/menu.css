@@ -16,7 +16,7 @@
 .bar1, .bar2, .bar3 {
     width: 35px;
     height: 5px;
-    background-color: #031634;
+    background-color: var(--text-color);
     margin: 6px 0;
     transition: 0.4s;
 }
@@ -44,10 +44,10 @@ video{
 /* Style the sidebar - fixed full height */
 .sidebar {
     position: absolute;
-    height: 500px;
+    height: auto;
     width: 160px;
     z-index: 1;
-    background-color: #031634;
+    background-color: var(--third-color);
     overflow-x: hidden;
     transition: 0.4s;
     top: 8%;
@@ -82,7 +82,7 @@ video{
     padding: 15px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-    color: white;
+    color: var(--text-color);;
     display: block;
     text-align: left
 }
@@ -92,7 +92,7 @@ video{
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-    color: white;
+    color: var(--text-color);;
     display: block;
     text-align: left;
     line-height: 0em;
@@ -104,9 +104,10 @@ video{
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-    color: white;
+
     display: block;
-    background: black;
+    background: var(--third-color);
+    color: var(--text-color);;
     width: 100px;
     outline: none;
     resize: none;
@@ -165,13 +166,12 @@ hr {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: var(--third-color);
 }
 
 /* Modal Content */
 .modal-content {
-    background-color: #000000;
+    background-color: var(--third-color);
     margin: auto;
     padding: 20px;
 
@@ -180,7 +180,7 @@ hr {
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: #E8DDCB;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -217,13 +217,12 @@ The video picker preview
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     grid-auto-rows: minmax(150px, auto);
     grid-gap: 1em;
-    color: black;
+    color: #E8DDCB;
     background-color: white;
 }
 
 .module {
     /* Demo-Specific Styles */
-    background: #eaeaea;
     display: flex;
     align-items: center;
     justify-content: center;

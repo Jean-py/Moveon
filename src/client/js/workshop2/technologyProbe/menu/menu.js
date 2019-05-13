@@ -32,12 +32,15 @@ idSession.value = logger.getSocket_name_session();
 
 inputFile.addEventListener('change', updateImageDisplay);
 
-btnLoadFile.addEventListener("mousedown", function (e) {
+if(btnLoadFile != null ){
+  
+  btnLoadFile.addEventListener("mousedown", function (e) {
     //emulating a click on a file picking
     inputFile.click();
   }, {
-  passive: true
-});
+    passive: true
+  });
+}
 
 
 
