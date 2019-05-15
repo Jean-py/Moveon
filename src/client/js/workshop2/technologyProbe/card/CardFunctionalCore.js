@@ -22,10 +22,10 @@ function playCard(iDiv,startDurationParam){
   console.log('play card in card functionalCore ');
   console.log(iDiv);
    //video.currentTime = startDurationParam;
-  Player.seekTo(startDurationParam);
+  player.seekTo(startDurationParam);
   segmentFeedback.width = iDiv.style.width;
   segmentFeedback.startPostion = iDiv.style.left;
-  feedbackOnSliderVideo(true);
+  //feedbackOnSliderVideo(true);
 }
 
 

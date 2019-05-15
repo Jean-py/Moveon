@@ -36,9 +36,6 @@ var Player = function() {
       seekTo(startDurationParam);
   
     },
-    sliderToVideo : function(startP, endP) {
-      return sliderToVideo(startP, endP);
-    },
     repetPartOfVideo  : function(start,end, numberOfRepetition,speedRate) {
       repetPartOfVideo(start,end, numberOfRepetition,speedRate) ;
     },
@@ -54,4 +51,6 @@ var Player = function() {
   }
 };
 
-var Player = new Player();
+
+var player = new Player();
+

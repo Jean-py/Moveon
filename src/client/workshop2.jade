@@ -48,20 +48,17 @@ block content
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
         .wrapperCommandAndRange.wrapperSticky
             .myplayer
-                video.video-js#videojjjs(data-setup='{}', autoplay='', controls='true' , style="width: 960px;")
+                //video#vid1.video-js(data-setup='{"controls": true, "fluid": true}' )
+                    source(src='http://vjs.zencdn.net/v/oceans.mp4', type='video/mp4')
+                video#videojs.video-js.vjs-default-skin(data-setup='{ "controls": true, "autoplay": true, "preload": "auto"}', )
                     source(src='/media/workshop2/frame.mp4', type='video/mp4')
-                video( autoplay='', controls='true' , style="width: 960px;")
-                    source(src='/media/workshop2/frame.mp4', type='video/mp4')
-                    //link(href="src/client/js/workshop2/technologyProbe/utilities/video-js-7.5.4/alt/video-js-cdn.css" rel="stylesheet")
-                    //.video-js
                     p.vjs-no-js
                         | To view this video please enable JavaScript, and consider upgrading to a web browser that
                         a(href='https://videojs.com/html5-video-support/', target='_blank') supports HTML5 video
-            //.range-slider#videoSlider
+            .range-slider#videoSlider
                 .range-slider-wrapper#range-slider-wrapper
                     .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
                     .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
-                    .range-slider_track#rangeSliderTrack(type="range")
                     .range-slider_track#segmentMinMax
                 //.commandeVideo#idCommandeVideo
                     img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
@@ -71,18 +68,14 @@ block content
 
         .wrapperCommandAndRange#wrapperCommandAndRangeCardBoard(style='')
             .cardBoard#divCardBoard
-         //script(src="/src/client/js/workshop2/technologyProbe/utilities/require.js")
-
     script.
     link(href="stylesheets/videoControl.css" rel="stylesheet")
     link(href="stylesheets/card.css" rel="stylesheet")
     link(href="stylesheets/menu.css" rel="stylesheet")
     link(href="stylesheets/menu_instrument.css" rel="stylesheet")
-
-
+    script(type="text/javascript" src="/src/client/js/dom_elements.js")
     //test for json reader from client to serveur
     script(type="text/javascript" src="/src/client/js/workshop2/technologyProbe/menu/manage_segment_history.js")
-
     //To create socket, used to log command
     script(src="/src/client/js/workshop2/technologyProbe/utilities/socket.io.js")
     //JQuery
@@ -122,11 +115,11 @@ block content
 
     //script to import a youtube video
     //script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/yt_import/youtube_wrapper.js")
-    //script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/mp4/videoFunctionalCore.js")
+    script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/mp4/videoFunctionalCore.js")
     script(src="/src/client/js/workshop2/technologyProbe/video/command/AbstractVideoControllerCommand.js")
     script(src="/src/client/js/workshop2/technologyProbe/video/command/CommandVideoController.js")
     //The controller of the video, send command to the functionalCOre
-    //script(src="/src/client/js/workshop2/technologyProbe/video/controller/videoController.js")
+    script(src="/src/client/js/workshop2/technologyProbe/video/controller/videoController.js")
     //The video picker
     script(src="/src/client/js/workshop2/technologyProbe/video/video_picker/video_picker.js")
     //The class Card (Gui and controller).
@@ -136,7 +129,7 @@ block content
     script(src="/src/client/js/workshop2/technologyProbe/card/command/CommandCard.js")
 
     //interface to control both MP4 and youtube video the same way
-    //script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/interfaceVideo.js")
+    script(src="/src/client/js/workshop2/technologyProbe/video/functionalCore/interfaceVideo.js")
     //The class that handle the menu option
     script(src="/src/client/js/workshop2/technologyProbe/menu/menu.js")
 

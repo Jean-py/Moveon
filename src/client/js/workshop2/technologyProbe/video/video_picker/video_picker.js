@@ -1,7 +1,6 @@
 
 
 var alreadyCharged = false;
-var modalVideo = document.getElementById('videoPickerOverview');
 
 
 var VideoPicker = function() {
@@ -11,14 +10,11 @@ var VideoPicker = function() {
     chargeVideo: function(){
      chargeVideo();
     },
-    
-    
   }
 };
 
+
 var VideoPicker = new VideoPicker();
-
-
 
 
 var chargeVideo = function (){
@@ -34,7 +30,6 @@ var chargeVideo = function (){
   
   
       var elms = document.getElementById('videoPickerOverviewModal').getElementsByTagName("video");
-      var video = document.getElementById('videovjscontrol');
       var span = document.getElementsByClassName("close")[0];
   
       span.addEventListener( "mousedown" , function() {
@@ -43,7 +38,8 @@ var chargeVideo = function (){
       for (var i = 0; i < elms.length; i++) {
           elms[i].addEventListener("mousedown", function (){
             //console.log(this.getElementsByTagName("source")[0].src);
-            video.src = this.getElementsByTagName("source")[0].src;
+            console.log(video_current);
+            video_current.src = this.getElementsByTagName("source")[0].src;
             var notification_feedback = "Video successfully loaded!";
             notificationFeedback(notification_feedback);
             //modalVideo.style.display = "none";

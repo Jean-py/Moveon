@@ -42,7 +42,7 @@ app.use('/', indexRouter);
 //app.use('/sensors', sensorsRouter);
 app.use('/workshop2', workshop2);
 
-app.use('/testFile', testFile);
+//app.use('/testFile', testFile);
 
 
 

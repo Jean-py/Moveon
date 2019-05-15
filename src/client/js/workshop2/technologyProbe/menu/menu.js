@@ -217,7 +217,7 @@ function analyzeData(){
 }
 
 function invertVideo(){
-  Player.mirror();
+  player.mirror();
 }
 function loadVideo() {
 // When the user clicks the button load a Video in  the menu, open the modal
@@ -225,9 +225,6 @@ function loadVideo() {
       modalVideo.style.visibility = "";
       VideoPicker.chargeVideo();
 }
-
-
-
 
 
 

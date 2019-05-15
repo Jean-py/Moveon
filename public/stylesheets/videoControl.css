@@ -2,12 +2,11 @@
 
 
 .myplayer{
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 
     /*transform: rotateY(180deg);
     -webkit-transform:rotateY(180deg);
     -moz-transform:rotateY(180deg);*/
-
 }
 
 /*CSS commande pour video et range slider*/
@@ -36,7 +35,10 @@
 }
 
 #videoSlider {
-    position:relative;
+    top: 5px;
+    position: relative;
+    left: 90px;
+    width: 777px;
 }
 
 
@@ -45,11 +47,11 @@
     -webkit-appearance: none;
     height: 25px;
    /* border-radius: 10px;*/
-    background: #c6c6c6;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+    background: var(--fourth-color);
+    outline: black;
+    /*opacity: 0.7;
+    /*-webkit-transition: .2s;
+    transition: opacity .2s;*/
     cursor: pointer;
 }
 
@@ -62,42 +64,46 @@
     /*width: 854px;*/
    /* width: 1000px;*/
     height: 20px;
+    visibility: hidden;
 }
 
 
-.range-slider .range-slider_handle {
+.range-slider{
+
+}
+
+.range-slider_handle {
     width: 30px;
-    height: 30px;
-    top: 2px;
+
     z-index:1;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     background: #ffffff;
     cursor: pointer;
 }
 
 .range-slider-wrapper{
     position:relative;
-    top:12px;
+    visibility: hidden;
+    margin-top: 2%;
+    /*top:12px;
     padding-top:5px;
-    width: auto;
+    width: auto;*/
 }
 
 .range-slider{
-    background: #e6e6e6;
+    background: var(--main-color);
 }
 
 .range-slider .range-slider_handle-max {
     visibility: hidden;
-    background: #328d1f;
-    height: 33px;
-    width: 3px;
-    border-radius: 0%;
-
+    height: 20px;
+    width: 4px;
+    background: var(--fourth-color);
     position: absolute;
 }
 
 #segmentMinMax {
-    background: #213F8D;
+    background: var(--fourth-color);
     visibility: hidden;
     width: 10px;
     transition: 0.1s ease-out;
@@ -109,8 +115,8 @@
 .range-slider_handle-min {
     visibility: visible;
     position: absolute;
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 4px;
 }
 
 

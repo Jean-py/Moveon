@@ -588,7 +588,6 @@ body.vjs-full-window {
   display: none;
   width: 100%;
   position: absolute;
-  bottom: -466px;
 
   left: 0;
   right: 0;
@@ -596,11 +595,15 @@ body.vjs-full-window {
   background-color: #2B333F;
   background-color: rgba(43, 51, 63, 0.7); }
 
+
+
 .vjs-has-started .vjs-control-bar {
+  bottom: 0%;
   display: flex;
   visibility: visible;
   opacity: 1;
-  transition: visibility 0.1s, opacity 0.1s; }
+  transition: visibility 0.1s, opacity 0.1s;
+}
 
 .vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar {
   visibility: visible;

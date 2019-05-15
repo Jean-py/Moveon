@@ -1,4 +1,3 @@
-var videovjs = document.getElementById("videovjscontrol");
 var timerRepetition;
 var speedrate = 1;
 var videoSlider = document.getElementById("videoSlider");
@@ -8,7 +7,6 @@ var muteButton = document.getElementById("mute");
 var timerVideo = document.getElementById("timerVideo");
 // Sliders
 var knobMin = document.getElementById("range-slider_handle-min");
-//var knobMin = document.getElementsByClassName("vjs-button");
 
 var rangeSliderTrack = document.getElementById("rangeSliderTrack");
 var wrapperCommandAndRangeid = document.getElementById("wrapperCommandAndRangeid");
@@ -22,31 +20,16 @@ var KNOB_WIDTH = 25;
 
 var NUMBER_OF_TICK = parseInt(WIDTH_RANGE_SLIDER_TRACK, 10);
 var VALUE_KNOB_MIN = 0;
-var WIDTH_MID_KNOB_MIN = 15;
+var WIDTH_MID_KNOB_MIN = 0.5;
 var currentValueKnob = VALUE_KNOB_MIN;
 var videoDuration = "1:47";
 
 
-knobMin.style.left = (currentValueKnob + rangeSliderTrack.offsetLeft) + "px";
-
-/*---- Creation de ma propre bar de commande de lecture pour la vidéo ----- */
-// Event controller for the play/pause button
-/*playButton.addEventListener("touchstart", function(e) {
-  /!*e.preventDefault();
-  event.preventDefault();
-  //kill('mousedown');
-  //console.log("appel l36 playPausecallback videoController" );
- // videoFunctionalCoreManager.execute(new PlayPauseCommand());
-  playPausecallback(e);
-  //playPausecallback(e);*!/
-}, {
-  passive: true
-});*/
-
 //Click  space to playpause the video
 window.addEventListener("keydown", function (e) {
-  if(e.keyCode == 32 && e.target == document.body) {
-    Player.playPausecallback();
+  
+  if(e.keyCode == 32 ) {
+    player.playPausecallback();
     event.preventDefault();
   }
   // Annuler l'action par défaut pour éviter qu'elle ne soit traitée deux fois.
@@ -59,11 +42,13 @@ window.addEventListener("keydown", function (e) {
   e.preventDefault();
   videoFunctionalCoreManager.execute(new MuteButtonCommand());
 });*/
-
-rangeSliderWrapper.addEventListener("touchend", function(e) {
-  e.preventDefault();
-  Player.playPausecallback(e);
-});
+if(rangeSliderWrapper != null){
+  
+  rangeSliderWrapper.addEventListener("touchend", function(e) {
+    e.preventDefault();
+    Player.playPausecallback(e);
+  });
+}
 
 //Mouse event controller
 /*playButton.addEventListener("mousedown", function(e) {
@@ -76,41 +61,41 @@ rangeSliderWrapper.addEventListener("touchend", function(e) {
   videoFunctionalCoreManager.execute(new MuteButtonCommand());
   
 });*/
-
-if(videovjs !== null){
+if(video_current !== null){
+ 
+ video_current.ready(function () {
+    this.on('timeupdate', function () {
+        knobMin.style.left = parseFloat(document.getElementsByClassName("vjs-play-progress")[0].style.width,10) - WIDTH_MID_KNOB_MIN +"%" ; // Returns (string) "70px"
+    })
+  });
   
-  videovjs.addEventListener("mousedown", function(e) {
+  /*
+  video_current.addEventListener("mousedown", function(e) {
     //console.log("appel playPause function video.addEventListener(mousedown in l62 videocontroller") ;
     //videoFunctionalCoreManager.execute(new PlayPauseCommand());
-    Player.playPausecallback();
+    player.playPausecallback();
   });
 //Click on the video trigger play and pause
-  videovjs.addEventListener("touchend", function(e) {
+  video_current.addEventListener("touchend", function(e) {
     e.preventDefault();
-    Player.playPausecallback(e);
+    player.playPausecallback(e);
   });
 
 // Update the seek bar as the video plays
-  videovjs.addEventListener("timeupdate", function() {
+  video_current.addEventListener("timeupdate", function() {
     // Update the slider value
-    if (!videovjs.paused) {
-      currentValueKnob = (((NUMBER_OF_TICK / videovjs.duration) * videovjs.currentTime) + rangeSliderTrack.offsetLeft);
+    if (!video_current.paused) {
+      currentValueKnob = (((NUMBER_OF_TICK / video_current.duration) * video_current.currentTime) + rangeSliderTrack.offsetLeft);
       // knobMin.style.left = currentValueKnob-(KNOB_WIDTH/2)+ "px" ;
       knobMin.style.left = currentValueKnob - (KNOB_WIDTH / 2) + "px";
     }
     //videoSlider.value = (NUMBER_OF_TICK / video.duration) * video.currentTime;
-    Player.updateTimerVideo();
-  }, false);
+    player.updateTimerVideo();
+  }, false);*/
   
   
 }
 
-
-
-// Event controller for the seek bar
-videoSlider.addEventListener("change", function(e) {
-  Player.updateTimerVideo();
-});
 
 
 
@@ -129,16 +114,7 @@ var updateKnobAndVideoWrapper = function(e) {
   // video.play();
 };
 
-
-
-
-var mytest = videojs('videojjjs',{
-  controls: true,
-  autoplay: false,
-  preload: 'auto'
-});
-
-mytest.userActive(false);
+/*
 
 var eventT = new EventTarget();
 console.log(eventT);
@@ -147,11 +123,27 @@ var handleBar = function() {
 };
 
 eventT.addEventListener('bar', handleBar);
+eventT.trigger('bar');
+*/
+
+/*
+
+var mytest = videojs('videojs',{
+  controls: false,
+  autoplay: false,
+  preload: 'auto'
+});*/
+//myPlayer.addChild('BigPlayButton');
+/*
+
+mytest.userActive(false);
+
+
+*/
 
 
 // This causes any `event listeners` for the `bar` event to get called
 // see EventTarget#trigger for more information
-//eventT.trigger('bar');
 // logs 'bar was triggered'
 /*
 

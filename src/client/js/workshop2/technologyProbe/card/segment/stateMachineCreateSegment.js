@@ -1,14 +1,9 @@
-//Graphical object
-var video = document.getElementById("videoEAT");
-var video_js = document.getElementById("videoEAT");
 
-var wrapperCommandAndRange = document.getElementById("wrapperCommandAndRangeid");
 var knobMin = document.getElementById("range-slider_handle-min");
 var rangeSliderTrack = document.getElementById("rangeSliderTrack");
 var knobMax = document.getElementById("range-slider_handle-max");
-var wrapperRangerSlider = document.getElementById("range-slider-wrapper");
 
-//Option for the longpress and the speed of the video
+//Option for the longpress and the speed of the video_current
 var speedrate = 1;
 var longPressDelay = "500";
 
@@ -19,9 +14,14 @@ let StateDrag = {
   IDLE: 0,
   DOWN: 1,
   DRAG: 2,
-  LONGPRESS: 3
+  LONGPRESS: 3,
+  STARTED: 4,
+  
 };
 var state = StateDrag.IDLE;
+
+var timePositionStart = 0;
+var timePositionStop = 0;
 
 //Graphical object of feedback
 var segmentFeedback = {
@@ -34,73 +34,38 @@ var segmentFeedback = {
   divGraphicalObject: document.getElementById("segmentMinMax")
 };
 
+
 if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
-  
   if(knobMin != null){
     //Mouse
-    knobMin.addEventListener("mouseup", function(e) {
-      knobMinUpCallback(e);
-    }, {
-      passive: true
-    });
     knobMin.addEventListener("mousedown", function(e) {
-      knobMinClick(e);
+      switch (state) {
+        case StateDrag.STARTED:{
+          stopCreateSegment();
+          break;
+        }
+        case StateDrag.IDLE : {
+          knobMinClick(e);
+          break;
+        }
+      }
+      
     }, {
       passive: true
-    });
-    knobMin.addEventListener("mousemove", function(e) {
-      knobMinMove(e);
-    }, {
-      passive: true
-    });
-  
-    /*-----MOUSE LONG PRESS-------*/
-    knobMin.setAttribute("data-long-press-delay", longPressDelay);
-    knobMin.addEventListener('long-press', function(e) {
-      // console.log('knobMin.addEventListener(longpress');
-      pause();
-      longpressCreateSegmentCallback(e);
     });
     
-  }
-  if(rangeSliderTrack != null){
-  
-    rangeSliderTrack.addEventListener("mousedown", function(e) {
-      ranglerSliderTrackClick(e);
-    }, {
-      passive: true
-    });
-    rangeSliderTrack.addEventListener("mouseUp", function(e) {
-      rangeSliderTrackEndCallback(e);
-    }, {
-      passive: true
-    });
-    rangeSliderTrack.addEventListener("mousemove", function(e) {
-      knobMinMove(e);
-    }, {
-      passive: true
-    });
-  
-    rangeSliderTrack.addEventListener("long-press", function(e) {
-      // console.log('rangeSliderTrack.addEventListener(longpress');
-      pause();
-      longpressCreateSegmentCallback(e);
-    }, false);
-  }
-  if(wrapperRangerSlider != null){
-  
-    wrapperRangerSlider.addEventListener("mousemove", function(e) {
-      knobMinMove(e);
-    }, true);
-  
-    wrapperRangerSlider.addEventListener("mouseup", function(e) {
-      rangeSliderTrackEndCallback(e);
-    }, true);
-  }
-  
-  
-  
-} else {
+    if(segmentFeedback != null){
+      segmentFeedback.divGraphicalObject.addEventListener("mousedown", function(e) {
+        switch (state) {
+          case StateDrag.STARTED:{
+            stopCreateSegment();
+            break;
+          }
+        }
+      });
+    }
+    
+  } else {
   if(knobMin != null) {
   
     //Touch
@@ -148,23 +113,23 @@ if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|I
         longpressCreateSegmentCallback(e);
       }, false);
   }
-  if(video !=null){
+  if(video_current !=null){
   
-    video.addEventListener("touchmove", function(e) {
+    video_current.addEventListener("touchmove", function(e) {
       videoTouchMoveCallback(e);
     }, {
       passive: true
     });
   }
-  if(video_js != null){
+  if(video_current != null){
   
-    video_js.addEventListener("touchmove", function(e) {
+    video_current.addEventListener("touchmove", function(e) {
       videoTouchMoveCallback(e);
     }, {
       passive: true
     });
   }
-}
+}}
 
 
 /*window.addEventListener("mouseup", function(e){
@@ -184,15 +149,11 @@ var longpressCreateSegmentCallback = function(e) {
   switch (state) {
     case StateDrag.DOWN:
     {
-      
       state = StateDrag.LONGPRESS;
-      //pause();
-      startCreateSegment(e, video.currentTime);
+      startCreateSegment();
       break;
     }
-    
   }
-  //event.preventDefault();
 };
 
 var videoTouchMoveCallback = function(e) {
@@ -236,7 +197,7 @@ var knobMinUpCallback = function(e) {
     {
       state = StateDrag.IDLE;
       updateKnobAndVideoWrapper(e);
-      stopCreateSegment(e, video.currentTime);
+      stopCreateSegment(e, video_current.currentTime);
       //console.log("function - knobMinUpCallback appel pause l164 statemachine ");
       play();
       break;
@@ -264,43 +225,37 @@ var knobMinUpCallback = function(e) {
 
 
 //Create Segment
-function startCreateSegment(e, startSegment) {
-  if(parseInt(knobMin.style.left,10) < 0){
-    knobMax.style.left = WIDTH_KNOB/2 + "px";
-  } else {
-    knobMax.style.left = knobMin.style.left;
-  }
-  //else if(parseInt(knobMin.style.left,10) > WIDTH_RANGE_SLIDER_TRACK - WIDTH_KNOB +1) {
-  //
-  //     }
- 
+function startCreateSegment() {
+  
   knobMax.style.position = "absolute";
-  //state  StateDrag.LONGPRESS;
-  knobMin.style.background = '#213F8D';
+  knobMax.style.left = knobMin.style.left;
   knobMax.style.visibility = "visible";
+  segmentFeedback.divGraphicalObject.style.visibility = "hidden";
+  
+  //state  StateDrag.LONGPRESS;
+  knobMin.style.setProperty('background','--fourth-color');
   updateSegmentFeedback();
+  
 }
 
-function stopCreateSegment(e, stopSegment) {
+function stopCreateSegment() {
+  log("stop create segment");
+  video_current.ready(function () {
+    this.off('timeupdate', updateSegmentFeedback);
+  });
+  state = StateDrag.IDLE;
   let timerLifeSegment = window.setTimeout(function() {
     knobMax.style.visibility = "hidden";
     segmentFeedback.divGraphicalObject.style.visibility = "hidden";
-    knobMin.style.background = '#ffffff';
-    //createCard();
+    knobMin.style.setProperty("background","var(--secondary-color)");
     window.clearTimeout(timerLifeSegment);
-    //console.log("AAA : " + parseInt(knobMax.style.left,10));
     
     
-    var startP = parseInt(knobMax.style.left, 10) + WIDTH_MID_KNOB_MIN / 2;
-    var endP = parseInt(knobMin.style.left, 10) + WIDTH_KNOB;
+     timePositionStop = video_current.currentTime;
     
-   // cardManager.execute(new CreateNewCardCommand(startP, endP));
-    if(startP < 0){
-      startP = 0;
-    }
-
-    Player.createNewCard(startP,endP );
-    
+    //TODO regarder aussi le fait d'enlever le listener change sur le knobmin?
+    //TODO voir ici la creation de carte pour la mettre au bon endroit, checker aussi startP et endP
+    player.createNewCard(timePositionStart,timePositionStop );
     play();
   }, 700);
 }
@@ -310,26 +265,13 @@ function stopCreateSegment(e, stopSegment) {
 
 //Update the feedback of the creation of a segment after a long press
 function updateSegmentFeedback() {
-  
-  
-  
-  if (parseInt(knobMin.style.left, 10) > parseInt(knobMax.style.left, 10)) {
-    segmentFeedback.divGraphicalObject.style.marginLeft = knobMax.style.left   ;
-    segmentFeedback.divGraphicalObject.style.width = Math.abs((parseInt(knobMin.style.left, 10) - parseInt(knobMax.style.left, 10)   )) + WIDTH_KNOB + "px";
-  
+  segmentFeedback.divGraphicalObject.style.marginLeft = knobMax.style.left ;
+  if(parseFloat(knobMin.style.left,10)  > parseFloat(knobMax.style.left,10) ){
+    segmentFeedback.divGraphicalObject.style.width = parseFloat(knobMin.style.left,10) - parseFloat(knobMax.style.left,10)  +"%";
   } else {
-    segmentFeedback.divGraphicalObject.style.marginLeft = knobMin.style.left    ;
-    segmentFeedback.divGraphicalObject.style.width = Math.abs((parseInt(knobMin.style.left, 10) - parseInt(knobMax.style.left, 10)   ))  + "px";
-  
+    segmentFeedback.divGraphicalObject.style.marginLeft = knobMin.style.left ;
+    segmentFeedback.divGraphicalObject.style.width = parseFloat(knobMax.style.left,10) - parseFloat(knobMin.style.left,10) +"%";
   }
-  segmentFeedback.divGraphicalObject.style.visibility = "visible";
-  
-  
-  if(parseInt(segmentFeedback.divGraphicalObject.style.marginLeft, 10) < 0 ){
-    //the case if the knob is in the extremun of the loader.
-    segmentFeedback.divGraphicalObject.style.marginLeft = " 0 px" ;
-  }
-  
 }
 
 
@@ -337,8 +279,8 @@ function updateSegmentFeedback() {
 
 //start position on the slider and end position on the slider
 function videoToSlider(startDurationVideo, endDurationVideo) {
-  var startP = Math.round(((startDurationVideo * NUMBER_OF_TICK) / video.duration) - rangeSliderTrack.offsetLeft);
-  var endP = Math.round(((endDurationVideo * NUMBER_OF_TICK) / video.duration) - rangeSliderTrack.offsetLeft);
+  var startP = Math.round(((startDurationVideo * NUMBER_OF_TICK) / video_current.duration) - rangeSliderTrack.offsetLeft);
+  var endP = Math.round(((endDurationVideo * NUMBER_OF_TICK) / video_current.duration) - rangeSliderTrack.offsetLeft);
   return {
     startPosition: startP,
     endPosition: endP
@@ -347,6 +289,7 @@ function videoToSlider(startDurationVideo, endDurationVideo) {
 */
 
 var knobMinMove = function(e) {
+  console.log("knobMinMove");
   switch (state) {
     case StateDrag.DOWN:
     {
@@ -376,8 +319,25 @@ var knobMinMove = function(e) {
 
 var knobMinClick = function(e) {
   //console.log("function - knobMinClick" );
+  state = StateDrag.STARTED;
+  startCreateSegment();
+  //updateKnobAndVideoWrapper(e);
+  //console.log("function - knobMinUpCallback appel pause l165 statemachine ");
   pause();
-  //Update video position
+  timePositionStart = video_current.currentTime();
+  
+  video_current.ready(function () {
+    this.on('timeupdate', updateSegmentFeedback);
+  });
+  clearAllTimer();
+
+};
+
+/*
+var knobMinClick = function(e) {
+  //console.log("function - knobMinClick" );
+  pause();
+  //Update video_current position
   switch (state) {
     case StateDrag.IDLE:
     {
@@ -388,6 +348,7 @@ var knobMinClick = function(e) {
   }
   //e.preventDefault();
 };
+*/
 
 
 var rangeSliderTrackEndCallback = function(e) {
@@ -412,7 +373,7 @@ var rangeSliderTrackEndCallback = function(e) {
     {
       state = StateDrag.IDLE;
       updateKnobAndVideoWrapper(e);
-      stopCreateSegment(e, video.currentTime);
+      stopCreateSegment();
       break;
     }
   }
@@ -436,7 +397,7 @@ var knobMinMouseLeaveCallback = function(e) {
     {
       state = StateDrag.IDLE;
       updateKnobAndVideoWrapper(e);
-      stopCreateSegment(e, video.currentTime);
+      stopCreateSegment();
       break;
     }
     

@@ -43,6 +43,9 @@
 
 .cardBoard{
     margin-top: 2%;
+    position: relative;
+    left: 90px;
+    width: 777px;
 }
 
 

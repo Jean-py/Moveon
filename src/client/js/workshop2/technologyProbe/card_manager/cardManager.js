@@ -169,7 +169,7 @@ function addingNewCardsFromJSon(cardInfo) {
     cardInfo.startP = 0;
   }
   console.log(cardInfo.startP, cardInfo.endP);
-  let result = Player.sliderToVideo(cardInfo.startP, cardInfo.endP);
+  let result = player.sliderToVideo(cardInfo.startP, cardInfo.endP);
   //console.log(result);
   numberOfCard++;
   if (!cardInfo.deleted) {
@@ -191,7 +191,12 @@ function createNewCard(startP, endP) {
     startP = endP;
     endP = transit;
   }
-  let result = Player.sliderToVideo(startP, endP);
+  var result = {startDuration : startP, endDuration : endP};
+  
+  //player.sliderToVideo(startP, endP);
+  //TODO get ride of slidertovideo
+  
+  
   numberOfCard++;
   console.log(result);
   
