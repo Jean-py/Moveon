@@ -27,9 +27,11 @@
 
 .segment{
     /*position: absolute;*/
+    position: relative;
+
     height: 18px;
    /*border-radius: 10px;*/
-    background-color: #213F8D;
+    background-color: var(--fourth-color);
     z-index: 1;
     left: 0px;
     top:0px
@@ -46,6 +48,7 @@
     position: relative;
     left: 90px;
     width: 777px;
+    height: 80ch;
 }
 
 
@@ -97,7 +100,7 @@
     border-width: 2px;
     border-color: white;
 
-    height: 80vh;;
+
 }
 
 

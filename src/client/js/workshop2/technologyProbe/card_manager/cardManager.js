@@ -169,7 +169,9 @@ function addingNewCardsFromJSon(cardInfo) {
     cardInfo.startP = 0;
   }
   console.log(cardInfo.startP, cardInfo.endP);
-  let result = player.sliderToVideo(cardInfo.startP, cardInfo.endP);
+  var result = {startDuration : cardInfo.startP, endDuration : cardInfo.endP};
+  
+  //let result = player.sliderToVideo(cardInfo.startP, cardInfo.endP);
   //console.log(result);
   numberOfCard++;
   if (!cardInfo.deleted) {
@@ -184,24 +186,27 @@ function addingNewCardsFromJSon(cardInfo) {
  * Adding a card by drag and drop. The card is added in the list of cards
  * Return the card that have been created
  */
-function createNewCard(startP, endP) {
-  //console.log("TEST / : " + startP + " " + endP);
-  if (startP > endP) {
+function createNewCard(startP, endP,positionStart, positionStop) {
+  //console.log("TEST / : " + startP + " " + endP, positionStart, positionStop);
+  //The two cases if we create a segment backward
+  if (parseFloat(positionStart) > parseFloat(positionStop)) {
+    let transit = positionStart;
+    positionStart = positionStop;
+    positionStop = transit;
+  }
+  if (parseFloat(startP) > parseFloat(endP)) {
     let transit = startP;
     startP = endP;
     endP = transit;
   }
   var result = {startDuration : startP, endDuration : endP};
-  
-  //player.sliderToVideo(startP, endP);
-  //TODO get ride of slidertovideo
-  
-  
   numberOfCard++;
-  console.log(result);
+  console.log(result.startDuration, result.endDuration, positionStart, positionStop);
   
-  var card = new Card(result.startDuration, result.endDuration, startP, endP);
+  var card = new Card(result.startDuration, result.endDuration, positionStart, positionStop);
+  //var card2 = new Card(startP, endP, startP, endP);
   cardManager.execute(new CreateNewCardCommand(card));
+  //cardManager.execute(new CreateNewCardCommand(card2));
   return card;
 }
 
@@ -314,3 +319,23 @@ function loadJSONSegmentHistory(SH_path) {
   
 }
 
+
+
+
+function  feedbackOnSliderVideo(visibility,startDurationParam,endDurationParam){
+  if(visibility){
+    segmentFeedback.divGraphicalObject.style.visibility = "visible";
+    //TODO
+    segmentFeedback.width = 0;
+    segmentFeedback.startPostion =0;
+    segmentFeedback.width = 0;
+    segmentFeedback.startPostion = 0;
+  } else {
+    segmentFeedback.divGraphicalObject.style.visibility = "hidden";
+    //TODO
+    segmentFeedback.width = 0;
+    segmentFeedback.startPostion =0;
+    segmentFeedback.width = 0;
+    segmentFeedback.startPostion = 0;
+  }
+}

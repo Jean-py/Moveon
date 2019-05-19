@@ -109,8 +109,17 @@ var muteButtonCallback = function(e){
 var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
   // console.log("function  - repetPartOfVideo" , start,end, numberOfRepetition,speedRate);
   isPlayingCard = true;
-  video_current.playbackRate = speedRate;
-  video_current.currentTime = start;
+    // faster speed initially
+    video_current.playbackRate(speedRate);
+    video_current.currentTime(start);
+
+  
+  
+   // video_current.playbackRate(speedRate);
+   
+  
+  //video_current.playbackRate( speedRate);
+ 
   var repet = numberOfRepetition;
   
   //console.log("function  - repetPartOfVideo [play part] l87 videoCommand");
@@ -118,14 +127,14 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
   video_current.ontimeupdate = function() {
     if(isPlayingCard){
       if ((end > start ) &&  repet > 0 ) {
-        if (video_current.currentTime > end) {
+        if (video_current.currentTime   > end) {
           repet--;
           video_current.currentTime = start;
         }
       } else {
         video_current.ontimeupdate = null;
         feedbackOnSliderVideo(false);
-        video_current.playbackRate = 1;
+        video_current.playbackRate( 1);
       }
     }
   };
@@ -134,7 +143,7 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
 function clearAllTimer() {
   window.clearInterval(timerRepetition);
   isPlayingCard = false;
-  video_current.playbackRate = 1;
+  video_current.playbackRate( 1);
   //feedbackOnSliderVideo(false);
 }
 
@@ -144,7 +153,7 @@ var play = function () {
 };
 
 var pause = function () {
-  //console.log("appel a pause");
+  //console.log("appesl a pause");
   video_current.pause();
 };
 
@@ -169,10 +178,13 @@ var playPausecallback = function(e){
 
 var mirror = function () {
   if(mirrored){
-    video_current.style.transform =  "rotateY("+ 0 +"deg)";
+    
+    document.getElementsByClassName("vjs-tech")[0].style.transform = "rotateY("+ 0 +"deg)";
     mirrored = false;
   } else {
-    video_current.style.transform =  "rotateY("+ 180 +"deg)";
+    document.getElementsByClassName("vjs-tech")[0].style.transform = "rotateY("+ 180 +"deg)";
+  
+    video_current.style = 'rotateY('+ 180 +'deg)';
     mirrored = true;
   }
 };

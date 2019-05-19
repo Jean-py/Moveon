@@ -8,10 +8,5 @@
 //var video_current = document.getElementById('videojs');
 
 var video_current = videojs('videojs');
-console.log(video_current)
 
 var modalVideo = document.getElementById('videoPickerOverview');
-
-function log(...args){
-  console.log(args);
-}

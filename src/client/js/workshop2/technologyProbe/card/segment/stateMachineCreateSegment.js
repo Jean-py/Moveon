@@ -22,6 +22,9 @@ var state = StateDrag.IDLE;
 
 var timePositionStart = 0;
 var timePositionStop = 0;
+var positionStart = 0;
+var positionStop = 0;
+
 
 //Graphical object of feedback
 var segmentFeedback = {
@@ -35,10 +38,11 @@ var segmentFeedback = {
 };
 
 
-if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
+//if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)) {
   if(knobMin != null){
     //Mouse
     knobMin.addEventListener("mousedown", function(e) {
+      console.log("mousedown knob");
       switch (state) {
         case StateDrag.STARTED:{
           stopCreateSegment();
@@ -53,19 +57,57 @@ if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|I
     }, {
       passive: true
     });
+  
+    segmentFeedback.divGraphicalObject.addEventListener("mousedown", function(e) {
+      switch (state) {
+        case StateDrag.STARTED:{
+          stopCreateSegment();
+          break;
+        }
+      }
+  
+    }, {
+      passive: true
+    });
+  
+      //Mouse
+      knobMin.addEventListener("touchend", function(e) {
+        console.log("touchstart knob")
+  
+        switch (state) {
+          case StateDrag.STARTED:{
+            stopCreateSegment();
+            break;
+          }
+          case StateDrag.IDLE : {
+            knobMinClick(e);
+            break;
+          }
+        }
+      
+      }, {
+        passive: true
+      });
+  
+  
     
-    if(segmentFeedback != null){
-      segmentFeedback.divGraphicalObject.addEventListener("mousedown", function(e) {
+      segmentFeedback.divGraphicalObject.addEventListener("touchstart", function(e) {
         switch (state) {
           case StateDrag.STARTED:{
             stopCreateSegment();
             break;
           }
         }
+      
+      }, {
+        passive: true
       });
-    }
     
-  } else {
+    
+    
+    } else {
+  
+  }/* else {
   if(knobMin != null) {
   
     //Touch
@@ -85,7 +127,7 @@ if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|I
       passive: true
     });
   
-    /*-----MOUSE LONG PRESS-------*/
+    /!*-----MOUSE LONG PRESS-------*!/
     knobMin.setAttribute("data-long-press-delay", longPressDelay);
     knobMin.addEventListener('long-press', function(e) {
       // console.log('knobMin.addEventListener(longpress');
@@ -129,7 +171,8 @@ if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|I
       passive: true
     });
   }
-}}
+}*/
+//}
 
 
 /*window.addEventListener("mouseup", function(e){
@@ -230,19 +273,22 @@ function startCreateSegment() {
   knobMax.style.position = "absolute";
   knobMax.style.left = knobMin.style.left;
   knobMax.style.visibility = "visible";
-  segmentFeedback.divGraphicalObject.style.visibility = "hidden";
+  segmentFeedback.divGraphicalObject.style.visibility = "visible";
   
   //state  StateDrag.LONGPRESS;
   knobMin.style.setProperty('background','--fourth-color');
   updateSegmentFeedback();
   
+  
 }
 
 function stopCreateSegment() {
-  log("stop create segment");
+  console.log("stop create segment");
   video_current.ready(function () {
     this.off('timeupdate', updateSegmentFeedback);
   });
+  
+  positionStop = knobMin.style.left;
   state = StateDrag.IDLE;
   let timerLifeSegment = window.setTimeout(function() {
     knobMax.style.visibility = "hidden";
@@ -251,11 +297,11 @@ function stopCreateSegment() {
     window.clearTimeout(timerLifeSegment);
     
     
-     timePositionStop = video_current.currentTime;
+     timePositionStop = video_current.currentTime();
     
     //TODO regarder aussi le fait d'enlever le listener change sur le knobmin?
     //TODO voir ici la creation de carte pour la mettre au bon endroit, checker aussi startP et endP
-    player.createNewCard(timePositionStart,timePositionStop );
+    player.createNewCard(timePositionStart,timePositionStop, positionStart,positionStop,segmentFeedback.divGraphicalObject.style.width  );
     play();
   }, 700);
 }
@@ -316,16 +362,16 @@ var knobMinMove = function(e) {
   }
 };
 
-
 var knobMinClick = function(e) {
   //console.log("function - knobMinClick" );
   state = StateDrag.STARTED;
+  knobMin.style.left;
   startCreateSegment();
   //updateKnobAndVideoWrapper(e);
   //console.log("function - knobMinUpCallback appel pause l165 statemachine ");
   pause();
   timePositionStart = video_current.currentTime();
-  
+  positionStart = knobMin.style.left;
   video_current.ready(function () {
     this.on('timeupdate', updateSegmentFeedback);
   });

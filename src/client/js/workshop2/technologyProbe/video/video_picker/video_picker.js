@@ -39,7 +39,14 @@ var chargeVideo = function (){
           elms[i].addEventListener("mousedown", function (){
             //console.log(this.getElementsByTagName("source")[0].src);
             console.log(video_current);
-            video_current.src = this.getElementsByTagName("source")[0].src;
+           // video_current.src = this.getElementsByTagName("source")[0].src;
+  
+            video_current.src([
+              {type: "video/mp4", src:this.getElementsByTagName("source")[0].src}
+             
+            ]);
+            
+            
             var notification_feedback = "Video successfully loaded!";
             notificationFeedback(notification_feedback);
             //modalVideo.style.display = "none";

@@ -22,8 +22,8 @@ var Player = function() {
       updateTimerVideo();
     },
   
-    createNewCard : function (startP,endP ) {
-      createNewCard(startP,endP);
+    createNewCard : function (startP,endP, positionStart, positionStop ) {
+      createNewCard(startP,endP,positionStart, positionStop);
    },
   
     play: function()  {

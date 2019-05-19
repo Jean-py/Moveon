@@ -39,7 +39,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   iDiv = document.createElement('div');
   iDiv.id = 'idCard' + createUniqueId();
   iDiv.className = 'segmentWrapper';
-  iDiv.style.left = startPositionParam + "px";
+  iDiv.style.left = startPositionParam ;
   
   
   //Color picker
@@ -68,8 +68,10 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   divSegment.className = 'segment';
   
   //taille de la carte initiale
-  width = iDiv.style.width = parseInt(endPositionParam, 10) - parseInt(startPositionParam, 10) + "px";
-  divSegment.style.width = parseInt(endPositionParam, 10) - parseInt(startPositionParam, 10) + "px";
+  //width = iDiv.style.width = parseInt(endPositionParam, 10) - parseInt(startPositionParam, 10) + "%";
+  divSegment.style.width = parseInt(endPositionParam, 10) - parseInt(startPositionParam, 10) + "%";
+  width =   divSegment.style.width;
+  console.log( divSegment.style.width);
   
   initGUI();
   initStyle();
@@ -79,11 +81,10 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   function watchColorPicker(event) {
     divSegment.style.backgroundColor = event.target.value;
-    console.log("color");
+  
   }
   //console.log(cardInfo.deleted);
   function updateInfo(){
-//    console.log(description,speed,repetitionNumber);
     cardObject.width = width;
     cardObject.startP = startP;
     cardObject.endP = endP;
@@ -122,7 +123,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       segmentFeedback.startPostion = iDiv.style.left  ;
       segmentFeedback.width = width;
       description = textSegment.value;
-      feedbackOnSliderVideo(true);
+  
+      //feedbackOnSliderVideo(true,startDurationParam,endDurationParam);
+      
       //videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, repetitionNumber, speedRate));
       videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, 100, speedRate));
     }, false);
@@ -205,8 +208,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   function initStyle() {
     textSegment.style.left = divSegment.style.width;
-    imgSlow.src = "/media/workshop2/card/slow.png";
-    imgRepet.src = "/media/workshop2/card/repet.png";
+    /*imgSlow.src = "/media/workshop2/card/slow.png";
+    imgRepet.src = "/media/workshop2/card/repet.png";*/
   }
   
   

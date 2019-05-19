@@ -26,14 +26,16 @@ var videoDuration = "1:47";
 
 
 //Click  space to playpause the video
-window.addEventListener("keydown", function (e) {
+document.addEventListener("keydown", function (e) {
+  if(  document.activeElement.className === 'textSegment') {
   
-  if(e.keyCode == 32 ) {
+  } else if(e.keyCode == 32){
+    console.log("in the if keydown");
     player.playPausecallback();
     event.preventDefault();
   }
   // Annuler l'action par défaut pour éviter qu'elle ne soit traitée deux fois.
-  event.preventDefault();
+  //event.preventDefault();
 }, true);
 
 
