@@ -30,7 +30,8 @@ var CardManager = function() {
       console.log(listSegment);
       
       for (var i = 0; i < listSegment.length; i++) {
-        console.log(listSegment[i].id); //second console output
+        console.log(listSegment[i].id);
+        //trigger the segment click
         triggerMouseEvent(listSegment[i],'mousedown');
       }
         arrayCard.forEach(function(arrayItem) {
@@ -165,18 +166,18 @@ function addingNewCardsFromJSon(cardInfo) {
     cardInfo.startP = cardInfo.endP;
     cardInfo.endP = transit;
   }
-  if (cardInfo.startP < 0) {
+/*  if (cardInfo.startP < 0) {
     cardInfo.startP = 0;
-  }
-  console.log(cardInfo.startP, cardInfo.endP);
-  var result = {startDuration : cardInfo.startP, endDuration : cardInfo.endP};
+  }*/
+  console.log(cardInfo.startDuration, cardInfo.endDuration);
+  var result = {startDuration : cardInfo.startDuration, endDuration : cardInfo.endDuration, startP :cardInfo.startP ,endP :cardInfo.endP };
   
   //let result = player.sliderToVideo(cardInfo.startP, cardInfo.endP);
   //console.log(result);
   numberOfCard++;
   if (!cardInfo.deleted) {
     console.log(result.startDuration, result.endDuration, cardInfo.startP, cardInfo.endP, cardInfo);
-    var card = Card(result.startDuration, result.endDuration, cardInfo.startP, cardInfo.endP, cardInfo);
+    var card = Card(result.startDuration, result.endDuration, result.startP, result.endP, cardInfo);
     cardManager.execute(new CreateNewCardCommand(card));
     //document.getElementById('divCardBoard').insertBefore(card.iDiv, document.getElementById('divCardBoard').firstChild);
   }
@@ -322,9 +323,11 @@ function loadJSONSegmentHistory(SH_path) {
 
 
 
-function  feedbackOnSliderVideo(visibility,startDurationParam,endDurationParam){
+function  feedbackOnSliderVideo(visibility,startP,endP){
   if(visibility){
     segmentFeedback.divGraphicalObject.style.visibility = "visible";
+    
+    
     //TODO
     segmentFeedback.width = 0;
     segmentFeedback.startPostion =0;

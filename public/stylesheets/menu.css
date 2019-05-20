@@ -199,8 +199,8 @@ The video picker preview
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     grid-auto-rows: minmax(150px, auto);
     grid-gap: 1em;
-    color: #E8DDCB;
-    background-color: white;
+    color: var(--third-color);
+    background-color: var( --secondary-color);
 }
 
 .module {

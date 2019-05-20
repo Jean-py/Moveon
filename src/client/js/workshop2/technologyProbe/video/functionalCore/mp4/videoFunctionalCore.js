@@ -110,16 +110,9 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
   // console.log("function  - repetPartOfVideo" , start,end, numberOfRepetition,speedRate);
   isPlayingCard = true;
     // faster speed initially
-    video_current.playbackRate(speedRate);
-    video_current.currentTime(start);
-
-  
-  
-   // video_current.playbackRate(speedRate);
-   
-  
-  //video_current.playbackRate( speedRate);
- 
+  video_current.playbackRate(speedRate);
+  video_current.currentTime(start);
+    
   var repet = numberOfRepetition;
   
   //console.log("function  - repetPartOfVideo [play part] l87 videoCommand");
@@ -127,14 +120,14 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
   video_current.ontimeupdate = function() {
     if(isPlayingCard){
       if ((end > start ) &&  repet > 0 ) {
-        if (video_current.currentTime   > end) {
+        if (video_current.currentTime()   > end) {
           repet--;
-          video_current.currentTime = start;
+          video_current.currentTime(start);
         }
       } else {
         video_current.ontimeupdate = null;
         feedbackOnSliderVideo(false);
-        video_current.playbackRate( 1);
+        video_current.playbackRate(1);
       }
     }
   };
@@ -158,8 +151,8 @@ var pause = function () {
 };
 
 var seekTo = function(startDurationParam){
-  if(startDurationParam < video_current.currentTime )
-    video_current.currentTime = startDurationParam;
+  if(startDurationParam < video_current.currentTime() )
+    video_current.currentTime(startDurationParam);
 };
 
 var playPausecallback = function(e){

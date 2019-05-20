@@ -3,6 +3,8 @@ var cardFunctionalCore = new CardFunctionalCore();
 function Card (startDurationParam,endDurationParam,startPositionParam,endPositionParam, cardInfo) {
   var description = '';
   
+  console.log("startDurationParam,endDurationParam", startDurationParam,endDurationParam);
+  
   //Propriété de style
   let width = '6%';
   let height = '6%';
@@ -88,6 +90,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     cardObject.width = width;
     cardObject.startP = startP;
     cardObject.endP = endP;
+    cardObject.startDuration = startDuration;
+    cardObject.endDuration = endDuration;
+    
     cardObject.description = description;
     cardObject.speed = speed;
     cardObject.deleted = deleted;
@@ -123,11 +128,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       segmentFeedback.startPostion = iDiv.style.left  ;
       segmentFeedback.width = width;
       description = textSegment.value;
-  
-      //feedbackOnSliderVideo(true,startDurationParam,endDurationParam);
-      
+      feedbackOnSliderVideo(true,startP,endP);
       //videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, repetitionNumber, speedRate));
-      videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, 100, speedRate));
+      videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speedRate));
     }, false);
     //TODO widget color picker
     //arrowDown.addEventListener("change", watchColorPicker, false);
@@ -208,8 +211,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   function initStyle() {
     textSegment.style.left = divSegment.style.width;
-    /*imgSlow.src = "/media/workshop2/card/slow.png";
-    imgRepet.src = "/media/workshop2/card/repet.png";*/
   }
   
   
@@ -240,6 +241,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     width:  width,
     startP : startP,
     endP : endP,
+    startDuration : startDuration,
+    endDuration : endDuration,
+    
     description : this.description,
     speed :  this.speed,
     repetitionNumber :  this.repetitionNumber,
