@@ -68,6 +68,12 @@ if(video_current !== null){
  video_current.ready(function () {
     this.on('timeupdate', function () {
         knobMin.style.left = parseFloat(document.getElementsByClassName("vjs-play-progress")[0].style.width,10) - WIDTH_MID_KNOB_MIN +"%" ; // Returns (string) "70px"
+        if(isPlayingCard){
+        
+        } else {
+          showSegmentFeedback(false,null,null);
+        }
+    
     })
   });
   

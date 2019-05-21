@@ -128,8 +128,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       segmentFeedback.startPostion = iDiv.style.left  ;
       segmentFeedback.width = width;
       description = textSegment.value;
-      feedbackOnSliderVideo(true,startP,endP);
-      //videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration, endDuration, repetitionNumber, speedRate));
+  
+      updateSegmentFeedback(true,startP,endP);
       videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speedRate));
     }, false);
     //TODO widget color picker

@@ -323,22 +323,19 @@ function loadJSONSegmentHistory(SH_path) {
 
 
 
-function  feedbackOnSliderVideo(visibility,startP,endP){
+function updateSegmentFeedback(visibility,startP,endP){
   if(visibility){
     segmentFeedback.divGraphicalObject.style.visibility = "visible";
-    
-    
-    //TODO
-    segmentFeedback.width = 0;
-    segmentFeedback.startPostion =0;
-    segmentFeedback.width = 0;
-    segmentFeedback.startPostion = 0;
+    segmentFeedback.divGraphicalObject.style.marginLeft = endP ;
+    if(parseFloat(startP,10)  > parseFloat(endP,10) ){
+      segmentFeedback.divGraphicalObject.style.width = parseFloat(startP,10) - parseFloat(endP,10)  +"%";
+    } else {
+      segmentFeedback.divGraphicalObject.style.marginLeft = startP ;
+      segmentFeedback.divGraphicalObject.style.width = parseFloat(endP,10) - parseFloat(startP,10) +"%";
+    }
   } else {
     segmentFeedback.divGraphicalObject.style.visibility = "hidden";
-    //TODO
-    segmentFeedback.width = 0;
-    segmentFeedback.startPostion =0;
-    segmentFeedback.width = 0;
-    segmentFeedback.startPostion = 0;
   }
+  
+ 
 }

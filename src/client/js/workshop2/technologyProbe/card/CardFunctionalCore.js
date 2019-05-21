@@ -6,7 +6,6 @@ var CardFunctionalCore = function() {
   return {
     //execute a command
     execute: function(command) {
-      
       command.execute();
       //We send the command to the server (the server log it into a file, see ./src/server/ServerLogger)
       logger.sendAndLogCommand(command);
@@ -30,17 +29,13 @@ function playCard(iDiv,startDurationParam){
 
 
 function modifyCardDescription(){
-  //window.getElementById(id_card).
-  //description = text;
   this.card.description = this.text;
 }
 function modifyCardSpeed(){
-  //let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
   this.card.speed = this.speed;
 }
 
 function modifyCardNbRepet(){
-  //let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
   this.card.repetitionNumber = this.repetitionNumber;
 }
 
