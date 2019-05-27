@@ -241,15 +241,14 @@ function deleteCard() {
 }
 
 function deleteCardUI(card) {
-  feedbackOnSliderVideo(false);
+  updateSegmentFeedback(false);
+  
   card.iDiv.remove();
   card.deleted = true
 }
 
 function download(content, fileName, contentType) {
   var a = document.createElement("a");
-  
-  
  //a.style.display = "block";
   var file = new Blob([content], {
     type: contentType

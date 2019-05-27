@@ -4,21 +4,30 @@
 .infoCard{
     position : absolute;
     margin-top : 25px;
-    width: 700px;
+    width: auto;
     height: 10px;
-    left: -30px;
 /*    border-style: solid;
+    left: -30px;
+
     border-width: 5px;*/
 }
 
 
 
-
 .segmentWrapper {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: white;
+    padding: 10px;
+
+    height: 80px;
+
+
     position: relative;
-    margin-top: 100px;
+    margin-top: 20px;
     margin-right: 3px;
-    margin-bottom: 50px ;
+   /* margin-bottom: 50px ;*/
     /*display: block;*/
     display: flex;
 
@@ -56,12 +65,13 @@
     margin-bottom: 6px;
     background: transparent;
     border: 1px;
-    border-color: white;
+    border-color: var(--border-color);
+    padding: 1px 10px;
 
     border-radius: 10px;
     border-style: solid;
    /* position: absolute;*/
-    width: 500px;
+    width: 150px;
     font-weight: bold;
     margin-left: 7px;
     color: #ffffff;
@@ -86,19 +96,16 @@
 
 .selectSpeed, .selectNbRepet {
     margin: 10px;
-    margin-right: 20px;
-    margin-left: 5px;
+    padding-left: 9px;
     color: white;
-    background: black;
+    background: var(--main-color);
 }
 
 .cardBoard {
     /* overflow-y: auto;
      overflow-x: hidden;*/
      /*overflow: hidden;*/
-    border-style: solid;
-    border-width: 2px;
-    border-color: white;
+
 
 
 }

@@ -3,6 +3,7 @@ var knobMin = document.getElementById("range-slider_handle-min");
 var rangeSliderTrack = document.getElementById("rangeSliderTrack");
 var knobMax = document.getElementById("range-slider_handle-max");
 
+
 //Option for the longpress and the speed of the video_current
 var speedrate = 1;
 //State for the creation of segment by Drag and drop
@@ -118,12 +119,15 @@ function startCreateSegment() {
 function stopCreateSegment() {
   console.log("stop create segment");
   video_current.ready(function () {
+    console.log("CCC")
+  
     this.off('timeupdate' , showSegmentFeedback);
   });
   
   positionStop = knobMin.style.left;
   state = StateDrag.IDLE;
   let timerLifeSegment = window.setTimeout(function() {
+    console.log("Halla")
     knobMax.style.visibility = "hidden";
     segmentFeedback.divGraphicalObject.style.visibility = "hidden";
     knobMin.style.setProperty("background","var(--secondary-color)");
@@ -177,13 +181,17 @@ var knobMinClick = function(e) {
   pause();
   timePositionStart = video_current.currentTime();
   positionStart = knobMin.style.left;
+  console.log("HAAAA")
   video_current.ready(function () {
+    console.log("BBBBB")
+  
     this.on('timeupdate', showSegmentFeedback);
   });
   clearAllTimer();
 };
 
 function showSegmentFeedback() {
+  console.log("showSegmentFeedback on, ")
   updateSegmentFeedback(true,knobMin.style.left,knobMax.style.left)
 }
 

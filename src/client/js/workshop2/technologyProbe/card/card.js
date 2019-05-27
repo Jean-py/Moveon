@@ -125,17 +125,42 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
       speed = speedRate;
-      segmentFeedback.startPostion = iDiv.style.left  ;
-      segmentFeedback.width = width;
+      //segmentFeedback.startPostion = iDiv.style.left  ;
+      //segmentFeedback.width = width;
       description = textSegment.value;
   
-      updateSegmentFeedback(true,startP,endP);
+      var audio = new Audio();
+      //var canPlayM4a = !!audio.canPlayType && audio.canPlayType('audio/m4a; codecs="vorbis"') != "";
+      var buffered = audio.buffered;
+// returns time in seconds of the last buffered TimeRange
+      audio.setAttribute("src","public/sounds/preparation/preparation.mp3");
+      audio.play();
       videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speedRate));
+  
+  
+  
+  
+      //updateSegmentFeedback(true,startP,endP);
+      
     }, false);
     //TODO widget color picker
     //arrowDown.addEventListener("change", watchColorPicker, false);
   }
   function initGUI() {
+    //permet de changetr la vue d'une carte
+ /*   var xmlHttp = new XMLHttpRequest();
+  
+    xmlHttp.onreadystatechange = function() {
+      if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+      {
+        iDiv.innerHTML = xmlHttp.responseText;
+      }
+    };
+  
+  
+    xmlHttp.open("GET", "src/client/js/workshop2/technologyProbe/card/view_card.html", true); // true for asynchronous
+    xmlHttp.send(null);*/
+    
     textSegment = document.createElement('input');
     textSegment.className = 'textSegment';
     //UI button speed and slow

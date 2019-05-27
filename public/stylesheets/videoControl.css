@@ -46,6 +46,7 @@
 .range-slider .range-slider_track {
     -webkit-appearance: none;
     height: 25px;
+    visibility: hidden;
    /* border-radius: 10px;*/
     background: var(--fourth-color);
     outline: black;
@@ -67,10 +68,6 @@
     visibility: hidden;
 }
 
-
-.range-slider{
-
-}
 
 .range-slider_handle {
     width: 30px;

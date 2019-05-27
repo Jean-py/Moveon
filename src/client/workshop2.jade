@@ -50,7 +50,7 @@ block content
             .myplayer
                 //video#vid1.video-js(data-setup='{"controls": true, "fluid": true}' )
                     source(src='http://vjs.zencdn.net/v/oceans.mp4', type='video/mp4')
-                video#videojs.video-js.vjs-default-skin(data-setup='{ "controls": true, "autoplay": true, "preload": "auto"}', )
+                video#videojs.video-js.vjs-default-skin(data-setup='{ "controls": true, "autoplay": true, "preload": "metadata"}', )
                     source(src='/media/workshop2/frame.mp4', type='video/mp4')
                     p.vjs-no-js
                         | To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -59,13 +59,11 @@ block content
                 .range-slider-wrapper#range-slider-wrapper
                     .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
                     .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
-                    .range-slider_track#segmentMinMax
+                    .range-slider_track#segmentMinMax(style='visibility: hidden ')
                 //.commandeVideo#idCommandeVideo
                     img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
                     p#timerVideo 0:00/x:xx
                     img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
-
-
         .wrapperCommandAndRange#wrapperCommandAndRangeCardBoard(style='')
             .cardBoard#divCardBoard
     script.
