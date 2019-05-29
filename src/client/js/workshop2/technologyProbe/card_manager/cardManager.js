@@ -21,8 +21,6 @@ var CardManager = function() {
       var command = commands.pop();
       command.undo();
     },
-    
-    
     exportCard: function(){
       console.log("function export card");
       /*------ Create a set of card from a JSON file -------*/

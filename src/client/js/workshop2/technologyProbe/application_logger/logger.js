@@ -40,13 +40,11 @@ function getSocket_name_session(){
 
 
 function connectToServer() {
-  console.log("testing connect to server...");
   var addr = document.URL;
   //Split the https://xxxx:port#oNote  to xxxx:port
   addr = addr.split('/')[2];
-  console.log("connect to : " + addr);
   socket = io.connect(addr);
-  console.log("changing username socket to dev");
+  console.log("connected to : " + addr, "changing username socket to dev");
   logger.changeUsernameSocket("dev");
 };
 

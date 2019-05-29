@@ -43,6 +43,14 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   iDiv.className = 'segmentWrapper';
   iDiv.style.left = startPositionParam ;
   
+  $( function() {
+    $( ".segmentWrapper" ).draggable();
+  } );
+  
+  
+  
+  
+  
   
   //Color picker
   //var arrowDown = document.createElement('input');
@@ -129,40 +137,23 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       //segmentFeedback.width = width;
       description = textSegment.value;
   
-      var audio = new Audio();
-      //var canPlayM4a = !!audio.canPlayType && audio.canPlayType('audio/m4a; codecs="vorbis"') != "";
-      var buffered = audio.buffered;
+      //var audio = new Audio();
+      //var buffered = audio.buffered;
 // returns time in seconds of the last buffered TimeRange
-      audio.setAttribute("src","public/sounds/preparation/preparation.mp3");
-      audio.play();
+      //audio.setAttribute("src","public/sounds/preparation/preparation.mp3");
+      //audio.play();
       videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speedRate));
-  
-  
-  
-  
       //updateSegmentFeedback(true,startP,endP);
-      
+  
+  
+     
+  
     }, false);
     //TODO widget color picker
     //arrowDown.addEventListener("change", watchColorPicker, false);
   }
   function initGUI() {
-    //permet de changetr la vue d'une carte
- /*   var xmlHttp = new XMLHttpRequest();
-  
-    xmlHttp.onreadystatechange = function() {
-      if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-      {
-        iDiv.innerHTML = xmlHttp.responseText;
-      }
-    };
     
-  
-    xmlHttp.open("GET", "src/client/js/workshop2/technologyProbe/card/view_card.html", true); // true for asynchronous
-    xmlHttp.send(null);*/
-  
-    console.log(iDiv.style.width);
-  
     textSegment = document.createElement('input');
     textSegment.className = 'textSegment';
     //UI button speed and slow
@@ -283,8 +274,15 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   };
   
   
+
+  
   return cardObject;
 }
+
+
+$( function() {
+  $( ".segmentWrapper" ).draggable();
+} );
 
 
 

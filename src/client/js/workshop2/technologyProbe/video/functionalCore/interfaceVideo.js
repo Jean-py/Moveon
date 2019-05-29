@@ -1,4 +1,3 @@
-console.log("*** Charging interface Video ***");
 var enum_videoplatform = {
   MP4: 1,
   YOUTUBE: 2

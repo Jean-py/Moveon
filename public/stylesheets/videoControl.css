@@ -146,7 +146,6 @@
 
 .myplayer{
     margin-top: 2%;
-
 }
 
 .videoEAT{
@@ -169,8 +168,9 @@
     border: 2px solid #ffffff;
     -webkit-border-radius: 14px;
     border-radius: 14px;
-    height: 37px;
-    width: 466px;
+    margin-top: 20px;
+    height: 24px;
+    width: 320px;
     font: normal 20px/normal Verdana, Geneva, sans-serif;
     color: rgba(255,255,255,1);
     text-align: center;
