@@ -119,15 +119,12 @@ function startCreateSegment() {
 function stopCreateSegment() {
   console.log("stop create segment");
   video_current.ready(function () {
-    console.log("CCC")
-  
     this.off('timeupdate' , showSegmentFeedback);
   });
   
   positionStop = knobMin.style.left;
   state = StateDrag.IDLE;
   let timerLifeSegment = window.setTimeout(function() {
-    console.log("Halla")
     knobMax.style.visibility = "hidden";
     segmentFeedback.divGraphicalObject.style.visibility = "hidden";
     knobMin.style.setProperty("background","var(--secondary-color)");
@@ -181,17 +178,13 @@ var knobMinClick = function(e) {
   pause();
   timePositionStart = video_current.currentTime();
   positionStart = knobMin.style.left;
-  console.log("HAAAA")
   video_current.ready(function () {
-    console.log("BBBBB")
-  
     this.on('timeupdate', showSegmentFeedback);
   });
   clearAllTimer();
 };
 
 function showSegmentFeedback() {
-  console.log("showSegmentFeedback on, ")
   updateSegmentFeedback(true,knobMin.style.left,knobMax.style.left)
 }
 

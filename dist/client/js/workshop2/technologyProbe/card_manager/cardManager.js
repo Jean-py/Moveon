@@ -73,7 +73,7 @@ var CardManager = function CardManager() {
           var xhr_SH = new XMLHttpRequest();
           xhr_SH.open('GET', lines[j], true);
           xhr_SH.onreadystatechange = function () {
-            console.log(this.responseText);
+            //console.log(this.responseText);
             //Ici il faut lire les fichier json et créer un appercu de chaque
           };
           xhr_SH.send();

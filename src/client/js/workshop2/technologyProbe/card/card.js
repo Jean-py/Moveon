@@ -156,11 +156,13 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
         iDiv.innerHTML = xmlHttp.responseText;
       }
     };
-  
+    
   
     xmlHttp.open("GET", "src/client/js/workshop2/technologyProbe/card/view_card.html", true); // true for asynchronous
     xmlHttp.send(null);*/
-    
+  
+    console.log(iDiv.style.width);
+  
     textSegment = document.createElement('input');
     textSegment.className = 'textSegment';
     //UI button speed and slow
@@ -175,9 +177,10 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
     selectNbRepet.className ='selectNbRepet' ;
     divInfoCard = document.createElement('div');
-  
     divInfoCard.className = "infoCard";
-    
+  
+  
+  
     /*textSegment.addEventListener("focus", function () {
       cardFunctionalCore.execute(new ModifyCardDescriptionCommand(cardObject,textSegment.value));
     });*/
@@ -213,6 +216,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     //divInfoCard.appendChild(selectNbRepet);
     divInfoCard.appendChild(textSegment);
     //divInfoCard.appendChild(arrowDown);
+    
+    
     iDiv.appendChild(divSegment);
     iDiv.appendChild(divInfoCard);
   
@@ -222,9 +227,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     //If the card have been deleted, the color is red, otherwise blue.
     if (cardInfo) {
       if(cardInfo.deleted){
-        divSegment.style.backgroundColor = "red";
+        divSegment.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--unsucess-color');
       } else {
-        divSegment.style.backgroundColor = "#213F8D";
+        divSegment.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--fourth-color');
       }
       textSegment.value = cardInfo.description;
       selectNbRepet.selectedIndex = cardInfo.repetitionNumber;
@@ -268,7 +273,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     endP : endP,
     startDuration : startDuration,
     endDuration : endDuration,
-    
+    deleted:deleted,
     description : this.description,
     speed :  this.speed,
     repetitionNumber :  this.repetitionNumber,

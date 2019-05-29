@@ -21,13 +21,15 @@ var CardManager = function() {
       var command = commands.pop();
       command.undo();
     },
+    
+    
     exportCard: function(){
       console.log("function export card");
       /*------ Create a set of card from a JSON file -------*/
       var arrayItemUpdated = [];
       var listSegment = document.getElementsByClassName('segment');
       //playCard(arrayItem.iDiv, arrayItem.startP);
-      console.log(listSegment);
+      //console.log(listSegment);
       
       for (var i = 0; i < listSegment.length; i++) {
         console.log(listSegment[i].id);
@@ -43,9 +45,10 @@ var CardManager = function() {
         var serializedArr = JSON.stringify(arrayItemUpdated);
         console.log("*****  Serialisation of card complete : " + serializedArr);
         download(serializedArr, 'jsonW2log-' + createUniqueId() + '.json', 'text/plain');
-        
         logger.saveSH(serializedArr);
-    }, loadSegmentHistoryFromServer: function(){
+    },
+    
+    loadSegmentHistoryFromServer: function(){
       //We charge all the video only one time
       var xhr_view = new XMLHttpRequest();
       xhr_view.open('GET', 'src/client/js/workshop2/technologyProbe/card_manager/SHLoaderOverview_view.html', true);
@@ -59,8 +62,6 @@ var CardManager = function() {
       xhr_view.send();
     
       //We charge all the video only one time
-      
-      
       var xhr_allPath = new XMLHttpRequest();
       xhr_allPath.open('GET', 'src/server/log-SH/SH_all_path.txt', true);
     
@@ -74,9 +75,9 @@ var CardManager = function() {
           var xhr_SH = new XMLHttpRequest();
           xhr_SH.open('GET', lines[j], true);
           xhr_SH.onreadystatechange = function () {
-            console.log(this.responseText);
+            //console.log(this.responseText);
+            //TODO faire un quick appercu des segment H
             //Ici il faut lire les fichier json et créer un appercu de chaque
-            
           };
           xhr_SH.send();
           var div = document.createElement('div');
@@ -241,10 +242,12 @@ function deleteCard() {
 }
 
 function deleteCardUI(card) {
+  console.log("deleting card : ");
+  card.deleted = true;
+  console.log(card.deleted);
   updateSegmentFeedback(false);
-  
   card.iDiv.remove();
-  card.deleted = true
+  console.log(card);
 }
 
 function download(content, fileName, contentType) {
