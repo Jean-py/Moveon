@@ -72,3 +72,27 @@ function setVideo(){
   //video_current.src({type: 'video/youtube', src:'https://www.youtube.com/watch?v=voiS7cxsD0U&t=0s&ab_channel=Squiders' });
 
 }
+
+var vjsButtonComponent = videojs.getComponent('Button');
+videojs.registerComponent('DownloadButton', videojs.extend(vjsButtonComponent, {
+  constructor: function () {
+    vjsButtonComponent.apply(this, arguments);
+  },
+  handleClick: function () {
+    document.location = video_current.src; //< there are many variants here so it is up to you how to get video url
+  },
+  buildCSSClass: function () {
+    return 'vjs-control vjs-download-button';
+  },
+  createControlTextEl: function (button) {
+    return $(button).html($('<span class="glyphicon glyphicon-download"></span>').attr('title', 'Download'));
+  }
+}));
+
+videojs(
+  'videojs_html5_api',
+  {fluid: true},
+  function () {
+    this.getChild('controlBar').addChild('DownloadButton', {});
+  }
+);

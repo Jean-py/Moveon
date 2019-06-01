@@ -3,6 +3,8 @@ var cardFunctionalCore = new CardFunctionalCore();
 function Card (startDurationParam,endDurationParam,startPositionParam,endPositionParam, cardInfo) {
   var description = '';
   
+  var listCardConnected = [];
+  
   console.log("startDurationParam,endDurationParam", startDurationParam,endDurationParam);
   
   //Propriété de style
@@ -43,22 +45,12 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   iDiv.className = 'segmentWrapper';
   iDiv.style.left = startPositionParam ;
   
-  $( function() {
-    $( ".segmentWrapper" ).draggable();
-  } );
-  
-  
-  
-  
-  
-  
   //Color picker
   //var arrowDown = document.createElement('input');
  /* arrowDown.type = 'jscolor';
   arrowDown.className = 'jscolor';
   arrowDown.value = '#8DFFFF';
   //jscolor.installByClassName("jscolor");*/
-  
   
   
   /* arrowDown.border = 'none';
@@ -146,6 +138,39 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       //updateSegmentFeedback(true,startP,endP);
   
   
+      $( function() {
+        $( ".segmentWrapper" ).draggable({
+          axis: "y",
+          snapTolerance:20,
+          snapMode:"inner",
+          activeClass: "ui-state-highlight",
+          containment : '#wrapperCommandAndRangeCardBoard',
+          snap : true
+  
+  
+        });
+      } );
+  
+  
+      
+      $( ".segmentWrapper" ).droppable({
+        classes: {
+          "ui-droppable": "highlight"
+        },
+        snap : true,
+        
+        drop: function( event, ui ) {
+          
+          $( this )
+            .addClass( "ui-state-highlight" )
+            .find( "p" )
+            .html( "Dropped!" );
+          
+          console.log("dropped");
+          console.log(this);
+          $(this).css("background-color","var(--main-color)")
+        }
+      });
      
   
     }, false);
@@ -279,10 +304,28 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   return cardObject;
 }
 
-
+/* Permet de drag la video et le SH en entier
 $( function() {
-  $( ".segmentWrapper" ).draggable();
-} );
+  $( ".wrapperCommandAndRange" ).draggable({
+    axis: "y",
+    drop: function( event, ui ) {
+      console.log("drag");
+    }
+  });
+} );*/
+
+/*
+$( ".wrapperCommandAndRange" ).droppable({
+  drop: function( event, ui ) {
+    $( this )
+      .addClass( "ui-state-highlight" )
+      .find( "p" )
+      .html( "Dropped!" );
+    console.log("dropped");
+  
+  
+  }
+});*/
 
 
 

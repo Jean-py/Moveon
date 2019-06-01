@@ -103,8 +103,8 @@
 #segmentMinMax {
     background: var(--fourth-color);
     visibility: hidden;
-    width: 10px;
-    transition: 0.5s ease-out;
+    width: 0px;
+    /*transition: 0.5s ease-out;*/
     margin-top: -20px;
     height: 20px;
 }
@@ -134,7 +134,9 @@
 .wrapperSticky{
     /*position: -webkit-sticky;
     position: sticky;*/
+    /*
     z-index: 999;
+    */
     top: 0;
 }
 

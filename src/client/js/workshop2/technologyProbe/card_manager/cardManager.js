@@ -40,7 +40,7 @@ var CardManager = function() {
           arrayItemUpdated.push(item);
           console.log(item);
         });
-        var serializedArr = JSON.stringify(arrayItemUpdated);
+        var serializedArr = JSON.stringify(arrayItemUpdated, getCircularReplacer());
         console.log("*****  Serialisation of card complete : " + serializedArr);
         download(serializedArr, 'jsonW2log-' + createUniqueId() + '.json', 'text/plain');
         logger.saveSH(serializedArr);
@@ -336,6 +336,17 @@ function updateSegmentFeedback(visibility,startP,endP){
   } else {
     segmentFeedback.divGraphicalObject.style.visibility = "hidden";
   }
-  
- 
 }
+
+const getCircularReplacer = () => {
+  const seen = new WeakSet();
+  return (key, value) => {
+    if (typeof value === "object" && value !== null) {
+      if (seen.has(value)) {
+        return;
+      }
+      seen.add(value);
+    }
+    return value;
+  };
+};
