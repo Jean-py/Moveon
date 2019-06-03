@@ -6,7 +6,7 @@ var CreateNewCardCommand = function (card) {
 };
 
 var DeleteCardCommand = function (card) {
-  return new CommandDeleteCard(deleteCard, addingNewCard, card );
+  return new CommandDeleteCard(deleteCard, null, card );
 };
 
 

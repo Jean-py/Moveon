@@ -38,9 +38,7 @@ function setUsernameLog(user_name){
 
 
 function saveSH(socket_name, SH) {
-  
-  
-  
+  //Format the date
   function addZero(i) {
     if (i < 10) {
       i = "0" + i;

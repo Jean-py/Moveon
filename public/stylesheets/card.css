@@ -1,49 +1,61 @@
 @import url("resetCss.css");
 
+.hidden {
+    display: none;
+}
+
+.visuallyhidden {
+    opacity: 0;
+}
+
 
 .infoCard{
     position : absolute;
     margin-top : 8px;
     width: auto;
     height: 10px;
-/*    border-style: solid;
-    left: -30px;
-
-    border-width: 5px;*/
+    display: block;
+    transition: all 1s ease-in;
+    /*    border-style: solid;
+        left: -30px;
+        border-width: 5px;*/
 }
 
-
-
 .segmentWrapper {
-
-
-    /*Margin left pour reposition le segment au bon endroit car il y a un padding  a l'interieur de la carte. Du coup je compense*/
-    /*margin-left: -10px;
-    border-style: solid;
-    border-width: 0.5px;
-    border-radius: 5px;
-    padding: 10px;
-    border-color: var(--border-color);*/
-
     height: 80px;
-
-
     position: relative;
     margin-right: 3px;
     /* margin-bottom: 50px ;*/
     margin-bottom: 20px;
     /*display: block;*/
     display: flex;
-
 }
 
 .btnDeleteCard{
-    color: var(--border-color);
+    color: white;
     cursor: pointer;
     text-decoration: none;
-    position: absolute;
-    left:110% ;
-    top : -2px;
+    position: relative;
+    top: -5px;
+    margin: 0px 2px 1px 4px;
+    padding: 2px 0px 0px 1px;
+    border: 0.5px solid  var(--border-color);
+    font-family: "Arial", Times, serif;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: x-small;
+}
+
+
+.btnMinusCard{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    top:-4px;
+    margin: 0px 2px 0px 10px;
     padding: 0px 2px 2px 2px;
     border: 0.5px solid  var(--border-color);
     font-family: "Arial", Times, serif;
@@ -105,7 +117,7 @@
     content:url('../media/workshop2/card/slow.png');
     width: 20px;
     height: 20px;
-
+    margin-top: 10px;
 }
 
 

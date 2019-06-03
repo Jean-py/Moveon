@@ -31,6 +31,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   var textStartSegment = null;
   var textEndSegment = null;
   var btnDelete = null;
+  var btnMinus = null;
+  var divWrapperBtn = null;
   
   let imgRepet = null;
   let divSegment = null;
@@ -48,7 +50,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   iDiv.style.left = startPositionParam ;
   
   //Color picker
-  var arrowDown = document.createElement('input');
+ /* var arrowDown = document.createElement('input');
   arrowDown.type = 'jscolor';
   arrowDown.className = 'jscolor';
   arrowDown.value = '#8DFFFF';
@@ -59,7 +61,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
    arrowDown.outline = 'none';
    arrowDown.style.backgroundColor = 'black';
    arrowDown.style.webkitAppearance = 'listitem';
-   arrowDown.value = "#41568d";
+   arrowDown.value = "#41568d";*/
   
      //arrowDown.value = "FF9900";
   //arrowDown.mode = 'HS';
@@ -103,6 +105,46 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     return cardObject;
   }
   
+  function displayDivInfoCard() {
+    if ($(divInfoCard).hasClass('hidden')) {
+      btnMinus.innerHTML = '-';
+      $(divInfoCard).removeClass('hidden');
+      setTimeout(function () {
+        $(divInfoCard).removeClass('visuallyhidden');
+        divInfoCard.style.display = 'block';
+        iDiv.style.height = "auto";
+      }, 20);
+    } else {
+      btnMinus.innerHTML = '+';
+      $(divInfoCard).addClass('visuallyhidden');
+      $(divInfoCard).one('transitionend', function(e) {
+        $(divInfoCard).addClass('hidden');
+        divInfoCard.style.display = 'none';
+        iDiv.style.height =" 20px";
+        
+      });
+    }
+    
+    /*  console.log("click btn minus");
+      if(btnMinus.innerText === '-'){
+        divInfoCard.style.display = "none";
+        btnMinus.innerHTML = '+'
+      } else {
+        divInfoCard.style.display = "block";
+        btnMinus.innerHTML = '-';
+       
+      }*/
+  }
+  function removeTheCard() {
+    if ( confirm( " /!\\ Voulez-vous vraiment supprimer ce segment?" ) ) {
+      // Code à éxécuter si le l'utilisateur clique sur "OK"
+      //I have a circular error here, that break the log system... I can't find it
+      //So I do not log this command for now
+      cardManager.execute(new DeleteCardCommand(cardObject));
+      //cardManager.execute(new DeleteCardCommand(cardObject));
+    }
+  }
+  
   
   function initListener() {
     
@@ -121,18 +163,18 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     
     //delete apparait
     btnDelete.addEventListener('mouseup',function(){
-      if ( confirm( " /!\\ Voulez-vous vraiment supprimer ce segment?" ) ) {
-        // Code à éxécuter si le l'utilisateur clique sur "OK"
-        cardManager.execute(new DeleteCardCommand(cardObject));
-  
-      }
+      removeTheCard();
     });
   
     btnDelete.addEventListener('touchend',function(){
-      if ( confirm( " /!\\ Voulez-vous vraiment supprimer ce segment?" ) ) {
-        // Code à éxécuter si le l'utilisateur clique sur "OK"
-        cardManager.execute(new DeleteCardCommand(cardObject));
-      }
+      removeTheCard()
+    });
+    
+    btnMinus.addEventListener('mouseup',function(){
+      displayDivInfoCard();
+    });
+    btnMinus.addEventListener('touchend',function(){
+      displayDivInfoCard();
     });
    
     selectSpeed.addEventListener("blur", function(){
@@ -185,12 +227,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
         snap : true,
         
         drop: function( event, ui ) {
-          
-          $( this )
-            .addClass( "ui-state-highlight" )
-            .find( "p" )
-            .html( "Dropped!" );
-          
           console.log("dropped");
           console.log(this);
           //TODO faire la fonction de drag avec une liste de carte connecté ou une liste chainé de cartes?
@@ -216,17 +252,32 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     selectSpeed = document.createElement("select");
     selectSpeed.className ='selectSpeed' ;
     selectNbRepet = document.createElement("select");
-  
+    selectNbRepet.selectedIndex = 1;
+    
     selectNbRepet.className ='selectNbRepet' ;
     divInfoCard = document.createElement('div');
     divInfoCard.className = "infoCard";
   
+   
+    /*
+    Wrapper that contain the btutton (minus) - and x (delete)
+     */
+    divWrapperBtn  = document.createElement('div');
+    divWrapperBtn.className = 'divWrapperBtn';
+    
+    
     btnDelete  = document.createElement('p');
     btnDelete.className = 'span';
     btnDelete.classList.add('btnDeleteCard');
     btnDelete.innerHTML = "x";
+  
+    btnMinus  = document.createElement('p');
+    btnMinus.className = 'span';
+    btnMinus.classList.add('btnMinusCard');
+    btnMinus.innerHTML = "-";
+    divWrapperBtn.appendChild(btnMinus);
+    divWrapperBtn.appendChild(btnDelete);
     
-    selectNbRepet.selectedIndex = 1;
   /*
   Creation des étapes pour facilement changer la taille des segments
   
@@ -244,9 +295,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     //divInfoCard.appendChild(imgRepet);
     //divInfoCard.appendChild(selectNbRepet);
     divInfoCard.appendChild(textSegment);
-    divSegment.appendChild(btnDelete);
     //divInfoCard.appendChild(arrowDown);
     iDiv.appendChild(divSegment);
+    iDiv.appendChild(divWrapperBtn);
     iDiv.appendChild(divInfoCard);
     
     //If the card have been deleted, the color is red, otherwise fourth-color (define in style.css).

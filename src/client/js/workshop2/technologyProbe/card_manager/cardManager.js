@@ -252,10 +252,8 @@ function deleteCard() {
 function deleteCardUI(card) {
   console.log("deleting card : ");
   card.deleted = true;
-  console.log(card.deleted);
   updateSegmentFeedback(false);
   card.iDiv.remove();
-  console.log(card);
 }
 
 function download(content, fileName, contentType) {
@@ -269,10 +267,6 @@ function download(content, fileName, contentType) {
   a.download = fileName;
   a.click();
   a.remove();
-  
-  
-  
-  
 }
 
 
