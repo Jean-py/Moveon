@@ -4,7 +4,6 @@ var alreadyCharged = false;
 
 
 var VideoPicker = function() {
-  
   //I implemented a command pattern, see : https://www.dofactory.com/javascript/command-design-pattern
   return {
     chargeVideo: function(){
@@ -73,7 +72,7 @@ function setVideo(){
 
 }
 
-var vjsButtonComponent = videojs.getComponent('Button');
+/*var vjsButtonComponent = videojs.getComponent('Button');
 videojs.registerComponent('DownloadButton', videojs.extend(vjsButtonComponent, {
   constructor: function () {
     vjsButtonComponent.apply(this, arguments);
@@ -87,7 +86,9 @@ videojs.registerComponent('DownloadButton', videojs.extend(vjsButtonComponent, {
   createControlTextEl: function (button) {
     return $(button).html($('<span class="glyphicon glyphicon-download"></span>').attr('title', 'Download'));
   }
-}));
+}));*/
+
+/*
 
 videojs(
   'videojs_html5_api',
@@ -95,4 +96,4 @@ videojs(
   function () {
     this.getChild('controlBar').addChild('DownloadButton', {});
   }
-);
+);*/

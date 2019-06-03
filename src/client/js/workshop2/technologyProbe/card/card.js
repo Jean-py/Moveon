@@ -30,6 +30,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   var textSegment = null;
   var textStartSegment = null;
   var textEndSegment = null;
+  var btnDelete = null;
+  
   let imgRepet = null;
   let divSegment = null;
   let startDuration = startDurationParam;
@@ -46,18 +48,18 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   iDiv.style.left = startPositionParam ;
   
   //Color picker
-  //var arrowDown = document.createElement('input');
- /* arrowDown.type = 'jscolor';
+  var arrowDown = document.createElement('input');
+  arrowDown.type = 'jscolor';
   arrowDown.className = 'jscolor';
   arrowDown.value = '#8DFFFF';
-  //jscolor.installByClassName("jscolor");*/
+  //jscolor.installByClassName("jscolor");
   
   
-  /* arrowDown.border = 'none';
+   arrowDown.border = 'none';
    arrowDown.outline = 'none';
    arrowDown.style.backgroundColor = 'black';
    arrowDown.style.webkitAppearance = 'listitem';
-   arrowDown.value = "#41568d";*/
+   arrowDown.value = "#41568d";
   
      //arrowDown.value = "FF9900";
   //arrowDown.mode = 'HS';
@@ -76,7 +78,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   console.log( divSegment.style.width);
   
   initGUI();
-  initStyle();
   initListener();
   playCard(iDiv, startDurationParam);
   
@@ -104,24 +105,48 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   
   function initListener() {
-    textSegment.addEventListener('long-press', function(e){
-      createBtnDelete(e);
+    
+    textSegment.addEventListener("blur", function () {
+      description = textSegment.value;
+      cardFunctionalCore.execute(new ModifyCardDescriptionCommand(cardObject,textSegment.value));
     });
-    divSegment.addEventListener('long-press', function(e){
-      createBtnDelete(e);
+  
+    for (let i = 0; i < 20; i += 1) {
+      selectSpeed.add(new Option(i / 10 + ""));
+    }
+    selectSpeed.selectedIndex = 10;
+    for (let i = 0; i < 20; i++) {
+      selectNbRepet.options.add(new Option(i + ""));
+    }
+    
+    //delete apparait
+    btnDelete.addEventListener('mouseup',function(){
+      if ( confirm( " /!\\ Voulez-vous vraiment supprimer ce segment?" ) ) {
+        // Code à éxécuter si le l'utilisateur clique sur "OK"
+        cardManager.execute(new DeleteCardCommand(cardObject));
+  
+      }
     });
-    selectSpeed.addEventListener("blur", function(e){
+  
+    btnDelete.addEventListener('touchend',function(){
+      if ( confirm( " /!\\ Voulez-vous vraiment supprimer ce segment?" ) ) {
+        // Code à éxécuter si le l'utilisateur clique sur "OK"
+        cardManager.execute(new DeleteCardCommand(cardObject));
+      }
+    });
+   
+    selectSpeed.addEventListener("blur", function(){
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
       speed = speedRate;
       cardFunctionalCore.execute(new CardSpeedCommand(cardObject,speedRate));
     });
-    selectNbRepet.addEventListener("blur", function(e){
+    selectNbRepet.addEventListener("blur", function(){
       repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       console.log("nbrepet in card :" +  repetitionNumber);
       cardFunctionalCore.execute(new CardNbRepetCommand(cardObject, repetitionNumber));
       //cardFunctionalCore.execute(new CardNbRepetCommand(cardObject, 100));
     });
-    divSegment.addEventListener("mousedown", function (e) {
+    divSegment.addEventListener("mousedown", function () {
       repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
       speed = speedRate;
@@ -131,7 +156,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
       //var audio = new Audio();
       //var buffered = audio.buffered;
-// returns time in seconds of the last buffered TimeRange
+      // returns time in seconds of the last buffered TimeRange
       //audio.setAttribute("src","public/sounds/preparation/preparation.mp3");
       //audio.play();
       videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speedRate));
@@ -141,7 +166,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       $( function() {
         $( ".segmentWrapper" ).draggable({
           axis: "y",
-          snapTolerance:20,
+          snapTolerance: 20,
           snapMode:"inner",
           activeClass: "ui-state-highlight",
           containment : '#wrapperCommandAndRangeCardBoard',
@@ -168,6 +193,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
           
           console.log("dropped");
           console.log(this);
+          //TODO faire la fonction de drag avec une liste de carte connecté ou une liste chainé de cartes?
           $(this).css("background-color","var(--main-color)")
         }
       });
@@ -195,24 +221,11 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     divInfoCard = document.createElement('div');
     divInfoCard.className = "infoCard";
   
-  
-  
-    /*textSegment.addEventListener("focus", function () {
-      cardFunctionalCore.execute(new ModifyCardDescriptionCommand(cardObject,textSegment.value));
-    });*/
-    textSegment.addEventListener("blur", function () {
-      description = textSegment.value;
-      cardFunctionalCore.execute(new ModifyCardDescriptionCommand(cardObject,textSegment.value));
-    });
+    btnDelete  = document.createElement('p');
+    btnDelete.className = 'span';
+    btnDelete.classList.add('btnDeleteCard');
+    btnDelete.innerHTML = "x";
     
-    for (let i = 0; i < 20; i += 1) {
-      selectSpeed.add(new Option(i / 10 + ""));
-    }
-    selectSpeed.selectedIndex = 10;
-    for (let i = 0; i < 20; i++) {
-      selectNbRepet.options.add(new Option(i + ""));
-    }
-  
     selectNbRepet.selectedIndex = 1;
   /*
   Creation des étapes pour facilement changer la taille des segments
@@ -231,16 +244,12 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     //divInfoCard.appendChild(imgRepet);
     //divInfoCard.appendChild(selectNbRepet);
     divInfoCard.appendChild(textSegment);
+    divSegment.appendChild(btnDelete);
     //divInfoCard.appendChild(arrowDown);
-    
-    
     iDiv.appendChild(divSegment);
     iDiv.appendChild(divInfoCard);
-  
     
-  
-  
-    //If the card have been deleted, the color is red, otherwise blue.
+    //If the card have been deleted, the color is red, otherwise fourth-color (define in style.css).
     if (cardInfo) {
       if(cardInfo.deleted){
         divSegment.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--unsucess-color');
@@ -255,33 +264,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   
   
-  function initStyle() {
-    textSegment.style.left = divSegment.style.width;
-  }
-  
-  
-  
-  function createBtnDelete(e){
-    e.preventDefault();
-    //delete apparait
-    var buttonDelete =  document.createElement('button');
-    buttonDelete.id = 'idBtnDelete';
-    buttonDelete.style.position = "absolute";
-    buttonDelete.type = "button";
-    buttonDelete.innerHTML = "Delete";
-    buttonDelete.style.width = "100px";
-    divInfoCard.appendChild(buttonDelete);
-    buttonDelete.addEventListener('mouseup',function(e){
-      //TODO
-      cardManager.execute(new DeleteCardCommand(cardObject));
-      //deleteCard(cardObject);
-    });
-    
-    buttonDelete.addEventListener('touchend',function(e){
-      cardManager.execute(new DeleteCardCommand(cardObject));
-      //deleteCard();
-    });
-  }
   
   cardObject = {
     width:  width,

@@ -37,6 +37,22 @@
 
 }
 
+.btnDeleteCard{
+    color: var(--border-color);
+    cursor: pointer;
+    text-decoration: none;
+    position: absolute;
+    left:110% ;
+    top : -2px;
+    padding: 0px 2px 2px 2px;
+    border: 0.5px solid  var(--border-color);
+    font-family: "Arial", Times, serif;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: small;
+}
 
 .segment{
     /*position: absolute;*/
@@ -103,6 +119,8 @@
     padding-left: 9px;
     color: white;
     background: var(--main-color);
+    border-color: var(--border-color);;
+
 }
 
 .cardBoard {

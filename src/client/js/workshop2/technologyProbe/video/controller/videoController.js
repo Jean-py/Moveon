@@ -44,7 +44,7 @@ if(video_current !== null){
  
 }
 
-
+/*
 var vjsButtonComponent = videojs.getComponent('Button');
 videojs.registerComponent('DownloadButton', videojs.extend(vjsButtonComponent, {
   constructor: function () {
@@ -67,5 +67,5 @@ videojs(
   function () {
     this.getChild('controlBar').addChild('DownloadButton', {});
   }
-);
+);*/
 

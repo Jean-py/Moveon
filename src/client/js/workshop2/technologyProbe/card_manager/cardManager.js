@@ -38,10 +38,20 @@ var CardManager = function() {
           console.log(arrayItem);
           var item = arrayItem.updateInfo();
           arrayItemUpdated.push(item);
-          console.log(item);
         });
-        var serializedArr = JSON.stringify(arrayItemUpdated, getCircularReplacer());
-        console.log("*****  Serialisation of card complete : " + serializedArr);
+      var serializedArr = JSON.stringify(arrayItemUpdated,
+        ['deleted',
+        'description',
+        'endDuration',
+        'endP',
+        'id',
+        'repetitionNumber',
+        'speed',
+        'startDuration',
+        'startP',
+        'width'] );
+      
+       // console.log("*****  Serialisation of card complete : " + serializedArr);
         download(serializedArr, 'jsonW2log-' + createUniqueId() + '.json', 'text/plain');
         logger.saveSH(serializedArr);
     },
@@ -168,14 +178,14 @@ function addingNewCardsFromJSon(cardInfo) {
 /*  if (cardInfo.startP < 0) {
     cardInfo.startP = 0;
   }*/
-  console.log(cardInfo.startDuration, cardInfo.endDuration);
+  //console.log(cardInfo.startDuration, cardInfo.endDuration);
   var result = {startDuration : cardInfo.startDuration, endDuration : cardInfo.endDuration, startP :cardInfo.startP ,endP :cardInfo.endP };
   
   //let result = player.sliderToVideo(cardInfo.startP, cardInfo.endP);
   //console.log(result);
   numberOfCard++;
   if (!cardInfo.deleted) {
-    console.log(result.startDuration, result.endDuration, cardInfo.startP, cardInfo.endP, cardInfo);
+    //console.log(result.startDuration, result.endDuration, cardInfo.startP, cardInfo.endP, cardInfo);
     var card = Card(result.startDuration, result.endDuration, result.startP, result.endP, cardInfo);
     cardManager.execute(new CreateNewCardCommand(card));
     //document.getElementById('divCardBoard').insertBefore(card.iDiv, document.getElementById('divCardBoard').firstChild);
@@ -304,6 +314,8 @@ function loadJSONSegmentHistory(SH_path) {
     var my_JSON_object = JSON.parse(generatedJson2);
     console.log(my_JSON_object);
     for (let k = 0; k < my_JSON_object.length; k++) {
+      console.log(my_JSON_object[k])
+  
       addingNewCardsFromJSon(my_JSON_object[k]);
     }
    
