@@ -28,7 +28,11 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   
   var textSegment = null;
+  
+  var divWrapperTextStartSegment = null;
   var textStartSegment = null;
+  var arrowStartSegment = null;
+  var divWrapperTextEndSegment = null;
   var textEndSegment = null;
   var btnDelete = null;
   var btnMinus = null;
@@ -68,17 +72,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   //arrowDown.position = 'right' ;
  /* arrowDown.value ="#102b9f";
   arrowDown.style.outline="none";*/
-  
-  //Div du segment bleu
-  divSegment = document.createElement('div');
-  divSegment.className = 'segment';
-  
-  //taille de la carte initiale
-  //width = iDiv.style.width = parseInt(endPositionParam, 10) - parseInt(startPositionParam, 10) + "%";
-  divSegment.style.width = parseInt(endPositionParam, 10) - parseInt(startPositionParam, 10) + "%";
-  width =   divSegment.style.width;
-  console.log( divSegment.style.width);
-  
+ 
   initGUI();
   initListener();
   playCard(iDiv, startDurationParam);
@@ -162,7 +156,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     }
     
     //delete apparait
-    btnDelete.addEventListener('mouseup',function(){
+    btnDelete.addEventListener('mousedown',function(){
       removeTheCard();
     });
   
@@ -170,7 +164,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       removeTheCard()
     });
     
-    btnMinus.addEventListener('mouseup',function(){
+    btnMinus.addEventListener('mousedown',function(){
       displayDivInfoCard();
     });
     btnMinus.addEventListener('touchend',function(){
@@ -239,8 +233,44 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     //TODO widget color picker
     //arrowDown.addEventListener("change", watchColorPicker, false);
   }
+  
+  function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
+  
   function initGUI() {
+    /*
+      Div for the segment
+    */
+    divSegment = document.createElement('div');
+    divSegment.className = 'segment';
+  
+    //taille de la carte initiale
+    divSegment.style.width = parseInt(endPositionParam, 10) - parseInt(startPositionParam, 10) + "%";
+    width = divSegment.style.width;
     
+    //The little text area to display start position in the video
+    divWrapperTextStartSegment = document.createElement('div');
+    divWrapperTextStartSegment.className = 'divWrapperTextStartSegment';
+    
+    textStartSegment = document.createElement('input');
+    textStartSegment.className = 'textStartSegment';
+    console.log("AAA : " + startDurationParam);
+    console.log("BBB : " + fmtMSS(startDurationParam));
+    textStartSegment.value = Math.floor(startDurationParam / 60)+':'+Math.floor(startDurationParam % 60);
+    
+  
+   /* arrowStartSegment  = document.createElement('p');
+    arrowStartSegment.className = 'span';
+    arrowStartSegment.classList.add('arrowStartSegment');
+        divWrapperTextStartSegment.appendChild(arrowStartSegment);
+
+    */
+    
+    divWrapperTextStartSegment.appendChild(textStartSegment);
+    //divSegment.appendChild(divWrapperTextStartSegment);
+    
+    /*
+    Info Card wrapper (text + img + speed)
+    */
     textSegment = document.createElement('input');
     textSegment.className = 'textSegment';
     //UI button speed and slow
@@ -253,18 +283,20 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     selectSpeed.className ='selectSpeed' ;
     selectNbRepet = document.createElement("select");
     selectNbRepet.selectedIndex = 1;
-    
     selectNbRepet.className ='selectNbRepet' ;
+    
     divInfoCard = document.createElement('div');
     divInfoCard.className = "infoCard";
   
-   
+    divInfoCard = document.createElement('div');
+    divInfoCard.className = "infoCard";
+  
+    
     /*
     Wrapper that contain the btutton (minus) - and x (delete)
      */
     divWrapperBtn  = document.createElement('div');
     divWrapperBtn.className = 'divWrapperBtn';
-    
     
     btnDelete  = document.createElement('p');
     btnDelete.className = 'span';
@@ -295,9 +327,11 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     //divInfoCard.appendChild(imgRepet);
     //divInfoCard.appendChild(selectNbRepet);
     divInfoCard.appendChild(textSegment);
+    //iDiv.appendChild(divWrapperTextStartSegment);
     //divInfoCard.appendChild(arrowDown);
     iDiv.appendChild(divSegment);
     iDiv.appendChild(divWrapperBtn);
+  
     iDiv.appendChild(divInfoCard);
     
     //If the card have been deleted, the color is red, otherwise fourth-color (define in style.css).

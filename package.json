@@ -39,6 +39,7 @@
     "utf-8-validate": "^4.0.2",
     "video.js": "^7.5.4",
     "videojs": "^1.0.0",
+    "videojs-time-offset": "^0.3.0",
     "watch": "^1.0.2",
     "waves-lfo": "^1.1.6",
     "websocket": "^1.0.28",

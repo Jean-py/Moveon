@@ -106,32 +106,7 @@ var muteButtonCallback = function(e){
   }
 };
 
-var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
-  // console.log("function  - repetPartOfVideo" , start,end, numberOfRepetition,speedRate);
-  isPlayingCard = true;
-    // faster speed initially
-  video_current.playbackRate(speedRate);
-  video_current.currentTime(start);
-    
-  var repet = numberOfRepetition;
-  
-  //console.log("function  - repetPartOfVideo [play part] l87 videoCommand");
-  play();
-  video_current.ontimeupdate = function() {
-    if(isPlayingCard){
-      if ((end > start ) &&  repet > 0 ) {
-        if (video_current.currentTime()   > end) {
-          repet--;
-          video_current.currentTime(start);
-        }
-      } else {
-        video_current.ontimeupdate = null;
-        feedbackOnSliderVideo(false);
-        video_current.playbackRate(1);
-      }
-    }
-  };
-};
+
 
 function clearAllTimer() {
   window.clearInterval(timerRepetition);

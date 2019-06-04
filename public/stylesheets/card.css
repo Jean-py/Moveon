@@ -16,6 +16,7 @@
     height: 10px;
     display: block;
     transition: all 1s ease-in;
+    line-height: 3em;
     /*    border-style: solid;
         left: -30px;
         border-width: 5px;*/
@@ -78,6 +79,10 @@
     top:0px
 }
 
+.divWrapperBtn{
+    z-index: 11;
+}
+
 
 .drag {
     position: relative;
@@ -113,11 +118,37 @@
     /*overflow-y: scroll;*/
 }
 
+.divWrapperTextStartSegment{
+    margin-top: -4px;
+}
+
+.textStartSegment {    /* margin-bottom: 6px; */
+    border: 1px;
+    border-color: var(--border-color);
+    border-style: solid;
+    border-radius: 10px;
+    margin-top: 3px;
+    display: block;
+    background: transparent;
+    padding: 0px 3px;
+    font-weight: bold;
+    color: white;
+    white-space: normal;
+    height: 10px;
+    z-index: 11;
+    width: 20px;
+    font: 0.5em "Arial", sans-serif;
+    margin-left: -5%;
+    position: absolute;
+
+}
+
 .imgSlow{
     content:url('../media/workshop2/card/slow.png');
     width: 20px;
     height: 20px;
-    margin-top: 10px;
+    margin-top: 15px;
+    vertical-align: top;
 }
 
 
