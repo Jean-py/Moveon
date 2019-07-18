@@ -1,0 +1,29 @@
+"use strict";
+
+videojs.addLanguage('ca', {
+  "Play": "Reproducció",
+  "Pause": "Pausa",
+  "Current Time": "Temps reproduït",
+  "Duration": "Durada total",
+  "Remaining Time": "Temps restant",
+  "Stream Type": "Tipus de seqüència",
+  "LIVE": "EN DIRECTE",
+  "Loaded": "Carregat",
+  "Progress": "Progrés",
+  "Fullscreen": "Pantalla completa",
+  "Non-Fullscreen": "Pantalla no completa",
+  "Mute": "Silencia",
+  "Unmute": "Amb so",
+  "Playback Rate": "Velocitat de reproducció",
+  "Subtitles": "Subtítols",
+  "subtitles off": "Subtítols desactivats",
+  "Captions": "Llegendes",
+  "captions off": "Llegendes desactivades",
+  "Chapters": "Capítols",
+  "You aborted the media playback": "Heu interromput la reproducció del vídeo.",
+  "A network error caused the media download to fail part-way.": "Un error de la xarxa ha interromput la baixada del vídeo.",
+  "The media could not be loaded, either because the server or network failed or because the format is not supported.": "No s'ha pogut carregar el vídeo perquè el servidor o la xarxa han fallat, o bé perquè el seu format no és compatible.",
+  "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "La reproducció de vídeo s'ha interrumput per un problema de corrupció de dades o bé perquè el vídeo demanava funcions que el vostre navegador no ofereix.",
+  "No compatible source was found for this media.": "No s'ha trobat cap font compatible amb el vídeo."
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhLmpzIl0sIm5hbWVzIjpbInZpZGVvanMiLCJhZGRMYW5ndWFnZSJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsUUFBUUMsV0FBUixDQUFvQixJQUFwQixFQUEwQjtBQUN4QixVQUFRLGFBRGdCO0FBRXhCLFdBQVMsT0FGZTtBQUd4QixrQkFBZ0IsaUJBSFE7QUFJeEIsY0FBWSxjQUpZO0FBS3hCLG9CQUFrQixlQUxNO0FBTXhCLGlCQUFlLG9CQU5TO0FBT3hCLFVBQVEsWUFQZ0I7QUFReEIsWUFBVSxVQVJjO0FBU3hCLGNBQVksU0FUWTtBQVV4QixnQkFBYyxtQkFWVTtBQVd4QixvQkFBa0Isc0JBWE07QUFZeEIsVUFBUSxVQVpnQjtBQWF4QixZQUFVLFFBYmM7QUFjeEIsbUJBQWlCLDBCQWRPO0FBZXhCLGVBQWEsV0FmVztBQWdCeEIsbUJBQWlCLHVCQWhCTztBQWlCeEIsY0FBWSxXQWpCWTtBQWtCeEIsa0JBQWdCLHdCQWxCUTtBQW1CeEIsY0FBWSxVQW5CWTtBQW9CeEIsb0NBQWtDLDJDQXBCVjtBQXFCeEIsaUVBQStELDJEQXJCdkM7QUFzQnhCLHdIQUFzSCx1SEF0QjlGO0FBdUJ4QixpSUFBK0gsMkpBdkJ2RztBQXdCeEIsb0RBQWtEO0FBeEIxQixDQUExQiIsImZpbGUiOiJjYS5qcyIsInNvdXJjZXNDb250ZW50IjpbInZpZGVvanMuYWRkTGFuZ3VhZ2UoJ2NhJywge1xuICBcIlBsYXlcIjogXCJSZXByb2R1Y2Npw7NcIixcbiAgXCJQYXVzZVwiOiBcIlBhdXNhXCIsXG4gIFwiQ3VycmVudCBUaW1lXCI6IFwiVGVtcHMgcmVwcm9kdcOvdFwiLFxuICBcIkR1cmF0aW9uXCI6IFwiRHVyYWRhIHRvdGFsXCIsXG4gIFwiUmVtYWluaW5nIFRpbWVcIjogXCJUZW1wcyByZXN0YW50XCIsXG4gIFwiU3RyZWFtIFR5cGVcIjogXCJUaXB1cyBkZSBzZXHDvMOobmNpYVwiLFxuICBcIkxJVkVcIjogXCJFTiBESVJFQ1RFXCIsXG4gIFwiTG9hZGVkXCI6IFwiQ2FycmVnYXRcIixcbiAgXCJQcm9ncmVzc1wiOiBcIlByb2dyw6lzXCIsXG4gIFwiRnVsbHNjcmVlblwiOiBcIlBhbnRhbGxhIGNvbXBsZXRhXCIsXG4gIFwiTm9uLUZ1bGxzY3JlZW5cIjogXCJQYW50YWxsYSBubyBjb21wbGV0YVwiLFxuICBcIk11dGVcIjogXCJTaWxlbmNpYVwiLFxuICBcIlVubXV0ZVwiOiBcIkFtYiBzb1wiLFxuICBcIlBsYXliYWNrIFJhdGVcIjogXCJWZWxvY2l0YXQgZGUgcmVwcm9kdWNjacOzXCIsXG4gIFwiU3VidGl0bGVzXCI6IFwiU3VidMOtdG9sc1wiLFxuICBcInN1YnRpdGxlcyBvZmZcIjogXCJTdWJ0w610b2xzIGRlc2FjdGl2YXRzXCIsXG4gIFwiQ2FwdGlvbnNcIjogXCJMbGVnZW5kZXNcIixcbiAgXCJjYXB0aW9ucyBvZmZcIjogXCJMbGVnZW5kZXMgZGVzYWN0aXZhZGVzXCIsXG4gIFwiQ2hhcHRlcnNcIjogXCJDYXDDrXRvbHNcIixcbiAgXCJZb3UgYWJvcnRlZCB0aGUgbWVkaWEgcGxheWJhY2tcIjogXCJIZXUgaW50ZXJyb21wdXQgbGEgcmVwcm9kdWNjacOzIGRlbCB2w61kZW8uXCIsXG4gIFwiQSBuZXR3b3JrIGVycm9yIGNhdXNlZCB0aGUgbWVkaWEgZG93bmxvYWQgdG8gZmFpbCBwYXJ0LXdheS5cIjogXCJVbiBlcnJvciBkZSBsYSB4YXJ4YSBoYSBpbnRlcnJvbXB1dCBsYSBiYWl4YWRhIGRlbCB2w61kZW8uXCIsXG4gIFwiVGhlIG1lZGlhIGNvdWxkIG5vdCBiZSBsb2FkZWQsIGVpdGhlciBiZWNhdXNlIHRoZSBzZXJ2ZXIgb3IgbmV0d29yayBmYWlsZWQgb3IgYmVjYXVzZSB0aGUgZm9ybWF0IGlzIG5vdCBzdXBwb3J0ZWQuXCI6IFwiTm8gcydoYSBwb2d1dCBjYXJyZWdhciBlbCB2w61kZW8gcGVycXXDqCBlbCBzZXJ2aWRvciBvIGxhIHhhcnhhIGhhbiBmYWxsYXQsIG8gYsOpIHBlcnF1w6ggZWwgc2V1IGZvcm1hdCBubyDDqXMgY29tcGF0aWJsZS5cIixcbiAgXCJUaGUgbWVkaWEgcGxheWJhY2sgd2FzIGFib3J0ZWQgZHVlIHRvIGEgY29ycnVwdGlvbiBwcm9ibGVtIG9yIGJlY2F1c2UgdGhlIG1lZGlhIHVzZWQgZmVhdHVyZXMgeW91ciBicm93c2VyIGRpZCBub3Qgc3VwcG9ydC5cIjogXCJMYSByZXByb2R1Y2Npw7MgZGUgdsOtZGVvIHMnaGEgaW50ZXJydW1wdXQgcGVyIHVuIHByb2JsZW1hIGRlIGNvcnJ1cGNpw7MgZGUgZGFkZXMgbyBiw6kgcGVycXXDqCBlbCB2w61kZW8gZGVtYW5hdmEgZnVuY2lvbnMgcXVlIGVsIHZvc3RyZSBuYXZlZ2Fkb3Igbm8gb2ZlcmVpeC5cIixcbiAgXCJObyBjb21wYXRpYmxlIHNvdXJjZSB3YXMgZm91bmQgZm9yIHRoaXMgbWVkaWEuXCI6IFwiTm8gcydoYSB0cm9iYXQgY2FwIGZvbnQgY29tcGF0aWJsZSBhbWIgZWwgdsOtZGVvLlwiXG59KTsiXX0=

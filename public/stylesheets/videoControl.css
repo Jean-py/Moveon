@@ -2,12 +2,11 @@
 
 
 .myplayer{
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 
-/*    transform: rotateY(180deg);
-    -webkit-transform:rotateY(180deg); !* Safari and Chrome *!
-    -moz-transform:rotateY(180deg); !* Firefox *!*/
-
+    /*transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg);
+    -moz-transform:rotateY(180deg);*/
 }
 
 /*CSS commande pour video et range slider*/
@@ -36,7 +35,11 @@
 }
 
 #videoSlider {
-    position:relative;
+    top: 5px;
+    position: relative;
+    left: 90px;
+    width: 777px;
+    margin-bottom: 57px;
 }
 
 
@@ -44,12 +47,13 @@
 .range-slider .range-slider_track {
     -webkit-appearance: none;
     height: 25px;
+    visibility: hidden;
    /* border-radius: 10px;*/
-    background: #c6c6c6;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
+    background: var(--fourth-color);
+    outline: black;
+    /*opacity: 0.7;
+    /*-webkit-transition: .2s;
+    transition: opacity .2s;*/
     cursor: pointer;
 }
 
@@ -62,47 +66,45 @@
     /*width: 854px;*/
    /* width: 1000px;*/
     height: 20px;
+    visibility: hidden;
 }
 
 
-.range-slider .range-slider_handle {
+.range-slider_handle {
     width: 30px;
-    height: 30px;
-    top: 2px;
+
     z-index:1;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     background: #ffffff;
     cursor: pointer;
 }
 
 .range-slider-wrapper{
     position:relative;
-    top:12px;
+    visibility: hidden;
+    margin-top: 2%;
+    /*top:12px;
     padding-top:5px;
-    width: auto;
+    width: auto;*/
 }
 
 .range-slider{
-
-    background: #000000;
-
+    background: var(--main-color);
 }
 
 .range-slider .range-slider_handle-max {
     visibility: hidden;
-    background: #328d1f;
-    height: 33px;
-    width: 3px;
-    border-radius: 0%;
-
+    height: 20px;
+    width: 4px;
+    background: var(--fourth-color);
     position: absolute;
 }
 
 #segmentMinMax {
-    background: #213F8D;
+    background: var(--fourth-color);
     visibility: hidden;
-    width: 10px;
-    transition: 0.1s ease-out;
+    width: 0px;
+    /*transition: 0.5s ease-out;*/
     margin-top: -20px;
     height: 20px;
 }
@@ -112,7 +114,7 @@
     visibility: visible;
     position: absolute;
     height: 30px;
-    width: 30px;
+    width: 4px;
 }
 
 
@@ -132,7 +134,9 @@
 .wrapperSticky{
     /*position: -webkit-sticky;
     position: sticky;*/
+    /*
     z-index: 999;
+    */
     top: 0;
 }
 
@@ -144,7 +148,6 @@
 
 .myplayer{
     margin-top: 2%;
-
 }
 
 .videoEAT{
@@ -167,8 +170,9 @@
     border: 2px solid #ffffff;
     -webkit-border-radius: 14px;
     border-radius: 14px;
-    height: 37px;
-    width: 466px;
+    margin-top: 20px;
+    height: 24px;
+    width: 320px;
     font: normal 20px/normal Verdana, Geneva, sans-serif;
     color: rgba(255,255,255,1);
     text-align: center;
@@ -182,3 +186,5 @@
     -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 }
+
+

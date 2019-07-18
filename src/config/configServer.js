@@ -28,6 +28,7 @@ var config =  {
   
   // port used to open the http server, in production this value is typically 80
   portServer: 8000,
+  portServerDevelopment: 8001,
   
   //Port used by the myo
   myoPort: 10138,

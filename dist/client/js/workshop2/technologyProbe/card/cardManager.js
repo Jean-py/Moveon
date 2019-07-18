@@ -177,18 +177,38 @@ function deleteCardUI(card) {
 
 /*------ Export card in a JSON file  -------*/
 //TODO
-function exportCard() {
+var exportCard = function() {
+  
+  console.log("function export card");
+  /*------ Create a set of card from a JSON file -------*/
   var arrayItemUpdated = [];
-  arrayCard.forEach(function (arrayItem) {
-    //arrayItem.updateInfo();
+  var listSegment = document.getElementsByClassName('segment');
+//playCard(arrayItem.iDiv, arrayItem.startP);
+  console.log(listSegment);
+  
+  
+  for (var i = 0; i < listSegment.length; i++) {
+    console.log(listSegment[i].id); //second console output
+    triggerMouseEvent(listSegment[i],'mousedown');
+  }
+
+// var item = arrayItem.updateInfo();
+// triggerMouseEvent( a, "mousedown");
+  arrayCard.forEach(function(arrayItem) {
+    console.log(arrayItem);
     var item = arrayItem.updateInfo();
     arrayItemUpdated.push(item);
     console.log(item);
   });
-  var serializedArr = JSON.stringify([arrayItemUpdated, numberOfCard]);
-  console.log("Serialisation of card complete : " + serializedArr);
-  download(serializedArr, 'jsonW2log-' + createUniqueId() + '.txt', 'text/plain');
+  var serializedArr = JSON.stringify(arrayItemUpdated);
+  console.log("*****  Serialisation of card complete : " + serializedArr);
+  download(serializedArr, 'jsonW2log-' + createUniqueId() + '.json', 'text/plain');
+  
+  logger.saveSH(serializedArr);
 };
+
+
+
 
 function download(content, fileName, contentType) {
   var a = document.createElement("a");

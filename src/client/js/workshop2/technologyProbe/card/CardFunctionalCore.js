@@ -6,7 +6,6 @@ var CardFunctionalCore = function() {
   return {
     //execute a command
     execute: function(command) {
-      
       command.execute();
       //We send the command to the server (the server log it into a file, see ./src/server/ServerLogger)
       logger.sendAndLogCommand(command);
@@ -22,25 +21,58 @@ function playCard(iDiv,startDurationParam){
   console.log('play card in card functionalCore ');
   console.log(iDiv);
    //video.currentTime = startDurationParam;
-  Player.seekTo(startDurationParam);
+  player.seekTo(startDurationParam);
   segmentFeedback.width = iDiv.style.width;
   segmentFeedback.startPostion = iDiv.style.left;
-  feedbackOnSliderVideo(true);
+  //feedbackOnSliderVideo(true);
+  
 }
 
+var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
+  console.log("function  - repetPartOfVideo" , start,end, numberOfRepetition,speedRate);
+  
+  //TODO trim de video ce fait avec cette commande
+  /*video_current.timeOffset({
+    start: this.start, // in seconds
+    end: this.end
+  });
+  */
+  
+  isPlayingCard = true;
+  // faster speed initially
+  video_current.playbackRate(speedRate);
+  video_current.currentTime(start);
+  
+  var repet = numberOfRepetition;
+  
+  //console.log("function  - repetPartOfVideo [play part] l87 videoCommand");
+  play();
+  video_current.ontimeupdate = function() {
+    
+    if(isPlayingCard){
+      if ((end > start ) &&  repet > 0 ) {
+        if (video_current.currentTime()   > end) {
+          repet--;
+          video_current.currentTime(start);
+        }
+      } else {
+        video_current.ontimeupdate = null;
+        feedbackOnSliderVideo(false);
+        video_current.playbackRate(1);
+      }
+    }
+    
+  };
+};
 
 function modifyCardDescription(){
-  //window.getElementById(id_card).
-  //description = text;
   this.card.description = this.text;
 }
 function modifyCardSpeed(){
-  //let nbRepet = selectNbRepet.options[selectNbRepet.selectedIndex].value;
   this.card.speed = this.speed;
 }
 
 function modifyCardNbRepet(){
-  //let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
   this.card.repetitionNumber = this.repetitionNumber;
 }
 

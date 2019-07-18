@@ -1,38 +1,86 @@
 @import url("resetCss.css");
 
+.hidden {
+    display: none;
+}
+
+.visuallyhidden {
+    opacity: 0;
+}
+
 
 .infoCard{
     position : absolute;
-    margin-top : 25px;
-    width: 700px;
+    margin-top : 8px;
+    width: auto;
     height: 10px;
-    left: -30px;
-    border-style: solid;
-    border-width: 5px;
+    display: block;
+    transition: all 1s ease-in;
+    line-height: 3em;
+    /*    border-style: solid;
+        left: -30px;
+        border-width: 5px;*/
 }
-
-
-
 
 .segmentWrapper {
+    height: 80px;
     position: relative;
-    margin-top: 100px;
     margin-right: 3px;
-    margin-bottom: 50px ;
+    /* margin-bottom: 50px ;*/
+    margin-bottom: 20px;
     /*display: block;*/
     display: flex;
-
 }
 
+.btnDeleteCard{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    top: -5px;
+    margin: 0px 2px 1px 4px;
+    padding: 2px 0px 0px 1px;
+    border: 0.5px solid  var(--border-color);
+    font-family: "Arial", Times, serif;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: x-small;
+}
+
+
+.btnMinusCard{
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    top:-4px;
+    margin: 0px 2px 0px 10px;
+    padding: 0px 2px 2px 2px;
+    border: 0.5px solid  var(--border-color);
+    font-family: "Arial", Times, serif;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: small;
+}
 
 .segment{
     /*position: absolute;*/
-    height: 18px;
+    position: relative;
+
+    height: 10px;
    /*border-radius: 10px;*/
-    background-color: #213F8D;
-    z-index: 10;
+    background-color: var(--fourth-color);
+    z-index: 1;
     left: 0px;
     top:0px
+}
+
+.divWrapperBtn{
+    z-index: 11;
 }
 
 
@@ -43,6 +91,10 @@
 
 .cardBoard{
     margin-top: 2%;
+    position: relative;
+    left: 90px;
+    width: 777px;
+    height: 80ch;
 }
 
 
@@ -50,26 +102,53 @@
     margin-bottom: 6px;
     background: transparent;
     border: 1px;
-    border-color: white;
+    border-color: var(--border-color);
+    padding: 1px 10px;
 
-  /*  border-radius: 10px;*/
+    border-radius: 10px;
     border-style: solid;
    /* position: absolute;*/
-    width: 500px;
+    width: 150px;
     font-weight: bold;
     margin-left: 7px;
     color: #ffffff;
     white-space: normal;
     z-index: 1;
     top: 0px;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
+}
+
+.divWrapperTextStartSegment{
+    margin-top: -4px;
+}
+
+.textStartSegment {    /* margin-bottom: 6px; */
+    border: 1px;
+    border-color: var(--border-color);
+    border-style: solid;
+    border-radius: 10px;
+    margin-top: 3px;
+    display: block;
+    background: transparent;
+    padding: 0px 3px;
+    font-weight: bold;
+    color: white;
+    white-space: normal;
+    height: 10px;
+    z-index: 11;
+    width: 20px;
+    font: 0.5em "Arial", sans-serif;
+    margin-left: -5%;
+    position: absolute;
+
 }
 
 .imgSlow{
     content:url('../media/workshop2/card/slow.png');
     width: 20px;
     height: 20px;
-
+    margin-top: 15px;
+    vertical-align: top;
 }
 
 
@@ -80,17 +159,26 @@
 
 .selectSpeed, .selectNbRepet {
     margin: 10px;
-    margin-right: 20px;
-    margin-left: 5px;
+    padding-left: 9px;
     color: white;
-    background: black;
+    background: var(--main-color);
+    border-color: var(--border-color);;
+
 }
 
-#divCardBoard {
+.cardBoard {
     /* overflow-y: auto;
      overflow-x: hidden;*/
-    /* overflow: hidden;*/
-    height: 3000px;
+     /*overflow: hidden;*/
+
+    /*background-color: #c7074d;*/
+
 }
 
 
+
+
+.demo {
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 7px 5px 15px 5px rgba(0,0,0,0);
+    box-shadow: 0px 10px 13px -7px #000000, 7px 5px 15px 5px rgba(0,0,0,0);
+}

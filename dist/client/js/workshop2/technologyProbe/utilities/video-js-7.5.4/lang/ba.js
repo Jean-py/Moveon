@@ -1,0 +1,29 @@
+"use strict";
+
+videojs.addLanguage('ba', {
+  "Play": "Pusti",
+  "Pause": "Pauza",
+  "Current Time": "Trenutno vrijeme",
+  "Duration": "Vrijeme trajanja",
+  "Remaining Time": "Preostalo vrijeme",
+  "Stream Type": "Način strimovanja",
+  "LIVE": "UŽIVO",
+  "Loaded": "Učitan",
+  "Progress": "Progres",
+  "Fullscreen": "Puni ekran",
+  "Non-Fullscreen": "Mali ekran",
+  "Mute": "Prigušen",
+  "Unmute": "Ne-prigušen",
+  "Playback Rate": "Stopa reprodukcije",
+  "Subtitles": "Podnaslov",
+  "subtitles off": "Podnaslov deaktiviran",
+  "Captions": "Titlovi",
+  "captions off": "Titlovi deaktivirani",
+  "Chapters": "Poglavlja",
+  "You aborted the media playback": "Isključili ste reprodukciju videa.",
+  "A network error caused the media download to fail part-way.": "Video se prestao preuzimati zbog greške na mreži.",
+  "The media could not be loaded, either because the server or network failed or because the format is not supported.": "Video se ne može reproducirati zbog servera, greške u mreži ili je format ne podržan.",
+  "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "Reprodukcija videa je zaustavljenja zbog greške u formatu ili zbog verzije vašeg pretraživača.",
+  "No compatible source was found for this media.": "Nije nađen nijedan kompatibilan izvor ovog videa."
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJhLmpzIl0sIm5hbWVzIjpbInZpZGVvanMiLCJhZGRMYW5ndWFnZSJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsUUFBUUMsV0FBUixDQUFvQixJQUFwQixFQUEwQjtBQUN4QixVQUFRLE9BRGdCO0FBRXhCLFdBQVMsT0FGZTtBQUd4QixrQkFBZ0Isa0JBSFE7QUFJeEIsY0FBWSxrQkFKWTtBQUt4QixvQkFBa0IsbUJBTE07QUFNeEIsaUJBQWUsbUJBTlM7QUFPeEIsVUFBUSxPQVBnQjtBQVF4QixZQUFVLFFBUmM7QUFTeEIsY0FBWSxTQVRZO0FBVXhCLGdCQUFjLFlBVlU7QUFXeEIsb0JBQWtCLFlBWE07QUFZeEIsVUFBUSxVQVpnQjtBQWF4QixZQUFVLGFBYmM7QUFjeEIsbUJBQWlCLG9CQWRPO0FBZXhCLGVBQWEsV0FmVztBQWdCeEIsbUJBQWlCLHVCQWhCTztBQWlCeEIsY0FBWSxTQWpCWTtBQWtCeEIsa0JBQWdCLHNCQWxCUTtBQW1CeEIsY0FBWSxXQW5CWTtBQW9CeEIsb0NBQWtDLG9DQXBCVjtBQXFCeEIsaUVBQStELG1EQXJCdkM7QUFzQnhCLHdIQUFzSCx1RkF0QjlGO0FBdUJ4QixpSUFBK0gsZ0dBdkJ2RztBQXdCeEIsb0RBQWtEO0FBeEIxQixDQUExQiIsImZpbGUiOiJiYS5qcyIsInNvdXJjZXNDb250ZW50IjpbInZpZGVvanMuYWRkTGFuZ3VhZ2UoJ2JhJywge1xuICBcIlBsYXlcIjogXCJQdXN0aVwiLFxuICBcIlBhdXNlXCI6IFwiUGF1emFcIixcbiAgXCJDdXJyZW50IFRpbWVcIjogXCJUcmVudXRubyB2cmlqZW1lXCIsXG4gIFwiRHVyYXRpb25cIjogXCJWcmlqZW1lIHRyYWphbmphXCIsXG4gIFwiUmVtYWluaW5nIFRpbWVcIjogXCJQcmVvc3RhbG8gdnJpamVtZVwiLFxuICBcIlN0cmVhbSBUeXBlXCI6IFwiTmHEjWluIHN0cmltb3ZhbmphXCIsXG4gIFwiTElWRVwiOiBcIlXFvUlWT1wiLFxuICBcIkxvYWRlZFwiOiBcIlXEjWl0YW5cIixcbiAgXCJQcm9ncmVzc1wiOiBcIlByb2dyZXNcIixcbiAgXCJGdWxsc2NyZWVuXCI6IFwiUHVuaSBla3JhblwiLFxuICBcIk5vbi1GdWxsc2NyZWVuXCI6IFwiTWFsaSBla3JhblwiLFxuICBcIk11dGVcIjogXCJQcmlndcWhZW5cIixcbiAgXCJVbm11dGVcIjogXCJOZS1wcmlndcWhZW5cIixcbiAgXCJQbGF5YmFjayBSYXRlXCI6IFwiU3RvcGEgcmVwcm9kdWtjaWplXCIsXG4gIFwiU3VidGl0bGVzXCI6IFwiUG9kbmFzbG92XCIsXG4gIFwic3VidGl0bGVzIG9mZlwiOiBcIlBvZG5hc2xvdiBkZWFrdGl2aXJhblwiLFxuICBcIkNhcHRpb25zXCI6IFwiVGl0bG92aVwiLFxuICBcImNhcHRpb25zIG9mZlwiOiBcIlRpdGxvdmkgZGVha3RpdmlyYW5pXCIsXG4gIFwiQ2hhcHRlcnNcIjogXCJQb2dsYXZsamFcIixcbiAgXCJZb3UgYWJvcnRlZCB0aGUgbWVkaWEgcGxheWJhY2tcIjogXCJJc2tsanXEjWlsaSBzdGUgcmVwcm9kdWtjaWp1IHZpZGVhLlwiLFxuICBcIkEgbmV0d29yayBlcnJvciBjYXVzZWQgdGhlIG1lZGlhIGRvd25sb2FkIHRvIGZhaWwgcGFydC13YXkuXCI6IFwiVmlkZW8gc2UgcHJlc3RhbyBwcmV1emltYXRpIHpib2cgZ3JlxaFrZSBuYSBtcmXFvmkuXCIsXG4gIFwiVGhlIG1lZGlhIGNvdWxkIG5vdCBiZSBsb2FkZWQsIGVpdGhlciBiZWNhdXNlIHRoZSBzZXJ2ZXIgb3IgbmV0d29yayBmYWlsZWQgb3IgYmVjYXVzZSB0aGUgZm9ybWF0IGlzIG5vdCBzdXBwb3J0ZWQuXCI6IFwiVmlkZW8gc2UgbmUgbW/FvmUgcmVwcm9kdWNpcmF0aSB6Ym9nIHNlcnZlcmEsIGdyZcWha2UgdSBtcmXFvmkgaWxpIGplIGZvcm1hdCBuZSBwb2Ryxb5hbi5cIixcbiAgXCJUaGUgbWVkaWEgcGxheWJhY2sgd2FzIGFib3J0ZWQgZHVlIHRvIGEgY29ycnVwdGlvbiBwcm9ibGVtIG9yIGJlY2F1c2UgdGhlIG1lZGlhIHVzZWQgZmVhdHVyZXMgeW91ciBicm93c2VyIGRpZCBub3Qgc3VwcG9ydC5cIjogXCJSZXByb2R1a2NpamEgdmlkZWEgamUgemF1c3RhdmxqZW5qYSB6Ym9nIGdyZcWha2UgdSBmb3JtYXR1IGlsaSB6Ym9nIHZlcnppamUgdmHFoWVnIHByZXRyYcW+aXZhxI1hLlwiLFxuICBcIk5vIGNvbXBhdGlibGUgc291cmNlIHdhcyBmb3VuZCBmb3IgdGhpcyBtZWRpYS5cIjogXCJOaWplIG5hxJFlbiBuaWplZGFuIGtvbXBhdGliaWxhbiBpenZvciBvdm9nIHZpZGVhLlwiXG59KTsiXX0=

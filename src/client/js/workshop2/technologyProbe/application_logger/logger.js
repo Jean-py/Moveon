@@ -40,13 +40,11 @@ function getSocket_name_session(){
 
 
 function connectToServer() {
-  console.log("testing connect to server...");
   var addr = document.URL;
   //Split the https://xxxx:port#oNote  to xxxx:port
   addr = addr.split('/')[2];
-  console.log("connect to : " + addr);
   socket = io.connect(addr);
-  console.log("changing username socket to dev");
+  console.log("connected to : " + addr, "changing username socket to dev");
   logger.changeUsernameSocket("dev");
 };
 
@@ -62,27 +60,24 @@ function send_username(username) {
 
 //TODO faire une deep recopies des objets passé en parametre!
 function log_command(commandParam){
-  console.log("executing : ");
-  console.log(commandParam);
+  /*console.log("executing : ");
+  console.log(commandParam);*/
   if(socket != null){
     var objCopy = null;
     
     //We have to log an event, if so, it's a circular reference and need to be treated as well
     if (commandParam.e !== undefined) {
-      //console.log("OK --- " ) ;
+      console.log(" dans le if" ) ;
       //console.log(commandParam.e.pageX) ;
       
       const mouse_event = {mouseEvent : {pageX: commandParam.e.pageX, pageY: commandParam.e.pageY}};
       
       //const o2 = { y: commandParam.e.pageY};
-       objCopy = Object.assign({}, commandParam);
        objCopy = Object.assign(commandParam, mouse_event);
        objCopy.e = undefined;
     } else {
        objCopy = Object.assign({}, commandParam);
     }
-  
-    
     
     //console.log("*** LOGGER : log_command ***" );
     if(socket_name_session !== null ){
@@ -92,7 +87,6 @@ function log_command(commandParam){
     if(objCopy.undo != null){
       objCopy.undo = objCopy.undo.name;
     }
-
     socket.emit("log_command", objCopy);
     return true;
     
@@ -104,10 +98,6 @@ function log_command(commandParam){
 
 function saveSH(SH){
   if(socket != null){
-    var objCopy = null;
-    
-    objCopy =  SH;
-
     if(socket_name_session !== null ){
       send_username(socket_name_session);
     }

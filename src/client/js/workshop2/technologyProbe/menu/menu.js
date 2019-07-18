@@ -11,14 +11,15 @@ var inputFile = document.getElementById('logFileLoad');
 var btnCleanAll = document.getElementById('btnCleanAll');
 var btnLoadYtVideo = document.getElementById('loadYtVideo');
 var btnSaveSegments = document.getElementById('btnSaveSegments');
+var btnInvertVideo = document.getElementById('btnInvertVideo');
+var btnLoadAVideo = document.getElementById('btnLoadAVideo');
+var btnLoadSHFromServer = document.getElementById('btnLoadSHFromServer');
 
 //var dataAnalyst = DataAnalyst;
 
 var btnloadSH1 = document.getElementById('loadSHvideo1');
 var btnloadSH2 = document.getElementById('loadSHvideo2');
 var btnloadSHTuto = document.getElementById('loadSHvideoTutorial');
-var btnloadVideo1 = document.getElementById('loadvideo1');
-var btnloadVideo2 = document.getElementById('loadvideo2');
 var btnAnalyzeData = document.getElementById('analyzeData');
 
 
@@ -31,12 +32,15 @@ idSession.value = logger.getSocket_name_session();
 
 inputFile.addEventListener('change', updateImageDisplay);
 
-btnLoadFile.addEventListener("mousedown", function (e) {
+if(btnLoadFile != null ){
+  
+  btnLoadFile.addEventListener("mousedown", function (e) {
     //emulating a click on a file picking
     inputFile.click();
   }, {
-  passive: true
-});
+    passive: true
+  });
+}
 
 
 
@@ -53,19 +57,29 @@ menu.addEventListener("mousedown", handleMenu, {
   passive: true
 });
 
-btnLoadYtVideo.addEventListener("mousedown", callbackLoadYtVideo);
+if(btnLoadYtVideo !== null)
+  btnLoadYtVideo.addEventListener("mousedown", callbackLoadYtVideo);
 
 btnCleanAll.addEventListener("mousedown", callbackCleanSegmentHistory);
 
 btnSaveSegments.addEventListener("mousedown", callbackSaveFile);
 
-btnloadSH1.addEventListener("mousedown", loadSH1 );
-btnloadSH2.addEventListener("mousedown", loadSH2);
-btnloadSHTuto.addEventListener("mousedown", loadSHTuto);
-btnloadVideo1.addEventListener("mousedown", loadVideo1);
-btnloadVideo2.addEventListener("mousedown", loadVideo2);
-btnAnalyzeData.addEventListener("mousedown", analyzeData);
+if(btnloadSH1 !== null)
+  btnloadSH1.addEventListener("mousedown", loadSH1 );
+if(btnLoadSHFromServer !== null)
+  btnLoadSHFromServer.addEventListener("mousedown", LoadSHFromServer );
 
+if(btnloadSH2 !== null)
+  btnloadSH2.addEventListener("mousedown", loadSH2);
+if(btnloadSHTuto !== null)
+  btnloadSHTuto.addEventListener("mousedown", loadSHTuto);
+if(btnAnalyzeData !== null)
+  btnAnalyzeData.addEventListener("mousedown", analyzeData);
+
+if(btnInvertVideo !== null)
+  btnInvertVideo.addEventListener("mousedown", invertVideo) ;
+if(btnLoadAVideo !== null)
+  btnLoadAVideo.addEventListener("mousedown", loadVideo) ;
 
 
 idSession.addEventListener("blur",setSessionName, {passive: true});
@@ -86,8 +100,6 @@ function callbackCleanSegmentHistory(){
     var notification_feedback = "Not confirmed!";
     notificationFeedback(notification_feedback);
   }
-  
-  
 }
 
 function callbackSaveFile(){
@@ -124,32 +136,71 @@ function notificationFeedback(notification_message){
 }
 
 // Get the modal
-var modal = document.getElementById('myModal');
+var modal = document.getElementById('modalYT');
+var modalVideo = document.getElementById('videoPickerOverview');
+var modalLoadSH = document.getElementById('SHPickerOverview');
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var spanSH = document.getElementsByClassName("close")[1];
 
 // When the user clicks the button, open the modal
-btnLoadYtVideo.onclick = function() {
-  modal.style.display = "block";
-};
+if(btnLoadYtVideo !== null){
+  btnLoadYtVideo.onclick = function() {
+    modal.style.display = "block";
+  };
+}
+
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.addEventListener( "mousedown" , function() {
   modal.style.display = "none";
+});
+span.addEventListener( "mousedown" , function() {
+  modalVideo.style.display = "none";
+});
+spanSH.addEventListener( "mousedown" , function() {
+  modalLoadSH.style.display = "none";
+  
+});
+
+
+
+
+/**
+ * Span
+ */
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modalVideo.style.display = "none";
+  modalVideo.style.visibility = "hidden";
+  modalLoadSH.style.display = "none";
+  modalLoadSH.style.visibility = "hidden";
 };
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == modalVideo) {
+    modalVideo.style.display = "none";
+    modalVideo.style.visibility = "hidden";
+  }
+  if (event.target == modalLoadSH) {
+    modalLoadSH.style.display = "none";
+    modalLoadSH.style.visibility = "hidden";
   }
 };
 
 
 
+
 function loadSH1(){
   loadJSONSegmentHistory1() ;
+}
+
+function LoadSHFromServer(){
+      modalLoadSH.style.display = "block";
+      modalLoadSH.style.visibility = "";
+      cardManager.loadSegmentHistoryFromServer();
 }
 
 function loadSH2(){
@@ -161,16 +212,19 @@ function loadSHTuto(){
 }
 
 
-function loadVideo1(){
-  Player.setSource("./public/media/workshop2/videoW1.mp4");
-}
-function loadVideo2(){
-  Player.setSource("./public/media/workshop2/videoW1-2.mp4");}
-
 function analyzeData(){
   dataAnalyst.analyseData1();
 }
 
+function invertVideo(){
+  player.mirror();
+}
+function loadVideo() {
+// When the user clicks the button load a Video in  the menu, open the modal
+      modalVideo.style.display = "block";
+      modalVideo.style.visibility = "";
+      VideoPicker.chargeVideo();
+}
 
 
 

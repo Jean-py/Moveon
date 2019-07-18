@@ -38,23 +38,50 @@ function setUsernameLog(user_name){
 
 
 function saveSH(socket_name, SH) {
-  console.log("--------------------------------");
-  console.log("a la con");
-  console.log("--------------------------------");
+  //Format the date
+  function addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
   
-  //log the command into a file
-  var file_path = "./src/server/log-SH/" + socket_name + "-W2SH";
+  
+  
+  var d = new Date();
+  var h = addZero(d.getHours());
+  var m = addZero(d.getMinutes());
+  var s = addZero(d.getSeconds());
+  var month =  addZero(d.getMonth());
+  var day =  addZero(d.getDay());
+  
+  var date =  day+"/"+month+"_"+ h + ":" + m + ":" + s;
+  
+  var file_path = "./src/server/log-SH/" + socket_name +'-' +d;
   console.log(SH);
   console.log(fs.existsSync(file_path));
   console.log(file_path);
+  console.log('the file ' + file_path + '  exists');
   
-    console.log('the file ' + file_path + '  exists');
     
     var stream = fs.createWriteStream(file_path, { 'flags': 'w' });
     stream.once('open', function (fd) {
       stream.write(SH);
       stream.end();
     });
+  
+      /*
+    Update a file that keep track of the path of all the segment history.
+    This file is used in the client side to
+    */
+      var pathOfFiles = "./src/server/log-SH/SH_all_path.txt";
+  
+  
+  fs.appendFile(pathOfFiles, file_path+"\n", function (err) {
+    if (err) throw err;
+    console.log('Saved!');
+  });
+  
   
 }
 
