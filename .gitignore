@@ -37,6 +37,13 @@
 # IntelliJ
 /out/
 
+.bundle
+.DS_Store
+dist/
+src/server/log_session_client
+src/server/log-SH
+
+
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
