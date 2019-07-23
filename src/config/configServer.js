@@ -18,7 +18,7 @@ var config =  {
   
   // version of application, can be used to force reload css and js files
   // from server (cf. `html/default.ejs`)
-  version: '0.0.2',
+  version: '0.2',
   
   
   // define from where the assets (static files) should be loaded, these value
@@ -29,9 +29,6 @@ var config =  {
   // port used to open the http server, in production this value is typically 80
   portServer: 8000,
   portServerDevelopment: 8001,
-  
-  //Port used by the myo
-  myoPort: 10138,
   
   // location of the public directory (accessible through http(s) requests)
   //  publicDirectory: path.join(cwd, 'public'),

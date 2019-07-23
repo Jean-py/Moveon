@@ -26,9 +26,8 @@
     height: 80px;
     position: relative;
     margin-right: 3px;
-    /* margin-bottom: 50px ;*/
     margin-bottom: 20px;
-    /*display: block;*/
+    margin-top: 3px;
     display: flex;
 }
 
@@ -49,6 +48,32 @@
     font-size: x-small;
 }
 
+.btnCancelSegmentRight{
+    cursor: inherit;
+    border: 0.5px solid var(--border-color);
+    font-family: "Arial", Times, serif;
+    height: 22px;
+    width: 22px;
+    top: 2px;
+    border-radius: 50%;
+    font-size: large;
+    left: 8px;
+    position: relative;
+}
+
+
+.btnCancelSegmentLeft{
+    cursor: inherit;
+    border: 0.5px solid var(--border-color);
+    font-family: "Arial", Times, serif;
+    height: 22px;
+    width: 22px;
+    top: 2px;
+    border-radius: 50%;
+    font-size: large;
+    position: absolute;
+    right: 8px;
+}
 
 .btnMinusCard{
     color: white;
@@ -90,7 +115,9 @@
 
 
 .cardBoard{
+    /*
     margin-top: 2%;
+    */
     position: relative;
     left: 90px;
     width: 777px;
@@ -170,6 +197,7 @@
     /* overflow-y: auto;
      overflow-x: hidden;*/
      /*overflow: hidden;*/
+    overflow: hidden;
 
     /*background-color: #c7074d;*/
 
