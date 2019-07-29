@@ -105,6 +105,32 @@ var CardManager = function() {
       };
       xhr_allPath.send();
     },
+    playAllSegment: function() {
+      arrayCard.forEach(function (arrayItem) {
+        if(!arrayItem.deleted){
+          console.log(arrayItem);
+          player.seekTo(arrayItem.startDuration);
+          //TODO ne joue pas la list de tous les segments pour l'isntant
+          player.play();
+          //showSegmentFeedback(true,arrayItem.startDuration,arrayItem.endDuration);
+        }
+          //card.( console.log(arrayItem););
+      })
+    }, combineSegment: function(draggableDiv,droppableDiv) {
+          draggableDiv.childNodes[1].style.visibility = "hidden";
+          draggableDiv.childNodes[2].style.visibility = "hidden";
+          droppableDiv.childNodes[1].style.visibility = "hidden";
+          droppableDiv.childNodes[2].style.visibility = "hidden";
+          
+    },decombineSegment: function() {
+      document.getElementsByName("segment").forEach(function (arrayItem) {
+        arrayItem.style.visibility = "visible";
+        arrayItem.style.visibility = "visible";
+        arrayItem.style.visibility = "visible";
+        arrayItem.style.visibility = "visible";
+      });
+      
+    }
   }
 };
 
@@ -327,6 +353,20 @@ function loadJSONSegmentHistory(SH_path) {
 }
 
 
+function showSegmentFeedback(visibility,startP,endP){
+  if(visibility){
+    segmentFeedback.divGraphicalObject.style.visibility = "visible";
+    segmentFeedback.divGraphicalObject.style.marginLeft = endP ;
+    if(parseFloat(startP,10)  >= parseFloat(endP,10) ){
+      segmentFeedback.divGraphicalObject.style.width = parseFloat(startP,10) - parseFloat(endP,10)  +"%";
+    } else {
+      segmentFeedback.divGraphicalObject.style.marginLeft = startP ;
+      segmentFeedback.divGraphicalObject.style.width = parseFloat(endP,10) - parseFloat(startP,10) +"%";
+    }
+  } else {
+    segmentFeedback.divGraphicalObject.style.visibility = "hidden";
+  }
+}
 
 
 function updateSegmentFeedback(visibility,startP,endP){

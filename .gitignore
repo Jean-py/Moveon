@@ -43,6 +43,13 @@ dist/
 src/server/log_session_client
 src/server/log-SH
 
+# Videos
+*.mp4
+*.mov
+*.MOV
+
+
+
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

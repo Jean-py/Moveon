@@ -11,7 +11,7 @@
 var config =  {
   // name of the application, used in the `.ejs` template and by default in
   // the `platform` service to populate its view
-  appName: 'ToolBox - MoveOn: A technology probe',
+  appName: 'MoveOn',
   
   // name of the environnement ('production' enable cache in express application)
   env: 'development',

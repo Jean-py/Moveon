@@ -14,6 +14,7 @@ var btnSaveSegments = document.getElementById('btnSaveSegments');
 var btnInvertVideo = document.getElementById('btnInvertVideo');
 var btnLoadAVideo = document.getElementById('btnLoadAVideo');
 var btnLoadSHFromServer = document.getElementById('btnLoadSHFromServer');
+var btnPlayAll = document.getElementById("playAllBut");
 
 //var dataAnalyst = DataAnalyst;
 
@@ -41,6 +42,7 @@ if(btnLoadFile != null ){
     passive: true
   });
 }
+
 
 
 
@@ -81,6 +83,9 @@ if(btnInvertVideo !== null)
 if(btnLoadAVideo !== null)
   btnLoadAVideo.addEventListener("mousedown", loadVideo) ;
 
+
+if(btnPlayAll != null)
+  btnPlayAll.addEventListener("mousedown", handlebtnPlayAll);
 
 idSession.addEventListener("blur",setSessionName, {passive: true});
 function setSessionName(){
@@ -224,6 +229,10 @@ function loadVideo() {
       modalVideo.style.display = "block";
       modalVideo.style.visibility = "";
       VideoPicker.chargeVideo();
+}
+
+function handlebtnPlayAll() {
+    cardManager.playAllSegment();
 }
 
 

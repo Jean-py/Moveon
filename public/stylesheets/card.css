@@ -96,16 +96,22 @@
     /*position: absolute;*/
     position: relative;
 
-    height: 10px;
+    height: 15px;
    /*border-radius: 10px;*/
     background-color: var(--fourth-color);
     z-index: 1;
     left: 0px;
-    top:0px
+    top:0px;
+    margin-top: -3px;
+
+    border-color: var(--text-color);
+    border-width: 0.1px;
+    border: solid var(--main-color);
 }
 
 .divWrapperBtn{
     z-index: 11;
+    height: 10px;
 }
 
 
@@ -202,11 +208,68 @@
     /*background-color: #c7074d;*/
 
 }
-
-
-
-
 .demo {
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 7px 5px 15px 5px rgba(0,0,0,0);
     box-shadow: 0px 10px 13px -7px #000000, 7px 5px 15px 5px rgba(0,0,0,0);
+}
+
+/*Button card triangle*/
+
+
+.container {
+    width: 100%;
+    text-align: center;
+    margin-top: 25vh;
+}
+
+.circle {
+    stroke: white;
+    stroke-dasharray: 650;
+    stroke-dashoffset: 650;
+    -webkit-transition: all 0.5s ease-in-out;
+    opacity: 0.3;
+}
+
+.playAllBut {
+    /*  border: 1px solid red;*/
+    display: inline-block;
+    -webkit-transition: all 0.5s ease;
+    margin-bottom: 50px;
+}
+
+.playAllBut .triangle {
+    -webkit-transition: all 0.7s ease-in-out;
+    stroke-dasharray: 240;
+    stroke-dashoffset: 480;
+    stroke: var(--secondary-color);
+    transform: translateY(0);
+}
+
+.playAllBut:hover .triangle {
+    stroke-dashoffset: 0;
+    opacity: 1;
+    stroke: var( --fourth-color);
+    animation: nudge 0.7s ease-in-out;
+}
+
+@keyframes nudge {
+    0% {
+        transform: translateX(0);
+    }
+    30% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    70% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+.playBut:hover .circle {
+    stroke-dashoffset: 0;
+    opacity: 1;
 }

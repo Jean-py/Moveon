@@ -171,7 +171,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       displayDivInfoCard();
     });
    
-    selectSpeed.addEventListener("blur", function(){
+    selectSpeed.addEventListener("mousedown", function(){
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
       speed = speedRate;
       cardFunctionalCore.execute(new CardSpeedCommand(cardObject,speedRate));
@@ -186,19 +186,11 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       repetitionNumber = selectNbRepet.options[selectNbRepet.selectedIndex].value;
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
       speed = speedRate;
-      //segmentFeedback.startPostion = iDiv.style.left  ;
-      //segmentFeedback.width = width;
+    
       description = textSegment.value;
-  
-      //var audio = new Audio();
-      //var buffered = audio.buffered;
-      // returns time in seconds of the last buffered TimeRange
-      //audio.setAttribute("src","public/sounds/preparation/preparation.mp3");
-      //audio.play();
       videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speedRate));
       //updateSegmentFeedback(true,startP,endP);
-  
-  
+      
       $( function() {
         $( ".segmentWrapper" ).draggable({
           axis: "y",
@@ -211,8 +203,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
         });
       } );
-  
-  
       
       $( ".segmentWrapper" ).droppable({
         classes: {
@@ -222,17 +212,30 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
         
         drop: function( event, ui ) {
           console.log("dropped");
-          console.log(this);
+          
+          var draggableDiv = document.getElementById(ui.draggable.attr("id"));
+          var droppableDiv = document.getElementById($(this).attr("id"));
+          
+          console.log(draggableDiv,droppableDiv);
+          
           //TODO faire la fonction de drag avec une liste de carte connecté ou une liste chainé de cartes?
-          $(this).css("background-color","var(--main-color)")
+          $(this).css("background-color","var(--main-color)");
+          
+          cardManager.combineSegment(draggableDiv,droppableDiv);
         }
       });
-     
   
+      $( ".segmentWrapper" ).draggable({drag: function( event, ui ) { console.log("zoiudnfouen");
+            cardManager.decombineSegment();}
+      }
+      );
+      
+      
     }, false);
     //TODO widget color picker
     //arrowDown.addEventListener("change", watchColorPicker, false);
   }
+  
   
   function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
   
@@ -253,8 +256,6 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     
     textStartSegment = document.createElement('input');
     textStartSegment.className = 'textStartSegment';
-    console.log("AAA : " + startDurationParam);
-    console.log("BBB : " + fmtMSS(startDurationParam));
     textStartSegment.value = Math.floor(startDurationParam / 60)+':'+Math.floor(startDurationParam % 60);
     
   

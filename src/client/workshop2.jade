@@ -7,6 +7,7 @@ block content
     script(src="/src/client/js/utilities/video-js-7.5.4/video.js")
     script(src="/src/client/js/utilities/video-js-7.5.4/yt.js")
     script(src="/src/client/js/utilities/video-js-7.5.4/videojs-time-offset.js")
+    script(src="/src/client/js/utilities/video-js-7.5.4/videojs-abloop.js")
     script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
 
 
@@ -25,6 +26,7 @@ block content
         .bar1#bar1id
         .bar2#bar2id
         .bar3#bar3id
+    .tutorial.btntuto
     .sidebar#sidebarMenu(style='visibility: hidden; ')
         a#btnLoadSHFromServer(href='#load_file' , style=' ')
             i.fa.fa-fw.fa-wrench
@@ -71,7 +73,19 @@ block content
                     img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
         .wrapperCommandAndRange#wrapperCommandAndRangeCardBoard(style='')
             .cardBoard#divCardBoard
-    footer
+    .container
+        a.playAllBut#playAllBut
+            // Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In
+            svg(version='1.1', xmlns='http://www.w3.org/2000/svg', x='0px', y='0px', width='213.7px', height='100.7px', viewbox='0 0 213.7 213.7', enable-background='new 0 0 213.7 213.7', xml:space='preserve')
+                polygon#XMLID_18_.triangle(fill='none', stroke-width='7', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', points='\
+              73.5,62.5 148.5,105.8 73.5,149.1 ')
+                    circle#XMLID_17_.circle(fill='none', stroke-width='7', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', cx='106.8', cy='106.8', r='103.3')
+            p Play all segments
+
+
+
+
+    //footer
         .content
             | test
 

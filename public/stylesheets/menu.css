@@ -157,7 +157,19 @@
     margin: auto;
     padding: 20px;
 
-    width: 80%;
+    width: 50%;
+    height: 300px;
+}
+
+
+.btntuto{
+    font-size: 10px;
+    background-color: white;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    right: 0%;
+    background-image: url("../public/media/workshop2/menu/tutorial_icon.png");
 }
 
 /* The Close Button */

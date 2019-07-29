@@ -20,10 +20,24 @@ var CardFunctionalCore = function() {
 function playCard(iDiv,startDurationParam){
   console.log('play card in card functionalCore ');
   console.log(iDiv);
+  
    //video.currentTime = startDurationParam;
   player.seekTo(startDurationParam);
   segmentFeedback.width = iDiv.style.width;
   segmentFeedback.startPostion = iDiv.style.left;
+  //feedbackOnSliderVideo(true);
+}
+
+
+//Pas de commande pour cette function pour l'instant
+function playCardOnce(iDiv,startDurationParam,endP,speedRate){
+  console.log('play card in card functionalCore ');
+  console.log(iDiv);
+  
+  player.seekTo(startDurationParam);
+  segmentFeedback.width = iDiv.style.width;
+  segmentFeedback.startPostion = iDiv.style.left;
+  player.play();
   //feedbackOnSliderVideo(true);
   
 }
@@ -43,11 +57,13 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
   video_current.playbackRate(speedRate);
   video_current.currentTime(start);
   
-  var repet = numberOfRepetition;
+  video_current.ready(function(){
+    this.abLoopPlugin.setStart(start).setEnd(end).playLoop();
+  });
   
   //console.log("function  - repetPartOfVideo [play part] l87 videoCommand");
   play();
-  video_current.ontimeupdate = function() {
+ /* video_current.ontimeupdate = function() {
     
     if(isPlayingCard){
       if ((end > start ) &&  repet > 0 ) {
@@ -62,7 +78,7 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
       }
     }
     
-  };
+  };*/
 };
 
 function modifyCardDescription(){

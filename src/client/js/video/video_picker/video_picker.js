@@ -21,7 +21,7 @@ var chargeVideo = function (){
   if(!alreadyCharged){
     console.log("charging the video");
     var xhr= new XMLHttpRequest();
-    xhr.open('GET', 'src/client/js/workshop2/technologyProbe/video/video_picker/videoPreview_view.html', true);
+    xhr.open('GET', 'src/client/js/video/video_picker/videoPreview_view.html', true);
     xhr.onreadystatechange= function() {
       if (this.readyState!==4) return;
       if (this.status!==200) return; // or whatever error handling you want
