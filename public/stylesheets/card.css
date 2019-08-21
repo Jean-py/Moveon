@@ -15,7 +15,7 @@
     width: auto;
     height: 10px;
     display: block;
-    transition: all 1s ease-in;
+    transition: all 0.1s ease-in;
     line-height: 3em;
     /*    border-style: solid;
         left: -30px;
@@ -203,7 +203,8 @@
     /* overflow-y: auto;
      overflow-x: hidden;*/
      /*overflow: hidden;*/
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     /*background-color: #c7074d;*/
 
@@ -219,7 +220,7 @@
 .container {
     width: 100%;
     text-align: center;
-    margin-top: 25vh;
+
 }
 
 .circle {
@@ -235,6 +236,7 @@
     display: inline-block;
     -webkit-transition: all 0.5s ease;
     margin-bottom: 50px;
+    cursor: pointer;
 }
 
 .playAllBut .triangle {

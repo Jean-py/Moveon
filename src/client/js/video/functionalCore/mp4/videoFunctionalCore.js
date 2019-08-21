@@ -157,6 +157,19 @@ var mirror = function () {
   }
 };
 
+
+var plus1second = function () {
+  video_current.currentTime(video_current.currentTime()+0.5);
+  //video_current.play();
+};
+
+
+var minus1second = function () {
+  video_current.currentTime(video_current.currentTime()-0.5);
+  //video_current.play();
+};
+
+
 var setSource = function(source){
   video_current.src = source;
 };

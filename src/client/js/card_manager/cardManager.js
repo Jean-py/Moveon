@@ -106,16 +106,23 @@ var CardManager = function() {
       xhr_allPath.send();
     },
     playAllSegment: function() {
-      arrayCard.forEach(function (arrayItem) {
-        if(!arrayItem.deleted){
-          console.log(arrayItem);
-          player.seekTo(arrayItem.startDuration);
-          //TODO ne joue pas la list de tous les segments pour l'isntant
-          player.play();
-          //showSegmentFeedback(true,arrayItem.startDuration,arrayItem.endDuration);
+       var j = 0;
+        video_current.play();
+        console.log("dans la boucle");
+        console.log(arrayCard[j]);
+        if (!arrayCard[j].deleted) {
+          console.log(video_current.abLoopPlugin.setStart(arrayCard[j].startDuration).setEnd(arrayCard[j].endDuration).cyclePauseOnLooping().playLoop());
+          var timewaiting = (arrayCard[j].endDuration - arrayCard[j].startDuration) * 1000; /*/ (arrayCard[i].speed);*/
+          console.log("testing", timewaiting)
+      }
+      setTimeout(function(){
+        j++;
+        if (!arrayCard[j].deleted) {
+          console.log(video_current.abLoopPlugin.setStart(arrayCard[j].startDuration).setEnd(arrayCard[j].endDuration).cyclePauseOnLooping().playLoop());
+          timewaiting = (arrayCard[j].endDuration - arrayCard[j].startDuration) * 1000; /*/ (arrayCard[i].speed);*/
+          console.log("testing", timewaiting)
         }
-          //card.( console.log(arrayItem););
-      })
+      }, timewaiting);
     }, combineSegment: function(draggableDiv,droppableDiv) {
           draggableDiv.childNodes[1].style.visibility = "hidden";
           draggableDiv.childNodes[2].style.visibility = "hidden";

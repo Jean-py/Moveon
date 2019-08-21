@@ -44,7 +44,15 @@ var Player = function() {
     },
     mirror : function () {
       mirror();
-    }
+    },
+    plus1second : function () {
+      plus1second();
+    },
+    minus1second : function () {
+      minus1second();
+    },
+  
+  
   
   
   }

@@ -23,13 +23,39 @@ var videoDuration = "1:47";
 
 //Click  space to playpause the video
 document.addEventListener("keydown", function (e) {
-  if(  document.activeElement.className === 'textSegment') {
+  if (document.activeElement.className === 'textSegment') {
+  } else {
+  switch (event.keyCode) {
+    case 32:
+      console.log("space bar pressed");
+      player.playPausecallback();
+      event.preventDefault();
+      break;
+    case 37:
+      console.log("left key pressed");
+      player.minus1second();
+      event.preventDefault();
+      break;
+    case 38:
+      break;
+    case 39:
+      console.log("right key pressed");
+      player.plus1second();
+      event.preventDefault();
+      
+      
+      break;
+    case 40:
+      ["mouseover", "mousedown", "mouseup", "click"].forEach(function(eventType) {
+        triggerMouseEvent(document.getElementById("range-slider_handle-min"), eventType);
+      });
   
-  } else if(e.keyCode == 32){
-    console.log("in the if keydown");
-    player.playPausecallback();
-    event.preventDefault();
+      break;
   }
+}
+    
+    
+  
   // Annuler l'action par défaut pour éviter qu'elle ne soit traitée deux fois.
   //event.preventDefault();
 }, true);
@@ -43,6 +69,13 @@ if(video_current !== null){
   });
  
 }
+
+function triggerMouseEvent(targetNode, eventType) {
+  var clickEvent = document.createEvent('MouseEvents');
+  clickEvent.initEvent(eventType, true, true);
+  targetNode.dispatchEvent(clickEvent);
+}
+
 
 /*
 var vjsButtonComponent = videojs.getComponent('Button');

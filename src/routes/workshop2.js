@@ -5,7 +5,7 @@ let config = require('../config/configServer');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('workshop2', { title: config.appName, subtitle: 'Bienvenue'});
+  res.render('moveon', { title: config.appName, subtitle: config.subtitle  });
 });
 
 

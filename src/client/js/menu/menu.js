@@ -20,7 +20,7 @@ var btnPlayAll = document.getElementById("playAllBut");
 
 var btnloadSH1 = document.getElementById('loadSHvideo1');
 var btnloadSH2 = document.getElementById('loadSHvideo2');
-var btnloadSHTuto = document.getElementById('loadSHvideoTutorial');
+var btntutorial = document.getElementById('tutorialBtn');
 var btnAnalyzeData = document.getElementById('analyzeData');
 
 
@@ -73,8 +73,8 @@ if(btnLoadSHFromServer !== null)
 
 if(btnloadSH2 !== null)
   btnloadSH2.addEventListener("mousedown", loadSH2);
-if(btnloadSHTuto !== null)
-  btnloadSHTuto.addEventListener("mousedown", loadSHTuto);
+if(btntutorial !== null)
+  btntutorial.addEventListener("mousedown", loadSHTuto);
 if(btnAnalyzeData !== null)
   btnAnalyzeData.addEventListener("mousedown", analyzeData);
 
@@ -212,8 +212,8 @@ function loadSH2(){
   loadJSONSegmentHistory2();
 
 }
-function loadSHTuto(){
-  loadJSONSegmentHistoryTutorial();
+function loadSHTuto() {
+  window.open("https://docs.google.com/document/d/1M7U_oJChTsR3VI-rjYv2GoWZz4Ezv25f5fGnHHfBRDs/edit?usp=sharing", "_blank");
 }
 
 

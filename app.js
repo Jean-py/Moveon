@@ -22,6 +22,8 @@ app.set('views', path.join(__dirname, '/src/client'));
 app.use('/dist', express.static('dist/'));
 app.use('/public', express.static('public/'));
 app.use('/src', express.static('src/'));
+
+
 //app.use('/static', express.static('public/media/devices'));
 
 
@@ -40,7 +42,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 //page used in my application
 app.use('/', indexRouter);
 //app.use('/sensors', sensorsRouter);
-app.use('/workshop2', workshop2);
+app.use('/moveon', workshop2);
+
+
+/**
+ * Database
+ */
+
+
+/**
+ * Function for account creation
+ * */
+
+/*passport.authenticate('local', { failureFlash: 'Invalid username or password.' });
+
+
+app.post('/',
+  passport.authenticate('local', { successRedirect: '/src/routes/workshop2',
+    failureRedirect: '/',
+    failureFlash: true })
+);*/
+
 
 //app.use('/testFile', testFile);
 
@@ -61,6 +83,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 
 module.exports = app;
