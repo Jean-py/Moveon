@@ -4,12 +4,12 @@ block content
     link(href="stylesheets/login.css" rel="stylesheet")
     link(href="stylesheets/util.css" rel="stylesheet")
     .blocTop
-        h1.ubuntu= title
+        h1= title
     //p.bottom #{subtitle}
 
     .limiter
          .wrap-login100
-                form.validate-form
+                 form(id="login_form", method="post", action="/").validate-form
                     .wrap-input100.validate-input(data-validate='Enter username')
                         input.input100(type='text', name='username', placeholder='Username')
                         span.focus-input100()
@@ -20,14 +20,14 @@ block content
                             | Login
 
 
-  script.
-   /* window.addEventListener("click", screenTouched, false);
-    function screenTouched() {
-      window.location.href = '/moveon'
-    }
-    window.addEventListener("touchstart", screenTouched, false);
-    function screenTouched() {
-      window.location.href = '/moveon'
-    } */
 
-    
+
+    //window.addEventListener("click", screenTouched, false);
+        function screenTouched() {
+          window.location.href = '/moveon'
+        }
+    //window.addEventListener("touchstart", screenTouched, false);
+        function screenTouched() {
+          window.location.href = '/moveon'
+        } */
+

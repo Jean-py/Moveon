@@ -1,10 +1,10 @@
 let express = require('express');
 let router = express.Router();
-let config = require('../config/configServer');
+let config = require('../server/config/configServer');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/moveon', function(req, res, next) {
   res.render('moveon', { title: config.appName, subtitle: config.subtitle  });
 });
 

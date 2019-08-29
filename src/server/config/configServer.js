@@ -11,7 +11,7 @@
 var config =  {
   // name of the application, used in the `.ejs` template and by default in
   // the `platform` service to populate its view
-  appName: 'MoveOn: A Tool for Movement Learning',
+  appName: 'MoveOn : A Tool for Movement Learning',
   
   
   // name of the environnement ('production' enable cache in express application)

@@ -46,10 +46,10 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
   console.log("function  - repetPartOfVideo" , start,end, numberOfRepetition,speedRate);
   
   //TODO trim de video ce fait avec cette commande
-  video_current.timeOffset({
+  /*video_current.timeOffset({
     start: this.start, // in seconds
     end: this.end
-  });
+  });*/
   
   
   isPlayingCard = true;

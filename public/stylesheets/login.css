@@ -184,8 +184,8 @@ iframe {
     width: 390px;
     border-radius: 10px;
     overflow: hidden;
-    margin-top: -30%;
-    background: transparent;
+   /* margin-top: -30%;*/
+    background: white;
 }
 
 
@@ -242,7 +242,7 @@ iframe {
 .input100 {
     font-family: Ubuntu-Regular;
     font-size: 20px;
-    color: #fff;
+    color: var(--main-color);
     line-height: 1.2;
     display: block;
     width: 100%;
@@ -346,6 +346,7 @@ iframe {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .login100-form-btn {

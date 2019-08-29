@@ -12,11 +12,12 @@
     --border-color : #486270;
     --sucess-color: #036564;
     --unsucess-color: #c7074d;
+
+    --font: "../fonts/ubuntu/Ubuntu-Regular.ttf";
 }
 body {
-    font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
-    -webkit-touch-callout: none !important;
 
+    -webkit-touch-callout: none !important;
     /*
     overflow-x: initial !important;
     overflow-y: hidden;
@@ -34,21 +35,22 @@ a {
 p {
   font-weight:bold;
   line-height:2em;
-  font-family: "../fonts/Optima.ttc";
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 h1,h2,h3,h4,h5{
-  font-family: "../fonts/Optima.ttc";
-  margin:0px;
-  padding:0px;
-  border:0px;
-  color: var(--secondary-color);
+    font-family: var(--font);
+    margin:0px;
+    padding:0px;
+    border:0px;
+    color: var(--secondary-color);
 }
 h1{
-  font-size: 60px;
+    font-family: unset;
+    font-size: 60px;
+ /* font-family:*/
   line-height:10em;
-    font-family: Ubuntu-Regular;
+
 }
 h2{
   font-size: 50px;
@@ -106,9 +108,7 @@ footer{
 .draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
 .droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
 
-.pageTitle{
-  font-family: "../fonts/Optima.ttc";
- /* user-select: none;
+.pageTitle{/* user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;*/
@@ -153,7 +153,7 @@ footer{
 
 
 .userName{
-    font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
+    font: 14px var(--font);
     color: white;
 
 }

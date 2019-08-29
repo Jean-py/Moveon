@@ -41,11 +41,10 @@
     position: absolute;
     height: auto;
     width: 160px;
-    z-index: 1;
     background-color: var(--third-color);
     overflow-x: hidden;
     transition: 0.4s;
-    top: 8%;
+    top: 6%;
     left: 2%;
     float:right;
     text-align: -webkit-center;
@@ -66,7 +65,7 @@
     padding: 10px;
     cursor: move;
     z-index: 10;
-    background-color: #031634;
+    background-color: var(--third-color-transparent);
     color: #fff;
 }
 
@@ -99,7 +98,6 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-
     display: block;
     background: var(--third-color);
     color: var(--text-color);;

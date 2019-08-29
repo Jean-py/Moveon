@@ -30,9 +30,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   var divWrapperTextStartSegment = null;
   var textStartSegment = null;
-  var arrowStartSegment = null;
+  /*var arrowStartSegment = null;
   var divWrapperTextEndSegment = null;
-  var textEndSegment = null;
+  var textEndSegment = null;*/
   var btnDelete = null;
   var btnMinus = null;
   var divWrapperBtn = null;
@@ -364,7 +364,9 @@ $( ".wrapperCommandAndRange" ).droppable({
 //arrowDown.position = 'right' ;
 /* arrowDown.value ="#102b9f";
  arrowDown.style.outline="none";*/
+/*
 function watchColorPicker(event) {
   divSegment.style.backgroundColor = event.target.value;
   
 }
+*/
