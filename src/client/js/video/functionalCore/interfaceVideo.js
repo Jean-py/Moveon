@@ -5,7 +5,6 @@ var enum_videoplatform = {
 var mediaplatform = enum_videoplatform.MP4;
 //var videoFunctionalCoreManager =  new Player();
 
-
 var videoFunctionalCoreManager = VideoFunctionalCoreManager();
 
 var Player = function() {
@@ -17,9 +16,9 @@ var Player = function() {
       playPausecallback();
     },
   
-    updateTimerVideo: function () {
+    /*updateTimerVideo: function () {
       updateTimerVideo();
-    },
+    },*/
   
     createNewCard : function (startP,endP, positionStart, positionStop ) {
       createNewCard(startP,endP,positionStart, positionStop);
@@ -60,4 +59,3 @@ var Player = function() {
 
 
 var player = new Player();
-

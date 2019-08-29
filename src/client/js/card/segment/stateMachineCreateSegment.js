@@ -151,11 +151,9 @@ function stopCreateSegment() {
     
     
      timePositionStop = video_current.currentTime();
-    
-    //TODO regarder aussi le fait d'enlever le listener change sur le knobmin?
-    //TODO voir ici la creation de carte pour la mettre au bon endroit, checker aussi startP et endP
-    player.createNewCard(timePositionStart,timePositionStop, positionStart,positionStop,segmentFeedback.divGraphicalObject.style.width  );
-    play();
+  console.log(player);
+     player.createNewCard(timePositionStart,timePositionStop, positionStart,positionStop,segmentFeedback.divGraphicalObject.style.width  );
+     play();
   
 }
 

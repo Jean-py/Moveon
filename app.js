@@ -1,22 +1,69 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var connect = require('connect');
-
+var createError = require('http-errors');
 var bodyParser = require('body-parser');
+var app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 var mongoose = require('mongoose');
+var indexRouter = require('./src/routes/index');
 
 var session = require('express-session');
-
 var MongoStore = require('connect-mongo')(session);
+
+/**
+ * Connexion DataBase
+ */
+
+// Connection UR
+const url = 'mongodb://localhost/moveon';
+// Database Name
+const dbName = 'moveon';
+// Create a new MongoClient
+//const client = new MongoClient();
+
+//connect to MongoDB
+mongoose.connect('mongodb://localhost/moveon',  { useNewUrlParser: true });
+const db = mongoose.connection;
+//handle mongo error
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  // we're connected!
+  console.log("The server is connected to MongoDB!");
+  /*
+  const jp = new User({
+    email: 'jp4 @mail.com',
+    username: 'd',
+    password: 'd',
+  });*/
+  
+  /*jp.save(function (err, user) {
+    if (err) return console.error(err);
+    console.log(user.username + " saved to bookstore collection.");
+  });*/
+  
+  /**
+   * End Connexion DataBase
+   */
+  
+});
+app.use(session({
+  secret: '$2y$10$JcuqrQDeVWyn4lCVwbtTJur/FsK07mPeWtRu.7DT4fizHkGOTQtx6',
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
+
+
+
 var cookieParser = require('cookie-parser');
-//const favicon = require('express-favicon');
 require('babel-core/register');
-var indexRouter = require('./src/routes/index');
-//var sensorsRouter = require('./src/routes/sensors');
-//var workshop2 = require('./src/routes/workshop2');
-//var testFile = require('./src/routes/testFile');
-var app = express();
+
+
 // view engine setup
 app.set('views', path.join(__dirname, '/src/client'));
 app.use('/dist', express.static('dist/'));
@@ -46,58 +93,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.use(cookieParser());
 
 
-// Connection UR
-  const url = 'mongodb://localhost/moveon';
-// Database Name
-  const dbName = 'moveon';
 
-// Create a new MongoClient
-  //const client = new MongoClient();
-  
-  //connect to MongoDB
-  mongoose.connect('mongodb://localhost/moveon',  { useNewUrlParser: true });
+function connectDB(){
 
-  
-  var db = mongoose.connection;
-  
+}
 
-//handle mongo error
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', function () {
-    // we're connected!
-    console.log("The server is connected to MongoDB!");
-    
-  
-    
-    var User = require('./src/server/data_base/models/user');
-    const jp = new User({
-      email: 'jp4 @mail.com',
-      username: 'd',
-      password: 'd',
-    });
-    
-    /*jp.save(function (err, user) {
-      if (err) return console.error(err);
-      console.log(user.username + " saved to bookstore collection.");
-    });*/
-  
-  
-    app.use(cookieParser());
-//use sessions for tracking logins
-    app.use(session({
-      secret: 'michka',
-      resave: true,
-      saveUninitialized: false,
-      store: new MongoStore({
-        mongooseConnection: db
-      })
-    }));
-  });
-  
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: false }));
   
   
 

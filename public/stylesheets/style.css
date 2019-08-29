@@ -13,8 +13,15 @@
     --sucess-color: #036564;
     --unsucess-color: #c7074d;
 
-    --font: "../fonts/ubuntu/Ubuntu-Regular.ttf";
+    --font: Ubuntu,  sans-serif;
 }
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url("../fonts/ubuntu/Ubuntu-Regular.ttf") format("truetype")
+
+}
+
 body {
 
     -webkit-touch-callout: none !important;
@@ -46,7 +53,7 @@ h1,h2,h3,h4,h5{
     color: var(--secondary-color);
 }
 h1{
-    font-family: unset;
+
     font-size: 60px;
  /* font-family:*/
   line-height:10em;
@@ -64,6 +71,28 @@ h4{
 h5{
   font-size: 15px;
 }
+
+.font-ubuntu_h1{
+    font-family: var(--font);
+    font-size: 60px;
+    line-height: 10em;
+}
+.font-ubuntu_h2{
+    font-family: var(--font);
+    font-size: 50px;
+    line-height: 10em;
+}
+.font-ubuntu_h3{
+    font-family: var(--font);
+    font-size: 40px;
+    line-height: 10em;
+}
+.font-ubuntu_h4{
+    font-family: var(--font);
+    font-size: 30px;
+    line-height: 10em;
+}
+
 
 html{
   width:100%;

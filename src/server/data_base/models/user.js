@@ -40,7 +40,7 @@ UserSchema.statics.authenticate = function (usern, password, callback) {
         }
       })
     });
-}
+};
 
 //hashing a password before saving it to the database
 UserSchema.pre('save', function (next) {

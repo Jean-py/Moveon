@@ -12,6 +12,8 @@ var config =  {
   // name of the application, used in the `.ejs` template and by default in
   // the `platform` service to populate its view
   appName: 'MoveOn : A Tool for Movement Learning',
+  appNameShort: 'MoveOn',
+  
   
   
   // name of the environnement ('production' enable cache in express application)
@@ -29,7 +31,6 @@ var config =  {
   
   // port used to open the http server, in production this value is typically 80
   portServer: 8000,
-  portServerDevelopment: 8001,
   
   // location of the public directory (accessible through http(s) requests)
   //  publicDirectory: path.join(cwd, 'public'),

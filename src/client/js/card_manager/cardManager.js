@@ -123,19 +123,26 @@ var CardManager = function() {
           console.log("testing", timewaiting)
         }
       }, timewaiting);
-    }, combineSegment: function(draggableDiv,droppableDiv) {
+    },
+    combineSegment: function(draggableDiv,droppableDiv) {
           draggableDiv.childNodes[1].style.visibility = "hidden";
           draggableDiv.childNodes[2].style.visibility = "hidden";
           droppableDiv.childNodes[1].style.visibility = "hidden";
           droppableDiv.childNodes[2].style.visibility = "hidden";
           
     },decombineSegment: function() {
-      document.getElementsByName("segment").forEach(function (arrayItem) {
-        arrayItem.style.visibility = "visible";
-        arrayItem.style.visibility = "visible";
-        arrayItem.style.visibility = "visible";
-        arrayItem.style.visibility = "visible";
-      });
+    
+      Array.from(document.getElementsByClassName("segment")).forEach(
+        function(element, index, array) {
+          console.log("arrayItem.style.visibility : " );
+          console.log(element.childNodes[0].style.visibility);
+          element.childNodes[0].style.visibility = "visible";
+          element.style.visibility = "visible";
+          element.style.visibility = "visible";
+          element.style.visibility = "visible";
+        }
+      );
+      
       
     }
   }

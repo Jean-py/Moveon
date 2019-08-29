@@ -1,6 +1,9 @@
 extends layout
 block content
   //h1= message
-  h1 Il semblerait que vous vous soyez égaré!
-  h2= error.status
-  h5 #{error.stack}
+  //h1 #{error.stack}
+  p.font-ubuntu_h1 Error.
+  p.font-ubuntu_h1= message
+
+  p.font-ubuntu_h2= error.status
+  //h3 #{error.msg}

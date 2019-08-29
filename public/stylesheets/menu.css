@@ -38,10 +38,10 @@
 
 /* Style the sidebar - fixed full height */
 .sidebar {
+
     position: absolute;
     height: auto;
-    width: 160px;
-    background-color: var(--third-color);
+    width: 175px;
     overflow-x: hidden;
     transition: 0.4s;
     top: 6%;
@@ -50,6 +50,8 @@
     text-align: -webkit-center;
     z-index: 10;
     border-radius: 16px;
+    background-color: var(--third-color);
+    font-family: var(--font);
 }
 
 #AnalysisMenuDraggable {

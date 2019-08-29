@@ -2,6 +2,7 @@ var cardFunctionalCore = new CardFunctionalCore();
 
 function Card (startDurationParam,endDurationParam,startPositionParam,endPositionParam, cardInfo) {
   var description = '';
+  var enablingDragAndDrop = false;
   
   var listCardConnected = [];
   
@@ -148,43 +149,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speedRate));
       
       
-      $( function() {
-        $( ".segmentWrapper" ).draggable({
-          axis: "y",
-          snapTolerance: 20,
-          snapMode:"inner",
-          activeClass: "ui-state-highlight",
-          containment : '#wrapperCommandAndRangeCardBoard',
-          snap : true
-  
-  
-        });
-      } );
-      
-      $( ".segmentWrapper" ).droppable({
-        classes: {
-          "ui-droppable": "highlight"
-        },
-        snap : true,
-        
-        drop: function( event, ui ) {
-          console.log("dropped");
-          
-          var draggableDiv = document.getElementById(ui.draggable.attr("id"));
-          var droppableDiv = document.getElementById($(this).attr("id"));
-          
-          console.log(draggableDiv,droppableDiv);
-          //TODO faire la fonction de drag avec une liste de carte connecté ou une liste chainé de cartes?
-          $(this).css("background-color","var(--main-color)");
-          
-          cardManager.combineSegment(draggableDiv,droppableDiv);
-        }
-      });
-  
-      $( ".segmentWrapper" ).draggable({drag: function( event, ui ) { console.log("zoiudnfouen");
-            cardManager.decombineSegment();}
-      }
-      );
+      enableDragAndDrop(enablingDragAndDrop);
       
       
     }, false);
@@ -194,6 +159,50 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   
   function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
+  
+  function enableDragAndDrop(enabling) {
+    if(enabling){
+      $( function() {
+        $( ".segmentWrapper" ).draggable({
+          axis: "y",
+          snapTolerance: 20,
+          snapMode:"inner",
+          activeClass: "ui-state-highlight",
+          containment : '#wrapperCommandAndRangeCardBoard',
+          snap : true
+      
+      
+        });
+      } );
+  
+      $( ".segmentWrapper" ).droppable({
+        classes: {
+          "ui-droppable": "highlight"
+        },
+        snap : true,
+    
+        drop: function( event, ui ) {
+          console.log("dropped");
+      
+          var draggableDiv = document.getElementById(ui.draggable.attr("id"));
+          var droppableDiv = document.getElementById($(this).attr("id"));
+      
+          console.log(draggableDiv,droppableDiv);
+          //TODO faire la fonction de drag avec une liste de carte connecté ou une liste chainé de cartes?
+          $(this).css("background-color","var(--main-color)");
+      
+          cardManager.combineSegment(draggableDiv,droppableDiv);
+        }
+      });
+  
+      $( ".segmentWrapper" ).draggable({drag: function( event, ui ) {
+        
+            cardManager.decombineSegment();}
+        }
+      );
+    }
+    
+  }
   
   function initGUI() {
     /*

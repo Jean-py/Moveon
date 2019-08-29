@@ -4,6 +4,7 @@ let config = require('../server/config/configServer');
 var User = require('../server/data_base/models/user');
 
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: config.appName});
@@ -35,9 +36,6 @@ router.post('/', function (req, res, next) {
     res.send("passwords dont match");
     return next(err);
   }*/
-  console.log("------------- REQ ----------");
-  console.log(req);
-  console.log("------------- REQ ----------");
   
   if (req.body.email &&
     req.body.username &&
@@ -55,14 +53,14 @@ router.post('/', function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/profil');
+        return res.redirect('/moveon');
       }
     });
     
   } else if (req.body.username && req.body.pass) {
     User.authenticate(req.body.username, req.body.pass, function (error, user) {
       if (error || !user) {
-        var err = new Error('Wrong email or password.');
+        var err = new Error('Wrong email or password.\n Ask to riviere[at]lri[dot]fr to create an account for you. ');
         err.status = 401;
         return next(err);
       } else {
@@ -71,18 +69,19 @@ router.post('/', function (req, res, next) {
         console.log('req.session');
         console.log(user.session);*/
         req.session.userId = user._id;
-        return res.redirect('/profile');
+        return res.redirect('/moveon');
       }
     });
   } else {
-    var err = new Error('All fields required - (index.js)');
+    var err = new Error('All fields required.');
     err.status = 400;
     return next(err);
   }
 });
 
+
 // GET route after registering
-router.get('/profile', function (req, res, next) {
+/*router.get('/profile', function (req, res, next) {
   console.log(req.session);
   User.findById(req.session.userId)
     .exec(function (error, user) {
@@ -98,7 +97,28 @@ router.get('/profile', function (req, res, next) {
         }
       }
     });
+});*/
+
+router.get('/moveon', function (req, res, next) {
+  console.log(req.session);
+  User.findById(req.session.userId)
+    .exec(function (error, user) {
+      if (error) {
+        return next(error);
+      } else {
+        if (user === null) {
+          var err = new Error('Not allowed... Ask to riviere[at]lri[dot]fr to create an account for you.');
+          //err.status = 400;
+          return next(err);
+        } else {
+          return res.render('moveon', { title: config.appNameShort  });
+          
+        }
+      }
+    });
 });
+
+
 
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
