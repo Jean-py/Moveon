@@ -1,7 +1,7 @@
 // log helper
 
 var socket = null;
-var port = 8000;
+var port = 8100;
 var socket_name_session = "dev";
 
 var Logger = function() {
@@ -41,24 +41,25 @@ function getSocket_name_session(){
 
 function connectToServer() {
   var addr = document.URL;
+  //console.log(document.URL);
   //Split the https://xxxx:port#oNote  to xxxx:port
   addr = addr.split('/')[2];
   socket = io.connect(addr);
   console.log("connected to : " + addr, "changing username socket to dev");
-  logger.changeUsernameSocket("dev");
+  //logger.changeUsernameSocket("dev");
 };
 
 
 
 function send_username(username) {
   if(socket != null){
-    //console.log("username val : " + username);
+    console.log("username val : " + username);
     socket_name_session = username;
     socket.emit("socket_username", {username : username})
   }
 };
 
-//TODO faire une deep recopies des objets passé en parametre!
+//TODO faire une deep recopies des objets passé en parametre! Il semblerais que cela ne marche pas bien
 function log_command(commandParam){
   /*console.log("executing : ");
   console.log(commandParam);*/
@@ -67,7 +68,6 @@ function log_command(commandParam){
     
     //We have to log an event, if so, it's a circular reference and need to be treated as well
     if (commandParam.e !== undefined) {
-      console.log(" dans le if" ) ;
       //console.log(commandParam.e.pageX) ;
       
       const mouse_event = {mouseEvent : {pageX: commandParam.e.pageX, pageY: commandParam.e.pageY}};
@@ -87,6 +87,8 @@ function log_command(commandParam){
     if(objCopy.undo != null){
       objCopy.undo = objCopy.undo.name;
     }
+    console.log("objCopy : ");
+    console.log(objCopy);
     socket.emit("log_command", objCopy);
     return true;
     

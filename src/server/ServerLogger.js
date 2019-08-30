@@ -2,11 +2,18 @@
 
 var fs = require('fs');
 var rll = require('read-last-lines');
+let express = require('express');
+let router = express.Router();
+var Decomposition = require('../server/data_base/models/decompositions');
+
+router.post('/', function (req, res, next) {
+
+
 
 var user_name = null;
 
 
-export class ServerLogger{
+class ServerLogger{
   constructor() {
   
     return {
@@ -19,10 +26,13 @@ export class ServerLogger{
         logCommand(socket_name,command);
       },
       saveSH : function( socket_name , SH){
-        saveSH(socket_name,SH);
+        //saveSH(socket_name,SH);
+        //We now save the SH in MongoDB
+        saveSHMongoDB(socket_name,SH)
+        
       }
-  };
-  
+      
+    };
   }
 }
 
@@ -33,7 +43,33 @@ function sendCommand(){
 
 
 function setUsernameLog(user_name){
-  this.username = user_name;
+  //TODO, bug ici?
+}
+
+
+function saveSHMongoDB(socket_name, SH) {
+  //Format the date
+  function addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
+  
+  
+  
+  var d = new Date();
+  var h = addZero(d.getHours());
+  var m = addZero(d.getMinutes());
+  var s = addZero(d.getSeconds());
+  var month =  addZero(d.getMonth());
+  var day =  addZero(d.getDay());
+  
+  var date =  day+"/"+month+"_"+ h + ":" + m + ":" + s;
+  
+  
+  
+  
 }
 
 
@@ -89,10 +125,10 @@ function saveSH(socket_name, SH) {
 function logCommand(socket_name,command){
 //log the command into a file
   let file_path = "./src/server/log_session_client/log:"+socket_name;
-  console.log(command.e);
+  /*console.log(command.e);
   console.log(command);
   console.log(fs.existsSync(file_path)  );
-  console.log(file_path);
+  console.log(file_path);*/
   if (fs.existsSync(file_path) ) {
       console.log('the file '+file_path+'  exists');
       //We supress the last line because it's the caracter ]

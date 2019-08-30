@@ -30,7 +30,7 @@ var config =  {
   assetsDomain: '/',
   
   // port used to open the http server, in production this value is typically 80
-  portServer: 8000,
+  portServer: 8001,
   
   // location of the public directory (accessible through http(s) requests)
   //  publicDirectory: path.join(cwd, 'public'),

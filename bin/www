@@ -12,7 +12,6 @@ var pkg = require('../package.json');
 
 
 var javascripts = require('./javascripts');
-var logger = require('../src/server/ServerLogger');
 
 
 var cwd = process.cwd();
@@ -28,7 +27,7 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-var server = http.createServer(app);
+var server = http.Server(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -225,6 +224,51 @@ function watchFiles(srcDirectory, distDirectory) {
   });
   // start server
 }
+
+
+
+/* --------------------------------------------------------------------------
+Create the web socket enabling communication with clients
+ * -------------------------------------------------------------------------- */
+
+/**
+ * Create a logger for the application
+ * @type {ServerLogger}
+ */
+
+const ServerLogger = require('../src/server/ServerLogger');
+
+// Instantiate User:
+var serverLogger = new ServerLogger();
+
+
+
+const io = require('socket.io')(server);
+io.on("connection",  (socket)=> {
+  console.log('New user connected : '+ socket.id);
+  socket.username = socket.id;
+  
+  socket.on("socket_username", (data) =>{
+    console.log("**** socket name changed **** \n to " +socket.username);
+    //serverLogger.setUsernameLog(data.username);
+    socket.username = data.username;
+  });
+  
+  socket.on("log_command", function (command){
+    //socket.command = data.username;
+    serverLogger.log(socket.username,command);
+    //console.log(socket.username,command)
+  });
+  
+  socket.on("saveSH", function (SH){
+    //socket.command = data.username;
+    serverLogger.saveSH(socket.username,SH);
+  });
+  
+});
+
+
+
 
 module.exports = app;
 

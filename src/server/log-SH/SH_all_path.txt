@@ -1,8 +1,0 @@
-./src/server/log-SH/Bleu-Sat May 18 2019 14:42:52 GMT+0200 (CEST)
-./src/server/log-SH/Catherine-Sun May 19 2019 12:20:03 GMT+0200 (CEST)
-./src/server/log-SH/Dimanche19-Sun May 19 2019 12:20:03 GMT+0200 (CEST)
-./src/server/log-SH/dev-Sat Jun 01 2019 13:34:25 GMT+0200 (CEST)
-./src/server/log-SH/dev-Mon Jun 03 2019 11:23:07 GMT+0200 (CEST)
-./src/server/log-SH/dev-Mon Jun 03 2019 11:41:03 GMT+0200 (CEST)
-./src/server/log-SH/dev-Mon Jun 03 2019 11:56:13 GMT+0200 (CEST)
-./src/server/log-SH/dev-Tue Jun 04 2019 17:13:42 GMT+0200 (CEST)

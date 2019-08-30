@@ -13,6 +13,9 @@ var indexRouter = require('./src/routes/index');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
+
+
+
 /**
  * Connexion DataBase
  */
@@ -48,8 +51,11 @@ db.once('open', function () {
    * End Connexion DataBase
    */
   
+  
+  
 });
 app.use(session({
+  //the name of my favorite cat
   secret: '$2y$10$JcuqrQDeVWyn4lCVwbtTJur/FsK07mPeWtRu.7DT4fizHkGOTQtx6',
   resave: true,
   saveUninitialized: true,
@@ -97,14 +103,7 @@ app.use(cookieParser());
 
 
 
-function connectDB(){
-
-}
-
-  
-  
-
-
 
 module.exports = app;
+
 

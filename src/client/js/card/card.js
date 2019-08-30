@@ -100,6 +100,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       // Code à éxécuter si le l'utilisateur clique sur "OK"
       //I have a circular error here, that break the log system... I can't find it
       //So I do not log this command for now
+      this.deleted = true;
       cardManager.execute(new DeleteCardCommand(cardObject));
       //cardManager.execute(new DeleteCardCommand(cardObject));
     }
