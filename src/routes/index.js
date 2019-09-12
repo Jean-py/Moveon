@@ -53,6 +53,7 @@ router.post('/', function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
+        
         return res.redirect('/moveon');
       }
     });
@@ -68,6 +69,10 @@ router.post('/', function (req, res, next) {
         console.log(user._id);
         console.log('req.session');
         console.log(user.session);*/
+  
+  
+  
+  
         req.session.userId = user._id;
         return res.redirect('/moveon');
       }

@@ -103,6 +103,7 @@ function saveSH(SH){
     if(socket_name_session !== null ){
       send_username(socket_name_session);
     }
+    console.log(SH);
     socket.emit("saveSH", SH);
     return true;
     

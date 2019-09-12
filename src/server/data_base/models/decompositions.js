@@ -9,17 +9,16 @@ var DecompositionSchema = new mongoose.Schema({
     trim: true
   },
   video:{
-    url:{
-      type : String
-    }
+    type : String
   },
+  date:{type: String},
+  
   project : {
-      name :{
-        type : String,
-        unique: true,
-      }
+    type : String,
+    unique: true,
   },
-  decomposiiton : {
+  
+  data : [{
     width: {
       type :String
     } ,
@@ -45,7 +44,10 @@ var DecompositionSchema = new mongoose.Schema({
     },deleted: {
       type : Boolean
     }
-  }
+  }],
+  
+  
+  
 });
 
 

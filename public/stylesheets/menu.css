@@ -40,7 +40,7 @@
 .sidebar {
 
     position: absolute;
-    height: auto;
+    height:  320px;
     width: 175px;
     overflow-x: hidden;
     transition: 0.4s;

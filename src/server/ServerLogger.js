@@ -6,7 +6,8 @@ let express = require('express');
 let router = express.Router();
 var Decomposition = require('../server/data_base/models/decompositions');
 
-router.post('/', function (req, res, next) {
+//TODO faire la callback pour le post du SH?
+//router.post('/', function (req, res, next) {});
 
 
 
@@ -15,7 +16,7 @@ var user_name = null;
 
 class ServerLogger{
   constructor() {
-  
+    
     return {
       //Send a command to the client
       send: function(command) {
@@ -25,10 +26,15 @@ class ServerLogger{
       log : function( socket_name , command){
         logCommand(socket_name,command);
       },
-      saveSH : function( socket_name , SH){
+      saveSHMongoDB : function( socket_name , SH){
         //saveSH(socket_name,SH);
         //We now save the SH in MongoDB
         saveSHMongoDB(socket_name,SH)
+        
+      }, setUsernameLog : function( user_name){
+        //saveSH(socket_name,SH);
+        //We now save the SH in MongoDB
+        setUsernameLog(user_name)
         
       }
       
@@ -41,13 +47,18 @@ function sendCommand(){
 
 }
 
-
+//For the moment, I don't know the socket here, so I can't modify the name of the socket
 function setUsernameLog(user_name){
-  //TODO, bug ici?
+  //serverLogger.setUsernameLog(data.username);
+  /* socket.username = user_name;
+   console.log("**** socket name changed **** \n to " +username);*/
+  
 }
 
 
 function saveSHMongoDB(socket_name, SH) {
+  
+  console.log("in saveSHMongoDB");
   //Format the date
   function addZero(i) {
     if (i < 10) {
@@ -67,9 +78,39 @@ function saveSHMongoDB(socket_name, SH) {
   
   var date =  day+"/"+month+"_"+ h + ":" + m + ":" + s;
   
+  //TODO
+  // Enregistrer le SH avec les bonnes informations dans MongoDB
+  
+  
+  const decomposition = new Decomposition({
+    username: socket_name,
+    video: 'frame',
+    date : date,
+    project: 'only_project',
+    decomposition: SH
+  });
   
   
   
+  
+  var mongoose = require('mongoose');
+  var session = require('express-session');
+  var MongoStore = require('connect-mongo')(session);
+  
+  mongoose.connect('mongodb://localhost/decompositions',  { useNewUrlParser: true });
+  const dbComposition = mongoose.connection;
+//handle mongo error
+  dbComposition.on('error', console.error.bind(console, 'connection error:'));
+  dbComposition.once('open', function () {
+    // we're connected!
+    console.log("Saving decomposition in mongodb....");
+    decomposition.save(function (err, user) {
+      if (err) return console.error(err);
+      //console.log("saved to the collection. : " + user.username );
+      console.log("decomposition : "  );
+      console.log(decomposition);
+    });
+  });
 }
 
 
@@ -99,18 +140,18 @@ function saveSH(socket_name, SH) {
   console.log(file_path);
   console.log('the file ' + file_path + '  exists');
   
-    
-    var stream = fs.createWriteStream(file_path, { 'flags': 'w' });
-    stream.once('open', function (fd) {
-      stream.write(SH);
-      stream.end();
-    });
   
-      /*
-    Update a file that keep track of the path of all the segment history.
-    This file is used in the client side to
-    */
-      var pathOfFiles = "./src/server/log-SH/SH_all_path.txt";
+  var stream = fs.createWriteStream(file_path, { 'flags': 'w' });
+  stream.once('open', function (fd) {
+    stream.write(SH);
+    stream.end();
+  });
+  
+  /*
+Update a file that keep track of the path of all the segment history.
+This file is used in the client side to
+*/
+  var pathOfFiles = "./src/server/log-SH/SH_all_path.txt";
   
   
   fs.appendFile(pathOfFiles, file_path+"\n", function (err) {
@@ -130,9 +171,9 @@ function logCommand(socket_name,command){
   console.log(fs.existsSync(file_path)  );
   console.log(file_path);*/
   if (fs.existsSync(file_path) ) {
-      console.log('the file '+file_path+'  exists');
-      //We supress the last line because it's the caracter ]
-      addJSONtoLog(file_path, command);
+    console.log('the file '+file_path+'  exists');
+    //We supress the last line because it's the caracter ]
+    addJSONtoLog(file_path, command);
     //console.log('/public/images/flags/' + imgfile + ".png");
   } else {
     createJSONlog(file_path, command);
@@ -179,7 +220,7 @@ function addJSONtoLog(file_path,command) {
         if (err) throw err;
         fs.truncate(filename, stats.size - to_vanquish, (err) => {
           if (err) throw err;
-          console.log('File truncated!');
+          //console.log('File truncated!');
           stream.write(',');
           stream.write(JSON.stringify(command, null, 2));
           stream.write("\n");
@@ -192,14 +233,10 @@ function addJSONtoLog(file_path,command) {
   });
   
   
- 
+  
   
   
 }
 
 
 module.exports = ServerLogger;
-
-
-
-

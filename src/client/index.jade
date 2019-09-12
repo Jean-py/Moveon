@@ -16,10 +16,20 @@ block content
                     .wrap-input100.validate-input(data-validate='Enter password')
                         input.input100(type='password', name='pass', placeholder='Password')
                     .container-login100-form-btn.m-t-32
-                        button.login100-form-btn
+                        button.login100-form-btn#btnLogin
                             | Login
 
+    script.
+      document.getElementById("login_form").addEventListener("submit", formSubmitted);
+          function formSubmitted() {
+            var session_username_dom = document.getElementsByName('username');
+            console.log(session_username_dom[0].value);
+            var session_username = session_username_dom[0].value;
 
+            sessionStorage.setItem('session_username', session_username);
+
+          }
+    //script(src="./src/client/js/utilities/session.js")
 
 
     //window.addEventListener("click", screenTouched, false);

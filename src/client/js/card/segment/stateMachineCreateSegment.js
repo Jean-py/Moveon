@@ -50,7 +50,6 @@ var segmentFeedback = {
   if(knobMin != null){
     //Mouse
     knobMin.addEventListener("mousedown", function(e) {
-      console.log("mousedown knobmin");
       switch (state) {
         case StateDrag.STARTED:{
           stopCreateSegment();
@@ -67,7 +66,6 @@ var segmentFeedback = {
     });
   
     segmentFeedback.divGraphicalObject.addEventListener("mousedown", function(e) {
-      console.log("mousedown segmentFeedback.divGraphicalObject");
       switch (state) {
         case StateDrag.STARTED:{
           stopCreateSegment();
@@ -81,7 +79,6 @@ var segmentFeedback = {
   
       //Mouse
       knobMin.addEventListener("touchend", function(e) {
-        console.log("touchend knobmin");
         switch (state) {
           case StateDrag.STARTED:{
             stopCreateSegment();
@@ -137,7 +134,6 @@ function startCreateSegment() {
 
 
 function stopCreateSegment() {
-  console.log("stop create segment");
   knobMin.removeChild(btnCancelSegment);
   video_current.ready(function () {
     this.off('timeupdate' , showSegmentFeedback);
@@ -151,7 +147,6 @@ function stopCreateSegment() {
     
     
      timePositionStop = video_current.currentTime();
-  console.log(player);
      player.createNewCard(timePositionStart,timePositionStop, positionStart,positionStop,segmentFeedback.divGraphicalObject.style.width  );
      play();
   
@@ -166,7 +161,6 @@ function cancelCreateSegment(event) {
   else if(window.event){
     window.event.cancelBubble=true;
   }
-  console.log("cancel create segment");
   knobMin.removeChild(btnCancelSegment);
   state = StateDrag.IDLE;
   positionStop = knobMin.style.left;

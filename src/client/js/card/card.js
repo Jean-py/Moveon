@@ -31,9 +31,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   
   var divWrapperTextStartSegment = null;
   var textStartSegment = null;
-  /*var arrowStartSegment = null;
+  var arrowStartSegment = null;
   var divWrapperTextEndSegment = null;
-  var textEndSegment = null;*/
+  var textEndSegment = null;
   var btnDelete = null;
   var btnMinus = null;
   var divWrapperBtn = null;
@@ -273,25 +273,26 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     divWrapperBtn.appendChild(btnMinus);
     divWrapperBtn.appendChild(btnDelete);
     
-  /*
-  Creation des étapes pour facilement changer la taille des segments
+  
+  //Creation des étapes pour facilement changer la taille des segments
   
     textStartSegment = document.createElement('input');
     textStartSegment.className = '';
     textEndSegment = document.createElement('input');
     textEndSegment.className = '';
-    divInfoCard.appendChild(textStartSegment);
-    divInfoCard.appendChild(textEndSegment);
-  */
+    //divInfoCard.appendChild(textStartSegment);
+    //divInfoCard.appendChild(textEndSegment);
+  
   
     //Div contenant les info du dessus (taille de div invariable)
     divInfoCard.appendChild(imgSlow);
     divInfoCard.appendChild(selectSpeed);
     //divInfoCard.appendChild(imgRepet);
     divInfoCard.appendChild(textSegment);
-    //iDiv.appendChild(divWrapperTextStartSegment);
+    iDiv.appendChild(divWrapperTextStartSegment);
     //divInfoCard.appendChild(arrowDown);
     iDiv.appendChild(divSegment);
+    
     iDiv.appendChild(divWrapperBtn);
   
     iDiv.appendChild(divInfoCard);

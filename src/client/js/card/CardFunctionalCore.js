@@ -56,9 +56,7 @@ var repetPartOfVideo = function (start,end, numberOfRepetition,speedRate) {
   // faster speed initially
   video_current.playbackRate(speedRate);
   video_current.currentTime(start);
-  
- 
-    video_current.abLoopPlugin.setStart(start).setEnd(end).playLoop();
+  video_current.abLoopPlugin.setStart(start).setEnd(end).playLoop();
   
   
   //console.log("function  - repetPartOfVideo [play part] l87 videoCommand");

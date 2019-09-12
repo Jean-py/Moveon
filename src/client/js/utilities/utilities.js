@@ -7,6 +7,8 @@ var cardManager = new CardManager();
 var logger = new Logger();
 logger.connect();
 
+
+
 function kill(type){
   window.document.body.addEventListener(type, function(e){
     e.preventDefault();
@@ -44,3 +46,4 @@ function pad(n) {
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
   'Oct', 'Nov', 'Dec'];
+

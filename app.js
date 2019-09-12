@@ -35,14 +35,16 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   // we're connected!
   console.log("The server is connected to MongoDB!");
-  /*
-  const jp = new User({
-    email: 'jp4 @mail.com',
-    username: 'd',
-    password: 'd',
-  });*/
   
-  /*jp.save(function (err, user) {
+  /*var User = require('./src/server/data_base/models/user.js');
+  
+  const jp = new User({
+    email: 'riviere@lri.fr',
+    username: 'riviere',
+    password: 'riviere',
+  });
+  
+  jp.save(function (err, user) {
     if (err) return console.error(err);
     console.log(user.username + " saved to bookstore collection.");
   });*/
@@ -50,10 +52,12 @@ db.once('open', function () {
   /**
    * End Connexion DataBase
    */
-  
+
   
   
 });
+//db.close();
+
 app.use(session({
   //the name of my favorite cat
   secret: '$2y$10$JcuqrQDeVWyn4lCVwbtTJur/FsK07mPeWtRu.7DT4fizHkGOTQtx6',

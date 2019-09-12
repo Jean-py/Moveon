@@ -29,18 +29,19 @@ var menuExtended = 0;
 
 //menuOption.innerHTML = "Username : " + logger.getSocket_name_session();
 
-idSession.value = logger.getSocket_name_session();
-
-inputFile.addEventListener('change', updateImageDisplay);
-
-if(btnLoadFile != null ){
+if(inputFile != null){
   
-  btnLoadFile.addEventListener("mousedown", function (e) {
-    //emulating a click on a file picking
-    inputFile.click();
-  }, {
-    passive: true
-  });
+  inputFile.addEventListener('change', updateImageDisplay);
+  
+  if(btnLoadFile != null ){
+    
+    btnLoadFile.addEventListener("mousedown", function (e) {
+      //emulating a click on a file picking
+      inputFile.click();
+    }, {
+      passive: true
+    });
+  }
 }
 
 
@@ -87,12 +88,21 @@ if(btnLoadAVideo !== null)
 if(btnPlayAll != null)
   btnPlayAll.addEventListener("mousedown", handlebtnPlayAll);
 
-idSession.addEventListener("blur",setSessionName, {passive: true});
-function setSessionName(){
-   logger.changeUsernameSocket( idSession.value );
-   var notification_feedback = "Sucess! Log file is : " + idSession.value;
+if(sessionStorage != null){
+  //idSession.value = logger.getSocket_name_session();
+  //idSession.addEventListener("blur",setSessionName, {passive: true});
+  console.log(sessionStorage.getItem('session_username'));
+    logger.changeUsernameSocket( sessionStorage.getItem('session_username') );
+    var notification_feedback = "Sucess! Log file is : " + sessionStorage.getItem('session_username') ;
     notificationFeedback(notification_feedback);
+  console.log("  +++ ID session changed to : " + sessionStorage.getItem('session_username') );
+  
+  
+} else {
+  console.log("  +++ ID session is null +++")
 }
+
+
 
 function callbackCleanSegmentHistory(){
   if ( confirm( " /!\\ Voulez-vous vraiment supprimer tous les segments?" ) ) {
@@ -114,7 +124,7 @@ function callbackSaveFile(){
     //arrayItem.
   });*/
   cardManager.exportCard();
-  var notification_feedback = "File saved : " + idSession.value;
+  var notification_feedback = "File saved ";
   notificationFeedback(notification_feedback);
 }
 
