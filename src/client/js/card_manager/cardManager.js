@@ -37,6 +37,9 @@ var CardManager = function() {
         arrayCard.forEach(function(arrayItem) {
           console.log(arrayItem);
           var item = arrayItem.updateInfo();
+  
+          arrayItem.iDiv = arrayItem.iDiv.id;
+  
           arrayItemUpdated.push(item);
         });
       var serializedArr = JSON.stringify(arrayItemUpdated,
@@ -51,9 +54,13 @@ var CardManager = function() {
         'startP',
         'width'] );
       
+      console.log("XXXX");
+      //console.log(arrayItemUpdated.iDiv);
+      /*arrayItemUpdated.iDiv = */
+      
        // console.log("*****  Serialisation of card complete : " + serializedArr);
         download(serializedArr, 'jsonW2log-' + createUniqueId() + '.json', 'text/plain');
-        logger.saveSH(serializedArr);
+        logger.saveSH(arrayItemUpdated);
     },
     
     loadSegmentHistoryFromServer: function(){

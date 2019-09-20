@@ -82,13 +82,19 @@ function saveSHMongoDB(socket_name, SH) {
   // Enregistrer le SH avec les bonnes informations dans MongoDB
   
   
-  const decomposition = new Decomposition({
+  const saved_decomposition = new Decomposition({
     username: socket_name,
     video: 'frame',
     date : date,
     project: 'only_project',
-    decomposition: SH
+    data :SH
   });
+  
+  
+  console.log("AAAA");
+  console.log(SH[0]);
+  console.log(typeof SH);
+  console.log("BBB");
   
   
   
@@ -104,11 +110,11 @@ function saveSHMongoDB(socket_name, SH) {
   dbComposition.once('open', function () {
     // we're connected!
     console.log("Saving decomposition in mongodb....");
-    decomposition.save(function (err, user) {
-      if (err) return console.error(err);
+    saved_decomposition.save(function (err, user) {
+      if (err) {return console.error(err);}
       //console.log("saved to the collection. : " + user.username );
       console.log("decomposition : "  );
-      console.log(decomposition);
+      console.log(saved_decomposition);
     });
   });
 }

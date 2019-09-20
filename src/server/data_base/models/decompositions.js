@@ -41,10 +41,11 @@ var DecompositionSchema = new mongoose.Schema({
     } ,
     id: {
       type : String
-    },deleted: {
+    },
+    deleted: {
       type : Boolean
     }
-  }],
+  }]
   
   
   
