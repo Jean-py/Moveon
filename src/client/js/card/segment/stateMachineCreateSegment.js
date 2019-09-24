@@ -147,6 +147,7 @@ function stopCreateSegment() {
     
     
      timePositionStop = video_current.currentTime();
+     console.log("timePositionStart,timePositionStop, positionStart,positionStop,segmentFeedback.divGraphicalObject.style.width :  " + timePositionStart,timePositionStop, positionStart,positionStop,segmentFeedback.divGraphicalObject.style.width);
      player.createNewCard(timePositionStart,timePositionStop, positionStart,positionStop,segmentFeedback.divGraphicalObject.style.width  );
      play();
   

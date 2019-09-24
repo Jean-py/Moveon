@@ -65,14 +65,6 @@ router.post('/', function (req, res, next) {
         err.status = 401;
         return next(err);
       } else {
-        /*console.log( 'user._id');
-        console.log(user._id);
-        console.log('req.session');
-        console.log(user.session);*/
-  
-  
-  
-  
         req.session.userId = user._id;
         return res.redirect('/moveon');
       }
