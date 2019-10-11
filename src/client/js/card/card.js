@@ -13,7 +13,7 @@ var cardFunctionalCore = new CardFunctionalCore();
  */
 function Card (startDurationParam,endDurationParam,startPositionParam,endPositionParam, cardInfo) {
   var description = '';
-  var enablingDragAndDrop = false;
+  var enablingDragAndDrop = true;
   
   var listCardConnected = [];
   /*
@@ -126,10 +126,10 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       cardFunctionalCore.execute(new ModifyCardDescriptionCommand(cardObject,textSegment.value));
     });
   
-    for (let i = 0; i < 20; i += 1) {
+    for (let i = 1; i < 20; i += 1) {
       selectSpeed.add(new Option(i / 10 + ""));
     }
-    selectSpeed.selectedIndex = 10;
+    selectSpeed.selectedIndex = 9;
     
     
     //delete apparait
@@ -141,37 +141,36 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       removeTheCard()
     });
     
-    btnMinus.addEventListener('mousedown',function(){
-      displayDivInfoCard();
-    });
-    btnMinus.addEventListener('touchend',function(){
-      displayDivInfoCard();
-    });
-   
+    if(btnMinus != null){
+      
+      btnMinus.addEventListener('mousedown',function(){
+        displayDivInfoCard();
+      });
+      btnMinus.addEventListener('touchend',function(){
+        displayDivInfoCard();
+      });
+    }
     selectSpeed.addEventListener("mousedown", function(){
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
       speed = speedRate;
-      cardFunctionalCore.execute(new CardSpeedCommand(cardObject,speedRate));
+      modifyCardSpeed(cardObject, speedRate);
+      
+      //cardFunctionalCore.execute(new CardSpeedCommand(cardObject,speedRate));
     });
  
    
     divSegment.addEventListener("mousedown", function () {
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
-      speed = speedRate;
+    
+      speed = parseFloat(speedRate);
       description = textSegment.value;
-      videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speedRate));
-      
-      
+      videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speed));
       enableDragAndDrop(enablingDragAndDrop);
-      
-      
+  
     }, false);
     //TODO widget color picker
     //arrowDown.addEventListener("change", watchColorPicker, false);
   }
-  
-  
-  function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
   
   function enableDragAndDrop(enabling) {
     if(enabling){
@@ -188,7 +187,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
         });
       } );
   
-      $( ".segmentWrapper" ).droppable({
+     /* $( ".segmentWrapper" ).droppable({
         classes: {
           "ui-droppable": "highlight"
         },
@@ -212,7 +211,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
         
             cardManager.decombineSegment();}
         }
-      );
+      );*/
     }
     
   }
@@ -234,7 +233,16 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     
     textStartSegment = document.createElement('input');
     textStartSegment.className = 'textStartSegment';
-    textStartSegment.value = Math.floor(startDurationParam / 60)+':'+Math.floor(startDurationParam % 60);
+
+
+
+    if(Math.floor(startDurationParam % 60) < 10 ){
+      textStartSegment.value = Math.floor(startDurationParam / 60)+':0'+Math.floor(startDurationParam % 60);
+    } else {
+      textStartSegment.value = Math.floor(startDurationParam / 60)+':'+Math.floor(startDurationParam % 60);
+    }
+
+    
     textStartSegment.readOnly = true;
   
     
@@ -333,7 +341,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     btnMinus.className = 'span';
     btnMinus.classList.add('btnMinusCard');
     btnMinus.innerHTML = "-";
-    divWrapperBtn.appendChild(btnMinus);
+    //divWrapperBtn.appendChild(btnMinus);
     divWrapperBtn.appendChild(btnDelete);
     
   

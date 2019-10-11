@@ -15,8 +15,3 @@ var MuteButtonCommand = function () {
 var RepetPartOfVideoCommand = function (start,end, numberOfRepetition,speedRate) {
   return new CommandRepetPartOfVideo(repetPartOfVideo, null, start,end, numberOfRepetition, speedRate);
 };
-
-var updateKnobAndVideoComputerCommand = function (e) {
-  return new CommandUpdateKnobAndVideoComputer(updateKnobAndVideoComputer, null, e);
-};
-

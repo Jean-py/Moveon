@@ -54,12 +54,12 @@ var CardManager = function() {
         'startP',
         'width'] );
       
-      console.log("XXXX");
       //console.log(arrayItemUpdated.iDiv);
       /*arrayItemUpdated.iDiv = */
       
        // console.log("*****  Serialisation of card complete : " + serializedArr);
-        download(serializedArr, 'jsonW2log-' + createUniqueId() + '.json', 'text/plain');
+        let username = sessionStorage.getItem('session_username');
+        download(serializedArr, username + createUniqueId() + '.json', 'text/plain');
         logger.saveSH(arrayItemUpdated);
     },
     

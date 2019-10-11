@@ -11,7 +11,6 @@ var Decomposition = require('../server/data_base/models/decompositions');
 
 
 
-var user_name = null;
 
 
 class ServerLogger{
@@ -31,11 +30,6 @@ class ServerLogger{
         //We now save the SH in MongoDB
         saveSHMongoDB(socket_name,SH)
         
-      }, setUsernameLog : function( user_name){
-        //saveSH(socket_name,SH);
-        //We now save the SH in MongoDB
-        setUsernameLog(user_name)
-        
       }
       
     };
@@ -45,14 +39,6 @@ class ServerLogger{
 
 function sendCommand(){
 
-}
-
-//For the moment, I don't know the socket here, so I can't modify the name of the socket
-function setUsernameLog(user_name){
-  //serverLogger.setUsernameLog(data.username);
-  /* socket.username = user_name;
-   console.log("**** socket name changed **** \n to " +username);*/
-  
 }
 
 
@@ -80,21 +66,13 @@ function saveSHMongoDB(socket_name, SH) {
   
   //TODO
   // Enregistrer le SH avec les bonnes informations dans MongoDB
-  
-  
   const saved_decomposition = new Decomposition({
     username: socket_name,
     video: 'frame',
     date : date,
     project: 'only_project',
-    data :SH
+    data : SH
   });
-  
-  
-  console.log("AAAA");
-  console.log(SH[0]);
-  console.log(typeof SH);
-  console.log("BBB");
   
   
   
@@ -103,7 +81,7 @@ function saveSHMongoDB(socket_name, SH) {
   var session = require('express-session');
   var MongoStore = require('connect-mongo')(session);
   
-  mongoose.connect('mongodb://localhost/decompositions',  { useNewUrlParser: true });
+  mongoose.connect('mongodb://localhost/segmentHistory',  { useNewUrlParser: true });
   const dbComposition = mongoose.connection;
 //handle mongo error
   dbComposition.on('error', console.error.bind(console, 'connection error:'));
@@ -141,7 +119,7 @@ function saveSH(socket_name, SH) {
   var date =  day+"/"+month+"_"+ h + ":" + m + ":" + s;
   
   var file_path = "./src/server/log-SH/" + socket_name +'-' +d;
-  console.log(SH);
+
   console.log(fs.existsSync(file_path));
   console.log(file_path);
   console.log('the file ' + file_path + '  exists');
@@ -157,14 +135,14 @@ function saveSH(socket_name, SH) {
 Update a file that keep track of the path of all the segment history.
 This file is used in the client side to
 */
-  var pathOfFiles = "./src/server/log-SH/SH_all_path.txt";
+/*  var pathOfFiles = "./src/server/log-SH/SH_all_path.txt";
   
   
   fs.appendFile(pathOfFiles, file_path+"\n", function (err) {
     if (err) throw err;
     console.log('Saved!');
   });
-  
+  */
   
 }
 

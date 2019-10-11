@@ -504,11 +504,13 @@
       } else { //startTime <= endTime
         loopAtEndOfVideoRequired = false;
         if(curTime < startTime){
+          //console.log("playbackRate abloop");
           video_current.playbackRate(1);
           return false
         } else if (curTime < (startTime - startMargin) && opts.loopIfBeforeStart) {
           return true;
         } else if (curTime >= endTime) {
+        //  console.log("playbackRate abloop");
           video_current.playbackRate(1);
           //use a margin of one just in case time has skipped a bit past
           if ((curTime - endTime) < endMargin || opts.loopIfAfterEnd) {

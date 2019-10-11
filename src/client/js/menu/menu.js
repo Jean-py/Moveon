@@ -91,12 +91,10 @@ if(btnPlayAll != null)
 if(sessionStorage != null){
   //idSession.value = logger.getSocket_name_session();
   //idSession.addEventListener("blur",setSessionName, {passive: true});
-  console.log(sessionStorage.getItem('session_username'));
+  console.log("session_username : "  +sessionStorage.getItem('session_username'));
     logger.changeUsernameSocket( sessionStorage.getItem('session_username') );
     var notification_feedback = "Sucess! Log file is : " + sessionStorage.getItem('session_username') ;
     notificationFeedback(notification_feedback);
-  console.log("  +++ ID session changed to : " + sessionStorage.getItem('session_username') );
-  
   
 } else {
   console.log("  +++ ID session is null +++")
@@ -236,9 +234,10 @@ function invertVideo(){
 }
 function loadVideo() {
 // When the user clicks the button load a Video in  the menu, open the modal
-      modalVideo.style.display = "block";
+  //TODO pour l'instant on ne peut rien faire là
+     /* modalVideo.style.display = "block";
       modalVideo.style.visibility = "";
-      VideoPicker.chargeVideo();
+      VideoPicker.chargeVideo();*/
 }
 
 function handlebtnPlayAll() {

@@ -24535,6 +24535,7 @@
       if (rate !== undefined) {
         // NOTE: this.cache_.lastPlaybackRate is set from the tech handler
         // that is registered above
+        
         this.techCall_('setPlaybackRate', rate);
         return;
       }

@@ -111,6 +111,7 @@ var muteButtonCallback = function(e){
 function clearAllTimer() {
   window.clearInterval(timerRepetition);
   isPlayingCard = false;
+  console.log("ClearAllTimer");
   video_current.playbackRate( 1);
   //feedbackOnSliderVideo(false);
 }

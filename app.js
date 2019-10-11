@@ -21,14 +21,14 @@ var MongoStore = require('connect-mongo')(session);
  */
 
 // Connection UR
-const url = 'mongodb://localhost/moveon';
+const url ='mongodb://localhost/moveon';
 // Database Name
 const dbName = 'moveon';
 // Create a new MongoClient
 //const client = new MongoClient();
 
 //connect to MongoDB
-mongoose.connect('mongodb://localhost/moveon',  { useNewUrlParser: true });
+mongoose.connect( url,  { useNewUrlParser: true });
 const db = mongoose.connection;
 //handle mongo error
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -39,16 +39,16 @@ db.once('open', function () {
   /*var User = require('./src/server/data_base/models/user.js');
   
   const jp = new User({
-    email: 'riviere@lri.fr',
-    username: 'riviere',
-    password: 'riviere',
+    email: 'laura.gary@hotmail.fr ',
+    username: 'gary',
+    password: 'gary',
   });
   
   jp.save(function (err, user) {
     if (err) return console.error(err);
     console.log(user.username + " saved to bookstore collection.");
-  });*/
-  
+  });
+  */
   /**
    * End Connexion DataBase
    */

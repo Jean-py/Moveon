@@ -11781,6 +11781,7 @@
    */
 
   function set$1(middleware, tech, method, arg) {
+   
     return tech[method](middleware.reduce(middlewareIterator(method), arg));
   }
   /**
@@ -24622,15 +24623,21 @@
 
     _proto.techCall_ = function techCall_(method, arg) {
       // If it's not ready yet, call method when it is
+      //console.log("KKKKKK",method, arg);
       this.ready(function () {
         if (method in allowedSetters) {
+          //console.log("LLLLLLL",method, arg);
+  
           return set$1(this.middleware_, this.tech_, method, arg);
         } else if (method in allowedMediators) {
+          //console.log("NNNNNNNN",method, arg);
+  
           return mediate(this.middleware_, this.tech_, method, arg);
         }
 
         try {
           if (this.tech_) {
+            //console.log("MMMMMM",this.tech_);
             this.tech_[method](arg);
           }
         } catch (e) {
@@ -26351,7 +26358,8 @@
     _proto.playbackRate = function playbackRate(rate) {
       if (rate !== undefined) {
         // NOTE: this.cache_.lastPlaybackRate is set from the tech handler
-        // that is registered above
+        // that is registered above;
+        
         this.techCall_('setPlaybackRate', rate);
         return;
       }

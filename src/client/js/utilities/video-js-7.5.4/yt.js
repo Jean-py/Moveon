@@ -192,6 +192,7 @@ THE SOFTWARE. */
       this.activeList = playerVars.list;
       
       this.ytPlayer = new YT.Player(this.options_.techId, {
+       
         videoId: this.activeVideoId,
         playerVars: playerVars,
         events: {
@@ -431,7 +432,6 @@ THE SOFTWARE. */
       if (!this.ytPlayer) {
         return;
       }
-      
       this.ytPlayer.setPlaybackRate(suggestedRate);
       this.trigger('ratechange');
     },

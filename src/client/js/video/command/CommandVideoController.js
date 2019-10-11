@@ -31,11 +31,4 @@ var CommandRepetPartOfVideo = function (execute,undo, start,end, numberOfRepetit
   this.id = createUniqueId();
 };
 
-var CommandUpdateKnobAndVideoComputer = function (execute,undo,e) {
-  this.execute = execute;
-  this.undo = null;
-  this.e = e;
-  this.timestamp = timestamp();
-  this.id = createUniqueId();
-};
 

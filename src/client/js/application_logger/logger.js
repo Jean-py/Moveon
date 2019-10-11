@@ -45,7 +45,6 @@ function connectToServer() {
   //Split the https://xxxx:port#oNote  to xxxx:port
   addr = addr.split('/')[2];
   socket = io.connect(addr);
-  console.log("connected to : " + addr, "changing username socket to dev");
   //logger.changeUsernameSocket("dev");
 };
 
@@ -53,7 +52,6 @@ function connectToServer() {
 
 function send_username(username) {
   if(socket != null){
-    console.log("username val : " + username);
     socket_name_session = username;
     socket.emit("socket_username", {username : username})
   }
@@ -61,8 +59,8 @@ function send_username(username) {
 
 //TODO faire une deep recopies des objets passé en parametre! Il semblerais que cela ne marche pas bien
 function log_command(commandParam){
-  /*console.log("executing : ");
-  console.log(commandParam);*/
+  console.log("log_command : ");
+  console.log(commandParam);
   if(socket != null){
     var objCopy = null;
     
