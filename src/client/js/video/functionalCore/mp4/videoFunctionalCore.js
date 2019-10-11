@@ -118,11 +118,13 @@ function clearAllTimer() {
 
 
 var play = function () {
+  console.log("appesl a play");
+  
   video_current.play();
 };
 
 var pause = function () {
-  //console.log("appesl a pause");
+  console.log("appesl a pause");
   video_current.pause();
 };
 
@@ -132,7 +134,7 @@ var seekTo = function(startDurationParam){
 };
 
 var playPausecallback = function(e){
-  //console.log("callback play-pause, e : " + e);
+  console.log("callback play-pause, e : " + e);
   /*if(e != null && e !== undefined){
     e.preventDefault();
   }*/

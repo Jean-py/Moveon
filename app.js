@@ -27,7 +27,7 @@ const dbName = 'moveon';
 // Create a new MongoClient
 //const client = new MongoClient();
 
-//connect to MongoDB
+//connect to MongoDBpki
 mongoose.connect( url,  { useNewUrlParser: true });
 const db = mongoose.connection;
 //handle mongo error

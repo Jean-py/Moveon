@@ -81,6 +81,8 @@ THE SOFTWARE. */
         
         // In case the blocker is still there and we want to pause
         divBlocker.onclick = function() {
+          console.log("pause player yt");
+  
           this.pause();
         }.bind(this);
         
@@ -370,6 +372,7 @@ THE SOFTWARE. */
     
     pause: function() {
       if (this.ytPlayer) {
+        console.log("pause player yt");
         this.ytPlayer.pauseVideo();
       }
     },
@@ -420,7 +423,7 @@ THE SOFTWARE. */
       this.trigger('seeked');
       this.isSeeking = false;
       if (this.wasPausedBeforeSeek) {
-        this.pause();
+        //this.pause();
       }
     },
     
