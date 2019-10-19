@@ -23,7 +23,7 @@ class ServerLogger{
       },
       //log a command in a file
       log : function( socket_name , command){
-        logCommand(socket_name,command);
+       // logCommand(socket_name,command);
       },
       saveSHMongoDB : function( socket_name , SH){
         //saveSH(socket_name,SH);

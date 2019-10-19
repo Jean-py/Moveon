@@ -235,9 +235,9 @@ function invertVideo(){
 function loadVideo() {
 // When the user clicks the button load a Video in  the menu, open the modal
   //TODO pour l'instant on ne peut rien faire là
-     /* modalVideo.style.display = "block";
+      modalVideo.style.display = "block";
       modalVideo.style.visibility = "";
-      VideoPicker.chargeVideo();*/
+      VideoPicker.chargeVideo();
 }
 
 function handlebtnPlayAll() {
