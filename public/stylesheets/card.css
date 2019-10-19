@@ -133,7 +133,7 @@
 
 .textSegment {
     margin-bottom: 6px;
-    background: transparent;
+    background: #607D8B;;
     border: 1px;
     border-color: var(--border-color);
     padding: 1px 10px;
@@ -204,6 +204,8 @@
      /*overflow: hidden;*/
     overflow-y: auto;
     overflow-x: hidden;
+    border: thick double #32a1ce;
+
 
     /*background-color: #c7074d;*/
 

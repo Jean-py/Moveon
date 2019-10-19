@@ -142,14 +142,16 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     });
     
     if(btnMinus != null){
-      
+  
       btnMinus.addEventListener('mousedown',function(){
         displayDivInfoCard();
       });
       btnMinus.addEventListener('touchend',function(){
         displayDivInfoCard();
       });
+      
     }
+    
     selectSpeed.addEventListener("mousedown", function(){
       let speedRate = selectSpeed.options[selectSpeed.selectedIndex].value;
       speed = speedRate;
@@ -177,7 +179,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       $( function() {
         $( ".segmentWrapper" ).draggable({
           axis: "y",
-          snapTolerance: 20,
+          snapTolerance: 0,
           snapMode:"inner",
           activeClass: "ui-state-highlight",
           containment : '#wrapperCommandAndRangeCardBoard',
@@ -233,6 +235,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     
     textStartSegment = document.createElement('input');
     textStartSegment.className = 'textStartSegment';
+    
 
 
 
@@ -310,6 +313,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     */
     textSegment = document.createElement('input');
     textSegment.className = 'textSegment';
+    textSegment.placeholder = "Give me a name";
     //UI button speed and slow
     imgRepet = document.createElement("img");
     imgRepet.className='imgRepet';
@@ -341,7 +345,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     btnMinus.className = 'span';
     btnMinus.classList.add('btnMinusCard');
     btnMinus.innerHTML = "-";
-    //divWrapperBtn.appendChild(btnMinus);
+    divWrapperBtn.appendChild(btnMinus);
     divWrapperBtn.appendChild(btnDelete);
     
   
