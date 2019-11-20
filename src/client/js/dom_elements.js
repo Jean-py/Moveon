@@ -23,6 +23,7 @@ video_current.ready(function() {
   });
 });
 
+
 /*
 
 video_current.ready(function(){

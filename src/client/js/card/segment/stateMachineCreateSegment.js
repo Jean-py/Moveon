@@ -227,5 +227,19 @@ function showSegmentFeedback() {
   updateSegmentFeedback(true,knobMin.style.left,knobMax.style.left)
 }
 
+//TODO work on feedback
+function addFeedback(start, end) {
+    segmentFeedback.divGraphicalObject.style.visibility = "visible";
+    segmentFeedback.divGraphicalObject.style.marginLeft = end ;
+    if(parseFloat(start,10)  >= parseFloat(end,10) ){
+      segmentFeedback.divGraphicalObject.style.width = parseFloat(startP,10) - parseFloat(endP,10)  +"%";
+    } else {
+      segmentFeedback.divGraphicalObject.style.marginLeft = startP ;
+      segmentFeedback.divGraphicalObject.style.width = parseFloat(endP,10) - parseFloat(startP,10) +"%";
+      
+    }
+}
+
+
 
 

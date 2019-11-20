@@ -145,11 +145,41 @@ iframe {
 .limiter {
     /* width: 100%; */
     /* margin: 0 auto; */
-    display: inline-block;
+    display: inline-grid;
+}
+.limiter_text {
+    margin-top: 5%;
+    width: 30%;
+
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: thick double var(--fifth-color);
+    padding: 11px;
+}
+
+.wrap-text20 {
+
+    min-height: 20vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    display: contents;
 }
 
 .container-login100 {
-    width: 100%;
+    width: 50%;
     min-height: 100vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -160,12 +190,12 @@ iframe {
     justify-content: center;
     align-items: center;
     padding: 15px;
-
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     position: relative;
     z-index: 1;
+    background: white;
 }
 
 .container-login100::before {
