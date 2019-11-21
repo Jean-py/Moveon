@@ -153,7 +153,6 @@ var mirror = function () {
     mirrored = false;
   } else {
     document.getElementsByClassName("vjs-tech")[0].style.transform = "rotateY("+ 180 +"deg)";
-  
     video_current.style = 'rotateY('+ 180 +'deg)';
     mirrored = true;
   }
