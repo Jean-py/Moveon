@@ -90,7 +90,7 @@ h5{
 .font-ubuntu_h4{
     font-family: var(--font);
     font-size: 30px;
-    line-height: 10em;
+    line-height: 1em;
 }
 
 

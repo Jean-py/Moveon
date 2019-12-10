@@ -11,10 +11,7 @@ var VideoPicker = function() {
     },
   }
 };
-
-
 var VideoPicker = new VideoPicker();
-
 
 var chargeVideo = function (){
   //We charge all the video only one time
@@ -26,11 +23,14 @@ var chargeVideo = function (){
       if (this.readyState!==4) return;
       if (this.status!==200) return; // or whatever error handling you want
       document.getElementById('videoPickerOverviewModal').innerHTML= this.responseText;
-  
-  
       var elms = document.getElementById('videoPickerOverviewModal').getElementsByTagName("video");
       var span = document.getElementsByClassName("close")[0];
-  
+      
+      var btnloadv = document.getElementById("btnloadv");
+      var btncancel = document.getElementById("btncancel");
+      
+      
+      
       span.addEventListener( "mousedown" , function() {
         modalVideo.style.display = "none";
       });
@@ -55,7 +55,9 @@ var chargeVideo = function (){
       }
   
       var url_yt_chooser =  document.getElementById("yt_chooser");
-      url_yt_chooser.addEventListener("blur",setVideo, {passive: true});
+      btnloadv.addEventListener("mousedown",setVideo, {passive: true});
+      btncancel.addEventListener("mousedown",cancelLoad, {passive: true});
+      
   
     };
     xhr.send();
@@ -68,8 +70,12 @@ var chargeVideo = function (){
 
 function setVideo(){
   video_current.src({type: 'video/youtube', src: document.getElementById("yt_chooser").value});
+  
+  modalVideo.style.display = "none";
   //video_current.src({type: 'video/youtube', src:'https://www.youtube.com/watch?v=voiS7cxsD0U&t=0s&ab_channel=Squiders' });
 
+}function cancelLoad(){
+  modalVideo.style.display = "none";
 }
 
 /*var vjsButtonComponent = videojs.getComponent('Button');
