@@ -149,12 +149,10 @@ var playPausecallback = function(e){
 
 var mirror = function () {
   if(mirrored){
-    
     document.getElementsByClassName("vjs-tech")[0].style.transform = "rotateY("+ 0 +"deg)";
     mirrored = false;
   } else {
     document.getElementsByClassName("vjs-tech")[0].style.transform = "rotateY("+ 180 +"deg)";
-  
     video_current.style = 'rotateY('+ 180 +'deg)';
     mirrored = true;
   }

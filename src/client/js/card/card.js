@@ -168,6 +168,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       description = textSegment.value;
       videoFunctionalCoreManager.execute(new RepetPartOfVideoCommand(startDuration,endDuration ,  100, speed));
       enableDragAndDrop(enablingDragAndDrop);
+      showSegmentFeedback(false,null,null);
+      updateSegmentFeedback(false);
+      //addFeedback(startPositionParam, endPositionParam);
   
     }, false);
     //TODO widget color picker
@@ -305,7 +308,7 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
         divWrapperTextStartSegment.appendChild(arrowStartSegment);
     */
     
-    divWrapperTextStartSegment.appendChild(textStartSegment);
+   // divWrapperTextStartSegment.appendChild(textStartSegment);
     //divSegment.appendChild(divWrapperTextStartSegment);
     
     /*

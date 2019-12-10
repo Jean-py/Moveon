@@ -34,6 +34,9 @@ block content
         //a#btnLoadSHFromServer(href='#load_file' , style=' ')
             i.fa.fa-fw.fa-wrench
             |  Load Decomposition
+        a#btnLoadFile(href='#load_file' , style=' ', type="file", accept='file/json')
+            i.fa.fa-fw.fa-wrench
+            |  Load Decomposition
         a#btnSaveSegments(href='#SaveSegments')
             i.fa.fa-fw.fa-wrench
             |  Save Decomposition
@@ -45,7 +48,7 @@ block content
             i.fa.fa-fw.fa-wrench
             |  Load a Video
         hr
-        a#btnInvertVideo(href='#Invert', style='visibility:; ')
+        //a#btnInvertVideo(href='#Invert', style='visibility:; ')
             i.fa.fa-fw.fa-wrench
             |  Invert Video
         //hr
@@ -53,7 +56,7 @@ block content
             i.fa.fa-fw.fa-wrench
             |  Participant:
         //textarea#idSession
-        //input#logFileLoad(type="file", style='visibility: hidden; ')
+        input#logFileLoad(type="file", style='visibility: hidden; ')
 
     .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
         .wrapperCommandAndRange.wrapperSticky
@@ -62,6 +65,7 @@ block content
                     source(src='http://vjs.zencdn.net/v/oceans.mp4', type='video/mp4')
                 video#videojs.video-js.vjs-default-skin(data-setup='{  "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=dG1npyqop_8"}],  "controls": true, "autoplay": true, "preload": "metadata"}', )
                     source(src='/media//frame.mp4', type='video/mp4')
+
                     p.vjs-no-js
                         | To view this video please enable JavaScript, and consider upgrading to a web browser that
                         a(href='http://videojs.com/html5-video-support/', target='_blank') supports HTML5 video

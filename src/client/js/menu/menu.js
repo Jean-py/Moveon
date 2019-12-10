@@ -20,6 +20,7 @@ var btnPlayAll = document.getElementById("playAllBut");
 
 var btnloadSH1 = document.getElementById('loadSHvideo1');
 var btnloadSH2 = document.getElementById('loadSHvideo2');
+var btnloadSHComputer = document.getElementById('btnloadSHComputer');
 var btntutorial = document.getElementById('tutorialBtn');
 var btnAnalyzeData = document.getElementById('analyzeData');
 
@@ -30,11 +31,8 @@ var menuExtended = 0;
 //menuOption.innerHTML = "Username : " + logger.getSocket_name_session();
 
 if(inputFile != null){
-  
   inputFile.addEventListener('change', updateImageDisplay);
-  
   if(btnLoadFile != null ){
-    
     btnLoadFile.addEventListener("mousedown", function (e) {
       //emulating a click on a file picking
       inputFile.click();
@@ -87,6 +85,10 @@ if(btnLoadAVideo !== null)
 
 if(btnPlayAll != null)
   btnPlayAll.addEventListener("mousedown", handlebtnPlayAll);
+
+if(btnloadSHComputer!= null){
+  btnloadSHComputer.addEventListener("mousedown", loadJSONSegmentHistoryComputer);
+}
 
 if(sessionStorage != null){
   //idSession.value = logger.getSocket_name_session();
@@ -236,6 +238,7 @@ function loadVideo() {
 // When the user clicks the button load a Video in  the menu, open the modal
   //TODO pour l'instant on ne peut rien faire là
       modalVideo.style.display = "block";
+
       modalVideo.style.visibility = "";
       VideoPicker.chargeVideo();
 }

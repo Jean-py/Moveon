@@ -1,11 +1,16 @@
 @import url("resetCss.css");
 
 :root {
+   /* --main-color: #E5C4D7;*/
     --main-color: #033649;
     --text-color: #E8DDCB;
+   /* --secondary-color: black;*/
     --secondary-color: white;
     --third-color: #031634;
+    /*--fourth-color : #033649;*/
     --fourth-color : #ffd208;
+    --fifth-color : #ff741c;
+
     --third-color-transparent:  rgba(3, 22, 52, 0.5);
     --text-color-transparent:  rgba(232, 221, 203, 0.5);
     --black-color-transparent:  rgba(0, 0, 0, 0.7);
@@ -56,7 +61,7 @@ h1{
 
     font-size: 60px;
  /* font-family:*/
-  line-height:10em;
+  line-height:5em;
 
 }
 h2{
@@ -70,7 +75,12 @@ h4{
 }
 h5{
   font-size: 15px;
+    line-height: 1.5;
 }
+.copyright{
+    margin-top: 20px;
+}
+
 
 .font-ubuntu_h1{
     font-family: var(--font);

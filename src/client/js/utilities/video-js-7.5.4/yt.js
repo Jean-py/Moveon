@@ -372,7 +372,6 @@ THE SOFTWARE. */
     
     pause: function() {
       if (this.ytPlayer) {
-        console.log("pause player yt");
         this.ytPlayer.pauseVideo();
       }
     },

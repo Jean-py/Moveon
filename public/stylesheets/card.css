@@ -89,14 +89,15 @@
     width: 15px;
     border-radius: 50%;
     display: inline-block;
+    /*
     font-size: small;
+    */
 }
 
 .segment{
     /*position: absolute;*/
     position: relative;
-
-    height: 15px;
+    height: 20px;
    /*border-radius: 10px;*/
     background-color: var(--fourth-color);
     z-index: 1;
@@ -127,7 +128,7 @@
     position: relative;
     left: 90px;
     width: 777px;
-    height: 80ch;
+    height: 95ch;
 }
 
 
@@ -192,7 +193,7 @@
 .selectSpeed, .selectNbRepet {
     margin: 10px;
     padding-left: 9px;
-    color: white;
+    color: white;;
     background: var(--main-color);
     border-color: var(--border-color);;
 
@@ -202,14 +203,22 @@
     /* overflow-y: auto;
      overflow-x: hidden;*/
      /*overflow: hidden;*/
-    overflow-y: auto;
-    overflow-x: hidden;
-    border: thick double #32a1ce;
+
+    border: double var(--fifth-color);
+    min-height: 30em;
+    height: auto;
+    overflow: hidden;
 
 
     /*background-color: #c7074d;*/
 
 }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
 .demo {
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 7px 5px 15px 5px rgba(0,0,0,0);
     box-shadow: 0px 10px 13px -7px #000000, 7px 5px 15px 5px rgba(0,0,0,0);

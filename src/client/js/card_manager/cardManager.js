@@ -340,6 +340,31 @@ function loadJSONSegmentHistory2() {
   }
 }
 
+
+function loadJSONSegmentHistoryComputer() {
+  /*
+  readSingleFile();
+  
+  function displayContents(contents) {
+    var element = document.getElementById('file-content');
+    element.textContent = contents;
+  }
+  
+  document.getElementById('file-input')
+    .addEventListener('change', readSingleFile, false);
+  
+  
+  var my_JSON_object = JSON.parse();
+  console.log(my_JSON_object);
+  for (let k = 0; k < my_JSON_object.length; k++) {
+    console.log(my_JSON_object[k])
+    
+    addingNewCardsFromJSon(my_JSON_object[k]);
+  }
+  */
+}
+
+
 function loadJSONSegmentHistory(SH_path) {
   
   
@@ -375,6 +400,7 @@ function loadJSONSegmentHistory(SH_path) {
 
 
 function showSegmentFeedback(visibility,startP,endP){
+  console.log("AAAA")
   if(visibility){
     segmentFeedback.divGraphicalObject.style.visibility = "visible";
     segmentFeedback.divGraphicalObject.style.marginLeft = endP ;
@@ -386,6 +412,8 @@ function showSegmentFeedback(visibility,startP,endP){
     }
   } else {
     segmentFeedback.divGraphicalObject.style.visibility = "hidden";
+    document.getElementById("range-slider_handle-max").style.visibility = "hidden";
+    document.getElementById("segmentMinMax").style.visibility = "hidden";
   }
 }
 
@@ -403,10 +431,11 @@ function updateSegmentFeedback(visibility,startP,endP){
       segmentFeedback.divGraphicalObject.style.width = parseFloat(endP,10) - parseFloat(startP,10) +"%";
       btnCancelSegment.classList.remove('btnCancelSegmentRight');
       btnCancelSegment.classList.add('btnCancelSegmentLeft');
-  
     }
   } else {
-    segmentFeedback.divGraphicalObject.style.visibility = "hidden";
+    document.getElementById("range-slider_handle-max").style.visibility = "hidden";
+    document.getElementById("segmentMinMax").style.visibility = "hidden";
+    //segmentFeedback.divGraphicalObject.style.visibility = "hidden";
   }
 }
 
@@ -422,3 +451,16 @@ const getCircularReplacer = () => {
     return value;
   };
 };
+
+function readSingleFile(e) {
+  var file = e.target.files[0];
+  if (!file) {
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var contents = e.target.result;
+    displayContents(contents);
+  };
+  reader.readAsText(file);
+}
