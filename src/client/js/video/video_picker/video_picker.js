@@ -36,7 +36,7 @@ var chargeVideo = function (){
       });
       for (var i = 0; i < elms.length; i++) {
           elms[i].addEventListener("mousedown", function (){
-            //console.log(this.getElementsByTagName("source")[0].src);
+            console.log(this.getElementsByTagName("source")[0].src);
             console.log(video_current);
            // video_current.src = this.getElementsByTagName("source")[0].src;
   

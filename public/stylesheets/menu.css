@@ -148,16 +148,17 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: var(--third-color-transparent);
+    background-color: rgba(0,0,0,0.72)
 }
 
 /* Modal Content */
 .modal-content {
-    background-color: var(--black-color-transparent);
+    background-color: var(--black-color-fulltransparent);
     margin: auto;
     padding: 2px;
     width: 50%;
     height: 300px;
+
 }
 
 
