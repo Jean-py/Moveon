@@ -178,6 +178,9 @@ function cancelCreateSegment(event) {
   
   
 }
+
+
+
 /*
 var knobMinMove = function(e) {
   console.log("knobMinMove");

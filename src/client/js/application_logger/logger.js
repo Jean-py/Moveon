@@ -49,7 +49,6 @@ function connectToServer() {
 };
 
 
-
 function send_username(username) {
   if(socket != null){
     socket_name_session = username;
