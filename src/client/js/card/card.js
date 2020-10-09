@@ -34,6 +34,8 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
   let divInfoCard = null;
   //let selectSpeed=null;
   let selectSpeed = null;
+  let selectRepet = null;
+  
   
   let imgSlow = null;
   
@@ -130,8 +132,14 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
       selectSpeed.add(new Option(i / 10 + ""));
     }
     selectSpeed.selectedIndex = 9;
-    
-    
+  
+    for (let i = 1; i < 20; i += 1) {
+      selectRepet.add(new Option(i / 10 + ""));
+    }
+    selectRepet.selectedIndex = 9;
+  
+  
+  
     //delete apparait
     btnDelete.addEventListener('mousedown',function(){
       removeTheCard();
@@ -325,6 +333,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     imgSlow.className='imgSlow';
     selectSpeed = document.createElement("select");
     selectSpeed.className ='selectSpeed' ;
+  
+    selectRepet = document.createElement("select");
+    selectRepet.className ='selectSpeed' ;
     
     divInfoCard = document.createElement('div');
     divInfoCard.className = "infoCard";
@@ -365,7 +376,9 @@ function Card (startDurationParam,endDurationParam,startPositionParam,endPositio
     //Div contenant les info du dessus (taille de div invariable)
     divInfoCard.appendChild(imgSlow);
     divInfoCard.appendChild(selectSpeed);
-    //divInfoCard.appendChild(imgRepet);
+    divInfoCard.appendChild(imgRepet);
+    divInfoCard.appendChild(selectRepet);
+  
     divInfoCard.appendChild(textSegment);
     iDiv.appendChild(divWrapperTextStartSegment);
     //divInfoCard.appendChild(arrowDown);

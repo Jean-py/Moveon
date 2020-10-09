@@ -188,6 +188,7 @@
 .imgRepet{
     width: 15px;
     height: 15px;
+    content:url('../media/workshop2/card/repet.png');
 }
 
 .selectSpeed, .selectNbRepet {
