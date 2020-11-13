@@ -1,0 +1,84 @@
+'use strict';
+
+//Wrapper to access to data sensors of a smartphone
+
+
+var _alphaGyro = 0;
+var _betaGyro = 0;
+var _gammaGyro = 0;
+
+var _xAccelero = 0;
+var _yAccelero = 0;
+var _zAccelero = 0;
+
+function init() {
+    // Check to make sure the browser supprots DeviceOrientationEvents
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+    }
+    function deviceOrientationHandler() {
+        // Get the left-to-right tilt (in degrees).
+        _gammaGyro = event.gamma;
+
+        // Get the front-to-back tilt (in degrees).
+        _betaGyro = event.beta;
+
+        // Get the direction of the device (in degrees).
+        _alphaGyro = event.alpha;
+    }
+}
+
+//TODO analyser cette partie du code qui me semble bancale pour le
+//      moment. Le code doit renvoyer un boolean et il
+//      faut eviter le !=null, mais c'est le seul moyen que j'ai maintenant pour tester la valeur
+function isConnected() {
+    return window.DeviceOrientationEvent != null;
+}
+
+//TODO
+//Normaliser le gyro + Accelero
+//Ajouter des fonctions?
+
+//add controller to orientation
+
+// Accelero
+/*
+function getxAccelero(eventData){
+    return ${eventData.accelerationIncludingGravity.x};
+}
+
+function getyAccelero(eventData){
+    return ${eventData.accelerationIncludingGravity.y};
+}
+
+function getzAccelero(eventData){
+    return ${eventData.accelerationIncludingGravity.z};
+}
+*/
+
+//Gyroscope
+/*function getAlphaGyroscope(eventData){
+    return  ${eventData.rotationRate.alpha};
+}
+
+function getBetaGyroscope(eventData){
+    return  ${eventData.rotationRate.beta};
+}
+
+function getGammaGyroscope(eventData){
+    return  ${eventData.rotationRate.gamma};
+}*/
+
+//Orientation
+/*
+function getxOrientation(event){
+    return event.alpha;
+}
+function getyOrientation(event){
+    return event.beta;
+}
+function getzOrientation(event){
+    return event.gamma;
+}
+*/
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNtYXJ0cGhvbmVTZW5zb3JzLmpzIl0sIm5hbWVzIjpbIl9hbHBoYUd5cm8iLCJfYmV0YUd5cm8iLCJfZ2FtbWFHeXJvIiwiX3hBY2NlbGVybyIsIl95QWNjZWxlcm8iLCJfekFjY2VsZXJvIiwiaW5pdCIsIndpbmRvdyIsIkRldmljZU9yaWVudGF0aW9uRXZlbnQiLCJhZGRFdmVudExpc3RlbmVyIiwiZGV2aWNlT3JpZW50YXRpb25IYW5kbGVyIiwiZXZlbnQiLCJnYW1tYSIsImJldGEiLCJhbHBoYSIsImlzQ29ubmVjdGVkIl0sIm1hcHBpbmdzIjoiOztBQUFBOzs7QUFLSSxJQUFJLGFBQWEsQUFBakI7QUFDQSxJQUFJLFlBQVksQUFBaEI7QUFDQSxJQUFJLGFBQWEsQUFBakI7O0FBRUEsSUFBSSxhQUFZLEFBQWhCO0FBQ0EsSUFBSSxhQUFZLEFBQWhCO0FBQ0EsSUFBSSxhQUFZLEFBQWhCOztBQU1BLFNBQVMsQUFBVCxPQUFlLEFBQ1g7QUFDQTtRQUFJLE9BQU8sQUFBWCx3QkFBbUMsQUFDL0I7ZUFBTyxBQUFQLGlCQUF3QixBQUF4QixxQkFBNkMsQUFBN0MsMEJBQXVFLEFBQXZFLEFBQ0g7QUFDRDthQUFTLEFBQVQsMkJBQW9DLEFBQ2hDO0FBQ0E7cUJBQWEsTUFBTSxBQUFuQixBQUVBOztBQUNBO29CQUFZLE1BQU0sQUFBbEIsQUFFQTs7QUFDQTtxQkFBYSxNQUFNLEFBQW5CLEFBQ0g7QUFHSjs7O0FBTUQ7QUFDSjtBQUNBO0FBQ0ksU0FBUyxBQUFULGNBQXNCLEFBQ2xCO1dBQVEsT0FBTyxBQUFQLDBCQUFpQyxBQUF6QyxBQUNIOzs7QUFLTDtBQUNBO0FBQ0E7O0FBRUE7O0FBRUE7QUFDQTs7Ozs7Ozs7Ozs7Ozs7QUFjQTtBQUNBOzs7Ozs7Ozs7Ozs7QUFZQTtBQUNBIiwiZmlsZSI6InNtYXJ0cGhvbmVTZW5zb3JzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy9XcmFwcGVyIHRvIGFjY2VzcyB0byBkYXRhIHNlbnNvcnMgb2YgYSBzbWFydHBob25lXG5cblxuXG5cbiAgICB2YXIgX2FscGhhR3lybyA9IDA7XG4gICAgdmFyIF9iZXRhR3lybyA9IDA7XG4gICAgdmFyIF9nYW1tYUd5cm8gPSAwO1xuXG4gICAgdmFyIF94QWNjZWxlcm8gPTA7XG4gICAgdmFyIF95QWNjZWxlcm8gPTA7XG4gICAgdmFyIF96QWNjZWxlcm8gPTA7XG5cblxuXG5cblxuICAgIGZ1bmN0aW9uIGluaXQoKXtcbiAgICAgICAgLy8gQ2hlY2sgdG8gbWFrZSBzdXJlIHRoZSBicm93c2VyIHN1cHByb3RzIERldmljZU9yaWVudGF0aW9uRXZlbnRzXG4gICAgICAgIGlmICh3aW5kb3cuRGV2aWNlT3JpZW50YXRpb25FdmVudCkge1xuICAgICAgICAgICAgd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoJ2RldmljZW9yaWVudGF0aW9uJywgZGV2aWNlT3JpZW50YXRpb25IYW5kbGVyLCBmYWxzZSk7XG4gICAgICAgIH1cbiAgICAgICAgZnVuY3Rpb24gZGV2aWNlT3JpZW50YXRpb25IYW5kbGVyKCkge1xuICAgICAgICAgICAgLy8gR2V0IHRoZSBsZWZ0LXRvLXJpZ2h0IHRpbHQgKGluIGRlZ3JlZXMpLlxuICAgICAgICAgICAgX2dhbW1hR3lybyA9IGV2ZW50LmdhbW1hO1xuXG4gICAgICAgICAgICAvLyBHZXQgdGhlIGZyb250LXRvLWJhY2sgdGlsdCAoaW4gZGVncmVlcykuXG4gICAgICAgICAgICBfYmV0YUd5cm8gPSBldmVudC5iZXRhO1xuXG4gICAgICAgICAgICAvLyBHZXQgdGhlIGRpcmVjdGlvbiBvZiB0aGUgZGV2aWNlIChpbiBkZWdyZWVzKS5cbiAgICAgICAgICAgIF9hbHBoYUd5cm8gPSBldmVudC5hbHBoYTtcbiAgICAgICAgfVxuXG5cbiAgICB9XG5cblxuXG5cblxuICAgIC8vVE9ETyBhbmFseXNlciBjZXR0ZSBwYXJ0aWUgZHUgY29kZSBxdWkgbWUgc2VtYmxlIGJhbmNhbGUgcG91ciBsZVxuLy8gICAgICBtb21lbnQuIExlIGNvZGUgZG9pdCByZW52b3llciB1biBib29sZWFuIGV0IGlsXG4vLyAgICAgIGZhdXQgZXZpdGVyIGxlICE9bnVsbCwgbWFpcyBjJ2VzdCBsZSBzZXVsIG1veWVuIHF1ZSBqJ2FpIG1haW50ZW5hbnQgcG91ciB0ZXN0ZXIgbGEgdmFsZXVyXG4gICAgZnVuY3Rpb24gaXNDb25uZWN0ZWQoKXtcbiAgICAgICAgcmV0dXJuICh3aW5kb3cuRGV2aWNlT3JpZW50YXRpb25FdmVudCAhPSBudWxsKTtcbiAgICB9XG5cblxuXG5cbi8vVE9ET1xuLy9Ob3JtYWxpc2VyIGxlIGd5cm8gKyBBY2NlbGVyb1xuLy9Bam91dGVyIGRlcyBmb25jdGlvbnM/XG5cbi8vYWRkIGxpc3RlbmVyIHRvIG9yaWVudGF0aW9uXG5cbi8vIEFjY2VsZXJvXG4vKlxuZnVuY3Rpb24gZ2V0eEFjY2VsZXJvKGV2ZW50RGF0YSl7XG4gICAgcmV0dXJuICR7ZXZlbnREYXRhLmFjY2VsZXJhdGlvbkluY2x1ZGluZ0dyYXZpdHkueH07XG59XG5cbmZ1bmN0aW9uIGdldHlBY2NlbGVybyhldmVudERhdGEpe1xuICAgIHJldHVybiAke2V2ZW50RGF0YS5hY2NlbGVyYXRpb25JbmNsdWRpbmdHcmF2aXR5Lnl9O1xufVxuXG5mdW5jdGlvbiBnZXR6QWNjZWxlcm8oZXZlbnREYXRhKXtcbiAgICByZXR1cm4gJHtldmVudERhdGEuYWNjZWxlcmF0aW9uSW5jbHVkaW5nR3Jhdml0eS56fTtcbn1cbiovXG5cbi8vR3lyb3Njb3BlXG4vKmZ1bmN0aW9uIGdldEFscGhhR3lyb3Njb3BlKGV2ZW50RGF0YSl7XG4gICAgcmV0dXJuICAke2V2ZW50RGF0YS5yb3RhdGlvblJhdGUuYWxwaGF9O1xufVxuXG5mdW5jdGlvbiBnZXRCZXRhR3lyb3Njb3BlKGV2ZW50RGF0YSl7XG4gICAgcmV0dXJuICAke2V2ZW50RGF0YS5yb3RhdGlvblJhdGUuYmV0YX07XG59XG5cbmZ1bmN0aW9uIGdldEdhbW1hR3lyb3Njb3BlKGV2ZW50RGF0YSl7XG4gICAgcmV0dXJuICAke2V2ZW50RGF0YS5yb3RhdGlvblJhdGUuZ2FtbWF9O1xufSovXG5cbi8vT3JpZW50YXRpb25cbi8qXG5mdW5jdGlvbiBnZXR4T3JpZW50YXRpb24oZXZlbnQpe1xuICAgIHJldHVybiBldmVudC5hbHBoYTtcbn1cbmZ1bmN0aW9uIGdldHlPcmllbnRhdGlvbihldmVudCl7XG4gICAgcmV0dXJuIGV2ZW50LmJldGE7XG59XG5mdW5jdGlvbiBnZXR6T3JpZW50YXRpb24oZXZlbnQpe1xuICAgIHJldHVybiBldmVudC5nYW1tYTtcbn1cbiovXG5cblxuXG4iXX0=

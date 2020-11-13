@@ -1,0 +1,86 @@
+extends layout
+block content
+    script(src="/src/client/js/sensorScript.dist.js")
+    //script(src="/dist/sensorScript.js")
+    h3= title
+    div.input
+        button#buttonRecordingStart(type='button' onclick="javascript:window.startRecord();") Start rec
+        button#buttonRecordingStop(type='button' onclick="javascript:window.stopRecord();") Stop rec
+        button#buttonRecordingPlay(type='button' onclick="javascript:window.playRecorded();") Play
+        button#buttonRecordingPause(type='button' onclick="javascript:window.stopingRecorded();") Pause
+        button#buttonStreamOnOff(type='button' onclick="javascript:window.StreamOnOff();") StreamOnOff
+
+
+    blockDevices
+        myoBox
+            #IdMyoBoxImage.myoBox
+                //- var smartphoneConnected = isConnected();
+                - if (true)
+                    //init();
+                    img.myoImage#IdMyoImageC(src="/media/devices/myo-connected.png" alt="MyoOff")
+                - else
+                    img.myoImage#IdMyoImageNC(src="/media/devices/myo-notconnected.png" alt="MyoOn")
+
+
+                div.input#chartContainer
+                    p EMG
+                    canvas#canvasEMG1.canvasBPF
+                    p EMG Sliding
+                    canvas#canvasEMG2.canvasBPF
+                    //canvas#canvasEMG3.canvasBPF
+                   // canvas#canvasEMG4.canvasBPF
+
+
+                div.input
+                    p Accelero
+                    canvas#canvasBPFAccelero.canvasBPF
+                div.input
+                    p Jerkiness
+                    canvas#bpfDisplayJerkiness.canvasBPF
+                //canvas#canvasBarchart.canvasBPF
+                div.input
+                    .slidecontainer
+
+                        p SG Slide window :
+                            span#SGText
+                        input#SGSlider.slider(type='range', min='1', max='100', value='20')
+                        script.
+                              var sliderSG = document.getElementById("SGSlider");
+                              var outputSG = document.getElementById("SGText");
+                              outputSG.innerHTML = sliderSG.value;
+                              sliderSG.oninput = function () {
+                                outputSG.innerHTML = this.value;
+                                if (this.value % 2 === 0) {
+                                  window.setSGWindowLength(this.value);
+                                }
+                              }
+                        p Amplitude Window :
+                            span#AmplitudeText
+                        input#AmplitudeSlider.slider(type='range', min='1', max='100', value='20')
+                        script.
+                          var sliderAmplitude = document.getElementById("AmplitudeSlider");
+                          var outputAmplitude = document.getElementById("AmplitudeText");
+                          outputAmplitude.innerHTML = sliderAmplitude.value;
+                          sliderAmplitude.oninput = function () {
+                            outputAmplitude.innerHTML = this.value;
+                            window.setAmplitudeWindowLength(this.value);
+                          }
+                        //p  SpeedRate Window:
+                            span#SpeedRateText
+                        //input#SpeedRateSlider.slider(type='range', min='1', max='100', value='20')
+                        //script.
+                              var sliderSpeedRate = document.getElementById("SpeedRateSlider");
+                              var outputSpeedRate = document.getElementById("SpeedRateText");
+                              outputSpeedRate.innerHTML = sliderSpeedRate.value;
+                              sliderSpeedRate.oninput = function () {
+                                outputSpeedRate.innerHTML = this.value;
+
+                              }
+
+       // smartphoneBox
+            #IdSmartphoneBox.smartphoneBox
+                img.smartphoneImage#IdSmartphone1(src="/images/devices/smartphone.png" alt="Smartphone")
+
+
+
+

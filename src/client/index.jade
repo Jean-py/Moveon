@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p.bottom #{subtitle}
+
+  script.
+    window.addEventListener("click", screenTouched, false);
+    function screenTouched() {
+      //Switching to sensors.jade
+      window.location.href = '/workshop2'
+    }
+    window.addEventListener("touchstart", screenTouched, false);
+    function screenTouched() {
+      //Switching to sensors.jade
+      window.location.href = '/workshop2'
+    }
