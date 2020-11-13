@@ -28,7 +28,7 @@ document.addEventListener("keydown", function (e) {
   switch (event.keyCode) {
     case 32:
       console.log("space bar pressed");
-      player.playPausecallback();
+      plapyer.playPausecallback();
       event.preventDefault();
       break;
     case 37:

@@ -50,10 +50,7 @@ var Player = function() {
     minus1second : function () {
       minus1second();
     },
-  
-  
-  
-  
+    
   }
 };
 
