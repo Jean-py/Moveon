@@ -1,9 +1,9 @@
 #Toolbox-MoveOn
 Author: Rivière Jean-Philippe
-Publication :
 
+MoveOn is a research project that aim at supporting movement learning from video. This project has been funded by the diagonale de Paris-Saclay, the ANR project ELEMENT and the ERC CREATIV.
 
-Framework : Express.js
+Framework : Express.js and Pug.
 
 *Steps*:
 1) Clone the repository
