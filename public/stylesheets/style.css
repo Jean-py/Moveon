@@ -1,22 +1,35 @@
 @import url("resetCss.css");
 
 :root {
+   /* --main-color: #E5C4D7;*/
     --main-color: #033649;
     --text-color: #E8DDCB;
+   /* --secondary-color: black;*/
     --secondary-color: white;
     --third-color: #031634;
+    /*--fourth-color : #033649;*/
     --fourth-color : #ffd208;
+    --fifth-color : #ff741c;
+
     --third-color-transparent:  rgba(3, 22, 52, 0.5);
     --text-color-transparent:  rgba(232, 221, 203, 0.5);
     --black-color-transparent:  rgba(0, 0, 0, 0.7);
     --border-color : #486270;
     --sucess-color: #036564;
     --unsucess-color: #c7074d;
-}
-body {
-    font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
-    -webkit-touch-callout: none !important;
 
+    --font: Ubuntu,  sans-serif;
+}
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url("../fonts/ubuntu/Ubuntu-Regular.ttf") format("truetype")
+
+}
+
+body {
+
+    -webkit-touch-callout: none !important;
     /*
     overflow-x: initial !important;
     overflow-y: hidden;
@@ -34,20 +47,22 @@ a {
 p {
   font-weight:bold;
   line-height:2em;
-  font-family: "../fonts/Optima.ttc";
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 
 h1,h2,h3,h4,h5{
-  font-family: "../fonts/Optima.ttc";
-  margin:0px;
-  padding:0px;
-  border:0px;
-  color: var(--secondary-color);
+    font-family: var(--font);
+    margin:0px;
+    padding:0px;
+    border:0px;
+    color: var(--secondary-color);
 }
 h1{
-  font-size: 60px;
-  line-height:10em;
+
+    font-size: 60px;
+ /* font-family:*/
+  line-height:5em;
+
 }
 h2{
   font-size: 50px;
@@ -60,7 +75,34 @@ h4{
 }
 h5{
   font-size: 15px;
+    line-height: 1.5;
 }
+.copyright{
+    margin-top: 20px;
+}
+
+
+.font-ubuntu_h1{
+    font-family: var(--font);
+    font-size: 60px;
+    line-height: 10em;
+}
+.font-ubuntu_h2{
+    font-family: var(--font);
+    font-size: 50px;
+    line-height: 10em;
+}
+.font-ubuntu_h3{
+    font-family: var(--font);
+    font-size: 40px;
+    line-height: 10em;
+}
+.font-ubuntu_h4{
+    font-family: var(--font);
+    font-size: 30px;
+    line-height: 10em;
+}
+
 
 html{
   width:100%;
@@ -87,6 +129,14 @@ hr {
     background-color: gray;
 }
 
+footer{
+
+}
+
+.blocTop{
+
+}
+
 /*
 .vjs-tech{
     border-style: solid;
@@ -97,9 +147,7 @@ hr {
 .draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
 .droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
 
-.pageTitle{
-  font-family: "../fonts/Optima.ttc";
- /* user-select: none;
+.pageTitle{/* user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;*/
@@ -144,7 +192,7 @@ hr {
 
 
 .userName{
-    font: 14px "../fonts/Optima.ttc", Helvetica, Arial, sans-serif;
+    font: 14px var(--font);
     color: white;
 
 }
@@ -199,3 +247,4 @@ select {
     appearance: none;       /* remove default arrow */
 
 }
+

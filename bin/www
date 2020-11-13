@@ -1,26 +1,17 @@
 #!/usr/bin/env node
-
-
-/**
- * Module dependencies.
- */
-
 let app = require('../app');
 let debug = require('debug')('moveon:server');
-let config = require('../src/config/configServer');
+let config = require('../src/server/config/configServer');
 let http = require('http');
-let babel = require('babel-core/register');
 
 var fse = require('fs-extra');
 var klaw = require('klaw');
 var watch = require('watch');
 var path = require('path');
 var pkg = require('../package.json');
-var util = require('util');
+
 
 var javascripts = require('./javascripts');
-var server = require('./server');
-var logger = require('../src/server/ServerLogger');
 
 
 var cwd = process.cwd();
@@ -36,7 +27,7 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-var server = http.createServer(app);
+var server = http.Server(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -47,7 +38,6 @@ server.listen(port, function () {
 });
 server.on('error', onError);
 server.on('listening', onListening);
-
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -138,7 +128,7 @@ var browserifyOptions = {
  */
 var srcDirectory = path.join(cwd, 'src');
 var distDirectory = path.join(cwd, 'dist');
-var clientEntryPoint = path.join(distDirectory, 'client/js/sensorScript.js');
+var clientEntryPoint = path.join(distDirectory, 'client/js/');
 var bundlePath = path.join(cwd, 'public/bundle.js');
 
 // http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
@@ -216,7 +206,6 @@ function watchFiles(srcDirectory, distDirectory) {
       server.stop();
       callback = server.start;
     }
-    
     transpiler.transpile(filename, [], callback);
   }
   
@@ -233,64 +222,10 @@ function watchFiles(srcDirectory, distDirectory) {
       }
     });
   });
-  
   // start server
-  
 }
 
 
-function transpile(srcDirectory, distDirectory, callback) {
-  _getFileList(srcDirectory, function(files) {
-    var transpiler = javascripts.getTranspiler(srcDirectory, distDirectory, isAllowed, babelOptions);
-    transpiler.transpile(undefined, files, callback);
-  });
-}
-
-function bundle(distDirectory, callback) {
-  
-  var transpiler = javascripts.getTranspiler(srcDirectory, distDirectory, isAllowed, babelOptions, browserifyOptions);
-  
-  transpile(srcDirectory, distDirectory, function() {
-    transpiler.bundle(clientEntryPoint, bundlePath, callback);
-  });
-}
-
-module.exports.getTranspiler = function() {
-  return javascripts.getTranspiler(srcDirectory, distDirectory, isAllowed, babelOptions, browserifyOptions);
-}
-
-/* --------------------------------------------------------------------------
- * Process and execute the given command.
- * -------------------------------------------------------------------------- */
-
-var command = process.argv[2];
-var args = process.argv.slice(3);
-var argv = {};
-for (var i = 0; i < args.length; i += 2)
-  argv[args[i]] = args[i + 1];
-
-switch (command) {
-  /**
-   * Watch the file system and transpile from es6 to es5.
-   */
-  case '--watch':
-    watchFiles(srcDirectory, distDirectory);
-    break;
-  
-  /**
-   * Transpile all files in `src` from es6 to es5.
-   */
-  case '--transpile':
-    transpile(srcDirectory, distDirectory);
-    break;
-  
-  /**
-   * Transpile all files in `src` from es6 to es5 and browserify all the things.
-   */
-  case '--bundle':
-    bundle(distDirectory);
-    break;
-}
 
 /* --------------------------------------------------------------------------
 Create the web socket enabling communication with clients
@@ -306,29 +241,59 @@ const ServerLogger = require('../src/server/ServerLogger');
 // Instantiate User:
 var serverLogger = new ServerLogger();
 
+
+
 const io = require('socket.io')(server);
 io.on("connection",  (socket)=> {
   console.log('New user connected : '+ socket.id);
-  socket.username = socket.id;
+  //socket.username = socket.id;
   
   
   socket.on("socket_username", (data) =>{
-    console.log("**** socket name changed **** ");
-  
+    console.log("**** socket name changed **** \n to " +data.username);
+    //serverLogger.setUsernameLog(data.username);
     socket.username = data.username;
-    console.log("Socket changing username to : " + socket.username)
+    //console.log("socket.username : " + socket.username);
+    //serverLogger.log(socket.username,);
   });
   
   socket.on("log_command", function (command){
     //socket.command = data.username;
-    serverLogger.log(socket.username,command);
+    var id = socket.username + "_"+ timestamp() ;
+    serverLogger.log(id,command);
+    
   });
   
   socket.on("saveSH", function (SH){
     //socket.command = data.username;
-    serverLogger.saveSH(socket.username,SH);
+    serverLogger.saveSHMongoDB(socket.username,SH);
   });
   
- 
 });
+
+
+function timestamp() {
+  var d = new Date();
+  var time = [pad(d.getHours()),
+    pad(d.getMinutes()),
+    pad(d.getSeconds())].join(':');
+  return [d.getDate(), months[d.getMonth()]].join(' ');
+}
+
+
+function pad(n) {
+  return n < 10 ? `0${n.toString(10)}` : n.toString(10);
+}
+
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+  'Oct', 'Nov', 'Dec'];
+
+
+
+
+
+module.exports = app;
+//module.exports = io;
+
+
 

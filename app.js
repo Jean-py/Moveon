@@ -1,21 +1,78 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-//var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var connect = require('connect');
+var createError = require('http-errors');
+var bodyParser = require('body-parser');
+var app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+var mongoose = require('mongoose');
+var indexRouter = require('./src/routes/index');
+
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 
-//const favicon = require('express-favicon');
+
+
+/**
+ * Connexion DataBase
+ */
+
+// Connection UR
+const url ='mongodb://localhost/moveon';
+// Database Name
+const dbName = 'moveon';
+// Create a new MongoClient
+//const client = new MongoClient();
+
+//connect to MongoDBpki
+mongoose.connect( url,  { useNewUrlParser: true });
+const db = mongoose.connection;
+//handle mongo error
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  // we're connected!
+  console.log("The server is connected to MongoDB!");
+  
+  /*var User = require('./src/server/data_base/models/user.js');
+  
+  const jp = new User({
+    email: 'laura.gary@hotmail.fr ',
+    username: 'gary',
+    password: 'gary',
+  });
+  
+  jp.save(function (err, user) {
+    if (err) return console.error(err);
+    console.log(user.username + " saved to bookstore collection.");
+  });
+  */
+  /**
+   * End Connexion DataBase
+   */
+
+  
+  
+});
+//db.close();
+
+app.use(session({
+  //the name of my favorite cat
+  secret: '$2y$10$JcuqrQDeVWyn4lCVwbtTJur/FsK07mPeWtRu.7DT4fizHkGOTQtx6',
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
+
+
+
+var cookieParser = require('cookie-parser');
 require('babel-core/register');
 
-var indexRouter = require('./src/routes/index');
-//var sensorsRouter = require('./src/routes/sensors');
-var workshop2 = require('./src/routes/workshop2');
-//var testFile = require('./src/routes/testFile');
-
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '/src/client'));
@@ -23,29 +80,13 @@ app.use('/dist', express.static('dist/'));
 app.use('/public', express.static('public/'));
 app.use('/src', express.static('src/'));
 //app.use('/static', express.static('public/media/devices'));
-
-
 // Set Jade as the default template engine
 app.set('view engine', 'jade');
-app.use(logger('dev'));
-
-var bodyParser = require('body-parser');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(cookieParser());
+//app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(favicon(__dirname + '/public/media/favicon.ico'));
 
 //page used in my application
 app.use('/', indexRouter);
-//app.use('/sensors', sensorsRouter);
-app.use('/workshop2', workshop2);
-
-//app.use('/testFile', testFile);
-
-
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -62,6 +103,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.use(cookieParser());
+
+
+
 
 module.exports = app;
+
 

@@ -1,9 +1,25 @@
 #Toolbox-MoveOn
 Author: Rivière Jean-Philippe
+Publication :
+
 
 Framework : Express.js
 
-Template HTML : Jade
+*Steps*:
+1) Clone the repository
+2) In the console: npm install
+3) When the installation is complete, in a console: npm run watch
+4) In the file workshop2.jade, replace frame.mp4 with your video
+6) In the browser : localhost:8000
 
 
-The master branch is the stable branch of MoveOn. You should use this one for your personal application.
+
+*Branches*
+*moveonv1* is the first version of MoveOn, used to read old Moveon JSon file.
+*Dev* is the last version of moveon, where new features are published
+*master** is THE stable version of MoveOn, you should use this one for your studies.
+*Piel* is a version created for the Piel Ensemble with other features that the original moveon.
+
+
+* Watch our publication !*
+Rivière, Jean-Philippe, et al. "Capturing movement decomposition to support learning and teaching in contemporary dance." Proceedings of the ACM on Human-Computer Interaction 3.CSCW (2019): 1-22.

@@ -1,0 +1,163 @@
+extends layout
+block content
+    //disable the google analytic for video.js
+    script window.HELP_IMPROVE_VIDEOJS = false;
+    //video.js API
+    link(href="/src/client/js/utilities/video-js-7.5.4/video-js.css" rel="stylesheet")
+    script(src="/src/client/js/utilities/video-js-7.5.4/video.js")
+    script(src="/src/client/js/utilities/video-js-7.5.4/yt.js")
+    script(src="/src/client/js/utilities/video-js-7.5.4/videojs-time-offset.js")
+    script(src="/src/client/js/utilities/video-js-7.5.4/videojs-abloop.js")
+    script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+
+    #videoPickerOverview.modal
+        .modal-content#videoPickerOverviewModal
+            span.close.cFerme x
+    #SHPickerOverview.modal
+        .modal-content#SHPickerOverviewModal
+            span.close.cFerme x
+    #oNote4.note
+        .succes
+            a.cFerme.close(href='#fermer', title='Fermer la fenêtre') x
+            #noteMessage  Hello!
+    .containerMenu#containerMenu
+        .bar1#bar1id
+        .bar2#bar2id
+        .bar3#bar3id
+
+    .tutorial#tutoContainer
+        img.imgTutorial#tutorialBtn(src='/media/workshop2/menu/tutorial_icon.png' ,  style='width:60px; right:34px')
+        img.imgTutorial#tutorialArrowKey(src='/media/workshop2/menu/arrow-key.png' ,  style='width: 130px;   top: 150px;')
+
+
+    .sidebar#sidebarMenu(style='visibility: hidden; ')
+        //a#btnLoadSHFromServer(href='#load_file' , style=' ')
+            i.fa.fa-fw.fa-wrench
+            |  Load Decomposition
+        a#btnLoadFile(href='#load_file' , style=' ', type="file", accept='file/json')
+            i.fa.fa-fw.fa-wrench
+            |  Load Decomposition
+        a#btnSaveSegments(href='#SaveSegments')
+            i.fa.fa-fw.fa-wrench
+            |  Save Decomposition
+        a#btnCleanAll(href='#clean', style='visibility: ; ')
+            i.fa.fa-fw.fa-wrench
+            |  Clean Decomposition
+        hr
+        a#btnLoadAVideo(href='#loadVideo', style='visibility:; ')
+            i.fa.fa-fw.fa-wrench
+            |  Load a Video
+        hr
+        //a#btnInvertVideo(href='#Invert', style='visibility:; ')
+            i.fa.fa-fw.fa-wrench
+            |  Invert Video
+        //hr
+        //a
+            i.fa.fa-fw.fa-wrench
+            |  Participant:
+        //textarea#idSession
+        input#logFileLoad(type="file", style='visibility: hidden; ')
+
+    .wrapperCommandAndRange#wrapperCommandAndRangeid(style='display: inline-block;')
+        .wrapperCommandAndRange.wrapperSticky
+            .myplayer
+                //video#vid1.video-js(data-setup='{"controls": true, "fluid": true}' )
+                    source(src='http://vjs.zencdn.net/v/oceans.mp4', type='video/mp4')
+                video#videojs.video-js.vjs-default-skin(data-setup='{   "sources": [{ "type": "video/mp4", "src": "./public/media/workshop2/gesture1.mp4"}], "controls": true, "autoplay": true, "preload": "metadata"}', )
+                    //source(src='/media/workshop2/frame.mp4', type='video/mp4')
+                    p.vjs-no-js
+                        | To view this video please enable JavaScript, and consider upgrading to a web browser that
+                        a(href='http://videojs.com/html5-video-support/', target='_blank') supports HTML5 video
+            .range-slider#videoSlider
+                .range-slider-wrapper#range-slider-wrapper
+                    .range-slider_handle.range-slider_handle-min#range-slider_handle-min(data-handle='min')
+                    .range-slider_handle.range-slider_handle-max#range-slider_handle-max(data-handle='max')
+                    .range-slider_track#segmentMinMax(style='visibility: hidden ')
+                //.commandeVideo#idCommandeVideo
+                    img.imageVideoControl#play-pause(src='/media/workshop2/videoCommand/playButton.png', alt='playPause', style='width:40px; height:40px')
+                    p#timerVideo 0:00/x:xx
+                    img.imageVideoControl#mute(src='/media/workshop2/videoCommand/volumeFull.png', alt='volumeFull', style='width:40px; height:40px')
+        .wrapperCommandAndRange#wrapperCommandAndRangeCardBoard(style='')
+            .cardBoard#divCardBoard
+    .container
+        a.playAllBut#playAllBut
+            // Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In
+            svg(version='1.1', xmlns='http://www.w3.org/2000/svg', x='0px', y='0px', width='213.7px', height='70px', viewbox='0 0 213.7 213.7', enable-background='new 0 0 213.7 213.7', xml:space='preserve')
+                polygon#XMLID_18_.triangle(fill='none', stroke-width='7', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', points='\
+              73.5,62.5 148.5,105.8 73.5,149.1 ')
+                    circle#XMLID_17_.circle(fill='none', stroke-width='7', stroke-linecap='round', stroke-linejoin='round', stroke-miterlimit='10', cx='106.8', cy='106.8', r='103.3')
+            p Play all segments
+
+
+
+
+    //footer
+        .content
+            | test
+
+    script.
+    link(href="stylesheets/videoControl.css" rel="stylesheet")
+    link(href="stylesheets/card.css" rel="stylesheet")
+    link(href="stylesheets/menu.css" rel="stylesheet")
+    script(type="text/javascript" src="/src/client/js/dom_elements.js")
+    //test for json reader from client to serveur
+    script(type="text/javascript" src="/src/client/js/menu/manage_segment_history.js")
+    //To create socket, used to log command
+    script(src="/src/client/js/utilities/socket.io.js")
+    //JQuery
+    script(src="/src/client/js/utilities/jquery.js")
+    script(src="/src/client/js/utilities/jquery2.2.4.js")
+    script(src="/src/client/js/utilities/jqueryUI.js")
+
+    //script(src="/src/client/js/workshop2/technologyProbe/utilities/rainbow.js")
+
+
+    //script(src="/socket.io/socket.io.js")
+    script(src="/src/client/js/utilities/socket.io.js")
+
+
+    //This script is usefull to log what happend during a session. Every command used are logged
+    //and saved on the server side
+    script(src="/src/client/js/application_logger/logger.js")
+
+    //The manager of every card, get a trace of which card have been created and when. This is my segment history
+    script(src="/src/client/js/card_manager/cardManager.js")
+
+    //This script is and utility script with usefull function such as createuniqueId or timestap
+    script(src="/src/client/js/utilities/utilities.js")
+
+    //The manager of every card, get a trace of which card have been created and when. This is my segment history
+    script(src="/src/client/js/card_manager/command/CommandCardManager.js")
+    script(src="/src/client/js/card_manager/command/AbstractManageCardCommand.js")
+
+    //StateMachine to handle the drag and drop in order to create a new card
+    script(src="/src/client/js/card/segment/stateMachineCreateSegment.js")
+
+    // Functional core of action made on video (play, pause, etc). This class handle  commands
+
+    //script to import a youtube video
+    script(src="/src/client/js/video/functionalCore/mp4/videoFunctionalCore.js")
+    script(src="/src/client/js/video/command/AbstractVideoControllerCommand.js")
+    script(src="/src/client/js/video/command/CommandVideoController.js")
+    //The controller of the video, send command to the functionalCOre
+    script(src="/src/client/js/video/controller/videoController.js")
+    //The video picker
+    script(src="/src/client/js/video/video_picker/video_picker.js")
+    //The class Card (Gui and controller).
+    script(src="/src/client/js/card/CardFunctionalCore.js")
+    script(src="/src/client/js/card/card.js")
+    script(src="/src/client/js/card/command/AbstractCardCommand.js")
+    script(src="/src/client/js/card/command/CommandCard.js")
+
+    //interface to control both MP4 and youtube video the same way
+    script(src="/src/client/js/video/functionalCore/interfaceVideo.js")
+    //The class that handle the menu option
+    script(src="/src/client/js/menu/menu.js")
+
+
+        //Testing
+        //script(src="/src/client/test/test.js")
+        //Function to analyse data
+        script(src = "/src/client/js/dataAnalysis/dataAnalysisUtilities.js")
+    //script(src="/src/client/js/workshop2/technologyProbe/card/controller/controllerCard.js")
+

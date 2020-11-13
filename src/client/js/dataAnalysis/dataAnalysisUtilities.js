@@ -99,10 +99,6 @@ function updateHeight(speed, repet ){
     elemSegment.style.height = (height ) + "px";
     
   }
-  
- 
-
-
 }
 
 
@@ -181,7 +177,6 @@ function  getColor2(speed, repet) {
   var trans = '0.3'; // 50% transparency
   var trans = '1'; // 50% transparency
   //trans += repet * speed;
-  
   
   var color = 'rgba('+ (255 -speed * 100)+',' +(speed * 100) +',255'+',' ;
   var color = 'rgba( 35 , 64,255,' ;

@@ -16,7 +16,7 @@
 .bar1, .bar2, .bar3 {
     width: 35px;
     height: 5px;
-    background-color: var(--text-color);
+    background-color: var( --secondary-color);
     margin: 6px 0;
     transition: 0.4s;
 }
@@ -38,19 +38,20 @@
 
 /* Style the sidebar - fixed full height */
 .sidebar {
+
     position: absolute;
-    height: auto;
-    width: 160px;
-    z-index: 1;
-    background-color: var(--third-color);
+    height:  320px;
+    width: 175px;
     overflow-x: hidden;
     transition: 0.4s;
-    top: 8%;
+    top: 6%;
     left: 2%;
     float:right;
     text-align: -webkit-center;
     z-index: 10;
     border-radius: 16px;
+    background-color: var(--third-color);
+    font-family: var(--font);
 }
 
 #AnalysisMenuDraggable {
@@ -66,7 +67,7 @@
     padding: 10px;
     cursor: move;
     z-index: 10;
-    background-color: #031634;
+    background-color: var(--third-color-transparent);
     color: #fff;
 }
 
@@ -99,7 +100,6 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
-
     display: block;
     background: var(--third-color);
     color: var(--text-color);;
@@ -157,7 +157,18 @@
     margin: auto;
     padding: 20px;
 
-    width: 80%;
+    width: 50%;
+    height: 300px;
+}
+
+
+.imgTutorial{
+    font-size: 10px;
+    width: 60px;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    right: 0%;
 }
 
 /* The Close Button */
