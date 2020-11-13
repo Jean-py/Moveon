@@ -118,8 +118,7 @@ function clearAllTimer() {
 
 
 var play = function () {
-  console.log("appesl a play");
-  
+  console.log("Appel a play");
   video_current.play();
 };
 

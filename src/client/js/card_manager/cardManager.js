@@ -158,7 +158,6 @@ var CardManager = function() {
 
 /*Private function, do not call outside the CardManager*/
 
-
 function triggerMouseEvent (node, eventType) {
   var clickEvent = document.createEvent ('MouseEvents');
   clickEvent.initEvent (eventType, true, true);
@@ -400,7 +399,7 @@ function loadJSONSegmentHistory(SH_path) {
 
 
 function showSegmentFeedback(visibility,startP,endP){
-  console.log("AAAA")
+  console.log("AAAA");
   if(visibility){
     segmentFeedback.divGraphicalObject.style.visibility = "visible";
     segmentFeedback.divGraphicalObject.style.marginLeft = endP ;

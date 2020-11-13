@@ -489,9 +489,7 @@
       var curTime,
         endTime,
         startTime;
-      
       validateOptions();
-      
       curTime = player.currentTime();
       endTime = getEndTime();
       startTime = getStartTime();
@@ -499,22 +497,33 @@
         loopAtEndOfVideoRequired = true;
         //if the end is before the start, deal with it
         if (curTime < (startTime - startMargin) && curTime > endTime && ((curTime - endTime) < endMargin || opts.loopIfAfterEnd || opts.loopIfBeforeStart)) {
+          //console.log("playbackRate abloop - F");
           return true;
         }
       } else { //startTime <= endTime
         loopAtEndOfVideoRequired = false;
         if(curTime < startTime){
-          //console.log("playbackRate abloop");
+          //console.log("playbackRate abloop A - playback 1");
+          disableLoop();
           video_current.playbackRate(1);
-          return false
+          return false;
         } else if (curTime < (startTime - startMargin) && opts.loopIfBeforeStart) {
-          return true;
+          //console.log("playbackRate abloop - E");
+          return false
+          //return false;
         } else if (curTime >= endTime) {
-        //  console.log("playbackRate abloop");
-          video_current.playbackRate(1);
+          //console.log("playbackRate abloop - C");
           //use a margin of one just in case time has skipped a bit past
           if ((curTime - endTime) < endMargin || opts.loopIfAfterEnd) {
+            //console.log("playbackRate abloop B - playback 2");
+            //video_current.playbackRate(1);
             return true;
+          } else if (curTime >= endTime + endMargin) {
+            //console.log("playbackRate abloop D ");
+            video_current.playbackRate(1);
+            loopAtEndOfVideoRequired = false;
+            disableLoop();
+            return false;
           }
         }
       }

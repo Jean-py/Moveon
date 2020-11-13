@@ -53,7 +53,6 @@ router.post('/', function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
-        
         return res.redirect('/moveon');
       }
     });
@@ -70,6 +69,9 @@ router.post('/', function (req, res, next) {
       }
     });
   } else {
+    //return res.redirect('/moveon');
+    return res.redirect('/moveon');
+
     var err = new Error('All fields required.');
     err.status = 400;
     return next(err);
@@ -98,6 +100,7 @@ router.post('/', function (req, res, next) {
 
 router.get('/moveon', function (req, res, next) {
   console.log(req.session);
+  return res.render('moveon', { title: config.appNameShort  });
   User.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
@@ -109,7 +112,6 @@ router.get('/moveon', function (req, res, next) {
           return next(err);
         } else {
           return res.render('moveon', { title: config.appNameShort  });
-          
         }
       }
     });
