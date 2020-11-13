@@ -39,9 +39,9 @@ db.once('open', function () {
   /*var User = require('./src/server/data_base/models/user.js');
   
   const jp = new User({
-    email: 'laura.gary@hotmail.fr ',
-    username: 'gary',
-    password: 'gary',
+    email: '****',
+    username: '**',
+    password: '*****',
   });
   
   jp.save(function (err, user) {
