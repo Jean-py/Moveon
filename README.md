@@ -9,7 +9,7 @@ Framework : Express.js and Pug.
 1) Clone the repository
 2) In the console: npm install
 3) When the installation is complete, in a console: npm run watch
-4) In the file workshop2.jade, replace frame.mp4 with your video
+4) In the file moveon.jade (situated in /src/client), replace frame.mp4 with your video
 6) In the browser : localhost:8000
 
 
