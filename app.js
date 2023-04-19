@@ -11,8 +11,8 @@ var mongoose = require('mongoose');
 var indexRouter = require('./src/routes/index');
 
 var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-
+/*var MongoStore = require('connect-mongo')(session);
+*/
 
 
 
@@ -21,7 +21,7 @@ var MongoStore = require('connect-mongo')(session);
  */
 
 // Connection UR
-const url ='mongodb://localhost/moveon';
+/*const url ='mongodb://localhost/moveon';
 // Database Name
 const dbName = 'moveon';
 // Create a new MongoClient
@@ -36,7 +36,7 @@ db.once('open', function () {
   // we're connected!
   console.log("The server is connected to MongoDB!");
   
-  /*var User = require('./src/server/data_base/models/user.js');
+  /!*var User = require('./src/server/data_base/models/user.js');
   
   const jp = new User({
     email: '****',
@@ -48,10 +48,10 @@ db.once('open', function () {
     if (err) return console.error(err);
     console.log(user.username + " saved to bookstore collection.");
   });
-  */
-  /**
+  *!/
+  /!**
    * End Connexion DataBase
-   */
+   *!/
 
   
   
@@ -66,7 +66,7 @@ app.use(session({
   store: new MongoStore({
     mongooseConnection: db
   })
-}));
+}));*/
 
 
 
